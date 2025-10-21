@@ -1,0 +1,155 @@
+# Rhombus Developer Documentation
+
+This is a Mintlify documentation site for Rhombus security platform API documentation. The project provides comprehensive developer resources for integrating with Rhombus cameras, sensors, access control systems, and analytics.
+
+## Project Overview
+
+**Platform**: Mintlify documentation framework
+**Purpose**: Developer documentation for Rhombus REST API
+**Target Audience**: Developers building integrations with Rhombus security platform
+**API Coverage**: 846+ endpoints across cameras, access control, environmental monitoring, events, and integrations
+
+## Key Features
+
+- **Comprehensive API Reference**: Auto-generated from OpenAPI specification
+- **Interactive Documentation**: Mintlify components for rich user experience
+- **Automated Updates**: Nightly sync with production API specification
+- **Developer Resources**: Quick start guides, code examples, best practices
+- **Multi-language Support**: Examples in cURL, Python, JavaScript, Go
+
+## Architecture
+
+### Core Structure
+```
+├── docs.json                 # Mintlify configuration
+├── index.mdx                 # Homepage with API overview
+├── quickstart.mdx           # Getting started guide
+├── development.mdx          # Local development setup
+├── api-reference/           # API documentation
+│   ├── README.md           # API reference overview
+│   ├── openapi.json        # Rhombus OpenAPI spec (846 endpoints)
+│   └── endpoint/           # Generated endpoint documentation
+├── essentials/             # Mintlify usage guides
+├── scripts/                # Automation scripts
+└── .github/workflows/      # CI/CD automation
+```
+
+### Navigation Structure
+- **Guides Tab**: Getting started, customization, writing content
+- **API Reference Tab**: Core services, events & monitoring, integrations
+
+## Technical Implementation
+
+### API Integration
+- **Base URL**: `https://api2.rhombussystems.com`
+- **Authentication**: API key via `x-auth-apikey` header
+- **Rate Limits**: 1000 requests/hour, 100 requests/minute burst
+- **OpenAPI Source**: `https://api2.rhombussystems.com/api/openapi/public.json`
+
+### Automation
+- **Nightly Updates**: GitHub Actions workflow updates OpenAPI spec at 2 AM UTC
+- **Manual Updates**: `scripts/update-openapi.sh` for on-demand updates
+- **Validation**: JSON validation and change detection
+
+### Development Workflow
+```bash
+# Install Mintlify CLI
+npm i -g mint
+
+# Local development
+mint dev                    # Runs on localhost:3000
+mint dev --port 3333       # Custom port
+
+# Maintenance
+mint update                 # Update CLI
+mint broken-links          # Validate links
+./scripts/update-openapi.sh # Update API spec
+```
+
+## Content Guidelines
+
+### File Structure
+All MDX files require YAML frontmatter:
+```yaml
+---
+title: "Page Title"
+description: "Brief description"
+icon: "icon-name"          # Optional
+---
+```
+
+### Mintlify Components
+- **Callouts**: `<Note>`, `<Tip>`, `<Warning>`, `<Info>`, `<Check>`
+- **Structure**: `<Steps>`, `<Tabs>`, `<AccordionGroup>`, `<Card>`, `<CardGroup>`
+- **Code**: `<CodeGroup>`, `<RequestExample>`, `<ResponseExample>`
+- **API**: `<ParamField>`, `<ResponseField>`, `<Expandable>`
+- **Media**: `<Frame>` for images, `<video>`, `<iframe>`
+
+## API Categories
+
+### Core Services
+- **Access Control**: User management, credentials, door control (66 endpoints)
+- **Camera**: Video streaming, recordings, configuration (67 endpoints)
+- **Climate**: Environmental monitoring, sensor data (12 endpoints)
+- **Door**: Door sensors and events (4 endpoints)
+- **User**: User management and notifications (11 endpoints)
+
+### Events & Monitoring
+- **Alert Monitoring**: Threat detection and response (9 endpoints)
+- **Event**: Security events, clips, policy alerts (31 endpoints)
+- **Face Recognition**: Person identification and matching (20 endpoints)
+- **Occupancy**: Space utilization monitoring (4 endpoints)
+
+### Integrations
+- **Access Control Integrations**: Third-party system integration (50+ endpoints)
+- **Alarm Monitoring**: Security system integration (10 endpoints)
+
+## Branding & Theme
+
+### Color Scheme (2024 Rebrand)
+- **Primary**: #2563EB (blue)
+- **Light**: #60A5FA (light blue)
+- **Dark**: #1D4ED8 (dark blue)
+
+### Brand Identity
+- Company name: "Rhombus" (dropped "Systems" in 2024 rebrand)
+- Focus on trust, integrity, friendliness, and innovation
+- Modern blue gradient replacing previous green theme
+
+## Development Environment
+
+### Prerequisites
+- Node.js version 19 or higher
+- Mintlify CLI installed globally
+- Access to Rhombus Console for API key generation
+
+### Local Development
+1. Clone repository
+2. Install Mintlify CLI: `npm i -g mint`
+3. Run development server: `mint dev`
+4. Access at `http://localhost:3000`
+
+### Deployment
+- Automatic deployment via Mintlify GitHub app integration
+- Changes deploy to production on push to default branch
+- No build step required - Mintlify handles compilation
+
+## Key Files
+
+### Configuration
+- `docs.json`: Mintlify site configuration with navigation structure
+- `.github/workflows/update-openapi.yml`: Automated API spec updates
+- `scripts/update-openapi.sh`: Manual API spec update script
+
+### Documentation
+- `index.mdx`: Homepage with API overview and getting started
+- `quickstart.mdx`: 5-minute quick start guide with code examples
+- `development.mdx`: Local development setup instructions
+- `api-reference/README.md`: API reference documentation process
+
+### Assets
+- `favicon.svg`: Site favicon
+- `logo/`: Brand logos (dark/light variants)
+- `images/`: Documentation screenshots and assets
+
+This project serves as the primary developer resource for Rhombus API integration, providing comprehensive documentation, interactive examples, and automated maintenance of API specifications.

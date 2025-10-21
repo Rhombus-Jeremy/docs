@@ -1,0 +1,617 @@
+# Rhombus Developer Documentation - Complete Reference
+
+This is the comprehensive reference for the Rhombus Developer Documentation project, a Mintlify-based documentation site providing complete API documentation for the Rhombus security platform.
+
+## Project Overview
+
+### Mission & Purpose
+The Rhombus Developer Documentation serves as the primary resource for developers integrating with Rhombus security infrastructure. It provides comprehensive API documentation, interactive examples, and development resources for building applications that leverage Rhombus cameras, sensors, access control systems, and analytics.
+
+### Target Audience
+- **API Developers**: Building integrations with Rhombus security platform
+- **System Integrators**: Connecting Rhombus with existing security systems
+- **Enterprise Developers**: Creating custom security applications
+- **Partner Developers**: Building solutions on the Rhombus platform
+
+### Platform Details
+- **Framework**: Mintlify documentation platform
+- **Language**: MDX (Markdown with JSX components)
+- **Deployment**: Automatic via Mintlify GitHub app integration
+- **API Coverage**: 846+ endpoints across multiple service categories
+- **Update Frequency**: Nightly automated sync with production API
+
+## Technical Architecture
+
+### Project Structure
+```
+mintlify-developer-documentation/
+├── .github/
+│   └── workflows/
+│       └── update-openapi.yml          # Nightly API spec updates
+├── .windsurf/
+│   └── rules.md                        # Windsurf AI editor rules
+├── api-reference/
+│   ├── endpoint/                       # Generated API endpoint docs
+│   │   ├── access-control/            # Access control endpoints (66)
+│   │   ├── access-control-integrations/ # Integration endpoints (50+)
+│   │   ├── alarm-monitoring-keypad/   # Keypad endpoints
+│   │   ├── badge-reader/              # Badge reader endpoints (2)
+│   │   ├── button/                    # Button device endpoints (8)
+│   │   ├── camera/                    # Camera endpoints (67)
+│   │   ├── climate/                   # Climate sensor endpoints (12)
+│   │   ├── door/                      # Door sensor endpoints (4)
+│   │   ├── door-controller/           # Door controller endpoints (2)
+│   │   ├── doorbell-camera/           # Doorbell camera endpoints (10)
+│   │   ├── event/                     # Event management endpoints (31)
+│   │   ├── event-search/              # Event search endpoints (2)
+│   │   ├── face-recognition-event/    # Face recognition endpoints (4)
+│   │   ├── face-recognition-matchmaker/ # Face matching endpoints (9)
+│   │   ├── face-recognition-person/   # Person management endpoints (7)
+│   │   ├── media-device/              # Media device endpoints (1)
+│   │   ├── occupancy/                 # Occupancy sensor endpoints (4)
+│   │   ├── proximity/                 # Proximity sensor endpoints (4)
+│   │   ├── relay/                     # Relay endpoints (11)
+│   │   ├── sensor/                    # General sensor endpoints (3)
+│   │   └── user/                      # User management endpoints (11)
+│   ├── openapi-split/                 # Split OpenAPI spec files
+│   │   ├── schemas/                   # API schema definitions
+│   │   ├── _base.json                 # Base OpenAPI configuration
+│   │   └── [61 endpoint files]       # Individual endpoint specs
+│   ├── README.md                      # API reference documentation
+│   └── openapi.json                   # Complete OpenAPI specification
+├── essentials/                        # Mintlify usage guides
+│   ├── code.mdx                      # Code block examples
+│   ├── images.mdx                    # Image handling guide
+│   ├── markdown.mdx                  # MDX syntax guide
+│   ├── navigation.mdx                # Navigation configuration
+│   ├── reusable-snippets.mdx         # Content snippets
+│   └── settings.mdx                  # Site customization
+├── images/                           # Documentation assets
+│   ├── checks-passed.png             # Deployment success image
+│   ├── hero-dark.png                 # Dark theme hero image
+│   └── hero-light.png                # Light theme hero image
+├── logo/                             # Brand assets
+│   ├── dark.svg                      # Dark theme logo
+│   └── light.svg                     # Light theme logo
+├── scripts/                          # Automation scripts
+│   ├── add-service-level-navigation.py # Navigation generator
+│   ├── generate-endpoint-docs.py     # Documentation generator
+│   ├── improve-endpoint-navigation.py # Navigation optimizer
+│   ├── split-openapi.sh              # OpenAPI spec splitter
+│   ├── update-openapi.sh             # Manual API update script
+│   └── [additional utility scripts]
+├── snippets/
+│   └── snippet-intro.mdx             # Reusable content snippets
+├── .gitignore                        # Git ignore patterns
+├── CLAUDE.md                         # Claude AI assistant guidance
+├── LICENSE                           # Project license
+├── README.md                         # Project overview
+├── development.mdx                   # Local development guide
+├── docs.json                         # Mintlify configuration (1785 lines)
+├── docs.json.backup                  # Configuration backup
+├── favicon.svg                       # Site favicon
+├── index.mdx                         # Homepage
+└── quickstart.mdx                    # Quick start guide
+```
+
+### Configuration Details
+
+#### Mintlify Configuration (`docs.json`)
+```json
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Rhombus Developer Documentation",
+  "colors": {
+    "primary": "#2563EB",    // Blue (2024 rebrand)
+    "light": "#60A5FA",     // Light blue
+    "dark": "#1D4ED8"       // Dark blue
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guides",
+        "groups": [
+          "Getting started",
+          "Customization", 
+          "Writing content"
+        ]
+      },
+      {
+        "tab": "API reference",
+        "groups": [
+          "Core Services",
+          "Events & Monitoring",
+          "Integrations"
+        ]
+      }
+    ]
+  }
+}
+```
+
+## API Documentation Structure
+
+### Core Services (Primary API Categories)
+
+#### Access Control (66 endpoints)
+**Purpose**: Comprehensive access control management
+**Subcategories**:
+- **Create & Add** (11 endpoints): User/group creation, credential generation
+  - `accesscontrol-adduserstoaccesscontrolgroup`
+  - `accesscontrol-createaccesscontrolcredentialbyhexvalueandtype`
+  - `accesscontrol-createaccesscontrolgroup`
+  - `accesscontrol-createaccessgrant`
+  - `accesscontrol-createaccessrevocation`
+  - Various credential types (Rhombus Secure CSN, Standard CSN, Wiegand variants)
+
+- **Get & Find** (24 endpoints): Data retrieval and search operations
+  - Credential lookup by organization, user, hex value
+  - Group management and membership queries
+  - Access grant/revocation tracking
+  - Location-based access control
+
+- **Update & Modify** (13 endpoints): Credential and group management
+  - Credential assignment, suspension, revocation
+  - Group membership updates
+  - Access grant modifications
+
+- **Delete & Remove** (4 endpoints): Cleanup operations
+- **Other Operations** (1 endpoint): Door unlock functionality
+
+#### Camera (67 endpoints)
+**Purpose**: Video surveillance and camera management
+**Subcategories**:
+- **Create & Add** (11 endpoints): Stream creation, registration, calibration
+  - Live video stream creation (protected/shared)
+  - Video wall management
+  - Batch registration for multiple cameras
+  - Floor plan projection calibration
+
+- **Get & Find** (27 endpoints): Camera data and media retrieval
+  - Camera state and configuration queries
+  - Footage and seek point retrieval
+  - Media URI generation
+  - Storage and archiving information
+
+- **Update & Modify** (9 endpoints): Camera configuration and firmware
+  - Settings updates (AI thresholds, line crossing)
+  - Firmware updates
+  - WiFi configuration changes
+
+- **Delete & Remove** (8 endpoints): Camera removal and cleanup
+- **Other Operations** (4 endpoints): Reboot, reset to defaults
+
+#### Climate (12 endpoints)
+**Purpose**: Environmental monitoring and sensor management
+**Categories**: Get/Find (8), Update/Modify (2), Delete/Remove (1), Other Operations (1)
+
+#### User Management (11 endpoints)
+**Purpose**: User account and notification management
+**Categories**: Create/Add (1), Get/Find (2), Update/Modify (7), Delete/Remove (1)
+
+### Events & Monitoring
+
+#### Alert Monitoring (9 endpoints)
+**Purpose**: Threat detection and security response
+**Key Functions**:
+- Threat case management (cancel, dismiss, escalate)
+- Location pin creation and management
+- Alert monitoring settings configuration
+- Organization and location status monitoring
+
+#### Event Management (31 endpoints)
+**Purpose**: Security event processing and clip management
+**Subcategories**:
+- **Create & Add** (1): Shared clip group creation
+- **Get & Find** (22): Event retrieval, policy alerts, saved clips
+- **Update & Modify** (2): Clip and group updates
+- **Delete & Remove** (3): Event cleanup
+- **Other Operations** (7): Alert dismissal, notification muting
+
+#### Face Recognition System (20 endpoints total)
+**Components**:
+- **Face Events** (4 endpoints): Event management
+- **Matchmaker** (9 endpoints): Face matching and upload
+- **Person Management** (7 endpoints): Person database management
+
+#### Occupancy & Proximity (8 endpoints)
+**Purpose**: Space utilization and proximity tracking
+- Occupancy sensor monitoring (4 endpoints)
+- Proximity tag tracking (4 endpoints)
+
+### Integration Ecosystem
+
+#### Access Control Integrations (50+ endpoints)
+**Supported Systems**:
+- **Avigilon Alta**: Integration management
+- **Brivo**: Door management (multiple versions)
+- **Butterfly MX**: Panel management
+- **Genea**: Door and integration management
+- **Inner Range**: Console and door management
+- **Kisi**: Door, place, and integration management
+- **OpenPath**: Door management
+- **Paxton**: Net2 integration
+- **Verkada**: Integration management
+
+#### Alarm Monitoring Keypad (10 endpoints)
+**Purpose**: Security system keypad integration
+**Functions**: Configuration, event monitoring, status management
+
+## Development Workflow
+
+### Local Development Setup
+```bash
+# Prerequisites
+# - Node.js 19+
+# - Git access to repository
+
+# 1. Install Mintlify CLI
+npm i -g mint
+
+# 2. Clone and navigate to project
+git clone [repository-url]
+cd mintlify-developer-documentation
+
+# 3. Start development server
+mint dev                    # Default port 3000
+mint dev --port 3333       # Custom port
+
+# 4. Access local preview
+open http://localhost:3000
+```
+
+### Maintenance Commands
+```bash
+# Update Mintlify CLI
+mint update
+
+# Validate documentation links
+mint broken-links
+
+# Update API specification manually
+./scripts/update-openapi.sh
+
+# Generate endpoint documentation
+python scripts/generate-endpoint-docs.py
+
+# Improve navigation structure
+python scripts/improve-endpoint-navigation.py
+```
+
+### Automated Workflows
+
+#### Nightly OpenAPI Updates
+**File**: `.github/workflows/update-openapi.yml`
+**Schedule**: Daily at 2:00 AM UTC
+**Process**:
+1. Fetch latest OpenAPI spec from `https://api2.rhombussystems.com/api/openapi/public.json`
+2. Compare with existing specification
+3. Commit changes if updates detected
+4. Generate workflow summary
+
+**Workflow Configuration**:
+```yaml
+name: Update OpenAPI Spec
+on:
+  schedule:
+    - cron: '0 2 * * *'  # 2 AM UTC daily
+  workflow_dispatch:      # Manual trigger option
+
+jobs:
+  update-openapi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+      - name: Fetch latest OpenAPI spec
+      - name: Check for changes
+      - name: Commit and push changes
+      - name: Create summary
+```
+
+#### Manual Update Script
+**File**: `scripts/update-openapi.sh`
+**Features**:
+- Automatic backup creation
+- JSON validation
+- API specification analysis
+- Error handling and rollback
+- Integration with OpenAPI splitting
+
+## Content Creation Guidelines
+
+### MDX File Structure
+Every documentation page must include YAML frontmatter:
+```yaml
+---
+title: "Descriptive Page Title"
+description: "Brief, informative description for SEO and navigation"
+icon: "icon-name"                    # Optional Mintlify icon
+---
+
+# Page Content
+Content goes here using MDX syntax...
+```
+
+### Mintlify Component Library
+
+#### Callout Components
+```mdx
+<Note>General information or context</Note>
+<Tip>Helpful suggestions or best practices</Tip>
+<Warning>Important cautions or potential issues</Warning>
+<Info>Additional context or background information</Info>
+<Check>Confirmation or success indicators</Check>
+```
+
+#### Structural Components
+```mdx
+<!-- Step-by-step processes -->
+<Steps>
+  <Step title="First Step">Content</Step>
+  <Step title="Second Step">Content</Step>
+</Steps>
+
+<!-- Tabbed content -->
+<Tabs>
+  <Tab title="Tab 1">Content</Tab>
+  <Tab title="Tab 2">Content</Tab>
+</Tabs>
+
+<!-- Collapsible sections -->
+<AccordionGroup>
+  <Accordion title="Section Title" icon="icon-name">
+    Content
+  </Accordion>
+</AccordionGroup>
+
+<!-- Card layouts -->
+<CardGroup cols={2}>
+  <Card title="Card Title" icon="icon-name" href="/link">
+    Card description
+  </Card>
+</CardGroup>
+```
+
+#### Code Examples
+```mdx
+<!-- Multi-language code examples -->
+<CodeGroup>
+  ```bash cURL
+  curl -X GET "https://api2.rhombussystems.com/api/org" \
+    -H "x-auth-apikey: YOUR_API_KEY"
+  ```
+  
+  ```python Python
+  import requests
+  headers = {"x-auth-apikey": "YOUR_API_KEY"}
+  response = requests.get("https://api2.rhombussystems.com/api/org", headers=headers)
+  ```
+  
+  ```javascript JavaScript
+  const response = await fetch('https://api2.rhombussystems.com/api/org', {
+    headers: {'x-auth-apikey': 'YOUR_API_KEY'}
+  });
+  ```
+</CodeGroup>
+```
+
+#### API Documentation Components
+```mdx
+<!-- Parameter documentation -->
+<ParamField path="parameter_name" type="string" required>
+  Parameter description
+</ParamField>
+
+<!-- Response field documentation -->
+<ResponseField name="field_name" type="object">
+  Response field description
+</ResponseField>
+
+<!-- Expandable sections -->
+<Expandable title="Advanced Options">
+  Additional configuration details
+</Expandable>
+```
+
+#### Media Components
+```mdx
+<!-- Images (always wrap in Frame) -->
+<Frame>
+  <img src="/images/example.png" alt="Description" />
+</Frame>
+
+<!-- Videos -->
+<video controls>
+  <source src="/videos/demo.mp4" type="video/mp4" />
+</video>
+
+<!-- Embedded content -->
+<iframe src="https://example.com" width="100%" height="400px" />
+```
+
+## API Integration Details
+
+### Authentication System
+```http
+# All API requests require authentication header
+x-auth-apikey: YOUR_API_KEY
+
+# Base URL for all endpoints
+https://api2.rhombussystems.com
+```
+
+### Rate Limiting
+- **Standard Limit**: 1000 requests per hour
+- **Burst Limit**: 100 requests per minute
+- **Headers**: `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset`
+
+### Error Handling
+```json
+{
+  "error": {
+    "code": "ERROR_CODE",
+    "message": "Human-readable error message",
+    "details": "Additional context or resolution steps"
+  }
+}
+```
+
+### Common HTTP Status Codes
+- **200**: Success
+- **400**: Bad Request (invalid parameters)
+- **401**: Unauthorized (invalid API key)
+- **403**: Forbidden (insufficient permissions)
+- **404**: Not Found (resource doesn't exist)
+- **429**: Too Many Requests (rate limit exceeded)
+- **500**: Internal Server Error
+
+## Brand Guidelines & Styling
+
+### 2024 Rebrand Implementation
+**Previous Branding** (Pre-2024):
+- Company: "Rhombus Systems"
+- Colors: Green theme (#16A34A primary)
+
+**Current Branding** (2024+):
+- Company: "Rhombus" (dropped "Systems")
+- Colors: Blue theme (#2563EB primary)
+- Values: Trust, integrity, friendliness, innovation
+
+### Color Palette
+```css
+:root {
+  --primary: #2563EB;      /* Blue */
+  --light: #60A5FA;       /* Light Blue */
+  --dark: #1D4ED8;        /* Dark Blue */
+}
+```
+
+### Typography & Iconography
+- **Icons**: Mintlify icon library
+- **Fonts**: System fonts optimized for readability
+- **Logo**: SVG format with dark/light variants
+
+## File Management & Assets
+
+### Image Guidelines
+- **Format**: PNG for screenshots, SVG for logos/icons
+- **Location**: `/images/` directory
+- **Usage**: Always wrap in `<Frame>` component
+- **Naming**: Descriptive, kebab-case filenames
+
+### Logo Assets
+- **Dark Theme**: `/logo/dark.svg`
+- **Light Theme**: `/logo/light.svg`
+- **Favicon**: `/favicon.svg`
+
+### Documentation Assets
+- **Screenshots**: Deployment confirmations, UI examples
+- **Diagrams**: Architecture and workflow illustrations
+- **Hero Images**: Landing page visuals (dark/light variants)
+
+## Deployment & Publishing
+
+### Automatic Deployment
+- **Trigger**: Push to default branch
+- **Platform**: Mintlify hosting infrastructure
+- **Process**: Automatic build and deployment via GitHub app
+- **URL**: Custom domain configured in Mintlify dashboard
+
+### Deployment Validation
+```bash
+# Local validation before deployment
+mint dev                    # Test locally
+mint broken-links          # Validate all links
+git add . && git commit    # Stage changes
+git push origin main       # Deploy to production
+```
+
+### Monitoring & Maintenance
+- **Analytics**: Built-in Mintlify analytics
+- **Performance**: Automatic optimization and CDN
+- **Updates**: Nightly API spec synchronization
+- **Backups**: Git version control and automatic backups
+
+## Integration Examples & Use Cases
+
+### Common Integration Patterns
+
+#### Live Video Streaming
+```javascript
+// 1. Get camera list
+const cameras = await fetch('/api/camera/getMinimalCameraStateList', {
+  headers: {'x-auth-apikey': API_KEY}
+});
+
+// 2. Create shared stream
+const stream = await fetch('/api/camera/createSharedLiveVideoStream', {
+  method: 'POST',
+  headers: {'x-auth-apikey': API_KEY},
+  body: JSON.stringify({cameraUuid: cameraId})
+});
+
+// 3. Use stream URL in video player
+const streamUrl = stream.streamUrl;
+```
+
+#### Event-Driven Workflows
+```python
+# Real-time event monitoring
+import requests
+
+def monitor_events():
+    response = requests.post(
+        'https://api2.rhombussystems.com/api/event/getPolicyAlertsV2',
+        headers={'x-auth-apikey': API_KEY},
+        json={'limit': 10, 'includeResolved': False}
+    )
+    
+    for event in response.json():
+        process_security_event(event)
+```
+
+#### Access Management Integration
+```python
+# Sync users with HR system
+def sync_user_access():
+    # Create user in Rhombus
+    user_data = {
+        'firstName': 'John',
+        'lastName': 'Doe',
+        'email': 'john.doe@company.com'
+    }
+    
+    response = requests.post(
+        'https://api2.rhombussystems.com/api/user/createUser',
+        headers={'x-auth-apikey': API_KEY},
+        json=user_data
+    )
+    
+    # Assign access credentials
+    if response.status_code == 200:
+        assign_access_credentials(response.json()['userUuid'])
+```
+
+## Support & Community Resources
+
+### Developer Resources
+- **API Reference**: Complete endpoint documentation
+- **Postman Collection**: Pre-configured API testing
+- **SDKs**: Official and community libraries
+- **Code Examples**: Multi-language integration samples
+
+### Community & Support
+- **Developer Community**: https://rhombus.community
+- **Technical Support**: https://rhombus.com/support
+- **API Console**: https://console.rhombussystems.com
+- **Documentation Updates**: Automatic nightly synchronization
+
+### Troubleshooting Resources
+- **Error Codes**: Comprehensive error documentation
+- **Rate Limiting**: Usage monitoring and optimization
+- **Authentication**: API key management and security
+- **Integration Guides**: Step-by-step implementation examples
+
+This comprehensive documentation serves as the authoritative resource for developers building on the Rhombus security platform, providing everything needed for successful API integration and application development.
