@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "contact": {
-      "email": "developer@rhombussystems.com"
+      "email": "techpartners@rhombus.com"
     },
     "description": "This API is for use by Rhombus customers and partners.",
     "title": "Rhombus API",
