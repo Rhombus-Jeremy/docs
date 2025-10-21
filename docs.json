@@ -17,8 +17,7 @@
             "group": "Getting started",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "documentation-mcp"
             ]
           },
           {
@@ -31,17 +30,7 @@
                   "implementations/advanced-implementation"
                 ]
               },
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "implementations/webhook-listener"
             ]
           }
         ]

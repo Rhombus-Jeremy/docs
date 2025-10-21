@@ -1,0 +1,761 @@
+---
+title: "Webhook Listeners"
+description: "Learn how to receive Rhombus webhooks on private servers using reverse SSH tunneling without requiring a public IP"
+icon: "webhook"
+---
+
+# Webhook Listeners on Private Servers
+
+<Info>
+**Problem Solved**
+
+This guide shows you how to receive **Rhombus webhooks** on servers behind firewalls or NAT without requiring a public IP address or complex VPN setup.
+</Info>
+
+When working with webhook integrations, it's common to require a publicly accessible endpoint. However, some environments—particularly on-premises or secured networks—do not allow direct public IP exposure. This guide walks through how to use **reverse SSH tunneling** to expose a webhook listener running on a private server.
+
+## Use Cases
+
+This method is ideal for various scenarios where direct public access isn't available or desired:
+
+<CardGroup cols={2}>
+  <Card title="Security Requirements" icon="lock">
+    Your server is behind a NAT/firewall and cannot have a public IP
+  </Card>
+
+  <Card title="Webhook Integration" icon="bell">
+    You need to receive webhook POST requests from Rhombus
+  </Card>
+
+  <Card title="Secure & Simple" icon="shield">
+    You want a secure way to forward traffic to your local webhook listener
+  </Card>
+
+  <Card title="Enterprise Networks" icon="building">
+    Corporate firewalls prevent direct inbound connections
+  </Card>
+</CardGroup>
+
+## Architecture Overview
+
+<Info>
+**How It Works**
+
+The reverse SSH tunnel connects the public relay back to your local server, forwarding external traffic securely to your webhook listener.
+</Info>
+
+### Components
+
+| Component | Role | Examples |
+|-----------|------|----------|
+| **Private Server** | Runs the webhook listener | `localhost:8080` |
+| **Public Relay** | Small public cloud instance | EC2, Linode, DigitalOcean |
+| **Webhook Sender** | Sends HTTP POST requests | Rhombus Cloud Services |
+
+## Step-by-Step Implementation
+
+<Steps>
+  <Step title="Provision a Public Relay Server">
+    Set up a lightweight Linux server (e.g., Ubuntu) on a cloud provider like AWS, GCP, or DigitalOcean.
+
+    **Requirements:**
+    - Assign a public IP or domain name (e.g., `relay.yourdomain.com`)
+    - Open inbound ports (**80** or **443**) for HTTP/HTTPS traffic
+    - Minimal specs: 1 CPU, 512MB RAM is sufficient
+
+    <Tabs>
+      <Tab title="AWS EC2">
+        ```bash AWS EC2 Setup
+        # Example AWS EC2 instance setup
+        aws ec2 run-instances \
+          --image-id ami-0abcdef1234567890 \
+          --count 1 \
+          --instance-type t2.micro \
+          --key-name my-key-pair \
+          --security-groups my-security-group
+        ```
+      </Tab>
+
+      <Tab title="DigitalOcean">
+        ```bash DigitalOcean Setup
+        # Example DigitalOcean droplet setup
+        doctl compute droplet create relay-server \
+          --size s-1vcpu-512mb-10gb \
+          --image ubuntu-20-04-x64 \
+          --region nyc3
+        ```
+      </Tab>
+
+      <Tab title="Google Cloud">
+        ```bash Google Cloud Setup
+        # Example Google Cloud VM setup
+        gcloud compute instances create relay-server \
+          --zone=us-central1-a \
+          --machine-type=e2-micro \
+          --image-family=ubuntu-2004-lts \
+          --image-project=ubuntu-os-cloud
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Configure SSH for Remote Tunneling">
+    On the **relay server**, modify the SSH daemon configuration to allow remote port forwarding:
+
+    ```bash Edit SSH Config
+    sudo nano /etc/ssh/sshd_config
+    ```
+
+    Ensure the following options are set:
+
+    ```bash SSH Configuration
+    # Enable gateway ports for remote forwarding
+    GatewayPorts yes
+
+    # Allow TCP forwarding
+    AllowTcpForwarding yes
+
+    # Allow opening any port
+    PermitOpen any
+    ```
+
+    <Warning>
+    **Security Note**
+
+    These settings allow remote port forwarding. Only enable on dedicated relay servers and secure with proper firewall rules.
+    </Warning>
+
+    Restart the SSH service:
+
+    ```bash Restart SSH
+    sudo systemctl restart ssh
+
+    # Verify SSH is running
+    sudo systemctl status ssh
+    ```
+  </Step>
+
+  <Step title="Set Up SSH Key Authentication">
+    On your **private server** (where the webhook listener runs), generate SSH keys and copy them to the relay:
+
+    ```bash Generate SSH Keys
+    # Generate SSH key pair
+    ssh-keygen -t rsa -b 4096 -C "webhook-tunnel@yourdomain.com"
+
+    # Copy public key to relay server
+    ssh-copy-id -i ~/.ssh/id_rsa.pub user@<RELAY_PUBLIC_IP>
+    ```
+
+    Verify passwordless SSH access:
+
+    ```bash Test Connection
+    # Test connection (should not prompt for password)
+    ssh user@<RELAY_PUBLIC_IP>
+    ```
+
+    <Tip>
+    Use a dedicated SSH key for the tunnel to make key rotation easier and improve security isolation.
+    </Tip>
+  </Step>
+
+  <Step title="Establish the Reverse SSH Tunnel">
+    Run the following command on your **private server**:
+
+    <Tabs>
+      <Tab title="Basic Tunnel">
+        ```bash Basic Reverse SSH Tunnel
+        # Basic reverse SSH tunnel
+        ssh -R 80:localhost:8080 user@<RELAY_PUBLIC_IP>
+        ```
+
+        **Explanation:**
+        - `80` - External port exposed by the relay server
+        - `localhost:8080` - Your local webhook listener address
+        - Connection stays active in foreground
+      </Tab>
+
+      <Tab title="Background Process">
+        ```bash Background Tunnel
+        # Run tunnel in background
+        ssh -Nf -R 80:localhost:8080 user@<RELAY_PUBLIC_IP>
+        ```
+
+        **Options:**
+        - `-N` - Don't execute remote commands
+        - `-f` - Go to background after authentication
+        - `-R` - Remote port forwarding
+      </Tab>
+
+      <Tab title="Persistent Tunnel">
+        ```bash Persistent Tunnel with autossh
+        # Install autossh for persistent tunneling
+        sudo apt install autossh
+
+        # Run persistent tunnel
+        autossh -M 0 -Nf -R 80:localhost:8080 user@<RELAY_PUBLIC_IP>
+        ```
+
+        **Benefits:**
+        - Auto-reconnects if connection drops
+        - Built-in monitoring and recovery
+        - Ideal for production environments
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Test the Setup">
+    Now test that your tunnel is working correctly:
+
+    ```bash Test Webhook
+    # 1. Start your webhook listener locally
+    # Example: Node.js server on port 8080
+    node webhook-server.js
+
+    # 2. Test from external source
+    curl -X POST http://<RELAY_PUBLIC_IP>/webhook \
+      -H "Content-Type: application/json" \
+      -d '{"test": "webhook payload"}'
+
+    # 3. Check your local server logs for the request
+    ```
+
+    **Webhook URL for Rhombus:**
+    ```
+    http://<RELAY_PUBLIC_IP>/your-webhook-endpoint
+    ```
+
+    <Check>
+    **Success Indicator**
+
+    If you see the request in your local webhook listener logs, the tunnel is working correctly!
+    </Check>
+  </Step>
+</Steps>
+
+## Security Enhancements
+
+### HTTPS with NGINX
+
+For production environments, add HTTPS support:
+
+<Tabs>
+  <Tab title="NGINX Setup">
+    ```bash Install NGINX
+    # Install NGINX on relay server
+    sudo apt update
+    sudo apt install nginx
+
+    # Create basic configuration
+    sudo nano /etc/nginx/sites-available/webhook-tunnel
+    ```
+  </Tab>
+
+  <Tab title="SSL Certificate">
+    ```bash Let's Encrypt SSL
+    # Install Certbot for Let's Encrypt
+    sudo apt install certbot python3-certbot-nginx
+
+    # Generate SSL certificate
+    sudo certbot --nginx -d your-domain.com
+    ```
+  </Tab>
+
+  <Tab title="Configuration">
+    ```nginx NGINX Configuration
+    server {
+        listen 443 ssl;
+        server_name your-domain.com;
+
+        ssl_certificate /etc/letsencrypt/live/your-domain.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/your-domain.com/privkey.pem;
+
+        location / {
+            proxy_pass http://localhost:80;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+### Security Best Practices
+
+<AccordionGroup>
+  <Accordion title="Authentication" icon="key">
+    **Key-Based Authentication:**
+    - Use key-based SSH authentication only
+    - Disable password authentication
+    - Rotate SSH keys regularly
+
+    ```bash Secure SSH
+    # Disable password authentication
+    sudo sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+    sudo systemctl restart ssh
+    ```
+  </Accordion>
+
+  <Accordion title="Network Security" icon="shield">
+    **Firewall Configuration:**
+    - Restrict traffic with firewall rules
+    - Use fail2ban for SSH protection
+    - Monitor tunnel connections
+
+    ```bash Firewall Rules
+    # Example firewall rules (UFW)
+    sudo ufw allow ssh
+    sudo ufw allow 80/tcp
+    sudo ufw allow 443/tcp
+    sudo ufw --force enable
+    ```
+  </Accordion>
+
+  <Accordion title="Access Control" icon="lock">
+    **Restrict Access:**
+    - Limit SSH access to specific IPs when possible
+    - Use non-standard SSH ports
+    - Enable two-factor authentication for SSH
+
+    ```bash IP Restriction
+    # Allow SSH only from specific IP
+    sudo ufw allow from YOUR_IP to any port 22
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Production Deployment
+
+### Systemd Service for Auto-Start
+
+Create a systemd service to automatically start the tunnel on boot:
+
+```bash Create Service File
+# Create service file
+sudo nano /etc/systemd/system/webhook-tunnel.service
+```
+
+```ini Systemd Service Configuration
+[Unit]
+Description=Webhook SSH Tunnel
+After=network.target
+
+[Service]
+Type=simple
+User=your-username
+ExecStart=/usr/bin/autossh -M 0 -N -R 80:localhost:8080 user@relay-server.com
+Restart=always
+RestartSec=5
+Environment="AUTOSSH_GATETIME=0"
+Environment="AUTOSSH_POLL=30"
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash Enable Service
+# Enable and start the service
+sudo systemctl daemon-reload
+sudo systemctl enable webhook-tunnel
+sudo systemctl start webhook-tunnel
+
+# Check status
+sudo systemctl status webhook-tunnel
+```
+
+### Monitoring and Logging
+
+```bash Monitor Tunnel
+# Monitor tunnel status
+ps aux | grep autossh
+
+# Check tunnel logs
+journalctl -u webhook-tunnel -f
+
+# Test tunnel health
+curl -s http://<RELAY_PUBLIC_IP>/health || echo "Tunnel down"
+```
+
+## Benefits of This Approach
+
+<CardGroup cols={2}>
+  <Card title="Works Behind Firewalls" icon="shield-check">
+    Functions perfectly behind NAT or corporate firewalls without any inbound rules
+  </Card>
+
+  <Card title="No VPN Required" icon="circle-xmark">
+    Eliminates complex VPN setup and maintenance overhead
+  </Card>
+
+  <Card title="Easy Automation" icon="robot">
+    Simple to automate with autossh and systemd for production reliability
+  </Card>
+
+  <Card title="Enterprise Safe" icon="building">
+    Fully outbound connection—safe for most enterprise network policies
+  </Card>
+
+  <Card title="Cost Effective" icon="dollar-sign">
+    Uses minimal resources on a small cloud instance ($5-10/month)
+  </Card>
+
+  <Card title="Highly Reliable" icon="check">
+    Auto-reconnects and self-heals with proper configuration
+  </Card>
+</CardGroup>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="SSH Connection Fails" icon="triangle-exclamation">
+    **Problem:** Cannot establish SSH connection to relay server
+
+    **Solutions:**
+    ```bash Diagnose SSH Issues
+    # Check SSH service status
+    sudo systemctl status ssh
+
+    # Verify firewall allows SSH
+    sudo ufw status
+
+    # Test with verbose logging
+    ssh -v user@<RELAY_PUBLIC_IP>
+
+    # Check SSH configuration
+    sudo sshd -t
+    ```
+  </Accordion>
+
+  <Accordion title="Tunnel Not Working" icon="circle-xmark">
+    **Problem:** Tunnel established but webhook requests don't reach local server
+
+    **Solutions:**
+    ```bash Diagnose Tunnel Issues
+    # Check if port is bound on relay
+    ss -tlnp | grep :80
+
+    # Test local webhook server
+    curl localhost:8080/test
+
+    # Verify GatewayPorts setting
+    sudo grep GatewayPorts /etc/ssh/sshd_config
+
+    # Check relay server logs
+    sudo journalctl -u ssh -f
+    ```
+  </Accordion>
+
+  <Accordion title="Port Already in Use" icon="ban">
+    **Problem:** Port 80 already in use on relay server
+
+    **Solutions:**
+    ```bash Resolve Port Conflicts
+    # Find what's using port 80
+    sudo lsof -i :80
+
+    # Use alternative port
+    ssh -R 8080:localhost:8080 user@<RELAY_PUBLIC_IP>
+
+    # Stop conflicting service (e.g., Apache)
+    sudo systemctl stop apache2
+    ```
+  </Accordion>
+
+  <Accordion title="Connection Drops Frequently" icon="signal">
+    **Problem:** Tunnel disconnects regularly
+
+    **Solutions:**
+    - Use `autossh` instead of regular `ssh`
+    - Add keep-alive settings to SSH config
+    - Check network stability between servers
+    - Increase timeout values
+
+    ```bash SSH Keep-Alive
+    # Add to ~/.ssh/config
+    Host relay-server
+        HostName <RELAY_PUBLIC_IP>
+        ServerAliveInterval 60
+        ServerAliveCountMax 3
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Example Webhook Implementations
+
+<Tabs>
+  <Tab title="Node.js">
+    ```javascript webhook-server.js
+    // webhook-server.js
+    const express = require('express');
+    const app = express();
+
+    app.use(express.json());
+
+    // Rhombus webhook endpoint
+    app.post('/rhombus-webhook', (req, res) => {
+      console.log('Received webhook:', req.body);
+
+      // Process webhook payload
+      const { eventType, deviceId, timestamp } = req.body;
+
+      // Your business logic here
+      console.log(`Event: ${eventType} from device ${deviceId} at ${timestamp}`);
+
+      // Respond to acknowledge receipt
+      res.status(200).json({ status: 'received' });
+    });
+
+    // Health check endpoint
+    app.get('/health', (req, res) => {
+      res.status(200).json({ status: 'healthy' });
+    });
+
+    const PORT = 8080;
+    app.listen(PORT, () => {
+      console.log(`Webhook server running on port ${PORT}`);
+    });
+    ```
+
+    **Installation:**
+    ```bash
+    npm install express
+    node webhook-server.js
+    ```
+  </Tab>
+
+  <Tab title="Python">
+    ```python webhook_server.py
+    # webhook_server.py
+    from flask import Flask, request, jsonify
+    import logging
+
+    app = Flask(__name__)
+    logging.basicConfig(level=logging.INFO)
+
+    @app.route('/rhombus-webhook', methods=['POST'])
+    def webhook():
+        data = request.get_json()
+        app.logger.info(f'Received webhook: {data}')
+
+        # Process webhook payload
+        event_type = data.get('eventType')
+        device_id = data.get('deviceId')
+        timestamp = data.get('timestamp')
+
+        # Your business logic here
+        app.logger.info(f'Event: {event_type} from device {device_id} at {timestamp}')
+
+        # Respond to acknowledge receipt
+        return jsonify({'status': 'received'}), 200
+
+    @app.route('/health', methods=['GET'])
+    def health():
+        return jsonify({'status': 'healthy'}), 200
+
+    if __name__ == '__main__':
+        app.run(host='localhost', port=8080, debug=True)
+    ```
+
+    **Installation:**
+    ```bash
+    pip install flask
+    python webhook_server.py
+    ```
+  </Tab>
+
+  <Tab title="C#">
+    ```csharp WebhookListener.cs
+    // WebhookListener.cs
+    using Microsoft.AspNetCore.Mvc;
+
+    [ApiController]
+    [Route("/")]
+    public class WebhookController : ControllerBase
+    {
+        private readonly ILogger<WebhookController> _logger;
+
+        public WebhookController(ILogger<WebhookController> logger)
+        {
+            _logger = logger;
+        }
+
+        [HttpPost("rhombus-webhook")]
+        public IActionResult ReceiveWebhook([FromBody] dynamic payload)
+        {
+            _logger.LogInformation($"Received webhook: {payload}");
+
+            // Process webhook payload
+            string eventType = payload.eventType;
+            string deviceId = payload.deviceId;
+            string timestamp = payload.timestamp;
+
+            // Your business logic here
+            _logger.LogInformation($"Event: {eventType} from device {deviceId} at {timestamp}");
+
+            // Respond to acknowledge receipt
+            return Ok(new { status = "received" });
+        }
+
+        [HttpGet("health")]
+        public IActionResult Health()
+        {
+            return Ok(new { status = "healthy" });
+        }
+    }
+    ```
+
+    **Run:**
+    ```bash
+    dotnet run
+    ```
+  </Tab>
+
+  <Tab title="Go">
+    ```go webhook-server.go
+    // webhook-server.go
+    package main
+
+    import (
+        "encoding/json"
+        "fmt"
+        "log"
+        "net/http"
+    )
+
+    type WebhookPayload struct {
+        EventType string `json:"eventType"`
+        DeviceID  string `json:"deviceId"`
+        Timestamp string `json:"timestamp"`
+    }
+
+    func webhookHandler(w http.ResponseWriter, r *http.Request) {
+        if r.Method != http.MethodPost {
+            http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+            return
+        }
+
+        var payload WebhookPayload
+        err := json.NewDecoder(r.Body).Decode(&payload)
+        if err != nil {
+            http.Error(w, "Bad request", http.StatusBadRequest)
+            return
+        }
+
+        log.Printf("Received webhook: %+v", payload)
+        log.Printf("Event: %s from device %s at %s",
+            payload.EventType, payload.DeviceID, payload.Timestamp)
+
+        // Respond to acknowledge receipt
+        w.Header().Set("Content-Type", "application/json")
+        json.NewEncoder(w).Encode(map[string]string{"status": "received"})
+    }
+
+    func healthHandler(w http.ResponseWriter, r *http.Request) {
+        w.Header().Set("Content-Type", "application/json")
+        json.NewEncoder(w).Encode(map[string]string{"status": "healthy"})
+    }
+
+    func main() {
+        http.HandleFunc("/rhombus-webhook", webhookHandler)
+        http.HandleFunc("/health", healthHandler)
+
+        port := ":8080"
+        fmt.Printf("Webhook server running on port %s\n", port)
+        log.Fatal(http.ListenAndServe(port, nil))
+    }
+    ```
+
+    **Run:**
+    ```bash
+    go run webhook-server.go
+    ```
+  </Tab>
+</Tabs>
+
+## Configuring Webhooks in Rhombus
+
+Once your listener is running and tunnel is established:
+
+<Steps>
+  <Step title="Get Your Webhook URL">
+    Your public webhook URL will be:
+    ```
+    http://<RELAY_PUBLIC_IP>/rhombus-webhook
+    ```
+    or with HTTPS:
+    ```
+    https://your-domain.com/rhombus-webhook
+    ```
+  </Step>
+
+  <Step title="Configure in Rhombus Console">
+    1. Log in to [Rhombus Console](https://console.rhombussystems.com)
+    2. Navigate to **Settings** → **Webhooks**
+    3. Click **Add Webhook**
+    4. Enter your public webhook URL
+    5. Select the events you want to receive
+    6. Save configuration
+  </Step>
+
+  <Step title="Test Webhook">
+    Use the "Test" button in the Rhombus Console to send a test webhook and verify your listener receives it.
+  </Step>
+
+  <Step title="Monitor Events">
+    Watch your webhook server logs to see incoming events in real-time.
+  </Step>
+</Steps>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="API Authentication"
+    icon="key"
+    href="/api-reference/introduction"
+  >
+    Learn how to authenticate with Rhombus API for webhook registration
+  </Card>
+
+  <Card
+    title="Webhook Events"
+    icon="bell"
+    href="/api-reference/introduction"
+  >
+    Browse available webhook event types and payloads
+  </Card>
+
+  <Card
+    title="Rhombus Console"
+    icon="desktop"
+    href="https://console.rhombussystems.com"
+  >
+    Configure webhooks in the Rhombus Console
+  </Card>
+
+  <Card
+    title="Developer Community"
+    icon="users"
+    href="https://rhombus.community"
+  >
+    Join our community for webhook integration support
+  </Card>
+</CardGroup>
+
+<Check>
+**Success!**
+
+You now have a secure, reliable way to receive Rhombus webhooks on your private infrastructure without exposing your servers to the internet or requiring complex VPN setups.
+</Check>
+
+## Additional Resources
+
+- **Webhook Security**: Always validate webhook signatures and use HTTPS in production
+- **Rate Limiting**: Implement rate limiting on your webhook endpoint to prevent abuse
+- **Logging**: Maintain comprehensive logs of webhook events for debugging and auditing
+- **Monitoring**: Set up monitoring and alerts for webhook delivery failures
+
+<Note>
+For production deployments, consider implementing webhook signature verification to ensure webhooks are genuinely from Rhombus. Contact [api@rhombus.com](mailto:api@rhombus.com) for signature verification details.
+</Note>
