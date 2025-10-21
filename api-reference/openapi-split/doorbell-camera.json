@@ -1,0 +1,451 @@
+{
+  "tag": "Doorbell Camera Webservice",
+  "description": "API endpoints for Doorbell Camera Webservice",
+  "paths": {
+    "/api/doorbellcamera/calibrateFloorplanProjection": {
+      "post": {
+        "description": "Generate the homography to project detections onto a floorplan.",
+        "operationId": "doorbellCameraCalibrateFloorplanProjection",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Common_devices_CalibrateFloorplanProjectionWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Common_devices_CalibrateFloorplanProjectionWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Generate the homography to project detections onto a floorplan",
+        "tags": [
+          "Doorbell Camera Webservice"
+        ]
+      }
+    },
+    "/api/doorbellcamera/createRuleForDoorbellCamera": {
+      "post": {
+        "description": "Create rule for a doorbell camera.",
+        "operationId": "createRuleForDoorbellCamera",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doorbellcamera_CreateRuleForDoorbellCameraWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Doorbellcamera_CreateRuleForDoorbellCameraWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create rule for a doorbell camera",
+        "tags": [
+          "Doorbell Camera Webservice"
+        ]
+      }
+    },
+    "/api/doorbellcamera/createSharedLiveVideoStream": {
+      "post": {
+        "description": "Share an live video stream for a doorbell camera",
+        "operationId": "createDoorbellCameraSharedLiveVideoStream",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doorbellcamera_CreateSharedLiveVideoStreamWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Doorbellcamera_CreateSharedLiveVideoStreamWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Share an live video stream for a doorbell camera",
+        "tags": [
+          "Doorbell Camera Webservice"
+        ]
+      }
+    },
+    "/api/doorbellcamera/delete": {
+      "post": {
+        "description": "Remove the doorbell camera from the organization",
+        "operationId": "deleteDoorbellCamera",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doorbellcamera_DeleteDoorbellCameraWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Doorbellcamera_DeleteDoorbellCameraWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Remove the doorbell camera from the organization",
+        "tags": [
+          "Doorbell Camera Webservice"
+        ]
+      }
+    },
+    "/api/doorbellcamera/deleteRuleForDoorbellCamera": {
+      "post": {
+        "description": "Delete rule for a doorbell camera.",
+        "operationId": "deleteRuleForDoorbellCamera",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doorbellcamera_DeleteRuleForDoorbellCameraWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Doorbellcamera_DeleteRuleForDoorbellCameraWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete rule for a doorbell camera",
+        "tags": [
+          "Doorbell Camera Webservice"
+        ]
+      }
+    },
+    "/api/doorbellcamera/findComponentEventsForDoorbellCamera": {
+      "post": {
+        "description": "Retrieve all component events relevant to the specified Doorbell Camera",
+        "operationId": "findComponentEventsForDoorbellCamera",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doorbellcamera_FindComponentEventsForDoorbellCameraWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Doorbellcamera_FindComponentEventsForDoorbellCameraWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Retrieve all component events relevant to the specified Doorbell Camera",
+        "tags": [
+          "Doorbell Camera Webservice"
+        ]
+      }
+    },
+    "/api/doorbellcamera/findComponentSeekPointsForDoorbellCamera": {
+      "post": {
+        "description": "Retrieve all component seekpoints relevant to the specified Doorbell Camera",
+        "operationId": "findComponentSeekPointsForDoorbellCamera",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doorbellcamera_FindComponentSeekPointsForDoorbellCameraWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Doorbellcamera_FindComponentSeekPointsForDoorbellCameraWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Retrieve all component seekpoints relevant to the specified Doorbell Camera",
+        "tags": [
+          "Doorbell Camera Webservice"
+        ]
+      }
+    },
+    "/api/doorbellcamera/findSharedLiveVideoStreams": {
+      "post": {
+        "description": "Get list of all shared live streams for doorbell camera",
+        "operationId": "findDoorbellCameraSharedLiveVideoStreams",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doorbellcamera_FindSharedLiveVideoStreamsForWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Doorbellcamera_FindSharedLiveVideoStreamsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get list of all shared live streams for doorbell camera",
+        "tags": [
+          "Doorbell Camera Webservice"
+        ]
+      }
+    },
+    "/api/doorbellcamera/getDoorbellCameraRulesForOrg": {
+      "post": {
+        "description": "Get rules for all doorbell cameras in an org.",
+        "operationId": "getDoorbellCameraRulesForOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doorbellcamera_GetDoorbellCameraRulesForOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Doorbellcamera_GetDoorbellCameraRulesForOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get rules for all doorbell cameras in an org",
+        "tags": [
+          "Doorbell Camera Webservice"
+        ]
+      }
+    },
+    "/api/doorbellcamera/getRulesForDoorbellCamera": {
+      "post": {
+        "description": "Get all rules for a doorbell camera.",
+        "operationId": "getRulesForDoorbellCamera",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doorbellcamera_GetRulesForDoorbellCameraWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Doorbellcamera_GetRulesForDoorbellCameraWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get all rules for a doorbell camera",
+        "tags": [
+          "Doorbell Camera Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/doorbellcamera/calibrateFloorplanProjection",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/doorbellcamera/createRuleForDoorbellCamera",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/doorbellcamera/createSharedLiveVideoStream",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/doorbellcamera/delete",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/doorbellcamera/deleteRuleForDoorbellCamera",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/doorbellcamera/findComponentEventsForDoorbellCamera",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/doorbellcamera/findComponentSeekPointsForDoorbellCamera",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/doorbellcamera/findSharedLiveVideoStreams",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/doorbellcamera/getDoorbellCameraRulesForOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/doorbellcamera/getRulesForDoorbellCamera",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 10,
+  "referencedSchemas": [
+    "Common_devices_CalibrateFloorplanProjectionWSRequest",
+    "Common_devices_CalibrateFloorplanProjectionWSResponse",
+    "Doorbellcamera_CreateRuleForDoorbellCameraWSRequest",
+    "Doorbellcamera_CreateRuleForDoorbellCameraWSResponse",
+    "Doorbellcamera_CreateSharedLiveVideoStreamWSRequest",
+    "Doorbellcamera_CreateSharedLiveVideoStreamWSResponse",
+    "Doorbellcamera_DeleteDoorbellCameraWSRequest",
+    "Doorbellcamera_DeleteDoorbellCameraWSResponse",
+    "Doorbellcamera_DeleteRuleForDoorbellCameraWSRequest",
+    "Doorbellcamera_DeleteRuleForDoorbellCameraWSResponse",
+    "Doorbellcamera_FindComponentEventsForDoorbellCameraWSRequest",
+    "Doorbellcamera_FindComponentEventsForDoorbellCameraWSResponse",
+    "Doorbellcamera_FindComponentSeekPointsForDoorbellCameraWSRequest",
+    "Doorbellcamera_FindComponentSeekPointsForDoorbellCameraWSResponse",
+    "Doorbellcamera_FindSharedLiveVideoStreamsForWSRequest",
+    "Doorbellcamera_FindSharedLiveVideoStreamsWSResponse",
+    "Doorbellcamera_GetDoorbellCameraRulesForOrgWSRequest",
+    "Doorbellcamera_GetDoorbellCameraRulesForOrgWSResponse",
+    "Doorbellcamera_GetRulesForDoorbellCameraWSRequest",
+    "Doorbellcamera_GetRulesForDoorbellCameraWSResponse"
+  ]
+}

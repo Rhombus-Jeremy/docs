@@ -1,0 +1,639 @@
+{
+  "tag": "Climate Webservice",
+  "schemas": {
+    "Climate_DeleteEnvironmentalGatewayWSRequest": {
+      "type": "object",
+      "description": "Request to delete an environmental gateway.",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "mummify": {
+          "type": "boolean",
+          "description": "Whether to mummify the gateway instead of deleting it",
+          "example": false,
+          "nullable": true
+        }
+      }
+    },
+    "Climate_DeleteEnvironmentalGatewayWSResponse": {
+      "type": "object",
+      "description": "Response indicating the result of deleting an environmental gateway.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "responseStatus": {
+          "type": "string",
+          "description": "Status of the delete operation",
+          "enum": [
+            "BASIC_AUTH_FAILED",
+            "PASSWORD_MISMATCH",
+            "SAME_PASSWORD",
+            "USER_EXISTS",
+            "USER_NOT_FOUND",
+            "DEVICE_NOT_FOUND",
+            "POLICY_NOT_FOUND",
+            "LOCATION_NOT_FOUND",
+            "ORG_NOT_FOUND",
+            "BAD_INPUT",
+            "SUCCESS",
+            "PASSWORD_TOO_SHORT"
+          ],
+          "nullable": true
+        }
+      }
+    },
+    "Climate_GetClimateEventsForSensorWSRequest": {
+      "type": "object",
+      "description": "Request to retrieve climate events for an environmental sensor.",
+      "properties": {
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp in milliseconds after which events should be retrieved",
+          "example": 1640991600000,
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp in milliseconds before which events should be retrieved",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Maximum number of events to return",
+          "example": 100,
+          "nullable": true
+        },
+        "sensorUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Climate_GetClimateEventsForSensorWSResponse": {
+      "type": "object",
+      "description": "Response containing climate events for an environmental sensor.",
+      "properties": {
+        "climateEvents": {
+          "type": "array",
+          "description": "List of climate events for the sensor",
+          "items": {
+            "$ref": "#/components/schemas/ClimateEventType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Climate_GetClimateSensorConfigWSRequest": {
+      "type": "object",
+      "description": "Request to retrieve configuration for an environmental sensor.",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Climate_GetClimateSensorConfigWSResponse": {
+      "type": "object",
+      "description": "Response containing configuration for an environmental sensor.",
+      "properties": {
+        "config": {
+          "$ref": "#/components/schemas/IClimateUserConfig"
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Climate_GetEnvironmentalGatewayShadowsWSRequest": {
+      "type": "object",
+      "description": "Request to retrieve environmental gateway shadows."
+    },
+    "Climate_GetEnvironmentalGatewayShadowsWSResponse": {
+      "type": "object",
+      "description": "Response containing environmental gateway shadows.",
+      "properties": {
+        "environmentalGatewayShadows": {
+          "type": "array",
+          "description": "List of environmental gateway shadows",
+          "items": {
+            "$ref": "#/components/schemas/EnvironmentalGatewayShadowType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Climate_GetEventsForEnvironmentalGatewayWSRequest": {
+      "type": "object",
+      "description": "Request to retrieve events for an environmental gateway.",
+      "properties": {
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp in milliseconds after which events should be retrieved",
+          "example": 1640991600000,
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp in milliseconds before which events should be retrieved",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "deviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        },
+        "maxPageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Maximum number of results to return per page",
+          "example": 50,
+          "nullable": true
+        }
+      }
+    },
+    "Climate_GetEventsForEnvironmentalGatewayWSResponse": {
+      "type": "object",
+      "description": "Response containing events for an environmental gateway.",
+      "properties": {
+        "events": {
+          "type": "array",
+          "description": "List of climate events for the environmental gateway",
+          "items": {
+            "$ref": "#/components/schemas/E50ClimateEventType"
+          },
+          "nullable": true
+        },
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Climate_GetMinimalClimateStatesWSRequest": {
+      "type": "object",
+      "description": "Request to retrieve minimal climate state information for all environmental sensors."
+    },
+    "Climate_GetMinimalClimateStatesWSResponse": {
+      "type": "object",
+      "description": "Response containing minimal climate state information for environmental sensors.",
+      "properties": {
+        "climateStates": {
+          "type": "array",
+          "description": "List of minimal climate state information",
+          "items": {
+            "$ref": "#/components/schemas/Climate_MinimalClimateStateType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Climate_GetMinimalEnvironmentalGatewayStatesWSRequest": {
+      "type": "object",
+      "description": "Request to retrieve minimal environmental gateway states."
+    },
+    "Climate_GetMinimalEnvironmentalGatewayStatesWSResponse": {
+      "type": "object",
+      "description": "Response containing minimal environmental gateway states.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        },
+        "minimalEnvironmentalGatewayStates": {
+          "type": "array",
+          "description": "List of minimal environmental gateway states",
+          "items": {
+            "$ref": "#/components/schemas/Climate_MinimalEnvironmentalGatewayStateType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Climate_RebootEnvironmentalGatewayWSRequest": {
+      "type": "object",
+      "description": "Request to reboot an environmental gateway.",
+      "properties": {
+        "environmentalGatewayUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Climate_UpdateClimateSensorDetailsWSRequest": {
+      "type": "object",
+      "description": "Request to update details for an environmental sensor.",
+      "properties": {
+        "associatedCameras": {
+          "type": "array",
+          "description": "List of associated camera device facet UUIDs",
+          "items": {
+            "type": "string",
+            "format": "DeviceFacetUuid",
+            "description": "RUUID with optional appended facet information",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "associatedCamerasUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "deleted": {
+          "type": "boolean",
+          "description": "Whether the environmental sensor is deleted",
+          "example": false,
+          "nullable": true
+        },
+        "deletedUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the environmental sensor",
+          "example": "Temperature and humidity sensor in main office",
+          "nullable": true
+        },
+        "descriptionUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "floorNumber": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Floor number where the environmental sensor is located",
+          "example": 1,
+          "nullable": true
+        },
+        "floorNumberUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Latitude coordinate of the environmental sensor",
+          "example": 37.7749,
+          "nullable": true
+        },
+        "latitudeUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "locationUuidUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Longitude coordinate of the environmental sensor",
+          "example": -122.4194,
+          "nullable": true
+        },
+        "longitudeUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the environmental sensor",
+          "example": "Main Office Sensor",
+          "nullable": true
+        },
+        "nameUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "policyUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "policyUuidUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "subLocationsHierarchyKey": {
+          "$ref": "#/components/schemas/SubLocationsHierarchyKey"
+        },
+        "subLocationsHierarchyKeyUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Climate_UpdateClimateSensorDetailsWSResponse": {
+      "type": "object",
+      "description": "Response indicating the result of updating environmental sensor details.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Climate_UpdateEnvironmentalGatewayDetailsWSRequest": {
+      "type": "object",
+      "description": "Request to update details for an environmental gateway.",
+      "properties": {
+        "associatedCameras": {
+          "type": "array",
+          "description": "List of associated camera device facet UUIDs",
+          "items": {
+            "type": "string",
+            "format": "DeviceFacetUuid",
+            "description": "RUUID with optional appended facet information",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "associatedCamerasUpdated": {
+          "type": "boolean",
+          "description": "Whether the associated cameras have been updated",
+          "example": false,
+          "nullable": true
+        },
+        "deleted": {
+          "type": "boolean",
+          "description": "Whether the environmental gateway is deleted",
+          "example": false,
+          "nullable": true
+        },
+        "deletedUpdated": {
+          "type": "boolean",
+          "description": "Whether the deleted status has been updated",
+          "example": false,
+          "nullable": true
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the environmental gateway",
+          "example": "Environmental monitoring gateway in main office",
+          "nullable": true
+        },
+        "descriptionUpdated": {
+          "type": "boolean",
+          "description": "Whether the description has been updated",
+          "example": false,
+          "nullable": true
+        },
+        "floorNumber": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Floor number where the environmental gateway is located",
+          "example": 1,
+          "nullable": true
+        },
+        "floorNumberUpdated": {
+          "type": "boolean",
+          "description": "Whether the floor number has been updated",
+          "example": false,
+          "nullable": true
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Latitude coordinate of the environmental gateway",
+          "example": 37.7749,
+          "nullable": true
+        },
+        "latitudeUpdated": {
+          "type": "boolean",
+          "description": "Whether the latitude has been updated",
+          "example": false,
+          "nullable": true
+        },
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "locationUuidUpdated": {
+          "type": "boolean",
+          "description": "Whether the location UUID has been updated",
+          "example": false,
+          "nullable": true
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Longitude coordinate of the environmental gateway",
+          "example": -122.4194,
+          "nullable": true
+        },
+        "longitudeUpdated": {
+          "type": "boolean",
+          "description": "Whether the longitude has been updated",
+          "example": false,
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the environmental gateway",
+          "example": "Main Office Gateway",
+          "nullable": true
+        },
+        "nameUpdated": {
+          "type": "boolean",
+          "description": "Whether the name has been updated",
+          "example": false,
+          "nullable": true
+        },
+        "policyUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "policyUuidUpdated": {
+          "type": "boolean",
+          "description": "Whether the policy UUID has been updated",
+          "example": false,
+          "nullable": true
+        },
+        "subLocationsHierarchyKey": {
+          "$ref": "#/components/schemas/SubLocationsHierarchyKey"
+        },
+        "subLocationsHierarchyKeyUpdated": {
+          "type": "boolean",
+          "description": "Whether the sub-locations hierarchy key has been updated",
+          "example": false,
+          "nullable": true
+        },
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Climate_UpdateEnvironmentalGatewayDetailsWSResponse": {
+      "type": "object",
+      "description": "Response indicating the result of updating environmental gateway details."
+    },
+    "Common_devices_RebootDeviceWSResponse": {
+      "type": "object",
+      "description": "Response indicating the result of rebooting a device.",
+      "properties": {
+        "result": {
+          "type": "string",
+          "description": "Result of the reboot operation",
+          "enum": [
+            "REBOOT_SENT",
+            "DEVICE_OFFLINE"
+          ],
+          "nullable": true
+        }
+      }
+    },
+    "Sensor_GetSensorPresenceWindowsWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving stored video information for a sensor.",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "durationSec": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Duration in seconds for the presence window query",
+          "example": 3600,
+          "nullable": true
+        },
+        "startTimeSec": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Start time in seconds for the presence window query",
+          "example": 1640995200,
+          "nullable": true
+        }
+      }
+    },
+    "Sensor_GetSensorPresenceWindowsWSResponse": {
+      "type": "object",
+      "description": "Response object containing stored video information for a sensor.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "presenceWindows": {
+          "type": "array",
+          "description": "List of presence windows for the sensor",
+          "items": {
+            "$ref": "#/components/schemas/TimeWindowSeconds"
+          },
+          "nullable": true
+        }
+      }
+    }
+  },
+  "schemaCount": 22
+}

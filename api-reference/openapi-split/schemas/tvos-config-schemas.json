@@ -1,0 +1,85 @@
+{
+  "tag": "TvOs Config Webservice",
+  "schemas": {
+    "Tvos_GetTvOsConfigWsRequest": {
+      "type": "object",
+      "description": "Request object for getting a specific tvOs configuration.",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Tvos_GetTvOsConfigWsResponse": {
+      "type": "object",
+      "description": "Response object containing a specific tvOs configuration.",
+      "properties": {
+        "config": {
+          "$ref": "#/components/schemas/TvOsConfigType"
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Tvos_GetTvOsConfigsForOrgWsRequest": {
+      "type": "object",
+      "description": "Request object for getting all tvOs configurations for the organization."
+    },
+    "Tvos_GetTvOsConfigsForOrgWsResponse": {
+      "type": "object",
+      "description": "Response object containing all tvOs configurations for the organization.",
+      "properties": {
+        "configs": {
+          "type": "array",
+          "description": "List of tvOs configurations for the organization",
+          "items": {
+            "$ref": "#/components/schemas/TvOsConfigType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Tvos_UpdateTvOsConfigWsRequest": {
+      "type": "object",
+      "description": "Request object for updating a tvOs configuration.",
+      "properties": {
+        "config": {
+          "$ref": "#/components/schemas/TvOsConfigType"
+        }
+      }
+    },
+    "Tvos_UpdateTvOsConfigWsResponse": {
+      "type": "object",
+      "description": "Response object for updating a tvOs configuration.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    }
+  },
+  "schemaCount": 6
+}

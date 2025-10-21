@@ -1,0 +1,1857 @@
+{
+  "tag": "Event Webservice",
+  "schemas": {
+    "Event_CreateSharedClipGroupWSRequest": {
+      "type": "object",
+      "description": "Request object for creating a shared clip group.",
+      "properties": {
+        "expirationTimeSecs": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Expiration time in seconds for the shared clip group",
+          "example": 86400,
+          "nullable": true
+        },
+        "plaintextPassword": {
+          "type": "string",
+          "description": "Optional password for accessing the shared clip group",
+          "example": "mypassword123",
+          "nullable": true
+        },
+        "title": {
+          "type": "string",
+          "description": "Title for the shared clip group",
+          "example": "Security Incident - Main Entrance",
+          "nullable": true
+        },
+        "uuids": {
+          "type": "array",
+          "description": "List of UUIDs for clips to include in the shared group",
+          "items": {
+            "$ref": "#/components/schemas/Event_RuuidWrapper"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_CreateSharedClipGroupWSResponse": {
+      "type": "object",
+      "description": "Response object for creating a shared clip group.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "shareUrl": {
+          "type": "string",
+          "description": "URL for accessing the shared clip group",
+          "example": "https://share.rhombus.com/clips/abc123",
+          "nullable": true
+        },
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Event_DeleteAlertMonitoringThreatCaseByStatusWSRequest": {
+      "type": "object",
+      "description": "Request object for deleting alert monitoring threat cases by status.",
+      "properties": {
+        "status": {
+          "$ref": "#/components/schemas/ThreatCaseStatus"
+        }
+      }
+    },
+    "Event_DeleteAlertMonitoringThreatCaseByStatusWSResponse": {
+      "type": "object",
+      "description": "Response object for deleting alert monitoring threat cases by status.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_DeleteAlertMonitoringThreatCaseWSRequest": {
+      "type": "object",
+      "description": "Request object for deleting alert monitoring threat cases.",
+      "properties": {
+        "threatCaseUuids": {
+          "type": "array",
+          "description": "List of threat case UUIDs to delete",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_DeleteAlertMonitoringThreatCaseWSResponse": {
+      "type": "object",
+      "description": "Response object for deleting alert monitoring threat cases.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_DeleteSavedClipWSRequest": {
+      "type": "object",
+      "description": "Request object for deleting a saved clip.",
+      "properties": {
+        "savedClipUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Event_DeleteSavedClipWSResponse": {
+      "type": "object",
+      "description": "Response object for deleting a saved clip.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_DeleteSharedClipGroupWSRequest": {
+      "type": "object",
+      "description": "Request object for deleting a shared clip group.",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Event_DeleteSharedClipGroupWSResponse": {
+      "type": "object",
+      "description": "Response object for deleting a shared clip group.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_DismissAllPolicyAlertsForDeviceWSRequest": {
+      "type": "object",
+      "description": "Request object for dismissing all policy alerts for specific devices.",
+      "properties": {
+        "deviceUuids": {
+          "type": "array",
+          "description": "List of device UUIDs to dismiss alerts for",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_DismissAllPolicyAlertsForDeviceWSResponse": {
+      "type": "object",
+      "description": "Response object for dismissing all policy alerts for specific devices.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_DismissAllPolicyAlertsWSRequest": {
+      "type": "object",
+      "description": "Request object for dismissing all policy alerts."
+    },
+    "Event_DismissAllPolicyAlertsWSResponse": {
+      "type": "object",
+      "description": "Response object for dismissing all policy alerts.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_DismissPolicyAlertWSRequest": {
+      "type": "object",
+      "description": "Request object for dismissing a policy alert.",
+      "properties": {
+        "alertUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Event_DismissPolicyAlertWSResponse": {
+      "type": "object",
+      "description": "Response object for dismissing a policy alert.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_DismissPolicyAlertsWSRequest": {
+      "type": "object",
+      "description": "Request object for dismissing multiple policy alerts.",
+      "properties": {
+        "alertUuids": {
+          "type": "array",
+          "description": "List of policy alert UUIDs to dismiss",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_DismissPolicyAlertsWSResponse": {
+      "type": "object",
+      "description": "Response object for dismissing multiple policy alerts.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetAlertMonitoringThreatCaseWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving a specific alert monitoring threat case.",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetAlertMonitoringThreatCaseWSResponse": {
+      "type": "object",
+      "description": "Response object containing a specific alert monitoring threat case.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "threatCase": {
+          "$ref": "#/components/schemas/AlertMonitoringThreatCaseType"
+        }
+      }
+    },
+    "Event_GetAlertMonitoringThreatCasesWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving alert monitoring threat cases with filtering and pagination options.",
+      "properties": {
+        "afterTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Filter for threat cases after this timestamp",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "beforeTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Filter for threat cases before this timestamp",
+          "example": 1641081600000,
+          "nullable": true
+        },
+        "deviceFilter": {
+          "type": "array",
+          "description": "List of device UUIDs to filter by",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        },
+        "lastTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Last timestamp for pagination",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "lastUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "locationFilter": {
+          "type": "array",
+          "description": "List of location UUIDs to filter by",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "maxPageSize": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "maxResults": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Maximum number of results to return",
+          "example": 100,
+          "nullable": true
+        },
+        "mostRecent": {
+          "type": "boolean",
+          "description": "Whether to return only the most recent threat cases",
+          "example": true,
+          "nullable": true
+        },
+        "statusFilter": {
+          "type": "array",
+          "description": "List of threat case statuses to filter by",
+          "items": {
+            "$ref": "#/components/schemas/ThreatCaseStatus"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetAlertMonitoringThreatCasesWSResponse": {
+      "type": "object",
+      "description": "Response object containing alert monitoring threat cases with pagination information.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        },
+        "threatCases": {
+          "type": "array",
+          "description": "List of threat cases matching the request criteria",
+          "items": {
+            "$ref": "#/components/schemas/AlertMonitoringThreatCaseType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetClipWithProgressWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving a specific clip with progress information.",
+      "properties": {
+        "clipUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      },
+      "required": [
+        "clipUuid"
+      ]
+    },
+    "Event_GetClipWithProgressWSResponse": {
+      "type": "object",
+      "description": "Response object containing a specific clip with progress information.",
+      "properties": {
+        "clip": {
+          "$ref": "#/components/schemas/Event_SavedClipWithProgressType"
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetClipsWithProgressWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving clips with progress information and filtering options.",
+      "properties": {
+        "deviceUuidFilters": {
+          "type": "array",
+          "description": "Device uuids to filter clips by.",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "excludeAlertMonitoringClips": {
+          "type": "boolean",
+          "default": false,
+          "description": "Filter to exclude clips created for alarm monitoring verification.",
+          "nullable": true
+        },
+        "filterByPrivate": {
+          "type": "boolean",
+          "default": false,
+          "description": "Filter to only include private clips in the result.",
+          "nullable": true
+        },
+        "locationUuidFilters": {
+          "type": "array",
+          "description": "Location uuids to filter clips by.",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "default": 100,
+          "description": "Page size",
+          "maximum": 200,
+          "minimum": 1,
+          "nullable": true
+        },
+        "pageToken": {
+          "type": "string",
+          "description": "Page token received from the previous search request.",
+          "example": "next_page_token_123",
+          "nullable": true
+        },
+        "searchFilter": {
+          "type": "string",
+          "description": "Search filter for clips",
+          "example": "motion detected",
+          "nullable": true
+        },
+        "sortField": {
+          "type": "string",
+          "description": "Field to sort clips by",
+          "example": "timestamp",
+          "nullable": true
+        },
+        "sortOrder": {
+          "type": "string",
+          "description": "Sort order (asc or desc)",
+          "example": "desc",
+          "nullable": true
+        },
+        "timestampFilterField": {
+          "type": "string",
+          "description": "Timestamp to filter clips by (either clip creation date or clip footage date).",
+          "nullable": true
+        },
+        "timestampMsAfter": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp to find clips after this time.",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "timestampMsBefore": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp to find clips before this time",
+          "example": 1641081600000,
+          "nullable": true
+        }
+      },
+      "required": [
+        "pageSize"
+      ]
+    },
+    "Event_GetClipsWithProgressWSResponse": {
+      "type": "object",
+      "description": "Response object containing clips with progress information.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "pageToken": {
+          "type": "string",
+          "description": "Token to be supplied on the next search request to get the next page. If token is null, there is no more data available.",
+          "nullable": true
+        },
+        "savedClips": {
+          "type": "array",
+          "description": "List of saved clips with progress information",
+          "items": {
+            "$ref": "#/components/schemas/Event_SavedClipWithProgressType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetMotionGridCountsWSResponse": {
+      "type": "object",
+      "description": "Response object containing motion grid counts for a device.",
+      "properties": {
+        "countGrid": {
+          "type": "array",
+          "description": "Matrix where each cell is a fraction of the camera's resolution and stores the total number of motion events that occurred in the given timeframe",
+          "items": {
+            "type": "array",
+            "description": "Matrix where each cell is a fraction of the camera's resolution and stores the total number of motion events that occurred in the given timeframe",
+            "items": {
+              "type": "integer",
+              "format": "int32",
+              "description": "Matrix where each cell is a fraction of the camera's resolution and stores the total number of motion events that occurred in the given timeframe",
+              "nullable": true
+            },
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetMotionGridWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving motion grid data for a device.",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "format": "DeviceFacetUuid",
+          "description": "RUUID with optional appended facet information",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+          "nullable": true
+        },
+        "endTimeUtcSecs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "End time as a UNIX timestamp in seconds",
+          "example": 1641081600,
+          "nullable": true
+        },
+        "startTimeUtcSecs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Start time as a UNIX timestamp in seconds",
+          "example": 1640995200,
+          "nullable": true
+        }
+      },
+      "required": [
+        "deviceUuid",
+        "endTimeUtcSecs",
+        "startTimeUtcSecs"
+      ]
+    },
+    "Event_GetMotionGridWSResponse": {
+      "type": "object",
+      "description": "Response object containing motion grid data for a device.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "motionCells": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "description": "Map of timestamps to motion grid cells",
+            "items": {
+              "$ref": "#/components/schemas/Event_FrontendCell"
+            },
+            "nullable": true
+          },
+          "description": "Map of timestamps to motion grid cells",
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetPolicyAlertCountWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving the count of policy alerts.",
+      "properties": {
+        "maxResultsSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Maximum number of results to count",
+          "example": 1000,
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetPolicyAlertCountWSResponse": {
+      "type": "object",
+      "description": "Response object containing the count of policy alerts.",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Count of policy alerts",
+          "example": 42,
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetPolicyAlertDetailsWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving detailed information about a policy alert.",
+      "properties": {
+        "policyAlertUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetPolicyAlertDetailsWSResponse": {
+      "type": "object",
+      "description": "Response object containing detailed information about a policy alert.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "policyAlert": {
+          "$ref": "#/components/schemas/PolicyAlertWithDetailsType"
+        }
+      }
+    },
+    "Event_GetPolicyAlertGroupsForDeviceWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving policy alert groups for a specific device.",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "lastTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Last timestamp for pagination (required with LastUuid)",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "lastUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "maxResults": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Maximum number of results to return",
+          "example": 100,
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetPolicyAlertGroupsForDeviceWSResponse": {
+      "type": "object",
+      "description": "Response object containing policy alert groups for a specific device.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "policyAlertGroups": {
+          "type": "array",
+          "description": "List of policy alert groups for the device",
+          "items": {
+            "$ref": "#/components/schemas/Event_PolicyAlertGroupV2"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetPolicyAlertGroupsForLocationWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving policy alert groups for a specific location.",
+      "properties": {
+        "lastTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Last timestamp for pagination",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "lastUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "maxResults": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Maximum number of results to return",
+          "example": 100,
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetPolicyAlertGroupsForLocationWSResponse": {
+      "type": "object",
+      "description": "Response object containing policy alert groups for a specific location.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "policyAlertGroups": {
+          "type": "array",
+          "description": "List of policy alert groups for the location",
+          "items": {
+            "$ref": "#/components/schemas/Event_PolicyAlertGroupV2"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetPolicyAlertGroupsV2WSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving policy alert groups V2 with pagination options.",
+      "properties": {
+        "lastTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Last timestamp for pagination",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "lastUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "maxResults": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Maximum number of results to return",
+          "example": 100,
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetPolicyAlertGroupsV2WSResponse": {
+      "type": "object",
+      "description": "Response object containing policy alert groups V2.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "policyAlertGroups": {
+          "type": "array",
+          "description": "List of policy alert groups V2",
+          "items": {
+            "$ref": "#/components/schemas/Event_PolicyAlertGroupV2"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetPolicyAlertV2WSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving a specific policy alert V2.",
+      "properties": {
+        "policyAlertUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetPolicyAlertV2WSResponse": {
+      "type": "object",
+      "description": "Response object containing a specific policy alert V2.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "policyAlert": {
+          "$ref": "#/components/schemas/PolicyAlertV2Type"
+        }
+      }
+    },
+    "Event_GetPolicyAlertWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving a specific policy alert.",
+      "properties": {
+        "policyAlertUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetPolicyAlertWSResponse": {
+      "type": "object",
+      "description": "Response object containing a specific policy alert.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "policyAlert": {
+          "$ref": "#/components/schemas/BasePolicyAlertType"
+        }
+      }
+    },
+    "Event_GetPolicyAlertsV2WSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving policy alerts V2 with filtering and pagination options.",
+      "properties": {
+        "afterTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Filter for alerts after this timestamp",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "beforeTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Filter for alerts before this timestamp",
+          "example": 1641081600000,
+          "nullable": true
+        },
+        "deviceFilter": {
+          "type": "array",
+          "description": "List of device UUIDs to filter by",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "lastTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Last timestamp for pagination",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "lastUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "locationFilter": {
+          "type": "array",
+          "description": "List of location UUIDs to filter by",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "maxResults": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Maximum number of results to return",
+          "example": 100,
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetPolicyAlertsV2WSResponse": {
+      "type": "object",
+      "description": "Response object containing policy alerts V2 with filtering and pagination options.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "oldestPolicyAlert": {
+          "$ref": "#/components/schemas/PolicyAlertV2Type"
+        },
+        "policyAlerts": {
+          "type": "array",
+          "description": "List of policy alerts V2 matching the request criteria",
+          "items": {
+            "$ref": "#/components/schemas/PolicyAlertV2Type"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetPolicyAlertsWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving policy alerts with filtering and pagination options.",
+      "properties": {
+        "accessControlledDoorFilter": {
+          "type": "array",
+          "description": "Filter including chosen Access Controlled Doors",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "afterTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Enter starting timestamp interval in UNIX ms",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "beforeTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Enter ending timestamp interval in UNIX ms",
+          "example": 1641081600000,
+          "nullable": true
+        },
+        "deviceFilter": {
+          "type": "array",
+          "description": "Filter including chosen Devices",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "lastTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Search with last known TimestampMs (Required for Pagination)",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "lastUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "locationFilter": {
+          "type": "array",
+          "description": "Filter any locations you would like to include",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "maxResults": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Set a max result limit",
+          "example": 100,
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetPolicyAlertsWSResponse": {
+      "type": "object",
+      "description": "Response object containing a list of policy alerts.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "policyAlerts": {
+          "type": "array",
+          "description": "List of policy alerts matching the request criteria",
+          "items": {
+            "$ref": "#/components/schemas/BasePolicyAlertType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetSavedClipCountWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving the count of saved clips with filtering options.",
+      "properties": {
+        "deviceFilter": {
+          "type": "array",
+          "description": "List of device UUIDs to filter clips by",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "endTimeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "End time in milliseconds for filtering clips",
+          "example": 1641081600000,
+          "nullable": true
+        },
+        "locationFilter": {
+          "type": "array",
+          "description": "List of location UUIDs to filter clips by",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "startTimeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Start time in milliseconds for filtering clips",
+          "example": 1640995200000,
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetSavedClipCountWSResponse": {
+      "type": "object",
+      "description": "Response object containing the count of saved clips.",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Count of org-wide saved clips matching the filter criteria",
+          "example": 42,
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "privateCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Count of private saved clips matching the filter criteria",
+          "example": 10,
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetSavedClipDetailsWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving detailed information about a saved clip.",
+      "properties": {
+        "clipUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetSavedClipDetailsWSResponse": {
+      "type": "object",
+      "description": "Response object containing detailed information about a saved clip.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "savedClip": {
+          "$ref": "#/components/schemas/SavedClipWithDetailsType"
+        }
+      }
+    },
+    "Event_GetSavedClipsByExternalTransactionIdWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving saved clips by external transaction ID.",
+      "properties": {
+        "externalTransactionId": {
+          "type": "string",
+          "description": "External transaction ID to search for saved clips",
+          "example": "txn_123456789",
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetSavedClipsByExternalTransactionIdWSResponse": {
+      "type": "object",
+      "description": "Response object containing saved clips by external transaction ID.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "savedClips": {
+          "type": "array",
+          "description": "List of saved clips matching the external transaction ID",
+          "items": {
+            "$ref": "#/components/schemas/SavedClipV2Type"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetSavedClipsV2WSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving saved clips with pagination.",
+      "properties": {
+        "maxPageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Set max results returned. Note: in future this will be defaulted to 100",
+          "example": 100,
+          "nullable": true
+        },
+        "pageTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp start to specify page of up to 100 saved clips",
+          "example": 1640995200000,
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetSavedClipsV2WSResponse": {
+      "type": "object",
+      "description": "Response object containing saved clips with pagination.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "savedClips": {
+          "type": "array",
+          "description": "List of saved clips",
+          "items": {
+            "$ref": "#/components/schemas/SavedClipV2Type"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetSavedClipsWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving saved clips (deprecated)."
+    },
+    "Event_GetSavedClipsWSResponse": {
+      "type": "object",
+      "description": "Response object containing saved clips (deprecated).",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "savedClips": {
+          "type": "array",
+          "description": "List of saved clips",
+          "items": {
+            "$ref": "#/components/schemas/SavedClipV2Type"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetSharedClipGroupDetailsWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving detailed information about a shared clip group.",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetSharedClipGroupDetailsWSResponse": {
+      "type": "object",
+      "description": "Response object containing detailed information about a shared clip group.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "sharedClipGroup": {
+          "$ref": "#/components/schemas/SharedClipGroupWithDetailsType"
+        }
+      }
+    },
+    "Event_GetSharedClipGroupsV2WSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving shared clip groups with date filtering.",
+      "properties": {
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Filter for clip groups created after this timestamp",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Filter for clip groups created before this timestamp",
+          "example": 1641081600000,
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetSharedClipGroupsV2WSResponse": {
+      "type": "object",
+      "description": "Response object containing shared clip groups with date filtering.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "sharedClipGroups": {
+          "type": "array",
+          "description": "List of shared clip groups",
+          "items": {
+            "$ref": "#/components/schemas/SharedClipGroupWrapperV2Type"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetSplicedClipsInProgressWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving spliced clips in progress (deprecated)."
+    },
+    "Event_GetSplicedClipsInProgressWSResponse": {
+      "type": "object",
+      "description": "Response object containing spliced clips in progress (deprecated).",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "splicedClips": {
+          "type": "array",
+          "description": "List of spliced clips currently in progress",
+          "items": {
+            "$ref": "#/components/schemas/SplicedClipType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_GetUnhealthyDeviceAlertsWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving unhealthy device alerts."
+    },
+    "Event_GetUnhealthyDeviceAlertsWSResponse": {
+      "type": "object",
+      "description": "Response object containing unhealthy device alerts.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "unhealthyDeviceAlerts": {
+          "type": "array",
+          "description": "List of unhealthy device alerts",
+          "items": {
+            "$ref": "#/components/schemas/UnHealthyDeviceAlertType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_MuteNotificationsForDevicetWSRequest": {
+      "type": "object",
+      "description": "Request object for muting notifications for a specific device.",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "durationSec": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Duration to mute notifications in seconds",
+          "example": 3600,
+          "nullable": true
+        }
+      }
+    },
+    "Event_MuteNotificationsForDevicetWSResponse": {
+      "type": "object",
+      "description": "Response object for muting notifications for a specific device.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_ReportBadPolicyAlertWSRequest": {
+      "type": "object",
+      "description": "Request object for reporting a bad policy alert.",
+      "properties": {
+        "policyAlert": {
+          "$ref": "#/components/schemas/PolicyAlertV2Type"
+        }
+      }
+    },
+    "Event_ReportBadPolicyAlertWSResponse": {
+      "type": "object",
+      "description": "Response object for reporting a bad policy alert.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_SavePolicyAlertWSRequest": {
+      "type": "object",
+      "description": "Request object for saving a policy alert as a clip.",
+      "properties": {
+        "alertUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "fisheyePresentationMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "description": "Map of device UUIDs to dewarped view configurations for fisheye cameras",
+            "items": {
+              "$ref": "#/components/schemas/DewarpedView"
+            },
+            "nullable": true
+          },
+          "description": "Map of device UUIDs to dewarped view configurations for fisheye cameras",
+          "nullable": true
+        },
+        "savedClipDescription": {
+          "type": "string",
+          "description": "Description for the saved clip",
+          "example": "Motion detected at main entrance",
+          "nullable": true
+        },
+        "savedClipTitle": {
+          "type": "string",
+          "description": "Title for the saved clip",
+          "example": "Security Incident - Motion Detected",
+          "nullable": true
+        }
+      }
+    },
+    "Event_SavePolicyAlertWSResponse": {
+      "type": "object",
+      "description": "Response object for saving a policy alert as a clip.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_SearchMotionGridWSRequest": {
+      "type": "object",
+      "description": "Request object for searching motion grid data.",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "format": "DeviceFacetUuid",
+          "description": "RUUID with optional appended facet information",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+          "nullable": true
+        },
+        "endTimeUtcSecs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "End time as a UNIX timestamp in seconds",
+          "example": 1641081600,
+          "nullable": true
+        },
+        "searchCells": {
+          "type": "array",
+          "description": "List of motion grid cells to include in the search",
+          "items": {
+            "$ref": "#/components/schemas/Event_FrontendCell"
+          },
+          "nullable": true
+        },
+        "startTimeUtcSecs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Start time as a UNIX timestamp in seconds",
+          "example": 1640995200,
+          "nullable": true
+        }
+      },
+      "required": [
+        "deviceUuid",
+        "endTimeUtcSecs",
+        "searchCells",
+        "startTimeUtcSecs"
+      ]
+    },
+    "Event_SearchMotionGridWSResponse": {
+      "type": "object",
+      "description": "Response object containing motion grid search results.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "timeUtcSecsList": {
+          "type": "array",
+          "description": "List of timestamps where motion was detected in the specified cells",
+          "items": {
+            "type": "integer",
+            "format": "int64",
+            "description": "List of timestamps where motion was detected in the specified cells",
+            "nullable": true
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Event_SearchMotionGridWithActivitiesWSRequest": {
+      "type": "object",
+      "description": "Request object for searching motion grid data with activity information.",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "format": "DeviceFacetUuid",
+          "description": "RUUID with optional appended facet information",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+          "nullable": true
+        },
+        "endTimeUtcSecs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "End time as a UNIX timestamp in seconds",
+          "example": 1641081600,
+          "nullable": true
+        },
+        "searchCells": {
+          "type": "array",
+          "description": "List of motion grid cells to include in the search",
+          "items": {
+            "$ref": "#/components/schemas/Event_FrontendCell"
+          },
+          "nullable": true
+        },
+        "startTimeUtcSecs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Start time as a UNIX timestamp in seconds",
+          "example": 1640995200,
+          "nullable": true
+        }
+      },
+      "required": [
+        "deviceUuid",
+        "endTimeUtcSecs",
+        "searchCells",
+        "startTimeUtcSecs"
+      ]
+    },
+    "Event_SearchMotionGridWithActivitiesWSResponse": {
+      "type": "object",
+      "description": "Response object containing motion grid search results with activity information.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "timeUtcSecsToActivityMap": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/Event_SearchMotionGridWithActivitiesWSResponse_MotionGridActivity"
+          },
+          "description": "Map of timestamps to motion grid activities",
+          "nullable": true
+        }
+      }
+    },
+    "Event_UnSavePolicyAlertWSRequest": {
+      "type": "object",
+      "description": "Request object for unsaving a policy alert (deprecated).",
+      "properties": {
+        "alertUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "savedClipUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Event_UnSavePolicyAlertWSResponse": {
+      "type": "object",
+      "description": "Response object for unsaving a policy alert (deprecated).",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_UpdateSavedClipWSRequest": {
+      "type": "object",
+      "description": "Request object for updating a saved clip.",
+      "properties": {
+        "accessSettings": {
+          "$ref": "#/components/schemas/ClipAccessSettings"
+        },
+        "description": {
+          "type": "string",
+          "description": "Updated description for the saved clip",
+          "example": "Updated description of the security incident",
+          "nullable": true
+        },
+        "savedClipUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "title": {
+          "type": "string",
+          "description": "Updated title for the saved clip",
+          "example": "Updated Security Incident",
+          "nullable": true
+        }
+      },
+      "required": [
+        "savedClipUuid"
+      ]
+    },
+    "Event_UpdateSavedClipWSResponse": {
+      "type": "object",
+      "description": "Response object for updating a saved clip.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Event_UpdateSharedClipGroupWSRequest": {
+      "type": "object",
+      "description": "Request object for updating a shared clip group.",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Description for the shared clip group",
+          "example": "Updated description of the security incident",
+          "nullable": true
+        },
+        "expirationTimeSecs": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true,
+          "writeOnly": true
+        },
+        "plaintextPassword": {
+          "type": "string",
+          "description": "Password for accessing the shared clip group",
+          "example": "newpassword123",
+          "nullable": true
+        },
+        "sharedClipUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "title": {
+          "type": "string",
+          "description": "Title for the shared clip group",
+          "example": "Updated Security Incident",
+          "nullable": true
+        }
+      }
+    },
+    "Event_UpdateSharedClipGroupWSResponse": {
+      "type": "object",
+      "description": "Response object for updating a shared clip group.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "shareUrl": {
+          "type": "string",
+          "description": "URL for accessing the updated shared clip group",
+          "example": "https://share.rhombus.com/clips/abc123",
+          "nullable": true
+        },
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    }
+  },
+  "schemaCount": 81
+}

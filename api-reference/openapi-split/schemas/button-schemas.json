@@ -1,0 +1,320 @@
+{
+  "tag": "Button Webservice",
+  "schemas": {
+    "Button_CreateRuleForButtonWSRequest": {
+      "type": "object",
+      "description": "Request to create a rule for a button sensor.",
+      "properties": {
+        "rule": {
+          "$ref": "#/components/schemas/Button_ExternalButtonRuleType"
+        }
+      }
+    },
+    "Button_CreateRuleForButtonWSResponse": {
+      "type": "object",
+      "description": "Response from creating a rule for a button sensor.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "ruleUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Button_DeleteRuleForButtonWSRequest": {
+      "type": "object",
+      "description": "Request to delete a rule for a button sensor.",
+      "properties": {
+        "ruleUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "sensorUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Button_DeleteRuleForButtonWSResponse": {
+      "type": "object",
+      "description": "Response from deleting a rule for a button sensor.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Button_GetButtonPressEventsForSensorWSRequest": {
+      "type": "object",
+      "description": "Request to get button press events for a specific sensor.",
+      "properties": {
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp in milliseconds to get events created after this time",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp in milliseconds to get events created before this time",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Maximum number of events to return",
+          "example": 100,
+          "nullable": true
+        },
+        "sensorUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Button_GetButtonPressEventsForSensorWSResponse": {
+      "type": "object",
+      "description": "Response containing button press events for a sensor.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "events": {
+          "type": "array",
+          "description": "List of button press events for the sensor",
+          "items": {
+            "$ref": "#/components/schemas/ButtonEventType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Button_GetButtonRulesForOrgWSRequest": {
+      "type": "object",
+      "description": "Request to get rules for all buttons in an organization."
+    },
+    "Button_GetButtonRulesForOrgWSResponse": {
+      "type": "object",
+      "description": "Response containing rules for all buttons in an organization.",
+      "properties": {
+        "buttonUuidToRulesMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "description": "Map of button UUIDs to their associated rules",
+            "items": {
+              "$ref": "#/components/schemas/Button_ExternalButtonRuleType"
+            },
+            "nullable": true
+          },
+          "description": "Map of button UUIDs to their associated rules",
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Button_GetMinimalButtonStatesWSRequest": {
+      "type": "object",
+      "description": "Request to get minimal state information for all button sensors."
+    },
+    "Button_GetMinimalButtonStatesWSResponse": {
+      "type": "object",
+      "description": "Response containing minimal state information for all button sensors.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "states": {
+          "type": "array",
+          "description": "List of minimal button state information",
+          "items": {
+            "$ref": "#/components/schemas/Button_MinimalButtonStateType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Button_GetRulesForButtonWSRequest": {
+      "type": "object",
+      "description": "Request to get rules for a button sensor.",
+      "properties": {
+        "sensorUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Button_GetRulesForButtonWSResponse": {
+      "type": "object",
+      "description": "Response containing rules for a button sensor.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "rules": {
+          "type": "array",
+          "description": "List of rules configured for the button sensor",
+          "items": {
+            "$ref": "#/components/schemas/Button_ExternalButtonRuleType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Button_UpdateButtonConfigWSRequest": {
+      "type": "object",
+      "description": "Request to update button sensor configuration.",
+      "properties": {
+        "configUpdate": {
+          "$ref": "#/components/schemas/Deviceconfig_userconfig_IExternalUpdateableButtonUserConfig"
+        }
+      }
+    },
+    "Button_UpdateButtonDetailsWSRequest": {
+      "type": "object",
+      "description": "Request to update button sensor details.",
+      "properties": {
+        "associatedCameras": {
+          "type": "array",
+          "description": "List of associated camera device UUIDs",
+          "items": {
+            "type": "string",
+            "format": "DeviceFacetUuid",
+            "description": "RUUID with optional appended facet information",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "buttonMode": {
+          "$ref": "#/components/schemas/ButtonModeEnum"
+        },
+        "description": {
+          "type": "string",
+          "description": "Optional description for the button sensor",
+          "nullable": true
+        },
+        "floorNumber": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Optional floor number",
+          "example": 1,
+          "nullable": true
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Optional latitude coordinate",
+          "example": 37.7749,
+          "nullable": true
+        },
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Optional longitude coordinate",
+          "example": -122.4194,
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional name for the button sensor",
+          "nullable": true
+        },
+        "sensorUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Common_devices_UpdateConfigWSResponse": {
+      "type": "object",
+      "description": "Response indicating the result of updating device configuration.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Common_devices_UpdateDeviceDetailsWSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    }
+  },
+  "schemaCount": 16
+}

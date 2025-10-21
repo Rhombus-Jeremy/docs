@@ -1,0 +1,187 @@
+{
+  "tag": "Proximity Webservice",
+  "description": "API endpoints for Proximity Webservice",
+  "paths": {
+    "/api/proximity/getLocomotionEventsForTag": {
+      "post": {
+        "description": "Get locomotion events for specified proximity tag",
+        "operationId": "getLocomotionEventsForTag",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Proximity_GetLocomotionEventsForTagWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Proximity_GetLocomotionEventsForTagWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get locomotion events for tag",
+        "tags": [
+          "Proximity Webservice"
+        ]
+      }
+    },
+    "/api/proximity/getMinimalProximityStateList": {
+      "post": {
+        "description": "Get basic state information about all proximity tags in organization",
+        "operationId": "getMinimalProximityStateList",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Proximity_GetMinimalProximityStatesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Proximity_GetMinimalProximityStatesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get minimal proximity state list",
+        "tags": [
+          "Proximity Webservice"
+        ]
+      }
+    },
+    "/api/proximity/getProximityEventsForTag": {
+      "post": {
+        "description": "Get recent events for specified proximity tag",
+        "operationId": "getProximityEventsForTags",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Proximity_GetProximityEventsForTagWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Proximity_GetProximityEventsForTagWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get proximity events for tag",
+        "tags": [
+          "Proximity Webservice"
+        ]
+      }
+    },
+    "/api/proximity/updateDetails": {
+      "post": {
+        "description": "Update details for a proximity tag",
+        "operationId": "updateProximitySensorDetails",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Proximity_UpdateProximitySensorDetailsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Proximity_UpdateProximitySensorDetailsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update proximity sensor details",
+        "tags": [
+          "Proximity Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/proximity/getLocomotionEventsForTag",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/proximity/getMinimalProximityStateList",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/proximity/getProximityEventsForTag",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/proximity/updateDetails",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 4,
+  "referencedSchemas": [
+    "Proximity_GetLocomotionEventsForTagWSRequest",
+    "Proximity_GetLocomotionEventsForTagWSResponse",
+    "Proximity_GetMinimalProximityStatesWSRequest",
+    "Proximity_GetMinimalProximityStatesWSResponse",
+    "Proximity_GetProximityEventsForTagWSRequest",
+    "Proximity_GetProximityEventsForTagWSResponse",
+    "Proximity_UpdateProximitySensorDetailsWSRequest",
+    "Proximity_UpdateProximitySensorDetailsWSResponse"
+  ]
+}

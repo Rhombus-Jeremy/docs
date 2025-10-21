@@ -1,0 +1,641 @@
+{
+  "tag": "User Webservice",
+  "schemas": {
+    "Partner_GetPartnerUsersInOrgWSRequest": {
+      "type": "object",
+      "description": "Request object for getting partner users in organization."
+    },
+    "Partner_GetPartnerUsersInOrgWSResponse": {
+      "type": "object",
+      "description": "Response object containing partner users in organization with notification settings and permissions.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "notificationSettings": {
+          "type": "array",
+          "description": "List of partner notification settings",
+          "items": {
+            "$ref": "#/components/schemas/PartnerNotificationSettingsType"
+          },
+          "nullable": true
+        },
+        "notificationSettingsV2": {
+          "type": "array",
+          "description": "List of partner notification settings V2",
+          "items": {
+            "$ref": "#/components/schemas/PartnerNotificationSettingsV2"
+          },
+          "nullable": true
+        },
+        "partnerPermissions": {
+          "type": "array",
+          "description": "List of partner permissions",
+          "items": {
+            "$ref": "#/components/schemas/PartnerPermissionType"
+          },
+          "nullable": true
+        },
+        "partnerUsers": {
+          "type": "array",
+          "description": "List of partner users in the organization",
+          "items": {
+            "$ref": "#/components/schemas/WrappedRhombusOrgUserType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "User_AssignEmailToUserWSRequest": {
+      "type": "object",
+      "description": "Request object for assigning an email to a user.",
+      "properties": {
+        "emailToAssign": {
+          "type": "string",
+          "description": "Email address to assign to the user",
+          "example": "user@example.com",
+          "nullable": true
+        },
+        "userUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "User_AssignEmailToUserWSResponse": {
+      "type": "object",
+      "description": "Response object for assigning an email to a user."
+    },
+    "User_CreateUserWSRequest": {
+      "type": "object",
+      "description": "CreateUserWSRequest",
+      "properties": {
+        "accessibleRhombusApps": {
+          "type": "array",
+          "description": "The set of accessible Rhombus apps",
+          "items": {
+            "type": "string",
+            "description": "The set of accessible Rhombus apps",
+            "enum": [
+              "PARTNER",
+              "CONSOLE",
+              "RHOMBUS_KEY",
+              "UNKNOWN"
+            ],
+            "nullable": true
+          },
+          "nullable": true,
+          "uniqueItems": true
+        },
+        "email": {
+          "type": "string",
+          "description": "The email of the user",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the user",
+          "nullable": true
+        },
+        "permissionGroupUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "rhombusKeySettings": {
+          "$ref": "#/components/schemas/RhombusKeyAppSettingsType"
+        },
+        "suppressRhombusKeyWelcomeEmail": {
+          "type": "boolean",
+          "description": "Suppress the welcome email for the Rhombus Key mobile app if the user is provided access",
+          "nullable": true
+        },
+        "suppressWelcomeEmail": {
+          "type": "boolean",
+          "description": "Suppress the welcome email",
+          "nullable": true
+        }
+      }
+    },
+    "User_CreateUserWSResponse": {
+      "type": "object",
+      "description": "Response object for creating a user.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "responseStatus": {
+          "type": "string",
+          "description": "Status of the user creation response",
+          "enum": [
+            "BASIC_AUTH_FAILED",
+            "PASSWORD_MISMATCH",
+            "SAME_PASSWORD",
+            "USER_EXISTS",
+            "USER_NOT_FOUND",
+            "DEVICE_NOT_FOUND",
+            "POLICY_NOT_FOUND",
+            "LOCATION_NOT_FOUND",
+            "ORG_NOT_FOUND",
+            "BAD_INPUT",
+            "SUCCESS",
+            "PASSWORD_TOO_SHORT"
+          ],
+          "nullable": true
+        },
+        "userUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "User_DeleteUserWSRequest": {
+      "type": "object",
+      "description": "Request object for deleting a user.",
+      "properties": {
+        "userUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "User_DeleteUserWSResponse": {
+      "type": "object",
+      "description": "Response object for deleting a user.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "User_GetUsersInOrgWSRequest": {
+      "type": "object",
+      "description": "Request object for getting all users in the organization."
+    },
+    "User_GetUsersInOrgWSResponse": {
+      "type": "object",
+      "description": "Response object containing all users in the organization with their settings and permissions.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "notificationSettings": {
+          "type": "array",
+          "description": "List of user notification settings (V3)",
+          "items": {
+            "$ref": "#/components/schemas/UserNotificationSettingsV3Type"
+          },
+          "nullable": true
+        },
+        "notificationSettingsV2": {
+          "type": "array",
+          "description": "List of user notification settings (V4)",
+          "items": {
+            "$ref": "#/components/schemas/UserNotificationSettingsV4Type"
+          },
+          "nullable": true
+        },
+        "partners": {
+          "type": "array",
+          "description": "List of partner users in the organization",
+          "items": {
+            "$ref": "#/components/schemas/WrappedRhombusOrgUserType"
+          },
+          "nullable": true
+        },
+        "rhombusKeyAppConfigs": {
+          "type": "array",
+          "description": "List of Rhombus Key app configurations",
+          "items": {
+            "$ref": "#/components/schemas/RhombusKeyAppConfigType"
+          },
+          "nullable": true
+        },
+        "snoozeSettings": {
+          "type": "array",
+          "description": "List of user snooze notification settings",
+          "items": {
+            "$ref": "#/components/schemas/User_UserSnoozeNotificationSettingsType"
+          },
+          "nullable": true
+        },
+        "userPermissions": {
+          "type": "array",
+          "description": "List of user permissions",
+          "items": {
+            "$ref": "#/components/schemas/UserPermissionType"
+          },
+          "nullable": true
+        },
+        "users": {
+          "type": "array",
+          "description": "List of users in the organization",
+          "items": {
+            "$ref": "#/components/schemas/WrappedRhombusOrgUserType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "User_UpdatePartnerUserNotificationSettingsWSRequest": {
+      "type": "object",
+      "properties": {
+        "allClientsSelected": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "clientNotificationIntervalsMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PartnerNotificationClientSection"
+            },
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "notificationIntervalsForAllClients": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/PartnerNotificationClientSection"
+          },
+          "nullable": true
+        },
+        "orgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "smsPhoneNumbers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "summaryEmailEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "updatedSetMethodMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "userUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "User_UpdatePartnerUserNotificationSettingsWSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "User_UpdatePartnerWSRequest": {
+      "type": "object",
+      "properties": {
+        "bypassSaml": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "mfaEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "notificationSettings": {
+          "$ref": "#/components/schemas/PartnerNotificationSettingsType"
+        },
+        "notificationSettingsV2": {
+          "$ref": "#/components/schemas/PartnerNotificationSettingsV2"
+        },
+        "permissionGroupUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "smsPhoneNumbers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "summaryEmailEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "userUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "User_UpdatePartnerWSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "User_UpdateRhombusKeySettingsForUserWSRequest": {
+      "type": "object",
+      "properties": {
+        "bypassSaml": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "endDateProvisioner": {
+          "$ref": "#/components/schemas/EpochSecondsProvisioner"
+        },
+        "maxMobileCredsAllowed": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "remoteUnlockEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "rhombusKeyAccessEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "startDateProvisioner": {
+          "$ref": "#/components/schemas/EpochSecondsProvisioner"
+        },
+        "userUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "User_UpdateRhombusKeySettingsForUserWSResponse": {
+      "type": "object",
+      "properties": {
+        "userRhombusKeyConfig": {
+          "$ref": "#/components/schemas/RhombusKeyAppConfigType"
+        }
+      }
+    },
+    "User_UpdateUserNotificationSettingsWSRequest": {
+      "type": "object",
+      "properties": {
+        "orgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "smsPhoneNumbers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "summaryEmailEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "timeFrames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/NotificationTimeFrame"
+          },
+          "nullable": true
+        },
+        "updatedSetMethodMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "userUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "User_UpdateUserNotificationSettingsWSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "User_UpdateUserSelectiveWSRequest": {
+      "type": "object",
+      "properties": {
+        "bypassSaml": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "mfaEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "notificationIntervalsV2": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/NotificationIntervalV2Type"
+          },
+          "nullable": true
+        },
+        "permissionGroupUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "smsPhoneNumbers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "summaryEmailEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "userUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "User_UpdateUserSelectiveWSResponse": {
+      "type": "object",
+      "description": "Response object for selective user updates."
+    },
+    "User_UpdateUserWSRequest": {
+      "type": "object",
+      "description": "Request object for updating user information and settings.",
+      "properties": {
+        "bypassSaml": {
+          "type": "boolean",
+          "description": "Whether SAML bypass is enabled for the user",
+          "example": false,
+          "nullable": true
+        },
+        "mfaEnabled": {
+          "type": "boolean",
+          "description": "Whether MFA is enabled for the user",
+          "example": true,
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the user",
+          "example": "John Doe",
+          "nullable": true
+        },
+        "notificationIntervalsV2": {
+          "type": "array",
+          "description": "List of notification intervals (V2) for the user",
+          "items": {
+            "$ref": "#/components/schemas/NotificationIntervalV2Type"
+          },
+          "nullable": true
+        },
+        "permissionGroupUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "smsPhoneNumbers": {
+          "type": "array",
+          "description": "List of SMS phone numbers for the user",
+          "items": {
+            "type": "string",
+            "description": "List of SMS phone numbers for the user",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "summaryEmailEnabled": {
+          "type": "boolean",
+          "description": "Whether summary emails are enabled for the user",
+          "example": true,
+          "nullable": true
+        },
+        "userUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "User_UpdateUserWSResponse": {
+      "type": "object",
+      "description": "Response object for updating a user.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    }
+  },
+  "schemaCount": 22
+}

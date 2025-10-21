@@ -1,0 +1,186 @@
+{
+  "tag": "Org Integrations Webservice",
+  "description": "API endpoints for Org Integrations Webservice",
+  "paths": {
+    "/api/integrations/org/getApiTokens": {
+      "post": {
+        "description": "Get list of all api tokens for organization",
+        "operationId": "getApiTokens",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetApiTokensWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetApiTokensWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get API tokens",
+        "tags": [
+          "Org Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/org/getOrgIntegrations": {
+      "post": {
+        "description": "Get details of all third-party integrations for organization",
+        "operationId": "getOrgIntegrations",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetOrgIntegrationsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get organization integrations",
+        "tags": [
+          "Org Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/org/getOrgIntegrationsV2": {
+      "post": {
+        "description": "Get details of all V2 third-party integrations for an organization",
+        "operationId": "getOrgIntegrationsV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetOrgIntegrationsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetAllOrgIntegrationsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get organization integrations V2",
+        "tags": [
+          "Org Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/org/revokeApiToken": {
+      "post": {
+        "description": "Remove an api token from organization. Note: this is irreversible",
+        "operationId": "revokeApiToken",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_RevokeApiTokenWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_RevokeApiTokenWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Revoke API token",
+        "tags": [
+          "Org Integrations Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/integrations/org/getApiTokens",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/org/getOrgIntegrations",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/org/getOrgIntegrationsV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/org/revokeApiToken",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 4,
+  "referencedSchemas": [
+    "Integration_GetAllOrgIntegrationsV2WSResponse",
+    "Integration_GetApiTokensWSRequest",
+    "Integration_GetApiTokensWSResponse",
+    "Integration_GetOrgIntegrationsWSRequest",
+    "Integration_GetOrgIntegrationsWSResponse",
+    "Integration_RevokeApiTokenWSRequest",
+    "Integration_RevokeApiTokenWSResponse"
+  ]
+}

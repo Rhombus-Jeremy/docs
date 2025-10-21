@@ -1,0 +1,143 @@
+{
+  "tag": "Rules Records Webservice",
+  "description": "API endpoints for Rules Records Webservice",
+  "paths": {
+    "/api/rulesRecords/deleteRulesEventRecord": {
+      "post": {
+        "description": "Delete a rules event historical record",
+        "operationId": "deleteRulesEventRecord",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rules_records_DeleteRulesEventRecordWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Rules_records_DeleteRulesEventRecordWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete rules event record",
+        "tags": [
+          "Rules Records Webservice"
+        ]
+      }
+    },
+    "/api/rulesRecords/getLatestRulesEventRecords": {
+      "post": {
+        "description": "Get N latest rules event historical records",
+        "operationId": "getLatestRulesEventRecords",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rules_records_GetLatestRulesEventRecordsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Rules_records_GetLatestRulesEventRecordsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get latest rules event records",
+        "tags": [
+          "Rules Records Webservice"
+        ]
+      }
+    },
+    "/api/rulesRecords/getRulesEventRecords": {
+      "post": {
+        "description": "Find rules event historical records",
+        "operationId": "getRulesEventRecords",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rules_records_GetRulesEventRecordsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Rules_records_GetRulesEventRecordsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get rules event records",
+        "tags": [
+          "Rules Records Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/rulesRecords/deleteRulesEventRecord",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/rulesRecords/getLatestRulesEventRecords",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/rulesRecords/getRulesEventRecords",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 3,
+  "referencedSchemas": [
+    "Rules_records_DeleteRulesEventRecordWSRequest",
+    "Rules_records_DeleteRulesEventRecordWSResponse",
+    "Rules_records_GetLatestRulesEventRecordsWSRequest",
+    "Rules_records_GetLatestRulesEventRecordsWSResponse",
+    "Rules_records_GetRulesEventRecordsWSRequest",
+    "Rules_records_GetRulesEventRecordsWSResponse"
+  ]
+}

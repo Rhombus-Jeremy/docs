@@ -1,0 +1,363 @@
+{
+  "tag": "Face Recognition Person Webservice",
+  "description": "API endpoints for Face Recognition Person Webservice",
+  "paths": {
+    "/api/faceRecognition/person/addPersonLabel": {
+      "post": {
+        "description": "Add a label to a person",
+        "operationId": "addPersonLabel",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Facerecognition_person_AddPersonLabelWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facerecognition_person_AddPersonLabelWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Add a label to a person",
+        "tags": [
+          "Face Recognition Person Webservice"
+        ]
+      }
+    },
+    "/api/faceRecognition/person/createPerson": {
+      "post": {
+        "description": "Create a person for face recognition purposes.",
+        "operationId": "createPerson",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Facerecognition_person_CreatePersonWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facerecognition_person_CreatePersonWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create a person",
+        "tags": [
+          "Face Recognition Person Webservice"
+        ]
+      }
+    },
+    "/api/faceRecognition/person/deletePerson": {
+      "post": {
+        "description": "Delete person created for face recognition purposes.",
+        "operationId": "deletePerson",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Facerecognition_person_DeletePersonWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facerecognition_person_DeletePersonWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete person",
+        "tags": [
+          "Face Recognition Person Webservice"
+        ]
+      }
+    },
+    "/api/faceRecognition/person/findPeopleByOrg": {
+      "post": {
+        "description": "Find people created for face recognition purposes in an organization.",
+        "operationId": "findPeopleByOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Facerecognition_person_FindPeopleByOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facerecognition_person_FindPeopleByOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find people by organization",
+        "tags": [
+          "Face Recognition Person Webservice"
+        ]
+      }
+    },
+    "/api/faceRecognition/person/findPersonLabelsByOrg": {
+      "post": {
+        "description": "Find all person labels for organization.",
+        "operationId": "findPersonLabelsByOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Facerecognition_person_FindPersonLabelsByOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facerecognition_person_FindPersonLabelsByOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find all person labels for organization",
+        "tags": [
+          "Face Recognition Person Webservice"
+        ]
+      }
+    },
+    "/api/faceRecognition/person/getPerson": {
+      "post": {
+        "description": "Get a person created for face recognition purposes.",
+        "operationId": "getPerson",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Facerecognition_person_GetPersonWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facerecognition_person_GetPersonWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get a person",
+        "tags": [
+          "Face Recognition Person Webservice"
+        ]
+      }
+    },
+    "/api/faceRecognition/person/removePersonLabel": {
+      "post": {
+        "description": "Remove a label from a person.",
+        "operationId": "removePersonLabel",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Facerecognition_person_RemovePersonLabelWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facerecognition_person_RemovePersonLabelWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Remove a label from a person",
+        "tags": [
+          "Face Recognition Person Webservice"
+        ]
+      }
+    },
+    "/api/faceRecognition/person/updatePerson": {
+      "post": {
+        "description": "Update person created for face recognition purposes.",
+        "operationId": "updatePerson",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Facerecognition_person_UpdatePersonWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facerecognition_person_UpdatePersonWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update person",
+        "tags": [
+          "Face Recognition Person Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/faceRecognition/person/addPersonLabel",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/faceRecognition/person/createPerson",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/faceRecognition/person/deletePerson",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/faceRecognition/person/findPeopleByOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/faceRecognition/person/findPersonLabelsByOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/faceRecognition/person/getPerson",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/faceRecognition/person/removePersonLabel",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/faceRecognition/person/updatePerson",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 8,
+  "referencedSchemas": [
+    "Facerecognition_person_AddPersonLabelWSRequest",
+    "Facerecognition_person_AddPersonLabelWSResponse",
+    "Facerecognition_person_CreatePersonWSRequest",
+    "Facerecognition_person_CreatePersonWSResponse",
+    "Facerecognition_person_DeletePersonWSRequest",
+    "Facerecognition_person_DeletePersonWSResponse",
+    "Facerecognition_person_FindPeopleByOrgWSRequest",
+    "Facerecognition_person_FindPeopleByOrgWSResponse",
+    "Facerecognition_person_FindPersonLabelsByOrgWSRequest",
+    "Facerecognition_person_FindPersonLabelsByOrgWSResponse",
+    "Facerecognition_person_GetPersonWSRequest",
+    "Facerecognition_person_GetPersonWSResponse",
+    "Facerecognition_person_RemovePersonLabelWSRequest",
+    "Facerecognition_person_RemovePersonLabelWSResponse",
+    "Facerecognition_person_UpdatePersonWSRequest",
+    "Facerecognition_person_UpdatePersonWSResponse"
+  ]
+}

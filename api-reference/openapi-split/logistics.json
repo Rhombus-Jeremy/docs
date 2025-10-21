@@ -1,0 +1,143 @@
+{
+  "tag": "Logistics Webservice",
+  "description": "API endpoints for Logistics Webservice",
+  "paths": {
+    "/api/logistics/getRMAs": {
+      "post": {
+        "description": "Get RMAs",
+        "operationId": "getRMAs",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Logistics_GetRMAsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Logistics_GetRMAsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get RMAs",
+        "tags": [
+          "Logistics Webservice"
+        ]
+      }
+    },
+    "/api/logistics/getShipments": {
+      "post": {
+        "description": "Get shipments",
+        "operationId": "getShipments",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Logistics_GetShipmentsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Logistics_GetShipmentsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get shipments",
+        "tags": [
+          "Logistics Webservice"
+        ]
+      }
+    },
+    "/api/logistics/getWarrantyApprovedRMAs": {
+      "post": {
+        "description": "Get warranty approved RMAs",
+        "operationId": "getWarrantyApprovedRMAs",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Internal_GetWarrantyApprovedRMAsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Internal_GetWarrantyApprovedRMAsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get warranty approved RMAs",
+        "tags": [
+          "Logistics Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/logistics/getRMAs",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/logistics/getShipments",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/logistics/getWarrantyApprovedRMAs",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 3,
+  "referencedSchemas": [
+    "Internal_GetWarrantyApprovedRMAsWSRequest",
+    "Internal_GetWarrantyApprovedRMAsWSResponse",
+    "Logistics_GetRMAsWSRequest",
+    "Logistics_GetRMAsWSResponse",
+    "Logistics_GetShipmentsWSRequest",
+    "Logistics_GetShipmentsWSResponse"
+  ]
+}

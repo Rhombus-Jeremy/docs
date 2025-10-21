@@ -1,0 +1,55 @@
+{
+  "tag": "RapidSOS Webservice",
+  "description": "API endpoints for RapidSOS Webservice",
+  "paths": {
+    "/api/rapidsos/getNearbyFeeds": {
+      "post": {
+        "description": "Get closest 10 feeds by lat and long",
+        "operationId": "getNearbyFeeds",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rapidsos_GetNearbyFeedsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Rapidsos_GetNearbyFeedsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get nearby feeds",
+        "tags": [
+          "RapidSOS Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/rapidsos/getNearbyFeeds",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 1,
+  "referencedSchemas": [
+    "Rapidsos_GetNearbyFeedsRequest",
+    "Rapidsos_GetNearbyFeedsResponse"
+  ]
+}

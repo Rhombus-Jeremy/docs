@@ -1,0 +1,375 @@
+{
+  "tag": "Schedule Webservice",
+  "schemas": {
+    "Policy_DeleteScheduleWSRequest": {
+      "type": "object",
+      "description": "Request object for deleting a schedule used for policy creation.",
+      "properties": {
+        "scheduleUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Policy_DeleteScheduleWSResponse": {
+      "type": "object",
+      "description": "Response object for deleting a schedule.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Schedule_CreateAbsoluteScheduleWSRequest": {
+      "type": "object",
+      "description": "Request object for creating an absolute schedule.",
+      "properties": {
+        "schedule": {
+          "$ref": "#/components/schemas/AbsoluteSecondsScheduleType"
+        }
+      }
+    },
+    "Schedule_CreateAbsoluteScheduleWSResponse": {
+      "type": "object",
+      "description": "Response object for creating an absolute schedule.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "scheduleUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Schedule_CreateRelativeDateTimeIntervalsScheduleWSRequest": {
+      "type": "object",
+      "description": "Request object for creating a relative datetime intervals schedule.",
+      "properties": {
+        "schedule": {
+          "$ref": "#/components/schemas/RelativeDateTimeIntervalsScheduleType"
+        }
+      }
+    },
+    "Schedule_CreateRelativeDateTimeIntervalsScheduleWSResponse": {
+      "type": "object",
+      "description": "Response object for creating a relative datetime intervals schedule.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "scheduleUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Schedule_CreateRelativeScheduleWSRequest": {
+      "type": "object",
+      "description": "Request object for creating a relative schedule.",
+      "properties": {
+        "schedule": {
+          "$ref": "#/components/schemas/RealtimeRelativeSecondsScheduleType"
+        }
+      }
+    },
+    "Schedule_CreateRelativeScheduleWSResponse": {
+      "type": "object",
+      "description": "Response object for creating a relative schedule.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "scheduleUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Schedule_CreateWeeklyScheduleWSRequest": {
+      "type": "object",
+      "description": "Request object for creating a weekly schedule.",
+      "properties": {
+        "schedule": {
+          "$ref": "#/components/schemas/WeeklyRepeatingScheduleType"
+        }
+      }
+    },
+    "Schedule_CreateWeeklyScheduleWSResponse": {
+      "type": "object",
+      "description": "Response object for creating a weekly schedule.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "scheduleUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Schedule_FindAbsoluteScheduleWSRequest": {
+      "type": "object",
+      "description": "Request object for finding an absolute schedule.",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Schedule_FindAbsoluteScheduleWSResponse": {
+      "type": "object",
+      "description": "Response object for finding an absolute schedule.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "schedule": {
+          "$ref": "#/components/schemas/AbsoluteSecondsScheduleType"
+        }
+      }
+    },
+    "Schedule_FindRelativeDateTimeIntervalsScheduleWSRequest": {
+      "type": "object",
+      "description": "Request object for finding a relative datetime intervals schedule.",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Schedule_FindRelativeDateTimeIntervalsScheduleWSResponse": {
+      "type": "object",
+      "description": "Response object for finding a relative datetime intervals schedule.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "schedule": {
+          "$ref": "#/components/schemas/RelativeDateTimeIntervalsScheduleType"
+        }
+      }
+    },
+    "Schedule_FindRelativeScheduleWSRequest": {
+      "type": "object",
+      "description": "Request object for finding a relative schedule.",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Schedule_FindRelativeScheduleWSResponse": {
+      "type": "object",
+      "description": "Response object for finding a relative schedule.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "schedule": {
+          "$ref": "#/components/schemas/RealtimeRelativeSecondsScheduleType"
+        }
+      }
+    },
+    "Schedule_FindWeeklyScheduleWSRequest": {
+      "type": "object",
+      "description": "Request object for finding a weekly schedule.",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Schedule_FindWeeklyScheduleWSResponse": {
+      "type": "object",
+      "description": "Response object for finding a weekly schedule.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "schedule": {
+          "$ref": "#/components/schemas/WeeklyRepeatingScheduleType"
+        }
+      }
+    },
+    "Schedule_GetScheduleDataV2WSRequest": {
+      "type": "object",
+      "description": "Request object for getting schedule data v2.",
+      "properties": {
+        "scheduleUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Schedule_GetScheduleDataV2WSResponse": {
+      "type": "object",
+      "description": "Response object for getting schedule data v2.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "weeklyScheduleData": {
+          "$ref": "#/components/schemas/Schedule_WeeklyRepeatingScheduleDataType"
+        }
+      }
+    },
+    "Schedule_GetScheduleDataWSResponse": {
+      "type": "object",
+      "description": "Response object for getting schedule data.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "weeklyScheduleData": {
+          "type": "array",
+          "description": "List of weekly schedule data",
+          "items": {
+            "$ref": "#/components/schemas/Schedule_WeeklyRepeatingScheduleDataType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Schedule_GetSchedulesWSRequest": {
+      "type": "object",
+      "description": "Request object for getting all schedules."
+    },
+    "Schedule_GetSchedulesWSResponse": {
+      "type": "object",
+      "description": "Response object for getting all schedules.",
+      "properties": {
+        "absoluteSchedules": {
+          "type": "array",
+          "description": "List of absolute schedules",
+          "items": {
+            "$ref": "#/components/schemas/AbsoluteSecondsScheduleType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "relativeDatetimeSchedules": {
+          "type": "array",
+          "description": "List of relative datetime intervals schedules",
+          "items": {
+            "$ref": "#/components/schemas/RelativeDateTimeIntervalsScheduleType"
+          },
+          "nullable": true
+        },
+        "relativeSchedules": {
+          "type": "array",
+          "description": "List of relative schedules",
+          "items": {
+            "$ref": "#/components/schemas/RealtimeRelativeSecondsScheduleType"
+          },
+          "nullable": true
+        },
+        "weeklySchedules": {
+          "type": "array",
+          "description": "List of weekly repeating schedules",
+          "items": {
+            "$ref": "#/components/schemas/WeeklyRepeatingScheduleType"
+          },
+          "nullable": true
+        }
+      }
+    }
+  },
+  "schemaCount": 23
+}

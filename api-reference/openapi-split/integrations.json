@@ -1,0 +1,1417 @@
+{
+  "tag": "Integrations Webservice",
+  "description": "API endpoints for Integrations Webservice",
+  "paths": {
+    "/api/integrations/deleteAmtIntegration": {
+      "post": {
+        "deprecated": true,
+        "description": "Delete Amt badge integration",
+        "operationId": "deleteAmtIntegrationDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete AMT Integration",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/deleteDeviceIntegration": {
+      "post": {
+        "deprecated": true,
+        "description": "Delete Device integration",
+        "operationId": "deleteDeviceIntegrationDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete Device Integration",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/deleteMattermostIntegration": {
+      "post": {
+        "deprecated": true,
+        "description": "Delete Mattermost alert integration",
+        "operationId": "deleteMattermostIntegrationDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete Mattermost Integration",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/deleteOpenAIIntegration": {
+      "post": {
+        "deprecated": true,
+        "description": "Delete OpenAI integration",
+        "operationId": "deleteOpenAIIntegrationDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete OpenAI Integration",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/deleteWebhookIntegration": {
+      "post": {
+        "deprecated": true,
+        "description": "Delete outbound webhook alert integration",
+        "operationId": "deleteWebhookIntegrationDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete Webhook Integration",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/deleteWebhookIntegrationV2": {
+      "post": {
+        "deprecated": true,
+        "description": "Delete entire webhook integration",
+        "operationId": "deleteWebhookIntegrationV2Dep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete Webhook Integration V2",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/getAmtReaders": {
+      "post": {
+        "deprecated": true,
+        "description": "Get list of AMT readers to assign cameras",
+        "operationId": "getAmtReadersDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetAmtReadersWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetBadgeIntegrationDoorsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get AMT Readers",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/getApiTokenApplications": {
+      "post": {
+        "deprecated": true,
+        "description": "Get details of all open api token requests for organization",
+        "operationId": "getApiTokenApplicationsDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetApiTokenApplicationsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetApiTokenApplicationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get API Token Applications",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/getApiTokens": {
+      "post": {
+        "deprecated": true,
+        "description": "Get list of all api tokens for organization",
+        "operationId": "getApiTokensDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetApiTokensWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetApiTokensWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get API Tokens",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/getCalendlyEventDetails": {
+      "post": {
+        "deprecated": true,
+        "description": "Get Calendly event details",
+        "operationId": "getCalendlyEventDetailsDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetCalendlyEventDetailsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetCalendlyEventDetailsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Calendly Event Details",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/getDeviceIntegration": {
+      "post": {
+        "deprecated": true,
+        "description": "Get Device integration",
+        "operationId": "getDeviceIntegrationDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetOrgIntegrationsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Device Integration",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/getOpenAIIntegration": {
+      "post": {
+        "deprecated": true,
+        "description": "Get OpenAI integration",
+        "operationId": "getOpenAIIntegrationDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetOrgIntegrationsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get OpenAI Integration",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/getOpenAIModels": {
+      "post": {
+        "deprecated": true,
+        "description": "Get list of OpenAI models",
+        "operationId": "getOpenAIModelsDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetOpenAIModelsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetOpenAIModelsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get OpenAI Models",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/getOrgIntegrations": {
+      "post": {
+        "deprecated": true,
+        "description": "Get details of all third-party integrations for organization",
+        "operationId": "getOrgIntegrationsDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetOrgIntegrationsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Organization Integrations",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/getOrgIntegrationsV2": {
+      "post": {
+        "deprecated": true,
+        "description": "Get details of all V2 third-party integrations for an organization",
+        "operationId": "getOrgIntegrationsV2Dep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetOrgIntegrationsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetAllOrgIntegrationsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Organization Integrations V2",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/getWebhookIntegration": {
+      "post": {
+        "deprecated": true,
+        "description": "Get webhook integration",
+        "operationId": "getWebhookIntegrationDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetOrgIntegrationsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Webhook Integration",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/revokeApiToken": {
+      "post": {
+        "deprecated": true,
+        "description": "Remove an api token from organization. Note: this is irreversible",
+        "operationId": "revokeApiTokenDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_RevokeApiTokenWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_RevokeApiTokenWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Revoke API Token",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/submitApiTokenApplication": {
+      "post": {
+        "deprecated": true,
+        "description": "Request an api token for organization",
+        "operationId": "submitApiTokenApplicationDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_SubmitApiTokenApplicationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_SubmitApiTokenApplicationWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Submit API Token Application",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/subscribeZapierWebhook": {
+      "post": {
+        "deprecated": true,
+        "description": "Setup a Zapier webhook",
+        "operationId": "subscribeZapierWebhookDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_SubscribeZapierWebhookWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_SubscribeZapierWebhookWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Subscribe Zapier Webhook",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/unsubscribeZapierWebhook": {
+      "post": {
+        "deprecated": true,
+        "description": "Delete a Zapier webhook",
+        "operationId": "unsubscribeZapierWebhookDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UnsubscribeZapierWebhookWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Unsubscribe Zapier Webhook",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/updateAmtIntegration": {
+      "post": {
+        "deprecated": true,
+        "description": "Update Amt badge integration",
+        "operationId": "updateAmtIntegrationDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateAmtIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update AMT Integration",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/updateDeviceIntegration": {
+      "post": {
+        "deprecated": true,
+        "description": "Update Device integration",
+        "operationId": "updateDeviceIntegrationDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateDeviceIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Device Integration",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/updateMattermostIntegration": {
+      "post": {
+        "deprecated": true,
+        "description": "Update Mattermost alert integration",
+        "operationId": "updateMattermostIntegrationDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateMattermostIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Mattermost Integration",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/updateNoonlightSettings": {
+      "post": {
+        "deprecated": true,
+        "description": "Update Noonlight integration",
+        "operationId": "updateNoonlightSettings",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateNoonlightSettingsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Noonlight Settings",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/updateOpenAIIntegration": {
+      "post": {
+        "deprecated": true,
+        "description": "Update OpenAI integration",
+        "operationId": "updateOpenAIIntegrationDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateOpenAIIntegrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update OpenAI Integration",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/updateWebhookIntegration": {
+      "post": {
+        "deprecated": true,
+        "description": "Update outbound webhook alert integration",
+        "operationId": "updateWebhookIntegrationDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateWebhookIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Webhook Integration",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/updateWebhookIntegrationV2": {
+      "post": {
+        "deprecated": true,
+        "description": "Update preexisting webhooks",
+        "operationId": "updateWebhookIntegrationV2Dep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateWebhookIntegrationV2WSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateWebhookIntegrationV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Webhook Integration V2",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/validateToken": {
+      "post": {
+        "description": "Verifies an API token is still active",
+        "operationId": "validateTokenDep",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Validate API Token",
+        "tags": [
+          "Integrations Webservice"
+        ]
+      }
+    },
+    "/api/report/getEnvoyDeliveries": {
+      "post": {
+        "description": "Get a list of deliveries from Envoy to populate reporting logs",
+        "operationId": "getEnvoyDeliveries",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetEnvoyDeliveriesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetEnvoyDeliveriesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Envoy deliveries",
+        "tags": [
+          "Integrations Webservice",
+          "Report Webservice"
+        ]
+      }
+    },
+    "/api/report/getEnvoyEmployees": {
+      "post": {
+        "description": "Get a list of employees from Envoy",
+        "operationId": "getEnvoyEmployees",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetEnvoyEmployeesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetEnvoyEmployeesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Envoy employees",
+        "tags": [
+          "Integrations Webservice",
+          "Report Webservice"
+        ]
+      }
+    },
+    "/api/report/getEnvoyLocations": {
+      "post": {
+        "description": "Get list of Envoy locations",
+        "operationId": "getEnvoyLocations",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetEnvoyLocationsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetEnvoyLocationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Envoy locations",
+        "tags": [
+          "Integrations Webservice",
+          "Report Webservice"
+        ]
+      }
+    },
+    "/api/report/getEnvoyVisitors": {
+      "post": {
+        "description": "Get a list of visitors from Envoy to populate reporting logs",
+        "operationId": "getEnvoyVisitors",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetEnvoyVisitorsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetEnvoyVisitorsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Envoy visitors",
+        "tags": [
+          "Integrations Webservice",
+          "Report Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/integrations/deleteAmtIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/deleteDeviceIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/deleteMattermostIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/deleteOpenAIIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/deleteWebhookIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/deleteWebhookIntegrationV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/getAmtReaders",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/getApiTokenApplications",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/getApiTokens",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/getCalendlyEventDetails",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/getDeviceIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/getOpenAIIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/getOpenAIModels",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/getOrgIntegrations",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/getOrgIntegrationsV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/getWebhookIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/revokeApiToken",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/submitApiTokenApplication",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/subscribeZapierWebhook",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/unsubscribeZapierWebhook",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/updateAmtIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/updateDeviceIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/updateMattermostIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/updateNoonlightSettings",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/updateOpenAIIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/updateWebhookIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/updateWebhookIntegrationV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/validateToken",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/report/getEnvoyDeliveries",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/report/getEnvoyEmployees",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/report/getEnvoyLocations",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/report/getEnvoyVisitors",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 32,
+  "referencedSchemas": [
+    "BaseApiResponse",
+    "Integration_BaseIntegrationWSRequest",
+    "Integration_GetAllOrgIntegrationsV2WSResponse",
+    "Integration_GetAmtReadersWSRequest",
+    "Integration_GetApiTokenApplicationsWSRequest",
+    "Integration_GetApiTokenApplicationsWSResponse",
+    "Integration_GetApiTokensWSRequest",
+    "Integration_GetApiTokensWSResponse",
+    "Integration_GetBadgeIntegrationDoorsWSResponse",
+    "Integration_GetCalendlyEventDetailsWSRequest",
+    "Integration_GetCalendlyEventDetailsWSResponse",
+    "Integration_GetEnvoyDeliveriesWSRequest",
+    "Integration_GetEnvoyDeliveriesWSResponse",
+    "Integration_GetEnvoyEmployeesWSRequest",
+    "Integration_GetEnvoyEmployeesWSResponse",
+    "Integration_GetEnvoyLocationsWSRequest",
+    "Integration_GetEnvoyLocationsWSResponse",
+    "Integration_GetEnvoyVisitorsWSRequest",
+    "Integration_GetEnvoyVisitorsWSResponse",
+    "Integration_GetOpenAIModelsWSRequest",
+    "Integration_GetOpenAIModelsWSResponse",
+    "Integration_GetOrgIntegrationsV2WSResponse",
+    "Integration_GetOrgIntegrationsWSRequest",
+    "Integration_GetOrgIntegrationsWSResponse",
+    "Integration_RevokeApiTokenWSRequest",
+    "Integration_RevokeApiTokenWSResponse",
+    "Integration_SubmitApiTokenApplicationWSRequest",
+    "Integration_SubmitApiTokenApplicationWSResponse",
+    "Integration_SubscribeZapierWebhookWSRequest",
+    "Integration_SubscribeZapierWebhookWSResponse",
+    "Integration_UnsubscribeZapierWebhookWSRequest",
+    "Integration_UpdateAmtIntegrationWSRequest",
+    "Integration_UpdateDeviceIntegrationWSRequest",
+    "Integration_UpdateMattermostIntegrationWSRequest",
+    "Integration_UpdateNoonlightSettingsWSRequest",
+    "Integration_UpdateOpenAIIntegrationRequest",
+    "Integration_UpdateOrgIntegrationsWSResponse",
+    "Integration_UpdateWebhookIntegrationV2WSRequest",
+    "Integration_UpdateWebhookIntegrationV2WSResponse",
+    "Integration_UpdateWebhookIntegrationWSRequest"
+  ]
+}

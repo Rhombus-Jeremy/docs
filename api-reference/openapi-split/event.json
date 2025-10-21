@@ -1,0 +1,1862 @@
+{
+  "tag": "Event Webservice",
+  "description": "API endpoints for Event Webservice",
+  "paths": {
+    "/api/event/createSharedClipGroupV3": {
+      "post": {
+        "description": "Share multiple clips in a single page",
+        "operationId": "createSharedClipGroupV3",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_CreateSharedClipGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_CreateSharedClipGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Share multiple clips in a single page",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/deleteAlertMonitoringThreatCase": {
+      "post": {
+        "description": "Delete alert monitoring threat case",
+        "operationId": "deleteAlertMonitoringThreatCase",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_DeleteAlertMonitoringThreatCaseWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_DeleteAlertMonitoringThreatCaseWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete alert monitoring threat case",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/deleteAlertMonitoringThreatCaseByStatus": {
+      "post": {
+        "description": "Delete alert monitoring threat case by status",
+        "operationId": "deleteAlertMonitoringThreatCaseByStatus",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_DeleteAlertMonitoringThreatCaseByStatusWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_DeleteAlertMonitoringThreatCaseByStatusWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete alert monitoring threat case by status",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/deleteSavedClip": {
+      "post": {
+        "description": "Delete all types of saved clips (splices in progress, completed splices, saved alerts)",
+        "operationId": "deleteSavedClip",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_DeleteSavedClipWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_DeleteSavedClipWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete all types of saved clips (splices in progress, completed splices, saved alerts)",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/deleteSharedClipGroupV2": {
+      "post": {
+        "description": "Delete a shared clip page",
+        "operationId": "deleteSharedClipGroupV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_DeleteSharedClipGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_DeleteSharedClipGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete a shared clip page",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/dismissAllPolicyAlertsForDevice": {
+      "post": {
+        "description": "Dismiss all policy alerts for each specified device(s)",
+        "operationId": "dismissAllPolicyAlertsForDevice",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_DismissAllPolicyAlertsForDeviceWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_DismissAllPolicyAlertsForDeviceWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Dismiss all policy alerts for each specified device(s)",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/dismissAllPolicyAlertsV2": {
+      "post": {
+        "description": "Dismiss all policy alerts in organization",
+        "operationId": "dismissAllPolicyAlertsV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_DismissAllPolicyAlertsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_DismissAllPolicyAlertsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Dismiss all policy alerts in organization",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/dismissPolicyAlertV2": {
+      "post": {
+        "description": "Dismiss a policy alert",
+        "operationId": "dismissPolicyAlertV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_DismissPolicyAlertWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_DismissPolicyAlertWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Dismiss a policy alert",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/dismissPolicyAlertsV2": {
+      "post": {
+        "description": "Dismiss multiple policy alerts",
+        "operationId": "dismissPolicyAlertsV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_DismissPolicyAlertsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_DismissPolicyAlertsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Dismiss multiple policy alerts",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getAlertMonitoringThreatCase": {
+      "post": {
+        "description": "Get alert monitoring threat case",
+        "operationId": "getAlertMonitoringThreatCase",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetAlertMonitoringThreatCaseWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetAlertMonitoringThreatCaseWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get alert monitoring threat case",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getAlertMonitoringThreatCases": {
+      "post": {
+        "description": "Get alert monitoring threat cases",
+        "operationId": "getAlertMonitoringThreatCases",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetAlertMonitoringThreatCasesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetAlertMonitoringThreatCasesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get alert monitoring threat cases",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getClipWithProgress": {
+      "post": {
+        "description": "Get a specified saved clip with current progress",
+        "operationId": "getClipWithProgress",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetClipWithProgressWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetClipWithProgressWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get a specified saved clip with current progress",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getClipsWithProgress": {
+      "post": {
+        "description": "Get list of saved clips in organization, with current progress",
+        "operationId": "getClipsWithProgress",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetClipsWithProgressWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetClipsWithProgressWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get list of saved clips in organization, with current progress",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getExpiringClipsForOrg": {
+      "post": {
+        "description": "Get list of expiring saved clips in organization.",
+        "operationId": "getExpiringClipsForOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetClipsWithProgressWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetClipsWithProgressWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get list of expiring saved clips in organization",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getMotionGrid": {
+      "post": {
+        "description": "Get motion data for specified camera",
+        "operationId": "getMotionGrid",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetMotionGridWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetMotionGridWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get motion data for specified camera",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getMotionHeatMap": {
+      "post": {
+        "description": "Get aggregated motion heatmap for specified time period and camera. Divides a camera's resolution into a 36x64 grid and counts the number of motion events that occurred in each cell.",
+        "operationId": "getMotionHeatMap",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetMotionGridWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetMotionGridCountsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get aggregated motion heatmap for specified time period and camera",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getPolicyAlert": {
+      "post": {
+        "description": "Get information about a policy alert",
+        "operationId": "getPolicyAlert",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetPolicyAlertWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetPolicyAlertWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get information about a policy alert",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getPolicyAlertCount": {
+      "post": {
+        "description": "Get count of policy alerts",
+        "operationId": "getPolicyAlertCount",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetPolicyAlertCountWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetPolicyAlertCountWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get count of policy alerts",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getPolicyAlertDetails": {
+      "post": {
+        "description": "Get detailed information about policy alert, including seekpoints and bounding boxes",
+        "operationId": "getPolicyAlertDetails",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetPolicyAlertDetailsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetPolicyAlertDetailsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get detailed information about policy alert, including seekpoints and bounding boxes",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getPolicyAlertGroupsForDevice": {
+      "post": {
+        "description": "Get recent policy alerts for device, grouped by time. Groups are constructed of alerts that occur within 2 minutes of the previous alert, up to a maximum of 50. Results are returned in reverse-chronological order, so all fields are relative to that ordering.",
+        "operationId": "getPolicyAlertGroupsForDevice",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetPolicyAlertGroupsForDeviceWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetPolicyAlertGroupsForDeviceWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get recent policy alerts for device, grouped by time",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getPolicyAlertGroupsForLocation": {
+      "post": {
+        "description": "Get recent policy alerts for a location, grouped by time. Groups are constructed of alerts that occur within 2 minutes of the previous alert, up to a maximum of 50. Results are returned in reverse-chronological order, so all fields are relative to that ordering.",
+        "operationId": "getPolicyAlertGroupsForLocation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetPolicyAlertGroupsForLocationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetPolicyAlertGroupsForLocationWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get recent policy alerts for a location, grouped by time",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getPolicyAlertGroupsV2": {
+      "post": {
+        "deprecated": true,
+        "description": "Get recent policy alerts for organization, grouped by time. Groups are constructed of alerts that occur within 2 minutes of the previous alert, up to a maximum of 50. Results are returned in reverse-chronological order, so all fields are relative to that ordering.",
+        "operationId": "getPolicyAlertGroupsV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetPolicyAlertGroupsV2WSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetPolicyAlertGroupsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get recent policy alerts for organization, grouped by time",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getPolicyAlertV2": {
+      "post": {
+        "deprecated": true,
+        "description": "Get information about a policy alert",
+        "operationId": "getPolicyAlertV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetPolicyAlertV2WSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetPolicyAlertV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get information about a policy alert",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getPolicyAlerts": {
+      "post": {
+        "description": "Get recent policy alerts for organization",
+        "operationId": "getPolicyAlerts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetPolicyAlertsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetPolicyAlertsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get recent policy alerts for organization",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getPolicyAlertsV2": {
+      "post": {
+        "deprecated": true,
+        "description": "Get recent policy alerts for organization",
+        "operationId": "getPolicyAlertsV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetPolicyAlertsV2WSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetPolicyAlertsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get recent policy alerts for organization",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getSavedClipCount": {
+      "post": {
+        "description": "Get a count of saved clips in and organization",
+        "operationId": "getSavedClipCount",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetSavedClipCountWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetSavedClipCountWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get a count of saved clips in an organization",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getSavedClipDetails": {
+      "post": {
+        "description": "Get detailed information about a saved clip, including seekpoints and bounding boxes",
+        "operationId": "getSavedClipDetails",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetSavedClipDetailsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetSavedClipDetailsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get detailed information about a saved clip, including seekpoints and bounding boxes",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getSavedClips": {
+      "post": {
+        "deprecated": true,
+        "description": "Use /getSavedClipsV2 instead",
+        "operationId": "getSavedClips",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetSavedClipsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetSavedClipsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Use /getSavedClipsV2 instead",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getSavedClipsByExternalTransactionId": {
+      "post": {
+        "description": "Get list of saved clips matching the external transaction id",
+        "operationId": "getSavedClipsByExternalTransactionId",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetSavedClipsByExternalTransactionIdWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetSavedClipsByExternalTransactionIdWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get list of saved clips matching the external transaction id",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getSavedClipsV2": {
+      "post": {
+        "description": "Get list of saved clips in organization",
+        "operationId": "getSavedClipsV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetSavedClipsV2WSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetSavedClipsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get list of saved clips in organization",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getSharedClipGroupDetails": {
+      "post": {
+        "description": "Get detailed information about a shared clip page, including seekpoints and bounding boxes",
+        "operationId": "getSharedClipGroupDetails",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetSharedClipGroupDetailsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetSharedClipGroupDetailsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get detailed information about a shared clip page, including seekpoints and bounding boxes",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getSharedClipGroupsV2": {
+      "post": {
+        "description": "Get list of shared clip pages in organization",
+        "operationId": "getSharedClipGroupsV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetSharedClipGroupsV2WSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetSharedClipGroupsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get list of shared clip pages in organization",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getSplicedClipsInProgress": {
+      "post": {
+        "deprecated": true,
+        "description": "Get spliced clips in progress",
+        "operationId": "DEPRECATED_getSplicedClipsInProgress",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetSplicedClipsInProgressWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetSplicedClipsInProgressWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get spliced clips in progress",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/getUnhealthyDeviceAlerts": {
+      "post": {
+        "description": "Get list of unhealthy devices in organization",
+        "operationId": "getUnhealthyDeviceAlerts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_GetUnhealthyDeviceAlertsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_GetUnhealthyDeviceAlertsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get list of unhealthy devices in organization",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/muteNotificationsForDevice": {
+      "post": {
+        "description": "Mute notifications from a device for specified number of seconds",
+        "operationId": "muteNotificationsForDevice",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_MuteNotificationsForDevicetWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_MuteNotificationsForDevicetWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Mute notifications from a device for specified number of seconds",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/reportBadPolicyAlert": {
+      "post": {
+        "description": "Report a bad policy event (AI false positive) and send information for feedback. Note: this adds the clip to our AI training data set",
+        "operationId": "reportBadPolicyAlert",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_ReportBadPolicyAlertWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_ReportBadPolicyAlertWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Report a bad policy event (AI false positive) and send information for feedback",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/savePolicyAlertV2": {
+      "post": {
+        "description": "Save a policy alert as a saved clip",
+        "operationId": "savePolicyAlertV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_SavePolicyAlertWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_SavePolicyAlertWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Save a policy alert as a saved clip",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/searchMotionGrid": {
+      "post": {
+        "description": "Search motion grid for motion events occuring in specified grid cells. Note: motion grid is a 64x36 grid of cells with the upper left hand corner being (0, 0)",
+        "operationId": "searchMotionGrid",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_SearchMotionGridWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_SearchMotionGridWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Search motion grid for motion events occuring in specified grid cells",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/searchMotionGridWithActivities": {
+      "post": {
+        "description": "Search motion grid for motion events occuring in specified grid cells. Note: motion grid is a 64x36 grid of cells with the upper left hand corner being (0, 0)",
+        "operationId": "searchMotionGridWithActivities",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_SearchMotionGridWithActivitiesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_SearchMotionGridWithActivitiesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Search motion grid for motion events occuring in specified grid cells",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/unSavePolicyAlertV2": {
+      "post": {
+        "deprecated": true,
+        "description": "Unsave policy alert and remove associated saved clip",
+        "operationId": "unSavePolicyAlertV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_UnSavePolicyAlertWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_UnSavePolicyAlertWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Unsave policy alert and remove associated saved clip",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/updateSavedClip": {
+      "post": {
+        "description": "Selectively updates a saved clip",
+        "operationId": "updateSavedClip",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_UpdateSavedClipWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_UpdateSavedClipWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Selectively update a saved clip",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    },
+    "/api/event/updateSharedClipGroupV2": {
+      "post": {
+        "description": "Update shared clip page title, description, password, or expiration time",
+        "operationId": "updateSharedClipGroupV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event_UpdateSharedClipGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event_UpdateSharedClipGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update shared clip page title, description, password, or expiration time",
+        "tags": [
+          "Event Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/event/createSharedClipGroupV3",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/deleteAlertMonitoringThreatCase",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/deleteAlertMonitoringThreatCaseByStatus",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/deleteSavedClip",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/deleteSharedClipGroupV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/dismissAllPolicyAlertsForDevice",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/dismissAllPolicyAlertsV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/dismissPolicyAlertV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/dismissPolicyAlertsV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getAlertMonitoringThreatCase",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getAlertMonitoringThreatCases",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getClipWithProgress",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getClipsWithProgress",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getExpiringClipsForOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getMotionGrid",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getMotionHeatMap",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getPolicyAlert",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getPolicyAlertCount",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getPolicyAlertDetails",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getPolicyAlertGroupsForDevice",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getPolicyAlertGroupsForLocation",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getPolicyAlertGroupsV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getPolicyAlertV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getPolicyAlerts",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getPolicyAlertsV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getSavedClipCount",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getSavedClipDetails",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getSavedClips",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getSavedClipsByExternalTransactionId",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getSavedClipsV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getSharedClipGroupDetails",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getSharedClipGroupsV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getSplicedClipsInProgress",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/getUnhealthyDeviceAlerts",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/muteNotificationsForDevice",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/reportBadPolicyAlert",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/savePolicyAlertV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/searchMotionGrid",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/searchMotionGridWithActivities",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/unSavePolicyAlertV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/updateSavedClip",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/event/updateSharedClipGroupV2",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 42,
+  "referencedSchemas": [
+    "Event_CreateSharedClipGroupWSRequest",
+    "Event_CreateSharedClipGroupWSResponse",
+    "Event_DeleteAlertMonitoringThreatCaseByStatusWSRequest",
+    "Event_DeleteAlertMonitoringThreatCaseByStatusWSResponse",
+    "Event_DeleteAlertMonitoringThreatCaseWSRequest",
+    "Event_DeleteAlertMonitoringThreatCaseWSResponse",
+    "Event_DeleteSavedClipWSRequest",
+    "Event_DeleteSavedClipWSResponse",
+    "Event_DeleteSharedClipGroupWSRequest",
+    "Event_DeleteSharedClipGroupWSResponse",
+    "Event_DismissAllPolicyAlertsForDeviceWSRequest",
+    "Event_DismissAllPolicyAlertsForDeviceWSResponse",
+    "Event_DismissAllPolicyAlertsWSRequest",
+    "Event_DismissAllPolicyAlertsWSResponse",
+    "Event_DismissPolicyAlertWSRequest",
+    "Event_DismissPolicyAlertWSResponse",
+    "Event_DismissPolicyAlertsWSRequest",
+    "Event_DismissPolicyAlertsWSResponse",
+    "Event_GetAlertMonitoringThreatCaseWSRequest",
+    "Event_GetAlertMonitoringThreatCaseWSResponse",
+    "Event_GetAlertMonitoringThreatCasesWSRequest",
+    "Event_GetAlertMonitoringThreatCasesWSResponse",
+    "Event_GetClipWithProgressWSRequest",
+    "Event_GetClipWithProgressWSResponse",
+    "Event_GetClipsWithProgressWSRequest",
+    "Event_GetClipsWithProgressWSResponse",
+    "Event_GetMotionGridCountsWSResponse",
+    "Event_GetMotionGridWSRequest",
+    "Event_GetMotionGridWSResponse",
+    "Event_GetPolicyAlertCountWSRequest",
+    "Event_GetPolicyAlertCountWSResponse",
+    "Event_GetPolicyAlertDetailsWSRequest",
+    "Event_GetPolicyAlertDetailsWSResponse",
+    "Event_GetPolicyAlertGroupsForDeviceWSRequest",
+    "Event_GetPolicyAlertGroupsForDeviceWSResponse",
+    "Event_GetPolicyAlertGroupsForLocationWSRequest",
+    "Event_GetPolicyAlertGroupsForLocationWSResponse",
+    "Event_GetPolicyAlertGroupsV2WSRequest",
+    "Event_GetPolicyAlertGroupsV2WSResponse",
+    "Event_GetPolicyAlertV2WSRequest",
+    "Event_GetPolicyAlertV2WSResponse",
+    "Event_GetPolicyAlertWSRequest",
+    "Event_GetPolicyAlertWSResponse",
+    "Event_GetPolicyAlertsV2WSRequest",
+    "Event_GetPolicyAlertsV2WSResponse",
+    "Event_GetPolicyAlertsWSRequest",
+    "Event_GetPolicyAlertsWSResponse",
+    "Event_GetSavedClipCountWSRequest",
+    "Event_GetSavedClipCountWSResponse",
+    "Event_GetSavedClipDetailsWSRequest",
+    "Event_GetSavedClipDetailsWSResponse",
+    "Event_GetSavedClipsByExternalTransactionIdWSRequest",
+    "Event_GetSavedClipsByExternalTransactionIdWSResponse",
+    "Event_GetSavedClipsV2WSRequest",
+    "Event_GetSavedClipsV2WSResponse",
+    "Event_GetSavedClipsWSRequest",
+    "Event_GetSavedClipsWSResponse",
+    "Event_GetSharedClipGroupDetailsWSRequest",
+    "Event_GetSharedClipGroupDetailsWSResponse",
+    "Event_GetSharedClipGroupsV2WSRequest",
+    "Event_GetSharedClipGroupsV2WSResponse",
+    "Event_GetSplicedClipsInProgressWSRequest",
+    "Event_GetSplicedClipsInProgressWSResponse",
+    "Event_GetUnhealthyDeviceAlertsWSRequest",
+    "Event_GetUnhealthyDeviceAlertsWSResponse",
+    "Event_MuteNotificationsForDevicetWSRequest",
+    "Event_MuteNotificationsForDevicetWSResponse",
+    "Event_ReportBadPolicyAlertWSRequest",
+    "Event_ReportBadPolicyAlertWSResponse",
+    "Event_SavePolicyAlertWSRequest",
+    "Event_SavePolicyAlertWSResponse",
+    "Event_SearchMotionGridWSRequest",
+    "Event_SearchMotionGridWSResponse",
+    "Event_SearchMotionGridWithActivitiesWSRequest",
+    "Event_SearchMotionGridWithActivitiesWSResponse",
+    "Event_UnSavePolicyAlertWSRequest",
+    "Event_UnSavePolicyAlertWSResponse",
+    "Event_UpdateSavedClipWSRequest",
+    "Event_UpdateSavedClipWSResponse",
+    "Event_UpdateSharedClipGroupWSRequest",
+    "Event_UpdateSharedClipGroupWSResponse"
+  ]
+}

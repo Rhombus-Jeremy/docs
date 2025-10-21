@@ -1,0 +1,701 @@
+{
+  "tag": "Export Webservice",
+  "description": "API endpoints for Export Webservice",
+  "paths": {
+    "/api/export/audit": {
+      "post": {
+        "description": "Download audit log",
+        "operationId": "exportAudit",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Export_ExportAuditEventsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download audit log",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    },
+    "/api/export/climateEvents": {
+      "post": {
+        "description": "Download climate event log",
+        "operationId": "exportClimateEvents",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Export_ExportClimateEventsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download climate event log",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    },
+    "/api/export/countReports": {
+      "post": {
+        "description": "Download count report",
+        "operationId": "exportCountReports",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Export_ExportCountReportsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download count report",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    },
+    "/api/export/diagnostic": {
+      "post": {
+        "description": "Download diagnostic log",
+        "operationId": "exportDiagnostic",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Export_ExportDiagnosticEventsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download diagnostic log",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    },
+    "/api/export/doorEvents": {
+      "post": {
+        "description": "Download door event log",
+        "operationId": "exportDoorEvents",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Export_ExportDoorEventsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download door event log",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    },
+    "/api/export/environmentalGatewayEvents": {
+      "post": {
+        "description": "Download environmental gateway event log",
+        "operationId": "exportEnvironmentalGatewayEvents",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Export_ExportEnvironmentalGatewayEventsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download environmental gateway event log",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    },
+    "/api/export/inventory": {
+      "post": {
+        "description": "Download device inventory",
+        "operationId": "exportInventory",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Export_ExportInventoryWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download device inventory",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    },
+    "/api/export/motionEvents": {
+      "post": {
+        "description": "Download motion event log for motion sensors",
+        "operationId": "exportMotionEvents",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Export_ExportMotionEventsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download motion event log for motion sensors",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    },
+    "/api/export/peopleCountEvents": {
+      "post": {
+        "description": "Download people count report",
+        "operationId": "exportPeopleCountEvents",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Export_ExportPeopleCountEventsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download people count report",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    },
+    "/api/export/peopleEvents": {
+      "post": {
+        "description": "Download people event log",
+        "operationId": "exportPeopleEvents",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Export_ExportPeopleEventsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download people event log",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    },
+    "/api/export/proximityEvents": {
+      "post": {
+        "description": "Download proximity tag event log",
+        "operationId": "exportProximityEvents",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Export_ExportProximityEventsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download proximity tag event log",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    },
+    "/api/export/proximityLocomotionEvents": {
+      "post": {
+        "description": "Download proximity tag event log",
+        "operationId": "exportProximityLocomotionEvents",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Export_ExportProximityLocomotionEventsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download proximity tag event log",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    },
+    "/api/export/uptime": {
+      "post": {
+        "description": "Download device uptime reports",
+        "operationId": "exportUptime",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Export_ExportUptimeWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/zip": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download device uptime reports",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    },
+    "/api/export/users": {
+      "post": {
+        "description": "Download org users",
+        "operationId": "exportUsers",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Export_ExportUsersWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download org users",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    },
+    "/api/export/vehicleEvents": {
+      "post": {
+        "deprecated": true,
+        "description": "Download vehicle event log.  Use /export/vehicleEventsV2 instead for more functionality",
+        "operationId": "exportVehicleEvents",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Export_ExportVehicleEventsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download vehicle event log",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    },
+    "/api/export/vehicleEventsV2": {
+      "post": {
+        "description": "Download vehicle event log",
+        "operationId": "exportVehicleEventsV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Vehicle_GetVehicleEventsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv; charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamingOutput"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Download vehicle event log",
+        "tags": [
+          "Export Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/export/audit",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/export/climateEvents",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/export/countReports",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/export/diagnostic",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/export/doorEvents",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/export/environmentalGatewayEvents",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/export/inventory",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/export/motionEvents",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/export/peopleCountEvents",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/export/peopleEvents",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/export/proximityEvents",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/export/proximityLocomotionEvents",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/export/uptime",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/export/users",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/export/vehicleEvents",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/export/vehicleEventsV2",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 16,
+  "referencedSchemas": [
+    "Export_ExportAuditEventsWSRequest",
+    "Export_ExportClimateEventsWSRequest",
+    "Export_ExportCountReportsWSRequest",
+    "Export_ExportDiagnosticEventsWSRequest",
+    "Export_ExportDoorEventsWSRequest",
+    "Export_ExportEnvironmentalGatewayEventsWSRequest",
+    "Export_ExportInventoryWSRequest",
+    "Export_ExportMotionEventsWSRequest",
+    "Export_ExportPeopleCountEventsWSRequest",
+    "Export_ExportPeopleEventsWSRequest",
+    "Export_ExportProximityEventsWSRequest",
+    "Export_ExportProximityLocomotionEventsWSRequest",
+    "Export_ExportUptimeWSRequest",
+    "Export_ExportUsersWSRequest",
+    "Export_ExportVehicleEventsWSRequest",
+    "StreamingOutput",
+    "Vehicle_GetVehicleEventsWSRequest"
+  ]
+}

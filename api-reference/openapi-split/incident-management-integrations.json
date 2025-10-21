@@ -1,0 +1,1459 @@
+{
+  "tag": "Incident Management Integrations Webservice",
+  "description": "API endpoints for Incident Management Integrations Webservice",
+  "paths": {
+    "/api/integrations/incidentManagement/deleteDiceIntegration": {
+      "post": {
+        "description": "Delete Dice integration",
+        "operationId": "deleteDiceIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete Dice Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/deleteEmailIntegration": {
+      "post": {
+        "description": "Delete email alert integration",
+        "operationId": "deleteEmailIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete Email Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/deleteInformacastIntegration": {
+      "post": {
+        "description": "Delete Informacast integration",
+        "operationId": "deleteInformacastIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete Informacast Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/deleteLumeoIntegration": {
+      "post": {
+        "description": "Delete Lumeo integration",
+        "operationId": "deleteLumeoIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete Lumeo Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/deleteMattermostIntegration": {
+      "post": {
+        "description": "Delete Mattermost alert integration",
+        "operationId": "deleteMattermostIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete Mattermost Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/deleteMicrosoftTeamsIntegrationV2": {
+      "post": {
+        "description": "Delete Microsoft Teams alert integration",
+        "operationId": "deleteMicrosoftTeamsIntegrationV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete Microsoft Teams Integration V2",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/deleteMicrosoftTeamsUser": {
+      "post": {
+        "description": "Remove configurations for Microsoft Teams user",
+        "operationId": "deleteMicrosoftTeamsUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete Microsoft Teams User",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/deleteOpenAIIntegration": {
+      "post": {
+        "description": "Delete OpenAI integration",
+        "operationId": "deleteOpenAIIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete OpenAI Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/deletePagerDutyIntegration": {
+      "post": {
+        "description": "Delete PagerDuty alert integration",
+        "operationId": "deletePagerDutyIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete PagerDuty Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/deleteServiceNowIntegration": {
+      "post": {
+        "description": "Delete ServiceNow alert integration",
+        "operationId": "deleteServiceNowIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete ServiceNow Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/deleteSlackIntegrationV2": {
+      "post": {
+        "description": "Delete Slack alert integration v2",
+        "operationId": "deleteSlackIntegrationV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete Slack Integration V2",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/getDiceIntegration": {
+      "post": {
+        "description": "Get Dice integration",
+        "operationId": "getDiceIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetOrgIntegrationsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Dice Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/getInformacastIntegration": {
+      "post": {
+        "description": "Get Informacast integration",
+        "operationId": "getInformacastIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetOrgIntegrationsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Informacast Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/getInformacastScenarios": {
+      "post": {
+        "description": "Get Informacast scenarios",
+        "operationId": "getInformacastScenarios",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetInformacastScenariosWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Informacast Scenarios",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/getLumeoIntegration": {
+      "post": {
+        "description": "Get Lumeo integration",
+        "operationId": "getLumeoIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetOrgIntegrationsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Lumeo Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/getMicrosoftTeamsIntegration": {
+      "post": {
+        "description": "Get Microsoft Teams alert integration",
+        "operationId": "getMicrosoftTeamsIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetOrgIntegrationsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Microsoft Teams Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/getMicrosoftUsersJoinedTeams": {
+      "post": {
+        "description": "Get a list of teams a Microsoft Teams user joined",
+        "operationId": "getMicrosoftUsersJoinedTeams",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetMicrosoftUsersJoinedTeamsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Microsoft Users Joined Teams",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/getOpenAIIntegration": {
+      "post": {
+        "description": "Get OpenAI integration",
+        "operationId": "getOpenAIIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetOrgIntegrationsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get OpenAI Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/getOpenAIModels": {
+      "post": {
+        "description": "Get list of OpenAI models",
+        "operationId": "getOpenAIModels",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetOpenAIModelsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetOpenAIModelsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get OpenAI Models",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/installMicrosoftTeamsBotForTeam": {
+      "post": {
+        "description": "Install notification bot for Microsoft Teams team",
+        "operationId": "installMicrosoftTeamsBotForTeam",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateMicrosoftTeamsBotForTeamWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Install Microsoft Teams Bot For Team",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/installMicrosoftTeamsBotForUser": {
+      "post": {
+        "description": "Install notification bot for Microsoft Teams user",
+        "operationId": "installMicrosoftTeamsBotForUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Install Microsoft Teams Bot For User",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/uninstallMicrosoftTeamsBotForTeam": {
+      "post": {
+        "description": "Uninstall notification bot for Microsoft Teams team",
+        "operationId": "uninstallMicrosoftTeamsBotForTeam",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateMicrosoftTeamsBotForTeamWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Uninstall Microsoft Teams Bot For Team",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/uninstallMicrosoftTeamsBotForUser": {
+      "post": {
+        "description": "Uninstall notification bot for Microsoft Teams user",
+        "operationId": "uninstallMicrosoftTeamsBotForUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Uninstall Microsoft Teams Bot For User",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/updateDiceIntegration": {
+      "post": {
+        "description": "Update Dice integration",
+        "operationId": "updateDiceIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateDiceIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Dice Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/updateEmailIntegration": {
+      "post": {
+        "description": "Update email alert integration",
+        "operationId": "updateEmailIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateEmailIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Email Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/updateInformacastIntegration": {
+      "post": {
+        "description": "Update Informacast rules engine integration",
+        "operationId": "updateInformacastIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateInformacastIntegrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Informacast Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/updateLumeoIntegration": {
+      "post": {
+        "description": "Update Lumeo integration",
+        "operationId": "updateLumeoIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateLumeoIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Lumeo Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/updateMattermostIntegration": {
+      "post": {
+        "description": "Update Mattermost alert integration",
+        "operationId": "updateMattermostIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateMattermostIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Mattermost Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/updateMicrosoftTeamsIntegrationV2": {
+      "post": {
+        "description": "Update Microsoft Teams alert integration",
+        "operationId": "updateMicrosoftTeamsIntegrationV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateMicrosoftTeamsIntegrationV2WSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Microsoft Teams Integration V2",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/updateOpenAIIntegration": {
+      "post": {
+        "description": "Update OpenAI integration",
+        "operationId": "updateOpenAIIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateOpenAIIntegrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update OpenAI Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/updatePagerDutyIntegration": {
+      "post": {
+        "description": "Update PagerDuty alert integration",
+        "operationId": "updatePagerDutyIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdatePagerDutyIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update PagerDuty Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/updateServiceNowIntegration": {
+      "post": {
+        "description": "Update ServiceNow alert integration",
+        "operationId": "updateServiceNowIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateServiceNowIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update ServiceNow Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/updateSlackIntegration": {
+      "post": {
+        "description": "Update Slack alert integration",
+        "operationId": "updateSlackIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateSlackIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Slack Integration",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/incidentManagement/updateSlackIntegrationV2": {
+      "post": {
+        "description": "Update Slack alert integration v2",
+        "operationId": "updateSlackIntegrationV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateSlackIntegrationV2WSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Slack Integration V2",
+        "tags": [
+          "Incident Management Integrations Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/integrations/incidentManagement/deleteDiceIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/deleteEmailIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/deleteInformacastIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/deleteLumeoIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/deleteMattermostIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/deleteMicrosoftTeamsIntegrationV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/deleteMicrosoftTeamsUser",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/deleteOpenAIIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/deletePagerDutyIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/deleteServiceNowIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/deleteSlackIntegrationV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/getDiceIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/getInformacastIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/getInformacastScenarios",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/getLumeoIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/getMicrosoftTeamsIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/getMicrosoftUsersJoinedTeams",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/getOpenAIIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/getOpenAIModels",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/installMicrosoftTeamsBotForTeam",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/installMicrosoftTeamsBotForUser",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/uninstallMicrosoftTeamsBotForTeam",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/uninstallMicrosoftTeamsBotForUser",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/updateDiceIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/updateEmailIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/updateInformacastIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/updateLumeoIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/updateMattermostIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/updateMicrosoftTeamsIntegrationV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/updateOpenAIIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/updatePagerDutyIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/updateServiceNowIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/updateSlackIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/incidentManagement/updateSlackIntegrationV2",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 34,
+  "referencedSchemas": [
+    "BaseApiResponse",
+    "Integration_BaseIntegrationWSRequest",
+    "Integration_GetInformacastScenariosWSResponse",
+    "Integration_GetMicrosoftUsersJoinedTeamsWSResponse",
+    "Integration_GetOpenAIModelsWSRequest",
+    "Integration_GetOpenAIModelsWSResponse",
+    "Integration_GetOrgIntegrationsV2WSResponse",
+    "Integration_UpdateDiceIntegrationWSRequest",
+    "Integration_UpdateEmailIntegrationWSRequest",
+    "Integration_UpdateInformacastIntegrationRequest",
+    "Integration_UpdateLumeoIntegrationWSRequest",
+    "Integration_UpdateMattermostIntegrationWSRequest",
+    "Integration_UpdateMicrosoftTeamsBotForTeamWSRequest",
+    "Integration_UpdateMicrosoftTeamsIntegrationV2WSRequest",
+    "Integration_UpdateOpenAIIntegrationRequest",
+    "Integration_UpdateOrgIntegrationsWSResponse",
+    "Integration_UpdatePagerDutyIntegrationWSRequest",
+    "Integration_UpdateServiceNowIntegrationWSRequest",
+    "Integration_UpdateSlackIntegrationV2WSRequest",
+    "Integration_UpdateSlackIntegrationWSRequest"
+  ]
+}

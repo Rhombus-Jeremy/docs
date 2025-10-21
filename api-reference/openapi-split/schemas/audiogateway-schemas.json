@@ -1,0 +1,645 @@
+{
+  "tag": "AudioGateway Webservice",
+  "schemas": {
+    "Audiogateway_DeleteAudioGatewayWSRequest": {
+      "type": "object",
+      "description": "Request to remove an audio gateway from organization.",
+      "properties": {
+        "gatewayUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "mummify": {
+          "type": "boolean",
+          "description": "Indicates whether to mummify the audio gateway",
+          "example": false,
+          "nullable": true
+        }
+      }
+    },
+    "Audiogateway_DeleteAudioGatewayWSResponse": {
+      "type": "object",
+      "description": "Response indicating the result of deleting an audio gateway.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "responseStatus": {
+          "type": "string",
+          "description": "Status of the delete operation",
+          "enum": [
+            "BASIC_AUTH_FAILED",
+            "PASSWORD_MISMATCH",
+            "SAME_PASSWORD",
+            "USER_EXISTS",
+            "USER_NOT_FOUND",
+            "DEVICE_NOT_FOUND",
+            "POLICY_NOT_FOUND",
+            "LOCATION_NOT_FOUND",
+            "ORG_NOT_FOUND",
+            "BAD_INPUT",
+            "SUCCESS",
+            "PASSWORD_TOO_SHORT"
+          ],
+          "nullable": true
+        }
+      }
+    },
+    "Audiogateway_GetAudioGatewayConfigWSRequest": {
+      "type": "object",
+      "description": "Request to get configuration for an audio gateway.",
+      "properties": {
+        "audioGatewayUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Audiogateway_GetAudioGatewayConfigWSResponse": {
+      "type": "object",
+      "description": "Response containing configuration for an audio gateway.",
+      "properties": {
+        "config": {
+          "$ref": "#/components/schemas/IAudioUserConfig"
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Audiogateway_GetAudioSeekpointsWSRequest": {
+      "type": "object",
+      "description": "Request to get audio seek points for an audio gateway.",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "format": "DeviceFacetUuid",
+          "description": "RUUID with optional appended facet information",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+          "nullable": true
+        },
+        "duration": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Duration in seconds",
+          "example": 3600,
+          "nullable": true
+        },
+        "startTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Start time in milliseconds since epoch",
+          "example": 1640995200000,
+          "nullable": true
+        }
+      }
+    },
+    "Audiogateway_GetAudioSeekpointsWSResponse": {
+      "type": "object",
+      "description": "Response containing audio seek points for an audio gateway.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "footageSeekPoints": {
+          "type": "array",
+          "description": "List of audio seek points for the specified time period",
+          "items": {
+            "$ref": "#/components/schemas/FootageSeekPointV2Type"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Audiogateway_GetFullAudioGatewayStateWSRequest": {
+      "type": "object",
+      "description": "Request to get detailed information about the state of a specified audio gateway.",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "format": "DeviceFacetUuid",
+          "description": "RUUID with optional appended facet information",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+          "nullable": true
+        },
+        "force": {
+          "type": "boolean",
+          "description": "Force refresh of the device state",
+          "example": false,
+          "nullable": true
+        }
+      }
+    },
+    "Audiogateway_GetFullAudioGatewayStateWSResponse": {
+      "type": "object",
+      "description": "Response containing detailed information about the state of a specified audio gateway.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "fullAudioGatewayState": {
+          "$ref": "#/components/schemas/FullDeviceStateType"
+        }
+      }
+    },
+    "Audiogateway_GetMediaUrisWSRequest": {
+      "type": "object",
+      "description": "Request to get media URIs for an audio gateway to retrieve footage.",
+      "properties": {
+        "gatewayUuid": {
+          "type": "string",
+          "format": "DeviceFacetUuid",
+          "description": "RUUID with optional appended facet information",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+          "nullable": true
+        }
+      }
+    },
+    "Audiogateway_GetMediaUrisWSResponse": {
+      "type": "object",
+      "description": "Response containing media URIs for audio gateway footage retrieval.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "lanCheckUrls": {
+          "type": "array",
+          "description": "List of LAN check URLs to verify device availability on local network",
+          "items": {
+            "type": "string",
+            "description": "List of LAN check URLs to verify device availability on local network",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "lanLiveMpdUris": {
+          "type": "array",
+          "description": "List of LAN live MPD URIs for local network media streaming",
+          "items": {
+            "type": "string",
+            "description": "List of LAN live MPD URIs for local network media streaming",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "lanLiveOpusUris": {
+          "type": "array",
+          "description": "List of LAN live Opus URIs for local network audio streaming",
+          "items": {
+            "type": "string",
+            "description": "List of LAN live Opus URIs for local network audio streaming",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "lanVodMpdUrisTemplates": {
+          "type": "array",
+          "description": "List of LAN VOD MPD URI templates for local network video on demand",
+          "items": {
+            "type": "string",
+            "description": "List of LAN VOD MPD URI templates for local network video on demand",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "wanLiveMpdUri": {
+          "type": "string",
+          "description": "WAN live MPD URI for real-time media streaming",
+          "nullable": true
+        },
+        "wanLiveOpusUri": {
+          "type": "string",
+          "description": "WAN live Opus URI for real-time audio streaming",
+          "nullable": true
+        },
+        "wanVodMpdUriTemplate": {
+          "type": "string",
+          "description": "WAN VOD MPD URI template for video on demand content",
+          "nullable": true
+        }
+      }
+    },
+    "Audiogateway_GetMinimalAudioGatewayStatesWSRequest": {
+      "type": "object",
+      "description": "Request to get basic state information for all audio gateways."
+    },
+    "Audiogateway_GetMinimalAudioGatewayStatesWSResponse": {
+      "type": "object",
+      "description": "Response containing basic state information for all audio gateways.",
+      "properties": {
+        "audioGatewayStates": {
+          "type": "array",
+          "description": "List of minimal audio gateway state information",
+          "items": {
+            "$ref": "#/components/schemas/MinimalAudioGatewayStateType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Audiogateway_UpdateAudioGatewayConfigWSRequest": {
+      "type": "object",
+      "description": "Request to update configuration for an audio gateway.",
+      "properties": {
+        "audioExternalMicBoost": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Adjust boost for external mic. Integer between 0 and 3.",
+          "example": 1,
+          "nullable": true
+        },
+        "audioExternalMicVolume": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Adjust volume for external mic. Integer between 0 and 63.",
+          "example": 32,
+          "nullable": true
+        },
+        "audioExternalSpeakerVolume": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Adjust volume for external speaker. Integer between 0 and 127.",
+          "example": 64,
+          "nullable": true
+        },
+        "audioInternalMicAecEnabled": {
+          "type": "boolean",
+          "description": "Enable acoustic echo cancellation for internal microphone",
+          "example": true,
+          "nullable": true
+        },
+        "audioInternalMicBoost": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Adjust boost for internal mic. Integer between 0 and 3.",
+          "example": 1,
+          "nullable": true
+        },
+        "audioInternalMicVolume": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Adjust volume for internal mic. Integer between 0 and 63.",
+          "example": 32,
+          "nullable": true
+        },
+        "audioInternalSpeakerVolume": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Adjust volume for internal speaker. Integer between 0 and 127.",
+          "example": 64,
+          "nullable": true
+        },
+        "audioRecord": {
+          "type": "boolean",
+          "description": "Enable/disable audio recording. Cannot set to true unless organization settings allow it",
+          "example": true,
+          "nullable": true
+        },
+        "audioUseExternalMic": {
+          "type": "boolean",
+          "description": "Use external microphone instead of internal",
+          "example": false,
+          "nullable": true
+        },
+        "audioUseExternalSpeaker": {
+          "type": "boolean",
+          "description": "Use external speaker instead of internal",
+          "example": false,
+          "nullable": true
+        },
+        "deviceMicEnabled": {
+          "type": "boolean",
+          "description": "Enable/disable device mic. Cannot set to true unless organization settings allow it",
+          "example": true,
+          "nullable": true
+        },
+        "deviceSpeakerEnabled": {
+          "type": "boolean",
+          "description": "Enable/disable device speaker",
+          "example": true,
+          "nullable": true
+        },
+        "frontendEqualizerHighShelf": {
+          "$ref": "#/components/schemas/FrontendEqualizerSettings"
+        },
+        "frontendEqualizerLowShelf": {
+          "$ref": "#/components/schemas/FrontendEqualizerSettings"
+        },
+        "frontendEqualizerPeaking1": {
+          "$ref": "#/components/schemas/FrontendEqualizerSettings"
+        },
+        "frontendEqualizerPeaking2": {
+          "$ref": "#/components/schemas/FrontendEqualizerSettings"
+        },
+        "frontendEqualizerPeaking3": {
+          "$ref": "#/components/schemas/FrontendEqualizerSettings"
+        },
+        "frontendNoiseSuppression": {
+          "type": "boolean",
+          "description": "Enable frontend noise suppression",
+          "example": true,
+          "nullable": true
+        },
+        "uuid": {
+          "type": "string",
+          "format": "DeviceFacetUuid",
+          "description": "RUUID with optional appended facet information",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+          "nullable": true
+        }
+      }
+    },
+    "Audiogateway_UpdateAudioGatewayConfigWSResponse": {
+      "type": "object",
+      "description": "Response indicating the result of updating audio gateway configuration.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Audiogateway_UpdateAudioGatewayDetailsWSRequest": {
+      "type": "object",
+      "description": "Request to update details for an audio gateway. Note: uuid is a required field.",
+      "properties": {
+        "associatedCameras": {
+          "type": "array",
+          "description": "List of associated camera device UUIDs",
+          "items": {
+            "type": "string",
+            "format": "DeviceFacetUuid",
+            "description": "RUUID with optional appended facet information",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "associatedCamerasUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "deleted": {
+          "type": "boolean",
+          "description": "Indicates whether the audio gateway is deleted",
+          "example": false,
+          "nullable": true
+        },
+        "deletedUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the audio gateway",
+          "example": "Audio gateway for main entrance monitoring",
+          "nullable": true
+        },
+        "descriptionUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "floorNumber": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Floor number where the audio gateway is located",
+          "example": 1,
+          "nullable": true
+        },
+        "floorNumberUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Latitude coordinate of the audio gateway location",
+          "example": 37.7749,
+          "nullable": true
+        },
+        "latitudeUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "locationUuidUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Longitude coordinate of the audio gateway location",
+          "example": -122.4194,
+          "nullable": true
+        },
+        "longitudeUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the audio gateway",
+          "example": "Main Entrance Audio Gateway",
+          "nullable": true
+        },
+        "nameUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "policyUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "policyUuidUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "subLocationsHierarchyKey": {
+          "$ref": "#/components/schemas/SubLocationsHierarchyKey"
+        },
+        "subLocationsHierarchyKeyUpdated": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Audiogateway_UpdateAudioGatewayDetailsWSResponse": {
+      "type": "object",
+      "description": "Response indicating the result of updating audio gateway details.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Common_devices_GetPresenceWindowsWSRequest": {
+      "type": "object",
+      "description": "Request to get stored video information for a device.",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "durationSec": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Duration in seconds",
+          "example": 3600,
+          "nullable": true
+        },
+        "startTimeSec": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Start time in seconds since epoch",
+          "example": 1640995200,
+          "nullable": true
+        }
+      }
+    },
+    "Common_devices_GetPresenceWindowsWSResponse": {
+      "type": "object",
+      "description": "Response containing stored video information for a device.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "presenceWindows": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "description": "Map of presence types to their time windows",
+            "items": {
+              "$ref": "#/components/schemas/TimeWindowSeconds"
+            },
+            "nullable": true
+          },
+          "description": "Map of presence types to their time windows",
+          "nullable": true
+        }
+      }
+    },
+    "Common_devices_GetUptimeWindowsWSRequest": {
+      "type": "object",
+      "description": "Request to get uptime information for a device.",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "endTimeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "End time in milliseconds since epoch",
+          "example": 1643673600000,
+          "nullable": true
+        },
+        "startTimeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Start time in milliseconds since epoch",
+          "example": 1640995200000,
+          "nullable": true
+        }
+      }
+    },
+    "Common_devices_GetUptimeWindowsWSResponse": {
+      "type": "object",
+      "description": "Response containing uptime information for a device.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "uptimeWindows": {
+          "type": "array",
+          "description": "List of uptime windows for the device",
+          "items": {
+            "$ref": "#/components/schemas/TimeWindowSeconds"
+          },
+          "nullable": true
+        }
+      }
+    }
+  },
+  "schemaCount": 20
+}

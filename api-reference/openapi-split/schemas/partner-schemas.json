@@ -1,0 +1,691 @@
+{
+  "tag": "Partner Webservice",
+  "schemas": {
+    "Integration_GetApiTokenApplicationsWSRequest": {
+      "type": "object"
+    },
+    "Integration_GetApiTokenApplicationsWSResponse": {
+      "type": "object",
+      "properties": {
+        "applications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ApiTokenApplicationType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetApiTokensWSResponse": {
+      "type": "object",
+      "description": "Response object containing API tokens.",
+      "properties": {
+        "apiTokens": {
+          "type": "array",
+          "description": "List of API tokens",
+          "items": {
+            "$ref": "#/components/schemas/ApiTokenType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetPartnerApiTokensWSRequest": {
+      "type": "object"
+    },
+    "Integration_RevokeApiTokenWSRequest": {
+      "type": "object",
+      "description": "Request object for revoking an API token.",
+      "properties": {
+        "tokenUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_RevokeApiTokenWSResponse": {
+      "type": "object",
+      "description": "Response object for revoking an API token.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "License_GetDeviceLicensesForClientOrgWSRequest": {
+      "type": "object",
+      "description": "Request object for getting list of device licenses available for a client organization.",
+      "properties": {
+        "orgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "License_GetDeviceLicensesForClientOrgWSResponse": {
+      "type": "object",
+      "description": "Response object containing list of device licenses available for a client organization.",
+      "properties": {
+        "deviceLicenses": {
+          "type": "array",
+          "description": "List of device licenses available for the client organization",
+          "items": {
+            "$ref": "#/components/schemas/DeviceLicenseType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "License_GetLicensesForClientOrgWSRequest": {
+      "type": "object",
+      "description": "Request object for getting list of licenses available for a client organization.",
+      "properties": {
+        "orgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "License_GetLicensesForClientOrgWSResponse": {
+      "type": "object",
+      "description": "Response object containing list of licenses available for a client organization.",
+      "properties": {
+        "licenses": {
+          "type": "array",
+          "description": "List of licenses available for the client organization",
+          "items": {
+            "$ref": "#/components/schemas/LicenseUsageType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Org_CreatePendingRegistrationRequest": {
+      "type": "object",
+      "description": "Request object for creating pending hardware registration.",
+      "properties": {
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "orgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "serialNumber": {
+          "type": "string",
+          "description": "Serial number of the hardware device",
+          "example": "RH123456789",
+          "nullable": true
+        },
+        "wifiPsk": {
+          "type": "array",
+          "description": "WiFi pre-shared key for the device",
+          "items": {
+            "type": "string",
+            "format": "byte",
+            "description": "WiFi pre-shared key for the device",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "wifiSsid": {
+          "type": "string",
+          "description": "WiFi SSID for the device",
+          "example": "Office_WiFi",
+          "nullable": true
+        }
+      }
+    },
+    "Org_CreatePendingRegistrationResponse": {
+      "type": "object",
+      "description": "Response object for creating pending hardware registration.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Partner_CreatePartnerClientWSRequest": {
+      "type": "object",
+      "description": "Request object for creating a new partner client account.",
+      "properties": {
+        "clientContactEmail": {
+          "type": "string",
+          "description": "Email address of the client contact person",
+          "example": "john.smith@acme.com",
+          "nullable": true
+        },
+        "clientContactName": {
+          "type": "string",
+          "description": "Name of the client contact person",
+          "example": "John Smith",
+          "nullable": true
+        },
+        "clientOrgName": {
+          "type": "string",
+          "description": "Name of the client organization",
+          "example": "Acme Corporation",
+          "nullable": true
+        },
+        "suppressWelcomeEmail": {
+          "type": "boolean",
+          "description": "Whether to suppress sending welcome email to the client",
+          "example": false,
+          "nullable": true
+        }
+      }
+    },
+    "Partner_CreatePartnerClientWSResponse": {
+      "type": "object",
+      "description": "Response object containing the result of creating a partner client account.",
+      "properties": {
+        "clientOrgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "responseStatus": {
+          "$ref": "#/components/schemas/Partner_PartnerWebResponseStatusEnum"
+        }
+      }
+    },
+    "Partner_CustomizeClientDeviceWSRequest": {
+      "type": "object",
+      "description": "Request object for customizing client device settings and configurations.",
+      "properties": {
+        "clientDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "clientOrgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "configUpdate": {
+          "$ref": "#/components/schemas/Deviceconfig_userconfig_IExternalUpdateableAudioVideoUserConfig"
+        },
+        "customizations": {
+          "$ref": "#/components/schemas/Partner_ClientDeviceCustomizationsType"
+        }
+      }
+    },
+    "Partner_CustomizeClientDeviceWSResponse": {
+      "type": "object",
+      "description": "Response object containing the applied client device customization settings.",
+      "properties": {
+        "customizations": {
+          "$ref": "#/components/schemas/Partner_ClientCustomizationsType"
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Partner_CustomizeClientWSRequest": {
+      "type": "object",
+      "description": "Request object for customizing client settings and configurations.",
+      "properties": {
+        "clientOrgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "customizations": {
+          "$ref": "#/components/schemas/Partner_ClientCustomizationsType"
+        }
+      }
+    },
+    "Partner_CustomizeClientWSResponse": {
+      "type": "object",
+      "description": "Response object containing the applied client customization settings.",
+      "properties": {
+        "customizations": {
+          "$ref": "#/components/schemas/Partner_ClientCustomizationsType"
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Partner_DeleteClientWebRequest": {
+      "type": "object",
+      "description": "Request object for deleting a partner client account.",
+      "properties": {
+        "clientOrgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Partner_DeleteClientWebResponse": {
+      "type": "object",
+      "description": "Response object for deleting a partner client account."
+    },
+    "Partner_GetClientDevicesWSRequest": {
+      "type": "object",
+      "description": "Request object for getting devices for a specific client organization.",
+      "properties": {
+        "orgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Partner_GetClientDevicesWSResponse": {
+      "type": "object",
+      "description": "Response object containing devices for a specific client organization.",
+      "properties": {
+        "devices": {
+          "type": "array",
+          "description": "List of devices with partner-specific details",
+          "items": {
+            "$ref": "#/components/schemas/Partner_DeviceWithPartnerDetailsType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Partner_GetClientSummaryInfoWSRequest": {
+      "type": "object",
+      "description": "Request object for getting client summary information.",
+      "properties": {
+        "clientOrgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Partner_GetClientSummaryInfoWSResponse": {
+      "type": "object",
+      "description": "Response object containing client summary information including account owner, device status, and settings.",
+      "properties": {
+        "accountOwner": {
+          "$ref": "#/components/schemas/WrappedRhombusOrgUserType"
+        },
+        "clientDeviceStatusMap": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/Partner_ConnectionCountType"
+          },
+          "description": "Map of device types to their connection status counts",
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "licenseV2Enabled": {
+          "type": "boolean",
+          "description": "Whether license V2 is enabled for the client",
+          "example": true,
+          "nullable": true
+        },
+        "locationCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of locations for the client",
+          "example": 3,
+          "nullable": true
+        },
+        "manuallySendLicenseExpirationEmailEnabled": {
+          "type": "boolean",
+          "description": "Whether manual license expiration email sending is enabled",
+          "example": false,
+          "nullable": true
+        },
+        "recentPolicyAlertCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of recent policy alerts",
+          "example": 5,
+          "nullable": true
+        }
+      }
+    },
+    "Partner_GetListOfAllClientDevicesRequest": {
+      "type": "object",
+      "description": "Request object for getting list of all client devices."
+    },
+    "Partner_GetListOfAllClientDevicesResponse": {
+      "type": "object",
+      "description": "Response object containing list of all client devices.",
+      "properties": {
+        "listOfAllClientDevices": {
+          "type": "array",
+          "description": "List of all client devices",
+          "items": {
+            "$ref": "#/components/schemas/DeviceTypeV2"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Partner_GetListOfControlledHardwareRequest": {
+      "type": "object",
+      "description": "Request object for getting list of controlled hardware."
+    },
+    "Partner_GetListOfControlledHardwareResponse": {
+      "type": "object",
+      "description": "Response object containing list of controlled hardware.",
+      "properties": {
+        "controlledHardwareList": {
+          "type": "array",
+          "description": "List of controlled hardware",
+          "items": {
+            "$ref": "#/components/schemas/Partner_UnregisteredControlledHardwareType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Partner_GetPartnerClientsStatusMapWSRequest": {
+      "type": "object",
+      "description": "Request object for getting partner clients status map."
+    },
+    "Partner_GetPartnerClientsStatusMapWSResponse": {
+      "type": "object",
+      "description": "Response object containing partner clients status map with device connection counts.",
+      "properties": {
+        "clientDeviceStatusMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Partner_ConnectionCountType"
+            },
+            "description": "Map of client UUIDs to device type connection counts",
+            "nullable": true
+          },
+          "description": "Map of client UUIDs to device type connection counts",
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Partner_GetPartnerClientsWSRequest": {
+      "type": "object",
+      "description": "Request object for getting all partner clients."
+    },
+    "Partner_GetPartnerClientsWSResponse": {
+      "type": "object",
+      "description": "Response object containing list of partner clients.",
+      "properties": {
+        "clients": {
+          "type": "array",
+          "description": "List of partner clients",
+          "items": {
+            "$ref": "#/components/schemas/Partner_PartnerClientWebType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Partner_GetShipmentsWSRequest": {
+      "type": "object",
+      "description": "Request object for getting client shipments within a time range.",
+      "properties": {
+        "clientOrgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "endTimeSec": {
+          "type": "integer",
+          "format": "int64",
+          "description": "End time for shipment search (seconds since epoch)",
+          "example": 1640995200,
+          "nullable": true
+        },
+        "startTimeSec": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Start time for shipment search (seconds since epoch)",
+          "example": 1640908800,
+          "nullable": true
+        }
+      }
+    },
+    "Partner_GetShipmentsWSResponse": {
+      "type": "object",
+      "description": "Response object containing client shipments within the specified time range.",
+      "properties": {
+        "customerShipmentList": {
+          "type": "array",
+          "description": "List of customer shipments",
+          "items": {
+            "$ref": "#/components/schemas/CustomerShipmentType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Partner_ReassignDeviceOrgWSRequest": {
+      "type": "object",
+      "description": "Request object for reassigning devices from one organization to another.",
+      "properties": {
+        "serialNumbers": {
+          "type": "array",
+          "description": "Serial numbers of the devices that should be reassigned to target organization",
+          "items": {
+            "type": "string",
+            "description": "Serial numbers of the devices that should be reassigned to target organization",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "sourceOrgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "targetOrgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      },
+      "required": [
+        "sourceOrgUuid",
+        "targetOrgUuid"
+      ]
+    },
+    "Partner_ReassignDeviceOrgWSResponse": {
+      "type": "object",
+      "description": "Response object containing the status of device reassignment operations.",
+      "properties": {
+        "statuses": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/OperationStatus"
+          },
+          "description": "Map of device serial numbers to their reassignment operation status",
+          "nullable": true
+        }
+      }
+    },
+    "Partner_RegisterDealWSRequest": {
+      "type": "object",
+      "description": "Request object for registering a deal with partner details.",
+      "properties": {
+        "details": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "description": "Map of deal details with key-value pairs",
+            "nullable": true
+          },
+          "description": "Map of deal details with key-value pairs",
+          "nullable": true
+        }
+      }
+    },
+    "Partner_RegisterDealWSResponse": {
+      "type": "object",
+      "description": "Response object containing the result of registering a deal.",
+      "properties": {
+        "clients": {
+          "type": "array",
+          "description": "List of partner clients associated with the registered deal",
+          "items": {
+            "$ref": "#/components/schemas/Partner_PartnerClientWebType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Partner_UpdateManuallySendLicenseExpirationEmailWSRequest": {
+      "type": "object",
+      "description": "Request object for updating manual license expiration email settings for an organization.",
+      "properties": {
+        "manuallySendLicenseExpirationEmail": {
+          "type": "boolean",
+          "description": "Whether to manually send license expiration emails",
+          "example": true,
+          "nullable": true
+        },
+        "orgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Partner_UpdateManuallySendLicenseExpirationEmailWSResponse": {
+      "type": "object",
+      "description": "Response object for updating manual license expiration email settings.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    }
+  },
+  "schemaCount": 40
+}

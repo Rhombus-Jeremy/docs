@@ -1,0 +1,2234 @@
+{
+  "tag": "Component Webservice",
+  "schemas": {
+    "Component_AddAccessControlledDoorLabelWSRequest": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoorUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "label": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Component_AddAccessControlledDoorLabelWSResponse": {
+      "type": "object"
+    },
+    "Component_CreateAccessControlledDoorSeekpointsWSRequest": {
+      "type": "object",
+      "properties": {
+        "doorUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "seekPoints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/CustomFootageSeekPointType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_CreateAccessControlledDoorSeekpointsWSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "successMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Component_CreateAccessControlledDoorWSRequest": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoor": {
+          "$ref": "#/components/schemas/AccessControlledDoorType"
+        },
+        "accessControlledDoorLabels": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "nullable": true
+          },
+          "nullable": true,
+          "uniqueItems": true
+        }
+      }
+    },
+    "Component_CreateAccessControlledDoorWSResponse": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoor": {
+          "$ref": "#/components/schemas/AccessControlledDoorType"
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Component_CreateIntegratedDoorPositionIndicatorWSRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "normalState": {
+          "$ref": "#/components/schemas/NormalStateEnumType"
+        },
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "port": {
+          "$ref": "#/components/schemas/DoorPositionIndicatorPortType"
+        }
+      }
+    },
+    "Component_CreateIntegratedDoorPositionIndicatorWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/IntegratedDoorPositionIndicatorType"
+        }
+      }
+    },
+    "Component_CreateIntegratedDoorRelayWSRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "port": {
+          "$ref": "#/components/schemas/DoorRelayPortType"
+        }
+      }
+    },
+    "Component_CreateIntegratedDoorRelayWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/IntegratedDoorRelayType"
+        }
+      }
+    },
+    "Component_CreateIntegratedGenericButtonWSRequest": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "$ref": "#/components/schemas/ButtonModeEnum"
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "port": {
+          "$ref": "#/components/schemas/ButtonPortType"
+        }
+      }
+    },
+    "Component_CreateIntegratedGenericButtonWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/IntegratedGenericButtonType"
+        }
+      }
+    },
+    "Component_CreateIntegratedGenericInputWSRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "normalState": {
+          "$ref": "#/components/schemas/NormalStateEnumType"
+        },
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "port": {
+          "$ref": "#/components/schemas/AuxiliaryInputPortType"
+        }
+      }
+    },
+    "Component_CreateIntegratedGenericInputWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/IntegratedGenericInputType"
+        }
+      }
+    },
+    "Component_CreateIntegratedGenericRelayWSRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "port": {
+          "$ref": "#/components/schemas/AuxiliaryRelayPortType"
+        },
+        "steadyState": {
+          "$ref": "#/components/schemas/GenericRelayStateEnumType"
+        }
+      }
+    },
+    "Component_CreateIntegratedGenericRelayWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/IntegratedGenericRelayType"
+        }
+      }
+    },
+    "Component_CreateIntegratedRequestToExitWSRequest": {
+      "type": "object",
+      "properties": {
+        "intentOnly": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "intentOnlyEvents": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "normalState": {
+          "$ref": "#/components/schemas/NormalStateEnumType"
+        },
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "port": {
+          "$ref": "#/components/schemas/RequestToExitPortType"
+        }
+      }
+    },
+    "Component_CreateIntegratedRequestToExitWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/IntegratedRequestToExitType"
+        }
+      }
+    },
+    "Component_CreateOsdpReaderWSRequest": {
+      "type": "object",
+      "properties": {
+        "allowUnencrypted": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "disableCardReader": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "disableKeypad": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "otherReaderUnlockAudioFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "port": {
+          "$ref": "#/components/schemas/OsdpReaderPortType"
+        },
+        "remoteUnlockAudioFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        }
+      }
+    },
+    "Component_CreateOsdpReaderWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/OsdpDoorReaderType"
+        }
+      }
+    },
+    "Component_CreateRhombusOsdpReaderWSRequest": {
+      "type": "object",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "disableCardReader": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "disableWaveToUnlock": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "otherReaderUnlockAudioFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "port": {
+          "$ref": "#/components/schemas/OsdpReaderPortType"
+        },
+        "remoteUnlockAudioFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        }
+      }
+    },
+    "Component_CreateRhombusOsdpReaderWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/RhombusOsdpDoorReaderType"
+        }
+      }
+    },
+    "Component_CreateWiegandReaderWSRequest": {
+      "type": "object",
+      "properties": {
+        "buzzerPort": {
+          "$ref": "#/components/schemas/WiegandOutputPortType"
+        },
+        "d0Port": {
+          "$ref": "#/components/schemas/WiegandDataPortType"
+        },
+        "d1Port": {
+          "$ref": "#/components/schemas/WiegandDataPortType"
+        },
+        "disableCardReader": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "disableKeypad": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "gledPort": {
+          "$ref": "#/components/schemas/WiegandOutputPortType"
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "otherReaderUnlockAudioFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "remoteUnlockAudioFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "rledPort": {
+          "$ref": "#/components/schemas/WiegandOutputPortType"
+        },
+        "tamperPort": {
+          "$ref": "#/components/schemas/WiegandInputPortType"
+        }
+      }
+    },
+    "Component_CreateWiegandReaderWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/WiegandDoorReaderType"
+        }
+      }
+    },
+    "Component_DeleteAccessControlledDoorWSRequest": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoorUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Component_DeleteAccessControlledDoorWSResponse": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoor": {
+          "$ref": "#/components/schemas/AccessControlledDoorType"
+        }
+      }
+    },
+    "Component_DeleteComponentWSRequest": {
+      "type": "object",
+      "properties": {
+        "componentUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Component_DeleteComponentWSResponse": {
+      "type": "object"
+    },
+    "Component_DeleteComponentsByOwnerDeviceWSRequest": {
+      "type": "object",
+      "properties": {
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Component_DeleteComponentsByOwnerDeviceWSResponse": {
+      "type": "object"
+    },
+    "Component_FindAccessControlledDoorShadowsByLocationWSRequest": {
+      "type": "object",
+      "properties": {
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        },
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "maxPageSize": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindAccessControlledDoorShadowsByLocationWSResponse": {
+      "type": "object",
+      "properties": {
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        },
+        "shadows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/AccessControlledDoorShadow"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindAccessControlledDoorShadowsWSRequest": {
+      "type": "object",
+      "properties": {
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        },
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "maxPageSize": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindAccessControlledDoorShadowsWSResponse": {
+      "type": "object",
+      "properties": {
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        },
+        "shadows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/AccessControlledDoorShadow"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindAccessControlledDoorsByLocationWSRequest": {
+      "type": "object",
+      "properties": {
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        },
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "maxPageSize": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindAccessControlledDoorsByLocationWSResponse": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/AccessControlledDoorType"
+          },
+          "nullable": true
+        },
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindAccessControlledDoorsByOwnerDeviceWSRequest": {
+      "type": "object",
+      "properties": {
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindAccessControlledDoorsByOwnerDeviceWSResponse": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/AccessControlledDoorType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindAccessControlledDoorsWSRequest": {
+      "type": "object",
+      "properties": {
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        },
+        "maxPageSize": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindAccessControlledDoorsWSResponse": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/AccessControlledDoorType"
+          },
+          "nullable": true
+        },
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindAllComponentShadowsWSRequest": {
+      "type": "object",
+      "properties": {
+        "componentUuids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true,
+          "uniqueItems": true
+        }
+      }
+    },
+    "Component_FindAllComponentShadowsWSResponse": {
+      "type": "object",
+      "properties": {
+        "acuComponentShadowMap": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/ComponentShadowType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByAccessControlledDoorWSRequest": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoorUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "typeFilter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventEnumType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByAccessControlledDoorWSResponse": {
+      "type": "object",
+      "properties": {
+        "componentEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByApiTokenWSRequest": {
+      "type": "object",
+      "properties": {
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "tokenUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "typeFilter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventEnumType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByApiTokenWSResponse": {
+      "type": "object",
+      "properties": {
+        "componentEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByComponentWSRequest": {
+      "type": "object",
+      "properties": {
+        "componentUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "typeFilter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventEnumType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByComponentWSResponse": {
+      "type": "object",
+      "properties": {
+        "componentEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByCorrelationWSRequest": {
+      "type": "object",
+      "properties": {
+        "correlationId": {
+          "type": "string",
+          "nullable": true
+        },
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "typeFilter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventEnumType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByCorrelationWSResponse": {
+      "type": "object",
+      "properties": {
+        "componentEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByCredentialHexValueWSRequest": {
+      "type": "object",
+      "properties": {
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "credentialHexValue": {
+          "type": "string",
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "typeFilter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventEnumType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByCredentialHexValueWSResponse": {
+      "type": "object",
+      "properties": {
+        "componentEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByCredentialUuidWSRequest": {
+      "type": "object",
+      "properties": {
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "credentialUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "typeFilter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventEnumType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByCredentialUuidWSResponse": {
+      "type": "object",
+      "properties": {
+        "componentEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByCredentialValueWSRequest": {
+      "type": "object",
+      "properties": {
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "credentialValue": {
+          "type": "string",
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "typeFilter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventEnumType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByCredentialValueWSResponse": {
+      "type": "object",
+      "properties": {
+        "componentEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByLocationWSRequest": {
+      "type": "object",
+      "properties": {
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "typeFilter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventEnumType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByLocationWSResponse": {
+      "type": "object",
+      "properties": {
+        "componentEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByOwnerDeviceWSRequest": {
+      "type": "object",
+      "properties": {
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "typeFilter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventEnumType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByOwnerDeviceWSResponse": {
+      "type": "object",
+      "properties": {
+        "componentEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsBySupportAuthorityWSRequest": {
+      "type": "object",
+      "properties": {
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "supportAuthorityUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "typeFilter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventEnumType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsBySupportAuthorityWSResponse": {
+      "type": "object",
+      "properties": {
+        "componentEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByUserWSRequest": {
+      "type": "object",
+      "properties": {
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "typeFilter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventEnumType"
+          },
+          "nullable": true
+        },
+        "userUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsByUserWSResponse": {
+      "type": "object",
+      "properties": {
+        "componentEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsForVideoIntercomWSRequest": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoorUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "typeFilter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventEnumType"
+          },
+          "nullable": true
+        },
+        "videoIntercomUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentEventsForVideoIntercomWSResponse": {
+      "type": "object",
+      "properties": {
+        "componentEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentEventType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentSeekPointsByAccessControlledDoorWSRequest": {
+      "type": "object",
+      "description": "Component seekpoints search for access controlled door",
+      "properties": {
+        "accessControlledDoorUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "durationSec": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "startTimeSecEpochExclusive": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentSeekPointsByAccessControlledDoorWSResponse": {
+      "type": "object",
+      "properties": {
+        "seekpoints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentSeekPointType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentSeekPointsByAccessControlledDoorsWSRequest": {
+      "type": "object",
+      "description": "Component seekpoints search for access controlled doors",
+      "properties": {
+        "accessControlledDoorUuidList": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "durationSec": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "sortResponse": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "startTimeSecEpochExclusive": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentSeekPointsByAccessControlledDoorsWSResponse": {
+      "type": "object",
+      "properties": {
+        "seekpoints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentSeekPointType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentSeekPointsByComponentWSRequest": {
+      "type": "object",
+      "properties": {
+        "componentUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "durationSec": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "startTimeSecEpochExclusive": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentSeekPointsByComponentWSResponse": {
+      "type": "object",
+      "properties": {
+        "seekpoints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentSeekPointType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentSeekPointsByLocationWSRequest": {
+      "type": "object",
+      "properties": {
+        "durationSec": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "startTimeSecEpochExclusive": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentSeekPointsByLocationWSResponse": {
+      "type": "object",
+      "properties": {
+        "seekpoints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentSeekPointType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentSeekPointsByOwnerDeviceWSRequest": {
+      "type": "object",
+      "description": "Component seekpoints search for owner device",
+      "properties": {
+        "durationSec": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "startTimeSecEpochExclusive": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentSeekPointsByOwnerDeviceWSResponse": {
+      "type": "object",
+      "properties": {
+        "seekpoints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentSeekPointType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentSeekPointsByUserWSRequest": {
+      "type": "object",
+      "properties": {
+        "durationSec": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "startTimeSecEpochExclusive": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "userUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentSeekPointsByUserWSResponse": {
+      "type": "object",
+      "properties": {
+        "seekpoints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentSeekPointType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentShadowsByOwnerDeviceWSRequest": {
+      "type": "object",
+      "properties": {
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentShadowsByOwnerDeviceWSResponse": {
+      "type": "object",
+      "properties": {
+        "componentShadows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentShadowType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentsByOwnerDeviceWSRequest": {
+      "type": "object",
+      "properties": {
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindComponentsByOwnerDeviceWSResponse": {
+      "type": "object",
+      "properties": {
+        "components": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/BaseComponentType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindMinimalStateAccessControlledDoorsByLocationWSRequest": {
+      "type": "object",
+      "properties": {
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        },
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "maxPageSize": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindMinimalStateAccessControlledDoorsByLocationWSResponse": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Component_MinimalStateAccessControlledDoor"
+          },
+          "nullable": true
+        },
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindMinimalStateAccessControlledDoorsWSRequest": {
+      "type": "object",
+      "properties": {
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        },
+        "maxPageSize": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        }
+      }
+    },
+    "Component_FindMinimalStateAccessControlledDoorsWSResponse": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Component_MinimalStateAccessControlledDoor"
+          },
+          "nullable": true
+        },
+        "lastEvaluatedKey": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Component_GetAccessControlledDoorLabelsForOrgWSRequest": {
+      "type": "object"
+    },
+    "Component_GetAccessControlledDoorLabelsForOrgWSResponse": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoorLabels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "nullable": true
+            },
+            "nullable": true,
+            "uniqueItems": true
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Component_GetOrCreateDevicePhysicalPortConfigWSRequest": {
+      "type": "object",
+      "properties": {
+        "ownerDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Component_GetOrCreateDevicePhysicalPortConfigWSResponse": {
+      "type": "object",
+      "properties": {
+        "detectedInvalidPortConfigs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/InvalidPhysicalPortConfigType"
+          },
+          "nullable": true
+        },
+        "deviceComponents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/BaseComponentType"
+          },
+          "nullable": true
+        },
+        "devicePhysicalPortConfig": {
+          "$ref": "#/components/schemas/DevicePhysicalPortConfigType"
+        }
+      }
+    },
+    "Component_RemoveAccessControlledDoorLabelWSRequest": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoorUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "label": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Component_RemoveAccessControlledDoorLabelWSResponse": {
+      "type": "object"
+    },
+    "Component_UpdateAccessControlledDoorWSRequest": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoorUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "ajarTimeSec": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "associatedCameras": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "DeviceFacetUuid",
+            "description": "RUUID with optional appended facet information",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+            "nullable": true
+          },
+          "nullable": true,
+          "uniqueItems": true
+        },
+        "associatedFaceDetectionCameras": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "DeviceFacetUuid",
+            "description": "RUUID with optional appended facet information",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+            "nullable": true
+          },
+          "nullable": true,
+          "uniqueItems": true
+        },
+        "defaultState": {
+          "$ref": "#/components/schemas/AccessControlledDoorStateEnumType"
+        },
+        "directionRadians": {
+          "type": "number",
+          "format": "float",
+          "nullable": true
+        },
+        "doorStateToScheduleUuidMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "dpiComponents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentReferenceType"
+          },
+          "nullable": true,
+          "uniqueItems": true
+        },
+        "floorNumber": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "forceAllReadersFirstInAuthRequiredLedFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "forceAllReadersFirstInUnlockPendingLedFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "forceAllReadersOtherReaderUnlockAudioFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "forceAllReadersRemoteUnlockAudioFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "forcedOpenEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "forcedOpenTimeSec": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "geofenceEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "geofenceRadius": {
+          "type": "number",
+          "format": "double",
+          "nullable": true
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double",
+          "nullable": true
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "policyUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "proximityUnlockSettings": {
+          "$ref": "#/components/schemas/ProximityUnlockSettingsType"
+        },
+        "readerComponents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentReferenceType"
+          },
+          "nullable": true,
+          "uniqueItems": true
+        },
+        "relayComponents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentReferenceType"
+          },
+          "nullable": true,
+          "uniqueItems": true
+        },
+        "relockAfterOpenTimeMs": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "remoteUnlockEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "rexComponents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ComponentReferenceType"
+          },
+          "nullable": true,
+          "uniqueItems": true
+        },
+        "unlockTimeSec": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "unlockTimeSecRex": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        },
+        "waveToUnlockSettings": {
+          "$ref": "#/components/schemas/WaveToUnlockSettingsType"
+        }
+      }
+    },
+    "Component_UpdateAccessControlledDoorWSResponse": {
+      "type": "object",
+      "properties": {
+        "accessControlledDoor": {
+          "$ref": "#/components/schemas/AccessControlledDoorType"
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Component_UpdateIntegratedDoorPositionIndicatorWSRequest": {
+      "type": "object",
+      "properties": {
+        "componentUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "normalState": {
+          "$ref": "#/components/schemas/NormalStateEnumType"
+        },
+        "port": {
+          "$ref": "#/components/schemas/DoorPositionIndicatorPortType"
+        }
+      }
+    },
+    "Component_UpdateIntegratedDoorPositionIndicatorWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/IntegratedDoorPositionIndicatorType"
+        }
+      }
+    },
+    "Component_UpdateIntegratedDoorRelayWSRequest": {
+      "type": "object",
+      "properties": {
+        "componentUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "port": {
+          "$ref": "#/components/schemas/DoorRelayPortType"
+        }
+      }
+    },
+    "Component_UpdateIntegratedDoorRelayWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/IntegratedDoorRelayType"
+        }
+      }
+    },
+    "Component_UpdateIntegratedGenericButtonWSRequest": {
+      "type": "object",
+      "properties": {
+        "componentUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "mode": {
+          "$ref": "#/components/schemas/ButtonModeEnum"
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "port": {
+          "$ref": "#/components/schemas/ButtonPortType"
+        }
+      }
+    },
+    "Component_UpdateIntegratedGenericButtonWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/IntegratedGenericButtonType"
+        }
+      }
+    },
+    "Component_UpdateIntegratedGenericInputWSRequest": {
+      "type": "object",
+      "properties": {
+        "componentUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "normalState": {
+          "$ref": "#/components/schemas/NormalStateEnumType"
+        },
+        "port": {
+          "$ref": "#/components/schemas/AuxiliaryInputPortType"
+        }
+      }
+    },
+    "Component_UpdateIntegratedGenericInputWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/IntegratedGenericInputType"
+        }
+      }
+    },
+    "Component_UpdateIntegratedGenericRelaySteadyStateWSRequest": {
+      "type": "object",
+      "properties": {
+        "componentUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "steadyState": {
+          "$ref": "#/components/schemas/GenericRelayStateEnumType"
+        }
+      }
+    },
+    "Component_UpdateIntegratedGenericRelaySteadyStateWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/IntegratedGenericRelayType"
+        }
+      }
+    },
+    "Component_UpdateIntegratedGenericRelayTransientStateWSRequest": {
+      "type": "object",
+      "properties": {
+        "activate": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "componentUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "correlationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "deviceUuid": {
+          "type": "string",
+          "format": "DeviceFacetUuid",
+          "description": "RUUID with optional appended facet information",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+          "nullable": true
+        },
+        "durationMs": {
+          "type": "integer",
+          "format": "int32",
+          "nullable": true
+        }
+      }
+    },
+    "Component_UpdateIntegratedGenericRelayTransientStateWSResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "nullable": true
+        }
+      }
+    },
+    "Component_UpdateIntegratedGenericRelayWSRequest": {
+      "type": "object",
+      "properties": {
+        "componentUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "port": {
+          "$ref": "#/components/schemas/AuxiliaryRelayPortType"
+        }
+      }
+    },
+    "Component_UpdateIntegratedGenericRelayWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/IntegratedGenericRelayType"
+        }
+      }
+    },
+    "Component_UpdateIntegratedRequestToExitWSRequest": {
+      "type": "object",
+      "properties": {
+        "componentUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "intentOnly": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "intentOnlyEvents": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "normalState": {
+          "$ref": "#/components/schemas/NormalStateEnumType"
+        },
+        "port": {
+          "$ref": "#/components/schemas/RequestToExitPortType"
+        }
+      }
+    },
+    "Component_UpdateIntegratedRequestToExitWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/IntegratedRequestToExitType"
+        }
+      }
+    },
+    "Component_UpdateOsdpReaderWSRequest": {
+      "type": "object",
+      "properties": {
+        "componentUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "disableCardReader": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "disableKeypad": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "otherReaderUnlockAudioFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "port": {
+          "$ref": "#/components/schemas/OsdpReaderPortType"
+        },
+        "remoteUnlockAudioFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        }
+      }
+    },
+    "Component_UpdateOsdpReaderWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/OsdpDoorReaderType"
+        }
+      }
+    },
+    "Component_UpdateRhombusOsdpReaderWSRequest": {
+      "type": "object",
+      "properties": {
+        "componentUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "disableCardReader": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "disableWaveToUnlock": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "otherReaderUnlockAudioFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "port": {
+          "$ref": "#/components/schemas/OsdpReaderPortType"
+        },
+        "remoteUnlockAudioFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        }
+      }
+    },
+    "Component_UpdateRhombusOsdpReaderWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/RhombusOsdpDoorReaderType"
+        }
+      }
+    },
+    "Component_UpdateWiegandReaderWSRequest": {
+      "type": "object",
+      "properties": {
+        "buzzerPort": {
+          "$ref": "#/components/schemas/WiegandOutputPortType"
+        },
+        "componentUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "d0Port": {
+          "$ref": "#/components/schemas/WiegandDataPortType"
+        },
+        "d1Port": {
+          "$ref": "#/components/schemas/WiegandDataPortType"
+        },
+        "disableCardReader": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "disableKeypad": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "gledPort": {
+          "$ref": "#/components/schemas/WiegandOutputPortType"
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "otherReaderUnlockAudioFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "remoteUnlockAudioFeedbackEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "rledPort": {
+          "$ref": "#/components/schemas/WiegandOutputPortType"
+        },
+        "tamperPort": {
+          "$ref": "#/components/schemas/WiegandInputPortType"
+        }
+      }
+    },
+    "Component_UpdateWiegandReaderWSResponse": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "$ref": "#/components/schemas/WiegandDoorReaderType"
+        }
+      }
+    }
+  },
+  "schemaCount": 116
+}

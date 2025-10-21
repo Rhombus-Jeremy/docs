@@ -1,0 +1,55 @@
+{
+  "tag": "Media Device Webservice",
+  "description": "API endpoints for Media Device Webservice",
+  "paths": {
+    "/api/mediadevice/getBulkMediaDeviceDetails": {
+      "post": {
+        "description": "Get media information of any video-supporting media device",
+        "operationId": "getBulkMediaDeviceDetails",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Mediadevice_GetBulkMediaDeviceDetailsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Mediadevice_GetBulkMediaDeviceDetailsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get bulk media device details",
+        "tags": [
+          "Media Device Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/mediadevice/getBulkMediaDeviceDetails",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 1,
+  "referencedSchemas": [
+    "Mediadevice_GetBulkMediaDeviceDetailsWSRequest",
+    "Mediadevice_GetBulkMediaDeviceDetailsWSResponse"
+  ]
+}

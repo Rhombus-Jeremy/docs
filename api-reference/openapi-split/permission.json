@@ -1,0 +1,451 @@
+{
+  "tag": "Permission Webservice",
+  "description": "API endpoints for Permission Webservice",
+  "paths": {
+    "/api/permission/createPartnerPermissionGroup": {
+      "post": {
+        "description": "Create a permission group",
+        "operationId": "createPartnerPermissionGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Permission_CreatePartnerPermissionGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permission_CreatePartnerPermissionGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create partner permission group",
+        "tags": [
+          "Permission Webservice"
+        ]
+      }
+    },
+    "/api/permission/createPermissionGroup": {
+      "post": {
+        "description": "Create a permission group",
+        "operationId": "createPermissionGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Permission_CreatePermissionGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permission_CreatePermissionGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create permission group",
+        "tags": [
+          "Permission Webservice"
+        ]
+      }
+    },
+    "/api/permission/deletePartnerPermissionGroup": {
+      "post": {
+        "description": "Delete a permission group",
+        "operationId": "deletePartnerPermissionGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Permission_DeletePartnerPermissionGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permission_DeletePartnerPermissionGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete partner permission group",
+        "tags": [
+          "Permission Webservice"
+        ]
+      }
+    },
+    "/api/permission/deletePermissionGroup": {
+      "post": {
+        "description": "Delete a permission group",
+        "operationId": "deletePermissionGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Permission_DeletePermissionGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permission_DeletePermissionGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete permission group",
+        "tags": [
+          "Permission Webservice"
+        ]
+      }
+    },
+    "/api/permission/getPartnerPermissionGroups": {
+      "post": {
+        "description": "Get partner permission groups for the organization",
+        "operationId": "getPartnerPermissionGroups",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Permission_GetPartnerPermissionGroupsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permission_GetPartnerPermissionGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get partner permission groups",
+        "tags": [
+          "Permission Webservice"
+        ]
+      }
+    },
+    "/api/permission/getPermissionGroups": {
+      "post": {
+        "description": "Get details about all permission groups in organization",
+        "operationId": "getPermissionGroups",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Permission_GetPermissionGroupsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permission_GetPermissionGroupsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get permission groups",
+        "tags": [
+          "Permission Webservice"
+        ]
+      }
+    },
+    "/api/permission/getPermissionsForCurrentPartner": {
+      "post": {
+        "description": "Get permissions for the current partner user",
+        "operationId": "getPermissionsForCurrentPartner",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Permission_GetPermissionsForCurrentPartnerWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permission_GetPermissionsForCurrentPartnerWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get permissions for current partner",
+        "tags": [
+          "Permission Webservice"
+        ]
+      }
+    },
+    "/api/permission/getPermissionsForCurrentUser": {
+      "post": {
+        "description": "Get device and functionality permissions for user or API token",
+        "operationId": "getPermissionsForCurrentUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Permission_GetPermissionsForCurrentUserWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permission_GetPermissionsForCurrentUserWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get permissions for current user",
+        "tags": [
+          "Permission Webservice"
+        ]
+      }
+    },
+    "/api/permission/updatePartnerPermissionGroup": {
+      "post": {
+        "description": "Update a partner permission group",
+        "operationId": "updatePartnerPermissionGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Permission_UpdatePartnerPermissionGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permission_UpdatePartnerPermissionGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update partner permission group",
+        "tags": [
+          "Permission Webservice"
+        ]
+      }
+    },
+    "/api/permission/updatePermissionGroup": {
+      "post": {
+        "description": "Update a permission group",
+        "operationId": "updatePermissionGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Permission_UpdatePermissionGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Permission_UpdatePermissionGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update permission group",
+        "tags": [
+          "Permission Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/permission/createPartnerPermissionGroup",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/permission/createPermissionGroup",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/permission/deletePartnerPermissionGroup",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/permission/deletePermissionGroup",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/permission/getPartnerPermissionGroups",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/permission/getPermissionGroups",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/permission/getPermissionsForCurrentPartner",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/permission/getPermissionsForCurrentUser",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/permission/updatePartnerPermissionGroup",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/permission/updatePermissionGroup",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 10,
+  "referencedSchemas": [
+    "Permission_CreatePartnerPermissionGroupWSRequest",
+    "Permission_CreatePartnerPermissionGroupWSResponse",
+    "Permission_CreatePermissionGroupWSRequest",
+    "Permission_CreatePermissionGroupWSResponse",
+    "Permission_DeletePartnerPermissionGroupWSRequest",
+    "Permission_DeletePartnerPermissionGroupWSResponse",
+    "Permission_DeletePermissionGroupWSRequest",
+    "Permission_DeletePermissionGroupWSResponse",
+    "Permission_GetPartnerPermissionGroupWSResponse",
+    "Permission_GetPartnerPermissionGroupsWSRequest",
+    "Permission_GetPermissionGroupsWSRequest",
+    "Permission_GetPermissionGroupsWSResponse",
+    "Permission_GetPermissionsForCurrentPartnerWSRequest",
+    "Permission_GetPermissionsForCurrentPartnerWSResponse",
+    "Permission_GetPermissionsForCurrentUserWSRequest",
+    "Permission_GetPermissionsForCurrentUserWSResponse",
+    "Permission_UpdatePartnerPermissionGroupWSRequest",
+    "Permission_UpdatePartnerPermissionGroupWSResponse",
+    "Permission_UpdatePermissionGroupWSRequest",
+    "Permission_UpdatePermissionGroupWSResponse"
+  ]
+}

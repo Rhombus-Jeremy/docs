@@ -1,0 +1,94 @@
+{
+  "tag": "Badge Reader Webservice",
+  "schemas": {
+    "Badgereader_DeleteBadgeReaderWSRequest": {
+      "type": "object",
+      "description": "Request to delete a badge reader device.",
+      "properties": {
+        "badgeReaderUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "mummify": {
+          "type": "boolean",
+          "description": "Whether to mummify the device instead of hard delete",
+          "example": false,
+          "nullable": true
+        }
+      },
+      "required": [
+        "badgeReaderUuid",
+        "mummify"
+      ]
+    },
+    "Badgereader_DeleteBadgeReaderWSResponse": {
+      "type": "object",
+      "description": "Response from deleting a badge reader device.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "responseStatus": {
+          "type": "string",
+          "description": "Status of the delete operation",
+          "enum": [
+            "BASIC_AUTH_FAILED",
+            "PASSWORD_MISMATCH",
+            "SAME_PASSWORD",
+            "USER_EXISTS",
+            "USER_NOT_FOUND",
+            "DEVICE_NOT_FOUND",
+            "POLICY_NOT_FOUND",
+            "LOCATION_NOT_FOUND",
+            "ORG_NOT_FOUND",
+            "BAD_INPUT",
+            "SUCCESS",
+            "PASSWORD_TOO_SHORT"
+          ],
+          "example": "SUCCESS",
+          "nullable": true
+        }
+      }
+    },
+    "Badgereader_RebootBadgeReaderWSRequest": {
+      "type": "object",
+      "description": "Request to reboot a badge reader device.",
+      "properties": {
+        "badgeReaderUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      },
+      "required": [
+        "badgeReaderUuid"
+      ]
+    },
+    "Common_devices_RebootDeviceWSResponse": {
+      "type": "object",
+      "description": "Response indicating the result of rebooting a device.",
+      "properties": {
+        "result": {
+          "type": "string",
+          "description": "Result of the reboot operation",
+          "enum": [
+            "REBOOT_SENT",
+            "DEVICE_OFFLINE"
+          ],
+          "nullable": true
+        }
+      }
+    }
+  },
+  "schemaCount": 4
+}

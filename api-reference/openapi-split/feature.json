@@ -1,0 +1,231 @@
+{
+  "tag": "Feature Webservice",
+  "description": "API endpoints for Feature Webservice",
+  "paths": {
+    "/api/feature/getDeviceEventTypes": {
+      "post": {
+        "description": "Get possible event types for specified device dependent on features enabled",
+        "operationId": "getDeviceEventTypes",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Feature_GetDeviceEventTypesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Feature_GetDeviceEventTypesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get possible event types for specified device",
+        "tags": [
+          "Feature Webservice"
+        ]
+      }
+    },
+    "/api/feature/getDeviceFeatures": {
+      "post": {
+        "description": "Get enabled features for a device",
+        "operationId": "getDeviceFeatures",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Feature_GetDeviceFeaturesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Feature_GetDeviceFeaturesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get enabled features for a device",
+        "tags": [
+          "Feature Webservice"
+        ]
+      }
+    },
+    "/api/feature/getDeviceFeaturesList": {
+      "post": {
+        "description": "Get enabled features for all devices in an org",
+        "operationId": "getDeviceFeaturesList",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Feature_GetDeviceFeaturesListWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Feature_GetDeviceFeaturesListWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get enabled features for all devices in an org",
+        "tags": [
+          "Feature Webservice"
+        ]
+      }
+    },
+    "/api/feature/getFeatureCompatabilityMatrix": {
+      "post": {
+        "description": "Get feature compatability matrix",
+        "operationId": "getFeatureCompatabilityMatrix",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Feature_GetFeatureCompatabilityMatrixWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Feature_GetFeatureCompatabilityMatrixWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get feature compatibility matrix",
+        "tags": [
+          "Feature Webservice"
+        ]
+      }
+    },
+    "/api/feature/updateDeviceFeatures": {
+      "post": {
+        "description": "Update enabled features for a device",
+        "operationId": "updateDeviceFeatures",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Feature_UpdateDeviceFeaturesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Feature_UpdateDeviceFeaturesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update enabled features for a device",
+        "tags": [
+          "Feature Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/feature/getDeviceEventTypes",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/feature/getDeviceFeatures",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/feature/getDeviceFeaturesList",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/feature/getFeatureCompatabilityMatrix",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/feature/updateDeviceFeatures",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 5,
+  "referencedSchemas": [
+    "Feature_GetDeviceEventTypesWSRequest",
+    "Feature_GetDeviceEventTypesWSResponse",
+    "Feature_GetDeviceFeaturesListWSRequest",
+    "Feature_GetDeviceFeaturesListWSResponse",
+    "Feature_GetDeviceFeaturesWSRequest",
+    "Feature_GetDeviceFeaturesWSResponse",
+    "Feature_GetFeatureCompatabilityMatrixWSRequest",
+    "Feature_GetFeatureCompatabilityMatrixWSResponse",
+    "Feature_UpdateDeviceFeaturesWSRequest",
+    "Feature_UpdateDeviceFeaturesWSResponse"
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "tag": "Door Controller Webservice",
+  "description": "API endpoints for Door Controller Webservice",
+  "paths": {
+    "/api/doorcontroller/registerDiscoveredRhombusReader": {
+      "post": {
+        "description": "Register a Rhombus reader that a Door Controller has discovered",
+        "operationId": "registerDiscoveredRhombusReader",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doorcontroller_RegisterDiscoveredRhombusReaderWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Doorcontroller_RegisterDiscoveredRhombusReaderWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Register a Rhombus reader that a Door Controller has discovered",
+        "tags": [
+          "Door Controller Webservice"
+        ]
+      }
+    },
+    "/api/doorcontroller/updateDetails": {
+      "post": {
+        "description": "Update details for door controller. Note: uuid is a required field",
+        "operationId": "updateDoorControllerDetails",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Doorcontroller_UpdateDoorControllerDetailsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Doorcontroller_UpdateDoorControllerDetailsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update details for door controller",
+        "tags": [
+          "Door Controller Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/doorcontroller/registerDiscoveredRhombusReader",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/doorcontroller/updateDetails",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 2,
+  "referencedSchemas": [
+    "Doorcontroller_RegisterDiscoveredRhombusReaderWSRequest",
+    "Doorcontroller_RegisterDiscoveredRhombusReaderWSResponse",
+    "Doorcontroller_UpdateDoorControllerDetailsWSRequest",
+    "Doorcontroller_UpdateDoorControllerDetailsWSResponse"
+  ]
+}

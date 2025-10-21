@@ -1,0 +1,780 @@
+{
+  "tag": "Integrations Webservice",
+  "schemas": {
+    "BaseApiResponse": {
+      "type": "object",
+      "description": "Base response object denoting success, or failure with a reason, for an endpoint.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_BaseIntegrationWSRequest": {
+      "type": "object",
+      "description": "Base request object for integration operations."
+    },
+    "Integration_GetAllOrgIntegrationsV2WSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "orgIntegrationsV2": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/IBaseIntegrationType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetAmtReadersWSRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "nullable": true
+        },
+        "password": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetApiTokenApplicationsWSRequest": {
+      "type": "object"
+    },
+    "Integration_GetApiTokenApplicationsWSResponse": {
+      "type": "object",
+      "properties": {
+        "applications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ApiTokenApplicationType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetApiTokensWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving API tokens.",
+      "properties": {
+        "optionalFilter": {
+          "type": "array",
+          "description": "Optional filter for API client types",
+          "items": {
+            "$ref": "#/components/schemas/ApiClientTypeEnum"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetApiTokensWSResponse": {
+      "type": "object",
+      "description": "Response object containing API tokens.",
+      "properties": {
+        "apiTokens": {
+          "type": "array",
+          "description": "List of API tokens",
+          "items": {
+            "$ref": "#/components/schemas/ApiTokenType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetBadgeIntegrationDoorsWSResponse": {
+      "type": "object",
+      "properties": {
+        "authError": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "doors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/DoorType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetCalendlyEventDetailsWSRequest": {
+      "type": "object",
+      "properties": {
+        "eventUuid": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetCalendlyEventDetailsWSResponse": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "nullable": true
+        },
+        "endTimeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "startTimeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetEnvoyDeliveriesWSRequest": {
+      "type": "object",
+      "properties": {
+        "endTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "locationIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "startTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetEnvoyDeliveriesWSResponse": {
+      "type": "object",
+      "properties": {
+        "collectedDeliveries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/EnvoyDelivery"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "pendingDeliveries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/EnvoyDelivery"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetEnvoyEmployeesWSRequest": {
+      "type": "object",
+      "properties": {
+        "locationIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "nullable": true
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetEnvoyEmployeesWSResponse": {
+      "type": "object",
+      "properties": {
+        "employees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/EnvoyPersonInfo"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetEnvoyLocationsWSRequest": {
+      "type": "object"
+    },
+    "Integration_GetEnvoyLocationsWSResponse": {
+      "type": "object",
+      "properties": {
+        "authError": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "locationList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/EnvoyLocation"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetEnvoyVisitorsWSRequest": {
+      "type": "object",
+      "properties": {
+        "endTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "includeSignedOutVisitors": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "locationIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "startTimestampMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetEnvoyVisitorsWSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "invites": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/EnvoyExpectedGuest"
+          },
+          "nullable": true
+        },
+        "visitors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/EnvoyGuest"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetOpenAIModelsWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving OpenAI models.",
+      "properties": {
+        "openAISettings": {
+          "$ref": "#/components/schemas/IOpenAIType"
+        }
+      }
+    },
+    "Integration_GetOpenAIModelsWSResponse": {
+      "type": "object",
+      "description": "Response object containing available OpenAI models.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "models": {
+          "type": "array",
+          "description": "List of available OpenAI models",
+          "items": {
+            "$ref": "#/components/schemas/OpenAIModel"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetOrgIntegrationsV2WSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "orgIntegrationV2": {
+          "$ref": "#/components/schemas/IBaseIntegrationType"
+        }
+      }
+    },
+    "Integration_GetOrgIntegrationsWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving organization integrations."
+    },
+    "Integration_GetOrgIntegrationsWSResponse": {
+      "type": "object",
+      "description": "Response object containing organization integrations configuration.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "orgIntegrations": {
+          "$ref": "#/components/schemas/OrgIntegrationsType"
+        }
+      }
+    },
+    "Integration_RevokeApiTokenWSRequest": {
+      "type": "object",
+      "description": "Request object for revoking an API token.",
+      "properties": {
+        "tokenUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_RevokeApiTokenWSResponse": {
+      "type": "object",
+      "description": "Response object for revoking an API token.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_SubmitApiTokenApplicationWSRequest": {
+      "type": "object",
+      "description": "Request object for submitting an API token application.",
+      "properties": {
+        "authType": {
+          "$ref": "#/components/schemas/ApiTokenAuthTypeEnum"
+        },
+        "csr": {
+          "type": "string",
+          "description": "Certificate Signing Request (CSR) for token authentication",
+          "example": "-----BEGIN CERTIFICATE REQUEST-----...",
+          "nullable": true
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display name for the API token",
+          "example": "Production API Token",
+          "nullable": true
+        },
+        "permissionGroupUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      },
+      "required": [
+        "permissionGroupUuid"
+      ]
+    },
+    "Integration_SubmitApiTokenApplicationWSResponse": {
+      "type": "object",
+      "properties": {
+        "apiKey": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "cert": {
+          "type": "string",
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "validCSR": {
+          "type": "boolean",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_SubscribeZapierWebhookWSRequest": {
+      "type": "object",
+      "description": "Request object for subscribing to Zapier webhook events.",
+      "properties": {
+        "backoffSec": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Backoff time in seconds",
+          "example": 30,
+          "nullable": true
+        },
+        "doorState": {
+          "type": "string",
+          "description": "Door state for door sensor webhooks",
+          "enum": [
+            "OPEN",
+            "CLOSED",
+            "AJAR"
+          ],
+          "nullable": true
+        },
+        "hookUrl": {
+          "type": "string",
+          "description": "Zapier webhook URL",
+          "example": "https://hooks.zapier.com/hooks/catch/123456/abc123/",
+          "nullable": true
+        },
+        "humidityLowerThreshold": {
+          "type": "number",
+          "format": "float",
+          "description": "Lower humidity threshold for environmental sensors",
+          "example": 30.0,
+          "nullable": true
+        },
+        "humidityUpperThreshold": {
+          "type": "number",
+          "format": "float",
+          "description": "Upper humidity threshold for environmental sensors",
+          "example": 80.0,
+          "nullable": true
+        },
+        "tempLowerThreshold": {
+          "type": "number",
+          "format": "float",
+          "description": "Lower temperature threshold for environmental sensors",
+          "example": 65.0,
+          "nullable": true
+        },
+        "tempUpperThreshold": {
+          "type": "number",
+          "format": "float",
+          "description": "Upper temperature threshold for environmental sensors",
+          "example": 85.5,
+          "nullable": true
+        },
+        "uuids": {
+          "type": "array",
+          "description": "Set of device UUIDs to monitor",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true,
+          "uniqueItems": true
+        },
+        "zapEnum": {
+          "$ref": "#/components/schemas/ZapierEnum"
+        }
+      }
+    },
+    "Integration_SubscribeZapierWebhookWSResponse": {
+      "type": "object",
+      "description": "Response object for Zapier webhook subscription.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "webhookId": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_UnsubscribeZapierWebhookWSRequest": {
+      "type": "object",
+      "description": "Request object for unsubscribing from a Zapier webhook.",
+      "properties": {
+        "webhookId": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_UpdateAmtIntegrationWSRequest": {
+      "type": "object",
+      "description": "Request object for updating AMT access control integration settings.",
+      "properties": {
+        "amtSettings": {
+          "$ref": "#/components/schemas/AmtSettings"
+        }
+      }
+    },
+    "Integration_UpdateDeviceIntegrationWSRequest": {
+      "type": "object",
+      "description": "Request object for updating device integration settings and device properties.",
+      "properties": {
+        "createNewDevice": {
+          "type": "boolean",
+          "description": "Whether to create a new device",
+          "example": true,
+          "nullable": true
+        },
+        "deviceIntegrationSettings": {
+          "$ref": "#/components/schemas/IDeviceIntegrationType"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Latitude coordinate of the device location",
+          "example": 37.7749,
+          "nullable": true
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Longitude coordinate of the device location",
+          "example": -122.4194,
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the device",
+          "example": "Main Entrance Camera",
+          "nullable": true
+        },
+        "updateDevice": {
+          "type": "boolean",
+          "description": "Whether to update an existing device",
+          "example": false,
+          "nullable": true
+        },
+        "updateDeviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_UpdateMattermostIntegrationWSRequest": {
+      "type": "object",
+      "description": "Request object for updating Mattermost team communication integration settings.",
+      "properties": {
+        "mattermostSettings": {
+          "$ref": "#/components/schemas/MattermostSettings"
+        }
+      }
+    },
+    "Integration_UpdateNoonlightSettingsWSRequest": {
+      "type": "object",
+      "properties": {
+        "noonlightSettings": {
+          "$ref": "#/components/schemas/NoonlightSettings"
+        }
+      }
+    },
+    "Integration_UpdateOpenAIIntegrationRequest": {
+      "type": "object",
+      "properties": {
+        "openAISettings": {
+          "$ref": "#/components/schemas/IOpenAIType"
+        }
+      }
+    },
+    "Integration_UpdateOrgIntegrationsWSResponse": {
+      "type": "object",
+      "description": "Response object for updating organization integrations.",
+      "properties": {
+        "authError": {
+          "type": "boolean",
+          "description": "Whether an authentication error occurred during update",
+          "example": false,
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "failedGuids": {
+          "type": "array",
+          "description": "List of GUIDs that failed to update",
+          "items": {
+            "type": "string",
+            "description": "List of GUIDs that failed to update",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "misconfiguredDoors": {
+          "type": "array",
+          "description": "List of door names that are assigned to multiple Rhombus locations",
+          "items": {
+            "type": "string",
+            "description": "List of door names that are assigned to multiple Rhombus locations",
+            "nullable": true
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Integration_UpdateWebhookIntegrationV2WSRequest": {
+      "type": "object",
+      "description": "Request object for updating webhook V2 integration settings with enhanced configuration options.",
+      "properties": {
+        "disabled": {
+          "type": "boolean",
+          "description": "Whether the webhook is disabled",
+          "example": false,
+          "nullable": true
+        },
+        "isDiagnostic": {
+          "type": "boolean",
+          "description": "Whether this is a diagnostic webhook",
+          "example": false,
+          "nullable": true
+        },
+        "updatedWebhookSettings": {
+          "$ref": "#/components/schemas/IWebhooksType"
+        },
+        "webhookUrl": {
+          "type": "string",
+          "description": "Webhook URL for receiving notifications",
+          "example": "https://api.example.com/webhook/rhombus",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_UpdateWebhookIntegrationV2WSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "webhookSecret": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_UpdateWebhookIntegrationWSRequest": {
+      "type": "object",
+      "description": "Request object for updating webhook integration settings.",
+      "properties": {
+        "webhookSettings": {
+          "$ref": "#/components/schemas/WebhookSettings"
+        }
+      }
+    }
+  },
+  "schemaCount": 40
+}

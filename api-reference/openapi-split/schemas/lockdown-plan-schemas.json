@@ -1,0 +1,505 @@
+{
+  "tag": "Lockdown Plan Webservice",
+  "schemas": {
+    "Accesscontrol_lockdownplan_ActivateLockdownForLocationWSRequest": {
+      "type": "object",
+      "description": "Request to activate lockdown for a specific location with optional optimistic locking.",
+      "properties": {
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "lockdownPlanUuids": {
+          "type": "array",
+          "description": "Set of lockdown plan UUIDs to activate for the location.",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true,
+          "uniqueItems": true
+        },
+        "stateUpdatedAtMillis": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Optional timestamp for optimistic locking to ensure the user is updating the latest record.",
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_ActivateLockdownForLocationWSResponse": {
+      "type": "object",
+      "description": "Response containing the result of activating lockdown for a location.",
+      "properties": {
+        "result": {
+          "$ref": "#/components/schemas/LockdownActivationResultEnumType"
+        },
+        "state": {
+          "$ref": "#/components/schemas/LocationLockdownStateType"
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_CreateLocationLockdownPlanWSRequest": {
+      "type": "object",
+      "description": "Request to create a new location lockdown plan.",
+      "properties": {
+        "lockdownPlan": {
+          "$ref": "#/components/schemas/LocationLockdownPlanType"
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_CreateLocationLockdownPlanWSResponse": {
+      "type": "object",
+      "description": "Response containing the created location lockdown plan.",
+      "properties": {
+        "lockdownPlan": {
+          "$ref": "#/components/schemas/LocationLockdownPlanType"
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_CreateLockdownRuleForLocationWSRequest": {
+      "type": "object",
+      "description": "Request to create a new lockdown rule for a specific location.",
+      "properties": {
+        "rule": {
+          "$ref": "#/components/schemas/Accesscontrol_lockdownplan_ExternalLockdownPlanRuleType"
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_CreateLockdownRuleForLocationWSResponse": {
+      "type": "object",
+      "description": "Response containing the UUID of the created lockdown rule.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "ruleUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_DeactivateLockdownForLocationWSRequest": {
+      "type": "object",
+      "description": "Request to deactivate lockdown for a specific location with optional optimistic locking.",
+      "properties": {
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "stateUpdatedAtMillis": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Optional timestamp for optimistic locking to ensure the user is updating the latest record.",
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_DeactivateLockdownForLocationWSResponse": {
+      "type": "object",
+      "description": "Response containing the result of deactivating lockdown for a location.",
+      "properties": {
+        "result": {
+          "$ref": "#/components/schemas/LockdownDeactivationResultEnumType"
+        },
+        "state": {
+          "$ref": "#/components/schemas/LocationLockdownStateType"
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_DeleteLocationLockdownStateWSRequest": {
+      "type": "object",
+      "description": "Request to delete the lockdown state tracking for a specific location.",
+      "properties": {
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_DeleteLocationLockdownStateWSResponse": {
+      "type": "object",
+      "description": "Response indicating successful deletion of location lockdown state."
+    },
+    "Accesscontrol_lockdownplan_DeleteLockdownPlanWSRequest": {
+      "type": "object",
+      "description": "Request to delete a specific lockdown plan by UUID.",
+      "properties": {
+        "lockdownPlanUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_DeleteLockdownPlanWSResponse": {
+      "type": "object",
+      "description": "Response confirming the deletion of a lockdown plan.",
+      "properties": {
+        "lockdownPlanUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "orgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_DeleteLockdownRuleForLocationWSRequest": {
+      "type": "object",
+      "description": "Request to delete a specific lockdown rule for a location.",
+      "properties": {
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "ruleUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_DeleteLockdownRuleForLocationWSResponse": {
+      "type": "object",
+      "description": "Response indicating successful deletion of a lockdown rule.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_DisableLockdownTestModeForLocationWSRequest": {
+      "type": "object",
+      "description": "Request to disable test mode for lockdown at a specific location.",
+      "properties": {
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_DisableLockdownTestModeForLocationWSResponse": {
+      "type": "object",
+      "description": "Response containing the updated lockdown state after disabling test mode.",
+      "properties": {
+        "state": {
+          "$ref": "#/components/schemas/LocationLockdownStateType"
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_EnableLockdownTestModeForLocationWSRequest": {
+      "type": "object",
+      "description": "Request to enable test mode for lockdown at a specific location.",
+      "properties": {
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_EnableLockdownTestModeForLocationWSResponse": {
+      "type": "object",
+      "description": "Response containing the updated lockdown state after enabling test mode.",
+      "properties": {
+        "state": {
+          "$ref": "#/components/schemas/LocationLockdownStateType"
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_FindLocationLockdownEventsWSRequest": {
+      "type": "object",
+      "description": "Request to find lockdown events for a specific location with optional time filtering.",
+      "properties": {
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Returns events created after (exclusive) the specified millisecond epoch timestamp",
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Returns events created before (exclusive) the specified millisecond epoch timestamp",
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Limits the number of returned events to the latest LIMIT events",
+          "nullable": true
+        },
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      },
+      "required": [
+        "locationUuid"
+      ]
+    },
+    "Accesscontrol_lockdownplan_FindLocationLockdownEventsWSResponse": {
+      "type": "object",
+      "description": "Response containing a list of lockdown events for a specific location.",
+      "properties": {
+        "events": {
+          "type": "array",
+          "description": "List of lockdown events found for the specified location.",
+          "items": {
+            "$ref": "#/components/schemas/BaseLockdownStateEventType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_FindLocationLockdownStatesWSRequest": {
+      "type": "object",
+      "description": "Request to find location lockdown states with optional filtering.",
+      "properties": {
+        "stateFilter": {
+          "type": "array",
+          "description": "Optional filter to limit results to specific lockdown states.",
+          "items": {
+            "$ref": "#/components/schemas/LocationLockdownStateEnumType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_FindLocationLockdownStatesWSResponse": {
+      "type": "object",
+      "description": "Response containing a list of location lockdown states.",
+      "properties": {
+        "states": {
+          "type": "array",
+          "description": "List of location lockdown states found for the organization.",
+          "items": {
+            "$ref": "#/components/schemas/LocationLockdownStateType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_FindLockdownPlansByLocationWSRequest": {
+      "type": "object",
+      "description": "Request to search for lockdown plans for a specific location.",
+      "properties": {
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_FindLockdownPlansByLocationWSResponse": {
+      "type": "object",
+      "description": "Response containing a list of lockdown plans found for the specified location.",
+      "properties": {
+        "lockdownPlans": {
+          "type": "array",
+          "description": "List of lockdown plans found for the specified location.",
+          "items": {
+            "$ref": "#/components/schemas/BaseLockdownPlanType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_FindLockdownPlansWSRequest": {
+      "type": "object",
+      "description": "Request to search for lockdown plans across the organization."
+    },
+    "Accesscontrol_lockdownplan_FindLockdownPlansWSResponse": {
+      "type": "object",
+      "description": "Response containing a list of lockdown plans found in the organization.",
+      "properties": {
+        "lockdownPlans": {
+          "type": "array",
+          "description": "List of lockdown plans found in the organization.",
+          "items": {
+            "$ref": "#/components/schemas/BaseLockdownPlanType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_GetLockdownPlanWSRequest": {
+      "type": "object",
+      "description": "Request to retrieve a specific lockdown plan by UUID.",
+      "properties": {
+        "lockdownPlanUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_GetLockdownPlanWSResponse": {
+      "type": "object",
+      "description": "Response containing the requested lockdown plan.",
+      "properties": {
+        "lockdownPlan": {
+          "$ref": "#/components/schemas/BaseLockdownPlanType"
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_GetLockdownRulesForLocationWSRequest": {
+      "type": "object",
+      "description": "Request to retrieve all lockdown rules for a specific location.",
+      "properties": {
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_GetLockdownRulesForLocationWSResponse": {
+      "type": "object",
+      "description": "Response containing a list of lockdown rules for a specific location.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "rules": {
+          "type": "array",
+          "description": "List of lockdown rules configured for the specified location.",
+          "items": {
+            "$ref": "#/components/schemas/Accesscontrol_lockdownplan_ExternalLockdownPlanRuleType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_GetOrCreateLocationLockdownStateWSRequest": {
+      "type": "object",
+      "description": "Request to retrieve an existing lockdown state or create one for a specific location.",
+      "properties": {
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_GetOrCreateLocationLockdownStateWSResponse": {
+      "type": "object",
+      "description": "Response containing the lockdown state for the specified location.",
+      "properties": {
+        "state": {
+          "$ref": "#/components/schemas/LocationLockdownStateType"
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_UpdateLocationLockdownPlanWSRequest": {
+      "type": "object",
+      "description": "Request to update an existing location lockdown plan with selective field updates.",
+      "properties": {
+        "activationPlan": {
+          "$ref": "#/components/schemas/LockdownActivationPlanType"
+        },
+        "deactivationPlan": {
+          "$ref": "#/components/schemas/LockdownDeactivationPlanType"
+        },
+        "defaultLockdownState": {
+          "$ref": "#/components/schemas/DoorLockdownStateEnumType"
+        },
+        "doorLockdownStateMap": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/DoorLockdownStateEnumType"
+          },
+          "nullable": true
+        },
+        "lockdownPlanUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "physicalAccess": {
+          "$ref": "#/components/schemas/LockdownPhysicalAccessType"
+        },
+        "testPlan": {
+          "$ref": "#/components/schemas/LockdownTestPlanType"
+        }
+      }
+    },
+    "Accesscontrol_lockdownplan_UpdateLocationLockdownPlanWSResponse": {
+      "type": "object",
+      "description": "Response containing the updated location lockdown plan.",
+      "properties": {
+        "lockdownPlan": {
+          "$ref": "#/components/schemas/LocationLockdownPlanType"
+        }
+      }
+    }
+  },
+  "schemaCount": 34
+}

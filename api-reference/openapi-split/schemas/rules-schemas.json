@@ -1,0 +1,237 @@
+{
+  "tag": "Rules Webservice",
+  "schemas": {
+    "Rules_CreateRuleWSRequest": {
+      "type": "object",
+      "description": "Request object for creating a rule.",
+      "properties": {
+        "rule": {
+          "$ref": "#/components/schemas/RuleType"
+        }
+      }
+    },
+    "Rules_CreateRuleWSResponse": {
+      "type": "object",
+      "description": "Response object for creating a rule.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "ruleUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Rules_DeleteRulePauseSettingWSRequest": {
+      "type": "object",
+      "description": "Request object for deleting a rule pause setting.",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Rules_DeleteRulePauseSettingWSResponse": {
+      "type": "object",
+      "description": "Response object for deleting a rule pause setting.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Rules_DeleteRuleWSRequest": {
+      "type": "object",
+      "description": "Request object for deleting a rule.",
+      "properties": {
+        "ruleUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Rules_DeleteRuleWSResponse": {
+      "type": "object",
+      "description": "Response object for deleting a rule.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Rules_GetRulePauseSettingsResponse": {
+      "type": "object",
+      "description": "Response object for getting rule pause settings.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "rulesPausedMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "description": "Map of rule UUIDs to their pause settings",
+            "items": {
+              "$ref": "#/components/schemas/ScheduledIntervalType"
+            },
+            "nullable": true
+          },
+          "description": "Map of rule UUIDs to their pause settings",
+          "nullable": true
+        }
+      }
+    },
+    "Rules_GetRulePauseSettingsWSRequest": {
+      "type": "object",
+      "description": "Request object for getting rule pause settings."
+    },
+    "Rules_GetRulesForOrgWSRequest": {
+      "type": "object",
+      "description": "Request object for getting rules for an organization."
+    },
+    "Rules_GetRulesForOrgWSResponse": {
+      "type": "object",
+      "description": "Response object for getting rules for an organization.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "rules": {
+          "type": "array",
+          "description": "List of rules for the organization",
+          "items": {
+            "$ref": "#/components/schemas/RuleType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Rules_PauseRuleWSRequest": {
+      "type": "object",
+      "description": "Request object for pausing a rule.",
+      "properties": {
+        "durationSec": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Duration to pause the rule in seconds",
+          "example": 3600,
+          "nullable": true
+        },
+        "ruleUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "scheduledTimestampSec": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Scheduled timestamp in seconds when the pause should take effect",
+          "example": 1640995200,
+          "nullable": true
+        }
+      }
+    },
+    "Rules_PauseRuleWSResponse": {
+      "type": "object",
+      "description": "Response object for pausing a rule.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Rules_UpdateRuleWSRequest": {
+      "type": "object",
+      "description": "Request object for updating a rule.",
+      "properties": {
+        "ruleUpdate": {
+          "$ref": "#/components/schemas/RuleType"
+        }
+      }
+    },
+    "Rules_UpdateRuleWSResponse": {
+      "type": "object",
+      "description": "Response object for updating a rule.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Rules_records_GetRulesFilteredWSRequest": {
+      "type": "object",
+      "description": "Request object for getting filtered rules.",
+      "properties": {
+        "associatedUuids": {
+          "type": "array",
+          "description": "List of associated UUIDs to filter by",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "ruleTypeFilter": {
+          "type": "array",
+          "description": "List of rule types to filter by",
+          "items": {
+            "$ref": "#/components/schemas/RuleTypeEnum"
+          },
+          "nullable": true
+        }
+      }
+    }
+  },
+  "schemaCount": 15
+}

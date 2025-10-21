@@ -1,0 +1,29 @@
+{
+  "tag": "Guest Management Kiosk Webservice",
+  "schemas": {
+    "Kiosk_UpdateKioskResponse": {
+      "type": "object",
+      "description": "Response object for updating kiosk settings.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Kiosk_UpdateKioskSelectiveRequest": {
+      "type": "object",
+      "description": "Request object for selectively updating kiosk settings.",
+      "properties": {
+        "kioskUpdate": {
+          "$ref": "#/components/schemas/KioskSelectiveUpdate"
+        }
+      }
+    }
+  },
+  "schemaCount": 2
+}

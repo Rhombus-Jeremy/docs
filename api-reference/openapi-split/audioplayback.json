@@ -1,0 +1,275 @@
+{
+  "tag": "AudioPlayback Webservice",
+  "description": "API endpoints for AudioPlayback Webservice",
+  "paths": {
+    "/api/audioplayback/cancelLoopingAudioPlayback": {
+      "post": {
+        "description": "Cancel any currently playing looping audio for an audio device",
+        "operationId": "cancelLoopingAudioPlayback",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Audioplayback_CancelLoopingAudioPlaybackWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Audioplayback_CancelLoopingAudioPlaybackWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Cancel looping audio playback",
+        "tags": [
+          "AudioPlayback Webservice"
+        ]
+      }
+    },
+    "/api/audioplayback/deleteAudioUploadMetadata": {
+      "post": {
+        "description": "Delete an uploaded audio clip metadata",
+        "operationId": "deleteAudioUploadMetadata",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Audioplayback_DeleteAudioUploadMetadataWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Audioplayback_DeleteAudioUploadMetadataWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete audio upload metadata",
+        "tags": [
+          "AudioPlayback Webservice"
+        ]
+      }
+    },
+    "/api/audioplayback/getAudioUploadMetadataForOrg": {
+      "post": {
+        "description": "Get list of uploaded audio clip metadata",
+        "operationId": "getAudioUploadMetadataForOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Audioplayback_GetAudioUploadMetadataForOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Audioplayback_GetAudioUploadMetadataForOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get audio upload metadata for organization",
+        "tags": [
+          "AudioPlayback Webservice"
+        ]
+      }
+    },
+    "/api/audioplayback/playAudioUpload": {
+      "post": {
+        "description": "Play an uploaded audio clip through an audio device",
+        "operationId": "playAudioUpload",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Audioplayback_PlayAudioUploadWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Audioplayback_PlayAudioUploadWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Play audio upload",
+        "tags": [
+          "AudioPlayback Webservice"
+        ]
+      }
+    },
+    "/api/audioplayback/updateAudioUploadMetadata": {
+      "post": {
+        "description": "Update an uploaded audio clip metadata",
+        "operationId": "updateAudioUploadMetadata",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Audioplayback_UpdateAudioUploadMetadataWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Audioplayback_UpdateAudioUploadMetadataWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update audio upload metadata",
+        "tags": [
+          "AudioPlayback Webservice"
+        ]
+      }
+    },
+    "/api/audioplayback/uploadAudioText": {
+      "post": {
+        "description": "Upload text to synthesize audio",
+        "operationId": "uploadAudioText",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Audioplayback_UploadAudioTextWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Audioplayback_UploadAudioTextWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Upload text to synthesize audio",
+        "tags": [
+          "AudioPlayback Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/audioplayback/cancelLoopingAudioPlayback",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/audioplayback/deleteAudioUploadMetadata",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/audioplayback/getAudioUploadMetadataForOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/audioplayback/playAudioUpload",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/audioplayback/updateAudioUploadMetadata",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/audioplayback/uploadAudioText",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 6,
+  "referencedSchemas": [
+    "Audioplayback_CancelLoopingAudioPlaybackWSRequest",
+    "Audioplayback_CancelLoopingAudioPlaybackWSResponse",
+    "Audioplayback_DeleteAudioUploadMetadataWSRequest",
+    "Audioplayback_DeleteAudioUploadMetadataWSResponse",
+    "Audioplayback_GetAudioUploadMetadataForOrgWSRequest",
+    "Audioplayback_GetAudioUploadMetadataForOrgWSResponse",
+    "Audioplayback_PlayAudioUploadWSRequest",
+    "Audioplayback_PlayAudioUploadWSResponse",
+    "Audioplayback_UpdateAudioUploadMetadataWSRequest",
+    "Audioplayback_UpdateAudioUploadMetadataWSResponse",
+    "Audioplayback_UploadAudioTextWSRequest",
+    "Audioplayback_UploadAudioTextWSResponse"
+  ]
+}

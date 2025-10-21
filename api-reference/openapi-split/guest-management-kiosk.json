@@ -1,0 +1,55 @@
+{
+  "tag": "Guest Management Kiosk Webservice",
+  "description": "API endpoints for Guest Management Kiosk Webservice",
+  "paths": {
+    "/api/kiosk/updateKiosk": {
+      "post": {
+        "description": "Update kiosk settings",
+        "operationId": "updateKiosk",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Kiosk_UpdateKioskSelectiveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kiosk_UpdateKioskResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update kiosk",
+        "tags": [
+          "Guest Management Kiosk Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/kiosk/updateKiosk",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 1,
+  "referencedSchemas": [
+    "Kiosk_UpdateKioskResponse",
+    "Kiosk_UpdateKioskSelectiveRequest"
+  ]
+}

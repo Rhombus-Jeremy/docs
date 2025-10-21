@@ -1,0 +1,143 @@
+{
+  "tag": "TvOs Config Webservice",
+  "description": "API endpoints for TvOs Config Webservice",
+  "paths": {
+    "/api/tvos/getTvOsConfig": {
+      "post": {
+        "description": "Retrieves a specific tvOs configuration by UUID, returning the detailed settings and parameters for a particular Apple TV client.",
+        "operationId": "getTvOsConfig",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tvos_GetTvOsConfigWsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tvos_GetTvOsConfigWsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get specific tvOs config",
+        "tags": [
+          "TvOs Config Webservice"
+        ]
+      }
+    },
+    "/api/tvos/getTvOsConfigsForOrg": {
+      "post": {
+        "description": "Retrieves all tvOs configurations for the organization, providing a list of all Apple TV client configurations and their settings.",
+        "operationId": "getTvOsConfigsForOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tvos_GetTvOsConfigsForOrgWsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tvos_GetTvOsConfigsForOrgWsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get tvOs configs for organization",
+        "tags": [
+          "TvOs Config Webservice"
+        ]
+      }
+    },
+    "/api/tvos/updateTvOsConfig": {
+      "post": {
+        "description": "Updates the configuration for a tvOs client, allowing modification of settings and parameters for Apple TV applications.",
+        "operationId": "updateTvOsConfig",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tvos_UpdateTvOsConfigWsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tvos_UpdateTvOsConfigWsResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update tvOs config",
+        "tags": [
+          "TvOs Config Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/tvos/getTvOsConfig",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/tvos/getTvOsConfigsForOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/tvos/updateTvOsConfig",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 3,
+  "referencedSchemas": [
+    "Tvos_GetTvOsConfigWsRequest",
+    "Tvos_GetTvOsConfigWsResponse",
+    "Tvos_GetTvOsConfigsForOrgWsRequest",
+    "Tvos_GetTvOsConfigsForOrgWsResponse",
+    "Tvos_UpdateTvOsConfigWsRequest",
+    "Tvos_UpdateTvOsConfigWsResponse"
+  ]
+}

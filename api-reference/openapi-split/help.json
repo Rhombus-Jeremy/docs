@@ -1,0 +1,320 @@
+{
+  "tag": "Help Webservice",
+  "description": "API endpoints for Help Webservice",
+  "paths": {
+    "/api/help/feedback": {
+      "post": {
+        "description": "Leave feedback of our system",
+        "operationId": "sendFeedback",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Help_SendFeedbackWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Help_SendFeedbackWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Leave feedback of our system",
+        "tags": [
+          "Help Webservice"
+        ]
+      }
+    },
+    "/api/help/openTickets": {
+      "post": {
+        "deprecated": true,
+        "description": "Get Open Support Tickets For A Client Organization. Tickets are associated to an organziation based on the requester's organization association.\nThis endpoint returns a paginated response sorted by the request date. The first page is indexed at 1 and each page has up to 100 ticket entries.",
+        "operationId": "getOpenTickets",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Help_GetOpenTicketsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Help_GetOpenTicketsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get open support tickets for a client organization",
+        "tags": [
+          "Help Webservice"
+        ]
+      }
+    },
+    "/api/help/openTicketsV2": {
+      "post": {
+        "description": "Get Open Support Tickets For A Client Organization. Tickets are associated to an organziation based on the requester's organization association.",
+        "operationId": "getOpenTicketsV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Help_GetOpenTicketsV2WSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Help_GetOpenTicketsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get open support tickets for a client organization V2",
+        "tags": [
+          "Help Webservice"
+        ]
+      }
+    },
+    "/api/help/rma": {
+      "post": {
+        "description": "Open an RMA for a camera",
+        "operationId": "processRMA",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Help_ProcessRMAWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Help_ProcessRMAWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Open an RMA for a camera",
+        "tags": [
+          "Help Webservice"
+        ]
+      }
+    },
+    "/api/help/ticket": {
+      "post": {
+        "description": "Open a support ticket",
+        "operationId": "createTicket",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Help_CreateTicketWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Help_CreateTicketWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Open a support ticket",
+        "tags": [
+          "Help Webservice"
+        ]
+      }
+    },
+    "/api/help/ticketWithFile": {
+      "post": {
+        "description": "Open a support ticket and optionally include a file upload. Uploading multiple Files are not supported throught this call.",
+        "operationId": "createTicketWithFile",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/FormDataMultiPart"
+              }
+            }
+          },
+          "description": "multipart/form-data with field 'file' for the file and 'request' for the CreateTicketWSRequest(see '/ticket' for details on CreateTicketWSRequest)"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Help_CreateTicketWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Open a support ticket with file upload",
+        "tags": [
+          "Help Webservice"
+        ]
+      }
+    },
+    "/api/help/triageDevice": {
+      "post": {
+        "description": "Triage a device connection/recording issue",
+        "operationId": "triageDevice",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Help_TriageDeviceWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Help_TriageDeviceWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Triage a device connection/recording issue",
+        "tags": [
+          "Help Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/help/feedback",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/help/openTickets",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/help/openTicketsV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/help/rma",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/help/ticket",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/help/ticketWithFile",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/help/triageDevice",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 7,
+  "referencedSchemas": [
+    "FormDataMultiPart",
+    "Help_CreateTicketWSRequest",
+    "Help_CreateTicketWSResponse",
+    "Help_GetOpenTicketsV2WSRequest",
+    "Help_GetOpenTicketsV2WSResponse",
+    "Help_GetOpenTicketsWSRequest",
+    "Help_GetOpenTicketsWSResponse",
+    "Help_ProcessRMAWSRequest",
+    "Help_ProcessRMAWSResponse",
+    "Help_SendFeedbackWSRequest",
+    "Help_SendFeedbackWSResponse",
+    "Help_TriageDeviceWSRequest",
+    "Help_TriageDeviceWSResponse"
+  ]
+}

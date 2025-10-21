@@ -1,0 +1,243 @@
+{
+  "tag": "Service Management Integrations Webservice",
+  "schemas": {
+    "BaseApiResponse": {
+      "type": "object",
+      "description": "Base response object denoting success, or failure with a reason, for an endpoint.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_BaseIntegrationWSRequest": {
+      "type": "object",
+      "description": "Base request object for integration operations."
+    },
+    "Integration_CreateEnvoyInviteWSRequest": {
+      "type": "object",
+      "properties": {
+        "invitation": {
+          "$ref": "#/components/schemas/EnvoyInvite"
+        }
+      }
+    },
+    "Integration_GetCalendlyEventDetailsWSRequest": {
+      "type": "object",
+      "properties": {
+        "eventUuid": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetCalendlyEventDetailsWSResponse": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "nullable": true
+        },
+        "endTimeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "nullable": true
+        },
+        "startTimeMs": {
+          "type": "integer",
+          "format": "int64",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetOrgIntegrationsV2WSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "orgIntegrationV2": {
+          "$ref": "#/components/schemas/IBaseIntegrationType"
+        }
+      }
+    },
+    "Integration_GetToastServiceAreasWSRequest": {
+      "type": "object",
+      "properties": {
+        "restaurantGuid": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_GetToastServiceAreasWSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "serviceAreas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/GenericPosType"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Integration_InitiateOAuthWSRequest": {
+      "type": "object",
+      "description": "Request object for initiating OAuth authentication flow.",
+      "properties": {
+        "param": {
+          "type": "string",
+          "description": "Additional OAuth parameter",
+          "example": "state_param",
+          "nullable": true
+        },
+        "requestUrl": {
+          "type": "string",
+          "description": "OAuth request URL",
+          "example": "https://oauth.provider.com/auth",
+          "nullable": true
+        },
+        "rhombusOrgUserUuid": {
+          "type": "string",
+          "description": "Rhombus organization user UUID",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_InitiateOAuthWSResponse": {
+      "type": "object",
+      "description": "Response object containing OAuth redirect URL.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "redirectUrl": {
+          "type": "string",
+          "description": "OAuth redirect URL for authentication",
+          "example": "https://oauth.provider.com/auth?client_id=123&redirect_uri=callback",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_UpdateEnvoyIntegrationV2WSRequest": {
+      "type": "object",
+      "description": "Request object for updating Envoy V2 integration settings with enhanced visitor management features.",
+      "properties": {
+        "envoySettings": {
+          "$ref": "#/components/schemas/IEnvoyType"
+        }
+      }
+    },
+    "Integration_UpdateEnvoyIntegrationWSRequest": {
+      "type": "object",
+      "description": "Request object for updating Envoy visitor management integration settings.",
+      "properties": {
+        "envoySettings": {
+          "$ref": "#/components/schemas/EnvoySettings"
+        }
+      }
+    },
+    "Integration_UpdateOrgIntegrationsWSResponse": {
+      "type": "object",
+      "description": "Response object for updating organization integrations.",
+      "properties": {
+        "authError": {
+          "type": "boolean",
+          "description": "Whether an authentication error occurred during update",
+          "example": false,
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "failedGuids": {
+          "type": "array",
+          "description": "List of GUIDs that failed to update",
+          "items": {
+            "type": "string",
+            "description": "List of GUIDs that failed to update",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "misconfiguredDoors": {
+          "type": "array",
+          "description": "List of door names that are assigned to multiple Rhombus locations",
+          "items": {
+            "type": "string",
+            "description": "List of door names that are assigned to multiple Rhombus locations",
+            "nullable": true
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Integration_UpdateToastIntegrationV2WSRequest": {
+      "type": "object",
+      "properties": {
+        "restaurantGuids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "toastSettings": {
+          "$ref": "#/components/schemas/IToastType"
+        }
+      }
+    },
+    "Integration_UpdateToastIntegrationWSRequest": {
+      "type": "object",
+      "description": "Request object for updating Toast POS integration settings.",
+      "properties": {
+        "toastSettings": {
+          "$ref": "#/components/schemas/ToastSettings"
+        }
+      }
+    }
+  },
+  "schemaCount": 15
+}

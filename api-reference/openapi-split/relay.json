@@ -1,0 +1,495 @@
+{
+  "tag": "Relay Webservice",
+  "description": "API endpoints for Relay Webservice",
+  "paths": {
+    "/api/relay/assignThirdPartyCameraToNVR": {
+      "post": {
+        "description": "Assign a third party camera to an NVR",
+        "operationId": "assignThirdPartyCameraToNVR",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Relay_AssignThirdPartyCameraToNVRWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Relay_AssignThirdPartyCameraToNVRWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Assign third party camera to NVR",
+        "tags": [
+          "Relay Webservice"
+        ]
+      }
+    },
+    "/api/relay/assignThirdPartyCameraToRelayCamera": {
+      "post": {
+        "description": "Assign a third party camera to a relay Camera",
+        "operationId": "assignThirdPartyCameraToRelayCamera",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Relay_AssignThirdPartyCameraToRelayCameraWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Relay_AssignThirdPartyCameraToRelayCameraWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Assign third party camera to relay camera",
+        "tags": [
+          "Relay Webservice"
+        ]
+      }
+    },
+    "/api/relay/authenticateThirdPartyCamera": {
+      "post": {
+        "description": "Authenticate a third party camera, effectively validating the credentials specified to be used for it.",
+        "operationId": "authenticateThirdPartyCamera",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Relay_AuthenticateThirdPartyCameraWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Relay_AuthenticateThirdPartyCameraWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Authenticate third party camera",
+        "tags": [
+          "Relay Webservice"
+        ]
+      }
+    },
+    "/api/relay/createThirdPartyCameraPassword": {
+      "post": {
+        "description": "Create a third party camera password",
+        "operationId": "createThirdPartyCameraPassword",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Relay_CreateThirdPartyCameraPasswordWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Relay_CreateThirdPartyCameraPasswordWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create third party camera password",
+        "tags": [
+          "Relay Webservice"
+        ]
+      }
+    },
+    "/api/relay/deleteThirdPartyCameraPassword": {
+      "post": {
+        "description": "Delete a third party camera password",
+        "operationId": "deleteThirdPartyCameraPasswords",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Relay_DeleteThirdPartyCameraPasswordWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Relay_DeleteThirdPartyCameraPasswordWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete third party camera password",
+        "tags": [
+          "Relay Webservice"
+        ]
+      }
+    },
+    "/api/relay/getAssignedThirdPartyCameras": {
+      "post": {
+        "description": "Get a list of the third party cameras assigned to an NVR",
+        "operationId": "getAssignedThirdPartyCameras",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Relay_GetAssignedThirdPartyCamerasWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Relay_GetAssignedThirdPartyCamerasWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get assigned third party cameras",
+        "tags": [
+          "Relay Webservice"
+        ]
+      }
+    },
+    "/api/relay/getThirdPartyCameraPasswords": {
+      "post": {
+        "description": "Get a list of the third party camera passwords",
+        "operationId": "getThirdPartyCameraPasswords",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Relay_GetThirdPartyCameraPasswordsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Relay_GetThirdPartyCameraPasswordsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get third party camera passwords",
+        "tags": [
+          "Relay Webservice"
+        ]
+      }
+    },
+    "/api/relay/ptzMove": {
+      "post": {
+        "description": "Trigger a pan, tilt, or zoom",
+        "operationId": "ptzMove",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Relay_PTZMoveWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Relay_PTZMoveWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "PTZ move",
+        "tags": [
+          "Relay Webservice"
+        ]
+      }
+    },
+    "/api/relay/ptzStatus": {
+      "post": {
+        "description": "Trigger a pan, tilt, or zoom",
+        "operationId": "ptz",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Relay_PTZStatusWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Relay_PTZStatusWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "PTZ status",
+        "tags": [
+          "Relay Webservice"
+        ]
+      }
+    },
+    "/api/relay/reboot": {
+      "post": {
+        "description": "Reboot an NVR",
+        "operationId": "rebootNVR",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Relay_RebootNVRVWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Relay_RebootNVRVWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Reboot NVR",
+        "tags": [
+          "Relay Webservice"
+        ]
+      }
+    },
+    "/api/relay/unassignThirdPartyCamera": {
+      "post": {
+        "description": "Unassign a third party camera from an NVR",
+        "operationId": "unassignThirdPartyCamera",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Relay_UnassignThirdPartyCameraWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Relay_UnassignThirdPartyCameraWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Unassign third party camera",
+        "tags": [
+          "Relay Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/relay/assignThirdPartyCameraToNVR",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/relay/assignThirdPartyCameraToRelayCamera",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/relay/authenticateThirdPartyCamera",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/relay/createThirdPartyCameraPassword",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/relay/deleteThirdPartyCameraPassword",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/relay/getAssignedThirdPartyCameras",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/relay/getThirdPartyCameraPasswords",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/relay/ptzMove",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/relay/ptzStatus",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/relay/reboot",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/relay/unassignThirdPartyCamera",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 11,
+  "referencedSchemas": [
+    "Relay_AssignThirdPartyCameraToNVRWSRequest",
+    "Relay_AssignThirdPartyCameraToNVRWSResponse",
+    "Relay_AssignThirdPartyCameraToRelayCameraWSRequest",
+    "Relay_AssignThirdPartyCameraToRelayCameraWSResponse",
+    "Relay_AuthenticateThirdPartyCameraWSRequest",
+    "Relay_AuthenticateThirdPartyCameraWSResponse",
+    "Relay_CreateThirdPartyCameraPasswordWSRequest",
+    "Relay_CreateThirdPartyCameraPasswordWSResponse",
+    "Relay_DeleteThirdPartyCameraPasswordWSRequest",
+    "Relay_DeleteThirdPartyCameraPasswordWSResponse",
+    "Relay_GetAssignedThirdPartyCamerasWSRequest",
+    "Relay_GetAssignedThirdPartyCamerasWSResponse",
+    "Relay_GetThirdPartyCameraPasswordsWSRequest",
+    "Relay_GetThirdPartyCameraPasswordsWSResponse",
+    "Relay_PTZMoveWSRequest",
+    "Relay_PTZMoveWSResponse",
+    "Relay_PTZStatusWSRequest",
+    "Relay_PTZStatusWSResponse",
+    "Relay_RebootNVRVWSRequest",
+    "Relay_RebootNVRVWSResponse",
+    "Relay_UnassignThirdPartyCameraWSRequest",
+    "Relay_UnassignThirdPartyCameraWSResponse"
+  ]
+}

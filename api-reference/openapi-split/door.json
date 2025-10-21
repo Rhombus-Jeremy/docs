@@ -1,0 +1,187 @@
+{
+  "tag": "Door Webservice",
+  "description": "API endpoints for Door Webservice",
+  "paths": {
+    "/api/door/getDoorEventsForSensor": {
+      "post": {
+        "description": "Get list of door open/close events for door sensor",
+        "operationId": "getDoorEventsForSensor",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Door_GetDoorEventsForSensorWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Door_GetDoorEventsForSensorWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get list of door open/close events for door sensor",
+        "tags": [
+          "Door Webservice"
+        ]
+      }
+    },
+    "/api/door/getDoorPresenceWindows": {
+      "post": {
+        "description": "Get stored video information for sensor",
+        "operationId": "getDoorPresenceWindows",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Sensor_GetSensorPresenceWindowsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sensor_GetSensorPresenceWindowsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get stored video information for sensor",
+        "tags": [
+          "Door Webservice"
+        ]
+      }
+    },
+    "/api/door/getMinimalDoorStateList": {
+      "post": {
+        "description": "Get basic state information for all door sensors",
+        "operationId": "getMinimalDoorStateList",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Door_GetMinimalDoorStatesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Door_GetMinimalDoorStatesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get basic state information for all door sensors",
+        "tags": [
+          "Door Webservice"
+        ]
+      }
+    },
+    "/api/door/updateDetails": {
+      "post": {
+        "description": "Update details for door sensor. Note: uuid is a required field",
+        "operationId": "updateDoorSensorDetails",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Door_UpdateDoorSensorDetailsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Door_UpdateDoorSensorDetailsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update details for door sensor",
+        "tags": [
+          "Door Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/door/getDoorEventsForSensor",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/door/getDoorPresenceWindows",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/door/getMinimalDoorStateList",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/door/updateDetails",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 4,
+  "referencedSchemas": [
+    "Door_GetDoorEventsForSensorWSRequest",
+    "Door_GetDoorEventsForSensorWSResponse",
+    "Door_GetMinimalDoorStatesWSRequest",
+    "Door_GetMinimalDoorStatesWSResponse",
+    "Door_UpdateDoorSensorDetailsWSRequest",
+    "Door_UpdateDoorSensorDetailsWSResponse",
+    "Sensor_GetSensorPresenceWindowsWSRequest",
+    "Sensor_GetSensorPresenceWindowsWSResponse"
+  ]
+}

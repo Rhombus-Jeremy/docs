@@ -1,0 +1,936 @@
+{
+  "tag": "Partner Webservice",
+  "description": "API endpoints for Partner Webservice",
+  "paths": {
+    "/api/partner/createPartnerClient": {
+      "post": {
+        "description": "Create a client account",
+        "operationId": "createPartnerClient",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partner_CreatePartnerClientWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner_CreatePartnerClientWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create partner client",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/customizeClient": {
+      "post": {
+        "description": "Customize a client account",
+        "operationId": "customizeClient",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partner_CustomizeClientWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner_CustomizeClientWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Customize client",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/customizeClientDevice": {
+      "post": {
+        "description": "Customize a client device",
+        "operationId": "customizeClientDevice",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partner_CustomizeClientDeviceWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner_CustomizeClientDeviceWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Customize client device",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/deleteClient": {
+      "post": {
+        "description": "Delete a client account",
+        "operationId": "deletePartnerClient",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partner_DeleteClientWebRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner_DeleteClientWebResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete partner client",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/getApiTokenApplications": {
+      "post": {
+        "deprecated": true,
+        "description": "Get details of all open api token requests for organization",
+        "operationId": "partner_getApiTokenApplications",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetApiTokenApplicationsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetApiTokenApplicationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get API token applications",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/getApiTokens": {
+      "post": {
+        "description": "Get list of all api tokens for a partner",
+        "operationId": "partner_getApiTokens",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_GetPartnerApiTokensWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetApiTokensWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get API tokens",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/getClientDevices": {
+      "post": {
+        "description": "Retrieve a list of devices for a specific client.",
+        "operationId": "getClientDevices",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partner_GetClientDevicesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner_GetClientDevicesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get client devices",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/getClientStatusMap": {
+      "post": {
+        "description": "Get a map of all client accounts to device and location info",
+        "operationId": "getPartnerClientsStatusMap",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partner_GetPartnerClientsStatusMapWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner_GetPartnerClientsStatusMapWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get client status map",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/getClientSummaryInfo": {
+      "post": {
+        "description": "Get information about a client",
+        "operationId": "getClientSummaryInfo",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partner_GetClientSummaryInfoWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner_GetClientSummaryInfoWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get client summary info",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/getClients": {
+      "post": {
+        "description": "Get a list of all client accounts",
+        "operationId": "getPartnerClients",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partner_GetPartnerClientsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner_GetPartnerClientsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get partner clients",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/getClientsV2": {
+      "post": {
+        "description": "Get a list of all client accounts. NOTICE: This is the same as getPartnerClients, but only returns the basic info so partners can login to clients quickly. The other info will be returned by getPartnerClientsStatusMap.",
+        "operationId": "getPartnerClientsV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partner_GetPartnerClientsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner_GetPartnerClientsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get partner clients V2",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/getDeviceLicensesForOrg": {
+      "post": {
+        "deprecated": true,
+        "description": "Get a list of licenses available for a client organization",
+        "operationId": "getDeviceLicensesForOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/License_GetDeviceLicensesForClientOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/License_GetDeviceLicensesForClientOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get device licenses for organization",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/getLicensesForOrg": {
+      "post": {
+        "deprecated": true,
+        "description": "Get a list of licenses available for a client organization",
+        "operationId": "getLicensesForOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/License_GetLicensesForClientOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/License_GetLicensesForClientOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get licenses for organization",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/getListOfAllClientDevices": {
+      "post": {
+        "description": "Retrieve list of all devices registered across all clients",
+        "operationId": "getListOfAllClientDevices",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partner_GetListOfAllClientDevicesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner_GetListOfAllClientDevicesResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get list of all client devices",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/getListOfAvailableHardware": {
+      "post": {
+        "description": "Retrieve a list of hardware available for remote registration. Any hardware originally registered by a Partner is available for re-registration after being removed from an active client account.",
+        "operationId": "getListOfControlledHardware",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partner_GetListOfControlledHardwareRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner_GetListOfControlledHardwareResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get list of available hardware",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/getShipments": {
+      "post": {
+        "description": "Get client shipments",
+        "operationId": "PartnerGetShipments",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partner_GetShipmentsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner_GetShipmentsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get client shipments",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/reassignDeviceOrg": {
+      "post": {
+        "description": "Reassign device(s) to a different organization. Only devices which hardware is controlled by the partner can be reassigned",
+        "operationId": "reassignDeviceOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partner_ReassignDeviceOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner_ReassignDeviceOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Reassign device organization",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/registerCameraToClient": {
+      "post": {
+        "description": "Register a controlled camera to a client",
+        "operationId": "registerCameraToClient",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_CreatePendingRegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_CreatePendingRegistrationResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Register camera to client",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/registerDeal": {
+      "post": {
+        "description": "Register a deal",
+        "operationId": "registerDeal",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partner_RegisterDealWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner_RegisterDealWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Register deal",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/revokeApiToken": {
+      "post": {
+        "description": "Remove an api token from organization. Note: this is irreversible",
+        "operationId": "partner_revokeApiToken",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_RevokeApiTokenWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_RevokeApiTokenWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Revoke API token",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    },
+    "/api/partner/updateSendLicenseExpirationEmail": {
+      "post": {
+        "description": "Update send license expiration email feature flag by org",
+        "operationId": "updateManuallySendLicenseExpirationEmail",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Partner_UpdateManuallySendLicenseExpirationEmailWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Partner_UpdateManuallySendLicenseExpirationEmailWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update send license expiration email",
+        "tags": [
+          "Partner Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/partner/createPartnerClient",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/customizeClient",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/customizeClientDevice",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/deleteClient",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/getApiTokenApplications",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/getApiTokens",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/getClientDevices",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/getClientStatusMap",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/getClientSummaryInfo",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/getClients",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/getClientsV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/getDeviceLicensesForOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/getLicensesForOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/getListOfAllClientDevices",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/getListOfAvailableHardware",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/getShipments",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/reassignDeviceOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/registerCameraToClient",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/registerDeal",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/revokeApiToken",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/partner/updateSendLicenseExpirationEmail",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 21,
+  "referencedSchemas": [
+    "Integration_GetApiTokenApplicationsWSRequest",
+    "Integration_GetApiTokenApplicationsWSResponse",
+    "Integration_GetApiTokensWSResponse",
+    "Integration_GetPartnerApiTokensWSRequest",
+    "Integration_RevokeApiTokenWSRequest",
+    "Integration_RevokeApiTokenWSResponse",
+    "License_GetDeviceLicensesForClientOrgWSRequest",
+    "License_GetDeviceLicensesForClientOrgWSResponse",
+    "License_GetLicensesForClientOrgWSRequest",
+    "License_GetLicensesForClientOrgWSResponse",
+    "Org_CreatePendingRegistrationRequest",
+    "Org_CreatePendingRegistrationResponse",
+    "Partner_CreatePartnerClientWSRequest",
+    "Partner_CreatePartnerClientWSResponse",
+    "Partner_CustomizeClientDeviceWSRequest",
+    "Partner_CustomizeClientDeviceWSResponse",
+    "Partner_CustomizeClientWSRequest",
+    "Partner_CustomizeClientWSResponse",
+    "Partner_DeleteClientWebRequest",
+    "Partner_DeleteClientWebResponse",
+    "Partner_GetClientDevicesWSRequest",
+    "Partner_GetClientDevicesWSResponse",
+    "Partner_GetClientSummaryInfoWSRequest",
+    "Partner_GetClientSummaryInfoWSResponse",
+    "Partner_GetListOfAllClientDevicesRequest",
+    "Partner_GetListOfAllClientDevicesResponse",
+    "Partner_GetListOfControlledHardwareRequest",
+    "Partner_GetListOfControlledHardwareResponse",
+    "Partner_GetPartnerClientsStatusMapWSRequest",
+    "Partner_GetPartnerClientsStatusMapWSResponse",
+    "Partner_GetPartnerClientsWSRequest",
+    "Partner_GetPartnerClientsWSResponse",
+    "Partner_GetShipmentsWSRequest",
+    "Partner_GetShipmentsWSResponse",
+    "Partner_ReassignDeviceOrgWSRequest",
+    "Partner_ReassignDeviceOrgWSResponse",
+    "Partner_RegisterDealWSRequest",
+    "Partner_RegisterDealWSResponse",
+    "Partner_UpdateManuallySendLicenseExpirationEmailWSRequest",
+    "Partner_UpdateManuallySendLicenseExpirationEmailWSResponse"
+  ]
+}

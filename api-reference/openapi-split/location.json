@@ -1,0 +1,581 @@
+{
+  "tag": "Location Webservice",
+  "description": "API endpoints for Location Webservice",
+  "paths": {
+    "/api/location/addLocationLabel": {
+      "post": {
+        "description": "Add a label to a location",
+        "operationId": "addLocationLabel",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location_AddLocationLabelWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location_AddLocationLabelWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Add location label",
+        "tags": [
+          "Location Webservice"
+        ]
+      }
+    },
+    "/api/location/createLocation": {
+      "post": {
+        "description": "Create a location",
+        "operationId": "createlocation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location_CreateLocationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location_CreateLocationWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create location",
+        "tags": [
+          "Location Webservice"
+        ]
+      }
+    },
+    "/api/location/deleteLocation": {
+      "post": {
+        "description": "Remove a location",
+        "operationId": "deleteLocation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location_DeleteLocationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location_DeleteLocationWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete location",
+        "tags": [
+          "Location Webservice"
+        ]
+      }
+    },
+    "/api/location/geoCode": {
+      "post": {
+        "description": "Get the latitude and longitude of an address",
+        "operationId": "geoCode",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location_GeoCodeWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location_GeoCodeWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Geocode address",
+        "tags": [
+          "Location Webservice"
+        ]
+      }
+    },
+    "/api/location/getLocation": {
+      "post": {
+        "description": "Get location by id",
+        "operationId": "getLocation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location_GetLocationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location_GetLocationWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get location",
+        "tags": [
+          "Location Webservice"
+        ]
+      }
+    },
+    "/api/location/getLocationLabelsForOrg": {
+      "post": {
+        "description": "Get all location labels for an organization",
+        "operationId": "getLocationLabelsForOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location_GetLocationLabelsForOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location_GetLocationLabelsForOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get location labels for org",
+        "tags": [
+          "Location Webservice"
+        ]
+      }
+    },
+    "/api/location/getLocations": {
+      "post": {
+        "description": "Get list of locations in organization",
+        "operationId": "getLocations",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location_GetLocationsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location_GetLocationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get locations",
+        "tags": [
+          "Location Webservice"
+        ]
+      }
+    },
+    "/api/location/getLocationsAssociatedToLocationLabelsByOrg": {
+      "post": {
+        "description": "Get all locations associated to location labels for an organization",
+        "operationId": "getLocationsAssociatedToLocationLabelsByOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location_GetLocationLabelsForOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location_GetLocationLabelsForOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get locations by labels",
+        "tags": [
+          "Location Webservice"
+        ]
+      }
+    },
+    "/api/location/getLocationsByGeo": {
+      "post": {
+        "description": "Get list of locations given latitude and longitude",
+        "operationId": "getLocationsByGeo",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location_GetLocationsByGeoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location_GetLocationsByGeoResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get locations by geo",
+        "tags": [
+          "Location Webservice"
+        ]
+      }
+    },
+    "/api/location/getLocationsBySubLocationsHierarchyKey": {
+      "post": {
+        "description": "Get nested locations by subLocationHierarchyKey",
+        "operationId": "getLocationsBySubLocationsHierarchyKey",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location_GetLocationsBySubLocationsHierarchyKeyWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location_GetLocationsBySubLocationsHierarchyKeyWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get locations by hierarchy key",
+        "tags": [
+          "Location Webservice"
+        ]
+      }
+    },
+    "/api/location/removeLocationLabel": {
+      "post": {
+        "description": "Remove a label from a location",
+        "operationId": "removeLocationLabel",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location_RemoveLocationLabelWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location_RemoveLocationLabelWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Remove location label",
+        "tags": [
+          "Location Webservice"
+        ]
+      }
+    },
+    "/api/location/selectiveUpdateLocation": {
+      "post": {
+        "description": "Selectively update a location",
+        "operationId": "selectiveUpdateLocation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location_SelectiveUpdateLocationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location_SelectiveUpdateLocationWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Selective update location",
+        "tags": [
+          "Location Webservice"
+        ]
+      }
+    },
+    "/api/location/updateLocation": {
+      "post": {
+        "description": "Update a location **NOTE: This will replace old settings meaning if you leave a field blank it will be overrode to blank. For selective field updates use the endpoint /selectiveUpdateLocation",
+        "operationId": "updateLocation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location_UpdateLocationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location_UpdateLocationWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update location",
+        "tags": [
+          "Location Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/location/addLocationLabel",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/location/createLocation",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/location/deleteLocation",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/location/geoCode",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/location/getLocation",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/location/getLocationLabelsForOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/location/getLocations",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/location/getLocationsAssociatedToLocationLabelsByOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/location/getLocationsByGeo",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/location/getLocationsBySubLocationsHierarchyKey",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/location/removeLocationLabel",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/location/selectiveUpdateLocation",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/location/updateLocation",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 13,
+  "referencedSchemas": [
+    "Location_AddLocationLabelWSRequest",
+    "Location_AddLocationLabelWSResponse",
+    "Location_CreateLocationWSRequest",
+    "Location_CreateLocationWSResponse",
+    "Location_DeleteLocationWSRequest",
+    "Location_DeleteLocationWSResponse",
+    "Location_GeoCodeWSRequest",
+    "Location_GeoCodeWSResponse",
+    "Location_GetLocationLabelsForOrgWSRequest",
+    "Location_GetLocationLabelsForOrgWSResponse",
+    "Location_GetLocationWSRequest",
+    "Location_GetLocationWSResponse",
+    "Location_GetLocationsByGeoRequest",
+    "Location_GetLocationsByGeoResponse",
+    "Location_GetLocationsBySubLocationsHierarchyKeyWSRequest",
+    "Location_GetLocationsBySubLocationsHierarchyKeyWSResponse",
+    "Location_GetLocationsWSRequest",
+    "Location_GetLocationsWSResponse",
+    "Location_RemoveLocationLabelWSRequest",
+    "Location_RemoveLocationLabelWSResponse",
+    "Location_SelectiveUpdateLocationWSRequest",
+    "Location_SelectiveUpdateLocationWSResponse",
+    "Location_UpdateLocationWSRequest",
+    "Location_UpdateLocationWSResponse"
+  ]
+}

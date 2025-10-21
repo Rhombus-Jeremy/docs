@@ -1,0 +1,1855 @@
+{
+  "tag": "Org Webservice",
+  "description": "API endpoints for Org Webservice",
+  "paths": {
+    "/api/org/claimActivationToken": {
+      "post": {
+        "description": "Claim activation token for organization",
+        "operationId": "claimActivationToken",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_ClaimActivationTokenWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_ClaimActivationTokenWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Claim activation token",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/claimShipmentRegistrationToken": {
+      "post": {
+        "description": "Claim shipment registration token for an organization",
+        "operationId": "claimShipmentRegistrationToken",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_ClaimShipmentRegistrationTokenWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_ClaimShipmentRegistrationTokenWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Claim shipment registration token",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/createPendingRegistration": {
+      "post": {
+        "description": "Create a pending registration. Registration will be completed when the hardware establishes connectivity",
+        "operationId": "createPendingRegistration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_CreatePendingRegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_CreatePendingRegistrationResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create pending registration",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/deleteCloudArchivingConfig": {
+      "post": {
+        "description": "Delete scoped cloud archiving config.  Note that the priority of scoping is Org > Location > Device",
+        "operationId": "deleteCloudArchivingConfig",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_DeleteCloudArchivingConfigWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_DeleteCloudArchivingConfigWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete cloud archiving config",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/deleteKeypadLogo": {
+      "post": {
+        "description": "Delete keypad logo.",
+        "operationId": "deleteKeypadLogo",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_DeleteKeypadLogoWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_DeleteKeypadLogoWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete keypad logo",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/deleteRhombusKeyLogo": {
+      "post": {
+        "description": "Delete rhombus key logo.",
+        "operationId": "deleteRhombusKeyLogo",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_DeleteRhombusKeyLogoWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_DeleteRhombusKeyLogoWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete rhombus key logo",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/findAllHardwareWithPendingRegistration": {
+      "post": {
+        "description": "Find all hardware for which a pending registrations exists",
+        "operationId": "findAllHardwareWithPendingRegistration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_FindAllHardwareWithPendingRegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_FindAllHardwareWithPendingRegistrationResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find all hardware with pending registration",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/findHardwareAvailableForPendingRegistration": {
+      "post": {
+        "description": "Find hardware for which pending registrations can be created",
+        "operationId": "findHardwareAvailableForPendingRegistration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_FindHardwareAvailableForPendingRegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_FindHardwareAvailableForPendingRegistrationResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find hardware available for pending registration",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/findIfTeamNameAvailable": {
+      "post": {
+        "description": "Get organization team name if it is available",
+        "operationId": "findIfTeamNameAvailable",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_FindIfTeamNameAvailableRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_FindIfTeamNameAvailableResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find if team name available",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/findSCIMSettingsForOrg": {
+      "post": {
+        "description": "Get SCIM configuration for organization",
+        "operationId": "findSCIMSettingsForOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_FindSCIMSettingsForOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_FindSCIMSettingsForOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find SCIM settings for organization",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/generateFederatedSessionToken": {
+      "post": {
+        "description": "Generate a federated session token login for organization",
+        "operationId": "generateFederatedSessionToken",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_GenerateFederatedSessionTokenRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_GenerateFederatedSessionTokenResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Generate federated session token",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/getClientOrg": {
+      "post": {
+        "description": "Get details about the client organization",
+        "operationId": "getClientOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_GetClientOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_GetClientOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get client organization details",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/getCloudArchivingConfigs": {
+      "post": {
+        "description": "Get scoped cloud archiving configs.  Note that the priority of scoping is Org > Location > Device",
+        "operationId": "getCloudArchivingConfigs",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_GetCloudArchivingConfigsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_GetCloudArchivingConfigsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get cloud archiving configs",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/getFeatures": {
+      "post": {
+        "description": "Get organization wide features",
+        "operationId": "getFeatures",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_GetFeaturesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_GetFeaturesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get organization features",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/getOrg": {
+      "post": {
+        "deprecated": true,
+        "description": "Get details about organization",
+        "operationId": "getOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_GetOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_GetOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get organization details",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/getOrgIntegrations": {
+      "post": {
+        "deprecated": true,
+        "description": "Use endpoints in Integrations Webservice instead",
+        "operationId": "DEPRECATED_getOrgIntegrations",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_GetOrgIntegrationsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_GetOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get organization integrations",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/getOrgNotificationTemplate": {
+      "post": {
+        "deprecated": true,
+        "description": "This endpoint is no longer in use. Please use getOrgNotificationTemplateV2 instead.",
+        "operationId": "getOrgNotificationTemplate",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_GetOrgNotificationTemplateWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_GetOrgNotificationTemplateWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get organization notification template",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/getOrgNotificationTemplateV2": {
+      "post": {
+        "description": "Get organization's default notification schedule template",
+        "operationId": "getOrgNotificationTemplateV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_GetOrgNotificationTemplateWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_GetOrgNotificationTemplateV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get organization notification template V2",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/getOrgV2": {
+      "post": {
+        "description": "Get details about organization",
+        "operationId": "getOrgV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_GetOrgV2WSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_GetOrgV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get organization details V2",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/getSAMLSettings": {
+      "post": {
+        "deprecated": true,
+        "description": "Deprecated. Use getSAMLSettingsV2",
+        "operationId": "getSAMLSettings",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_GetSAMLSettingsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_GetSAMLSettingsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get SAML settings",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/getSAMLSettingsV2": {
+      "post": {
+        "description": "Get details about organization",
+        "operationId": "getSAMLSettingsV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_GetSAMLSettingsV2WSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_GetSAMLSettingsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get SAML settings V2",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/getScimDisplayInfo": {
+      "post": {
+        "description": "Get SCIM display info for organization",
+        "operationId": "getScimDisplayInfo",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_GetScimDisplayInfoResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get SCIM display info",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/getTemporaryOrgToken": {
+      "post": {
+        "description": "Generate a temporary org token for use in OAuth flows",
+        "operationId": "getTemporaryOrgToken",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_GetTemporaryOrgTokenWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTemporaryOrgTokenResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get temporary org token",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/peekShipmentRegistrationToken": {
+      "post": {
+        "description": "Peek at a shipping registration token for an organization",
+        "operationId": "peekShipmentRegistrationToken",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_PeekShipmentRegistrationTokenWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_PeekShipmentRegistrationTokenWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Peek shipment registration token",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/removePendingRegistration": {
+      "post": {
+        "description": "Remove a pending registration",
+        "operationId": "removePendingRegistration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_RemovePendingRegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_RemovePendingRegistrationResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Remove pending registration",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/revokeSCIMAccessForOrg": {
+      "post": {
+        "description": "Revoke SCIM access for organization",
+        "operationId": "revokeSCIMAccessForOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_RevokeSCIMAccessForOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_RevokeSCIMAccessForOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Revoke SCIM access for organization",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/setupSCIMAccessForOrg": {
+      "post": {
+        "description": "Initially configure SCIM access for organization",
+        "operationId": "setupSCIMAccessForOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_SetupSCIMAccessForOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_SetupSCIMAccessForOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Setup SCIM access for organization",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/updateAiTrainingSettings": {
+      "post": {
+        "description": "Update organization AI training settings",
+        "operationId": "updateAiTrainingSettings",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_UpdateAiTrainingSettingsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_UpdateAiTrainingSettingsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update AI training settings",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/updateCloudArchivingConfig": {
+      "post": {
+        "description": "Update scoped cloud archiving config.  Note that the priority of scoping is Org > Location > Device",
+        "operationId": "updateCloudArchivingConfig",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_UpdateCloudArchivingConfigWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_UpdateCloudArchivingConfigWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update cloud archiving config",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/updateFirmwareSettings": {
+      "post": {
+        "description": "Update organization firmware schedule settings",
+        "operationId": "updateFirmwareSettings",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_UpdateFirmwareSettingsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_UpdateFirmwareSettingsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update firmware settings",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/updateGeneralSettings": {
+      "post": {
+        "description": "Update organization General settings",
+        "operationId": "updateGeneralSettings",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_UpdateGeneralSettingsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_UpdateGeneralSettingsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update general settings",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/updateMFASettings": {
+      "post": {
+        "description": "Update organization MFA settings",
+        "operationId": "updateMFASettings",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_UpdateMFASettingsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_UpdateMFASettingsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update MFA settings",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/updateOrg": {
+      "post": {
+        "deprecated": true,
+        "description": "Update organization details",
+        "operationId": "updateOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_UpdateOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_UpdateOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update organization details",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/updateOrgAudioAnalysisPolicy": {
+      "post": {
+        "description": "Update organization AI audio analysis policy",
+        "operationId": "updateOrgAudioAnalysisPolicy",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_UpdateOrgAudioAnalysisPolicyWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_UpdateOrgAudioAnalysisPolicyWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update organization AI audio analysis policy",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/updateOrgAudioRecordingPolicy": {
+      "post": {
+        "description": "Update organization audio recording policy",
+        "operationId": "updateOrgAudioRecordingPolicy",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_UpdateOrgAudioRecordingPolicyWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_UpdateOrgAudioRecordingPolicyWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update organization audio recording policy",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/updateOrgLLMUsagePolicy": {
+      "post": {
+        "description": "Update organization's LLM usage opt-in policy",
+        "operationId": "updateOrgLLMUsagePolicy",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_UpdateOrgLLMUsagePolicyWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_UpdateOrgLLMUsagePolicyWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update organization's LLM usage opt-in policy",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/updateOrgNotificationTemplate": {
+      "post": {
+        "deprecated": true,
+        "description": "This endpoint is no longer in use. Please use updateOrgNotificationTemplateV2 instead.",
+        "operationId": "updateOrgNotificationTemplate",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_UpdateOrgNotificationTemplateWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_UpdateOrgNotificationTemplateWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update organization notification template",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/updateOrgNotificationTemplateV2": {
+      "post": {
+        "description": "Update default notification schedule template for newly created Users in Org",
+        "operationId": "updateOrgNotificationTemplateV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_UpdateOrgNotificationTemplateV2WSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_UpdateOrgNotificationTemplateV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update organization notification template V2",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/updatePendingRegistration": {
+      "post": {
+        "description": "Update pending registration for hardware",
+        "operationId": "updatePendingRegistration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_UpdatePendingRegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_UpdatePendingRegistrationResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update pending registration",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/updateSAMLSettings": {
+      "post": {
+        "deprecated": true,
+        "description": "Deprecated. Use updateSAMLSettingsV2",
+        "operationId": "updateSAMLSettings",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_UpdateSAMLSettingsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_UpdateSAMLSettingsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update SAML settings",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/updateSAMLSettingsV2": {
+      "post": {
+        "description": "Update organization SAML settings",
+        "operationId": "updateSAMLSettingsV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_UpdateSAMLSettingsV2WSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_UpdateSAMLSettingsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update SAML settings V2",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    },
+    "/api/org/updateSCIMSettingsForOrg": {
+      "post": {
+        "description": "Update SCIM configuration for organization",
+        "operationId": "updateSCIMSettingsForOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Org_UpdateSCIMSettingsForOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Org_UpdateSCIMSettingsForOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update SCIM settings for organization",
+        "tags": [
+          "Org Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/org/claimActivationToken",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/claimShipmentRegistrationToken",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/createPendingRegistration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/deleteCloudArchivingConfig",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/deleteKeypadLogo",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/deleteRhombusKeyLogo",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/findAllHardwareWithPendingRegistration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/findHardwareAvailableForPendingRegistration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/findIfTeamNameAvailable",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/findSCIMSettingsForOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/generateFederatedSessionToken",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/getClientOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/getCloudArchivingConfigs",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/getFeatures",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/getOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/getOrgIntegrations",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/getOrgNotificationTemplate",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/getOrgNotificationTemplateV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/getOrgV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/getSAMLSettings",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/getSAMLSettingsV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/getScimDisplayInfo",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/getTemporaryOrgToken",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/peekShipmentRegistrationToken",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/removePendingRegistration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/revokeSCIMAccessForOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/setupSCIMAccessForOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/updateAiTrainingSettings",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/updateCloudArchivingConfig",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/updateFirmwareSettings",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/updateGeneralSettings",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/updateMFASettings",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/updateOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/updateOrgAudioAnalysisPolicy",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/updateOrgAudioRecordingPolicy",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/updateOrgLLMUsagePolicy",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/updateOrgNotificationTemplate",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/updateOrgNotificationTemplateV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/updatePendingRegistration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/updateSAMLSettings",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/updateSAMLSettingsV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/org/updateSCIMSettingsForOrg",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 42,
+  "referencedSchemas": [
+    "GetTemporaryOrgTokenResponse",
+    "Org_ClaimActivationTokenWSRequest",
+    "Org_ClaimActivationTokenWSResponse",
+    "Org_ClaimShipmentRegistrationTokenWSRequest",
+    "Org_ClaimShipmentRegistrationTokenWSResponse",
+    "Org_CreatePendingRegistrationRequest",
+    "Org_CreatePendingRegistrationResponse",
+    "Org_DeleteCloudArchivingConfigWSRequest",
+    "Org_DeleteCloudArchivingConfigWSResponse",
+    "Org_DeleteKeypadLogoWSRequest",
+    "Org_DeleteKeypadLogoWSResponse",
+    "Org_DeleteRhombusKeyLogoWSRequest",
+    "Org_DeleteRhombusKeyLogoWSResponse",
+    "Org_FindAllHardwareWithPendingRegistrationRequest",
+    "Org_FindAllHardwareWithPendingRegistrationResponse",
+    "Org_FindHardwareAvailableForPendingRegistrationRequest",
+    "Org_FindHardwareAvailableForPendingRegistrationResponse",
+    "Org_FindIfTeamNameAvailableRequest",
+    "Org_FindIfTeamNameAvailableResponse",
+    "Org_FindSCIMSettingsForOrgWSRequest",
+    "Org_FindSCIMSettingsForOrgWSResponse",
+    "Org_GenerateFederatedSessionTokenRequest",
+    "Org_GenerateFederatedSessionTokenResponse",
+    "Org_GetClientOrgWSRequest",
+    "Org_GetClientOrgWSResponse",
+    "Org_GetCloudArchivingConfigsWSRequest",
+    "Org_GetCloudArchivingConfigsWSResponse",
+    "Org_GetFeaturesWSRequest",
+    "Org_GetFeaturesWSResponse",
+    "Org_GetOrgIntegrationsWSRequest",
+    "Org_GetOrgIntegrationsWSResponse",
+    "Org_GetOrgNotificationTemplateV2WSResponse",
+    "Org_GetOrgNotificationTemplateWSRequest",
+    "Org_GetOrgNotificationTemplateWSResponse",
+    "Org_GetOrgV2WSRequest",
+    "Org_GetOrgV2WSResponse",
+    "Org_GetOrgWSRequest",
+    "Org_GetOrgWSResponse",
+    "Org_GetSAMLSettingsV2WSRequest",
+    "Org_GetSAMLSettingsV2WSResponse",
+    "Org_GetSAMLSettingsWSRequest",
+    "Org_GetSAMLSettingsWSResponse",
+    "Org_GetScimDisplayInfoResponse",
+    "Org_GetTemporaryOrgTokenWSRequest",
+    "Org_PeekShipmentRegistrationTokenWSRequest",
+    "Org_PeekShipmentRegistrationTokenWSResponse",
+    "Org_RemovePendingRegistrationRequest",
+    "Org_RemovePendingRegistrationResponse",
+    "Org_RevokeSCIMAccessForOrgWSRequest",
+    "Org_RevokeSCIMAccessForOrgWSResponse",
+    "Org_SetupSCIMAccessForOrgWSRequest",
+    "Org_SetupSCIMAccessForOrgWSResponse",
+    "Org_UpdateAiTrainingSettingsWSRequest",
+    "Org_UpdateAiTrainingSettingsWSResponse",
+    "Org_UpdateCloudArchivingConfigWSRequest",
+    "Org_UpdateCloudArchivingConfigWSResponse",
+    "Org_UpdateFirmwareSettingsWSRequest",
+    "Org_UpdateFirmwareSettingsWSResponse",
+    "Org_UpdateGeneralSettingsWSRequest",
+    "Org_UpdateGeneralSettingsWSResponse",
+    "Org_UpdateMFASettingsWSRequest",
+    "Org_UpdateMFASettingsWSResponse",
+    "Org_UpdateOrgAudioAnalysisPolicyWSRequest",
+    "Org_UpdateOrgAudioAnalysisPolicyWSResponse",
+    "Org_UpdateOrgAudioRecordingPolicyWSRequest",
+    "Org_UpdateOrgAudioRecordingPolicyWSResponse",
+    "Org_UpdateOrgLLMUsagePolicyWSRequest",
+    "Org_UpdateOrgLLMUsagePolicyWSResponse",
+    "Org_UpdateOrgNotificationTemplateV2WSRequest",
+    "Org_UpdateOrgNotificationTemplateV2WSResponse",
+    "Org_UpdateOrgNotificationTemplateWSRequest",
+    "Org_UpdateOrgNotificationTemplateWSResponse",
+    "Org_UpdateOrgWSRequest",
+    "Org_UpdateOrgWSResponse",
+    "Org_UpdatePendingRegistrationRequest",
+    "Org_UpdatePendingRegistrationResponse",
+    "Org_UpdateSAMLSettingsV2WSRequest",
+    "Org_UpdateSAMLSettingsV2WSResponse",
+    "Org_UpdateSAMLSettingsWSRequest",
+    "Org_UpdateSAMLSettingsWSResponse",
+    "Org_UpdateSCIMSettingsForOrgWSRequest",
+    "Org_UpdateSCIMSettingsForOrgWSResponse"
+  ]
+}

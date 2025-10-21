@@ -1,0 +1,538 @@
+{
+  "tag": "Schedule Webservice",
+  "description": "API endpoints for Schedule Webservice",
+  "paths": {
+    "/api/schedule/createAbsoluteSchedule": {
+      "post": {
+        "description": "Create a absolute schedule",
+        "operationId": "createAbsoluteSchedule",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Schedule_CreateAbsoluteScheduleWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Schedule_CreateAbsoluteScheduleWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create absolute schedule",
+        "tags": [
+          "Schedule Webservice"
+        ]
+      }
+    },
+    "/api/schedule/createRelativeDateTimeIntervalsSchedule": {
+      "post": {
+        "description": "Create a one-time relative datetime schedule",
+        "operationId": "createRelativeDateTimeIntervalsSchedule",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Schedule_CreateRelativeDateTimeIntervalsScheduleWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Schedule_CreateRelativeDateTimeIntervalsScheduleWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create relative datetime intervals schedule",
+        "tags": [
+          "Schedule Webservice"
+        ]
+      }
+    },
+    "/api/schedule/createRelativeSchedule": {
+      "post": {
+        "description": "Create a realtime relative schedule",
+        "operationId": "createRelativeSchedule",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Schedule_CreateRelativeScheduleWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Schedule_CreateRelativeScheduleWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create relative schedule",
+        "tags": [
+          "Schedule Webservice"
+        ]
+      }
+    },
+    "/api/schedule/createWeeklySchedule": {
+      "post": {
+        "description": "Create a weekly schedule",
+        "operationId": "createWeeklySchedule",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Schedule_CreateWeeklyScheduleWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Schedule_CreateWeeklyScheduleWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create weekly schedule",
+        "tags": [
+          "Schedule Webservice"
+        ]
+      }
+    },
+    "/api/schedule/deleteSchedule": {
+      "post": {
+        "description": "Delete a schedule",
+        "operationId": "deleteScheduleV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Policy_DeleteScheduleWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Policy_DeleteScheduleWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete schedule",
+        "tags": [
+          "Schedule Webservice"
+        ]
+      }
+    },
+    "/api/schedule/findAbsoluteSchedule": {
+      "post": {
+        "description": "Find an absolute schedule",
+        "operationId": "findAbsoluteSchedule",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Schedule_FindAbsoluteScheduleWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Schedule_FindAbsoluteScheduleWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find absolute schedule",
+        "tags": [
+          "Schedule Webservice"
+        ]
+      }
+    },
+    "/api/schedule/findRelativeDateTimeIntervalsSchedule": {
+      "post": {
+        "description": "Find a one-time relative datetime schedule",
+        "operationId": "findRelativeDateTimeIntervalsSchedule",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Schedule_FindRelativeDateTimeIntervalsScheduleWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Schedule_FindRelativeDateTimeIntervalsScheduleWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find relative datetime intervals schedule",
+        "tags": [
+          "Schedule Webservice"
+        ]
+      }
+    },
+    "/api/schedule/findRelativeSchedule": {
+      "post": {
+        "description": "Find a relative schedule",
+        "operationId": "findRelativeSchedule",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Schedule_FindRelativeScheduleWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Schedule_FindRelativeScheduleWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find relative schedule",
+        "tags": [
+          "Schedule Webservice"
+        ]
+      }
+    },
+    "/api/schedule/findWeeklySchedule": {
+      "post": {
+        "description": "Find a weekly schedule",
+        "operationId": "findWeeklySchedule",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Schedule_FindWeeklyScheduleWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Schedule_FindWeeklyScheduleWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find weekly schedule",
+        "tags": [
+          "Schedule Webservice"
+        ]
+      }
+    },
+    "/api/schedule/getScheduleData": {
+      "post": {
+        "description": "Get weekly schedules in org with usage data",
+        "operationId": "getScheduleData",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Schedule_GetSchedulesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Schedule_GetScheduleDataWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get schedule data",
+        "tags": [
+          "Schedule Webservice"
+        ]
+      }
+    },
+    "/api/schedule/getScheduleDataV2": {
+      "post": {
+        "description": "Get weekly schedules in org with usage data",
+        "operationId": "getScheduleDataV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Schedule_GetScheduleDataV2WSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Schedule_GetScheduleDataV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get schedule data V2",
+        "tags": [
+          "Schedule Webservice"
+        ]
+      }
+    },
+    "/api/schedule/getSchedules": {
+      "post": {
+        "description": "Get schedules in org",
+        "operationId": "getSchedules",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Schedule_GetSchedulesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Schedule_GetSchedulesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get schedules",
+        "tags": [
+          "Schedule Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/schedule/createAbsoluteSchedule",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/schedule/createRelativeDateTimeIntervalsSchedule",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/schedule/createRelativeSchedule",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/schedule/createWeeklySchedule",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/schedule/deleteSchedule",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/schedule/findAbsoluteSchedule",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/schedule/findRelativeDateTimeIntervalsSchedule",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/schedule/findRelativeSchedule",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/schedule/findWeeklySchedule",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/schedule/getScheduleData",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/schedule/getScheduleDataV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/schedule/getSchedules",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 12,
+  "referencedSchemas": [
+    "Policy_DeleteScheduleWSRequest",
+    "Policy_DeleteScheduleWSResponse",
+    "Schedule_CreateAbsoluteScheduleWSRequest",
+    "Schedule_CreateAbsoluteScheduleWSResponse",
+    "Schedule_CreateRelativeDateTimeIntervalsScheduleWSRequest",
+    "Schedule_CreateRelativeDateTimeIntervalsScheduleWSResponse",
+    "Schedule_CreateRelativeScheduleWSRequest",
+    "Schedule_CreateRelativeScheduleWSResponse",
+    "Schedule_CreateWeeklyScheduleWSRequest",
+    "Schedule_CreateWeeklyScheduleWSResponse",
+    "Schedule_FindAbsoluteScheduleWSRequest",
+    "Schedule_FindAbsoluteScheduleWSResponse",
+    "Schedule_FindRelativeDateTimeIntervalsScheduleWSRequest",
+    "Schedule_FindRelativeDateTimeIntervalsScheduleWSResponse",
+    "Schedule_FindRelativeScheduleWSRequest",
+    "Schedule_FindRelativeScheduleWSResponse",
+    "Schedule_FindWeeklyScheduleWSRequest",
+    "Schedule_FindWeeklyScheduleWSResponse",
+    "Schedule_GetScheduleDataV2WSRequest",
+    "Schedule_GetScheduleDataV2WSResponse",
+    "Schedule_GetScheduleDataWSResponse",
+    "Schedule_GetSchedulesWSRequest",
+    "Schedule_GetSchedulesWSResponse"
+  ]
+}

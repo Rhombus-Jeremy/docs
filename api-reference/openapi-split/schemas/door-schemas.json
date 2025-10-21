@@ -1,0 +1,302 @@
+{
+  "tag": "Door Webservice",
+  "schemas": {
+    "Door_GetDoorEventsForSensorWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving door open/close events for a door sensor.",
+      "properties": {
+        "createdAfterMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp in milliseconds to get events created after this time",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "createdBeforeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp in milliseconds to get events created before this time",
+          "example": 1640995200000,
+          "nullable": true
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Maximum number of events to return",
+          "example": 100,
+          "nullable": true
+        },
+        "sensorUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "stateFilter": {
+          "type": "string",
+          "description": "Filter events by door state",
+          "enum": [
+            "OPEN",
+            "CLOSED",
+            "AJAR"
+          ],
+          "nullable": true
+        }
+      }
+    },
+    "Door_GetDoorEventsForSensorWSResponse": {
+      "type": "object",
+      "description": "Response object containing door open/close events for a door sensor.",
+      "properties": {
+        "doorEvents": {
+          "type": "array",
+          "description": "List of door open/close events for the sensor",
+          "items": {
+            "$ref": "#/components/schemas/DoorEventType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Door_GetMinimalDoorStatesWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving basic state information for all door sensors."
+    },
+    "Door_GetMinimalDoorStatesWSResponse": {
+      "type": "object",
+      "description": "Response object containing basic state information for all door sensors.",
+      "properties": {
+        "doorStates": {
+          "type": "array",
+          "description": "List of minimal door state information for all door sensors",
+          "items": {
+            "$ref": "#/components/schemas/Door_MinimalDoorStateType"
+          },
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Door_UpdateDoorSensorDetailsWSRequest": {
+      "type": "object",
+      "description": "Request object for updating details for a door sensor.",
+      "properties": {
+        "associatedCameras": {
+          "type": "array",
+          "description": "List of associated camera device facet UUIDs",
+          "items": {
+            "type": "string",
+            "format": "DeviceFacetUuid",
+            "description": "RUUID with optional appended facet information",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "associatedCamerasUpdated": {
+          "type": "boolean",
+          "description": "Whether the associated cameras have been updated",
+          "example": true,
+          "nullable": true
+        },
+        "deleted": {
+          "type": "boolean",
+          "description": "Whether the door sensor is deleted",
+          "example": false,
+          "nullable": true
+        },
+        "deletedUpdated": {
+          "type": "boolean",
+          "description": "Whether the deleted status has been updated",
+          "example": false,
+          "nullable": true
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the door sensor",
+          "example": "Main entrance door sensor on the first floor",
+          "nullable": true
+        },
+        "descriptionUpdated": {
+          "type": "boolean",
+          "description": "Whether the description has been updated",
+          "example": false,
+          "nullable": true
+        },
+        "floorNumber": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Floor number where the door sensor is located",
+          "example": 1,
+          "nullable": true
+        },
+        "floorNumberUpdated": {
+          "type": "boolean",
+          "description": "Whether the floor number has been updated",
+          "example": true,
+          "nullable": true
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Latitude coordinate of the door sensor",
+          "example": 37.7749,
+          "nullable": true
+        },
+        "latitudeUpdated": {
+          "type": "boolean",
+          "description": "Whether the latitude has been updated",
+          "example": false,
+          "nullable": true
+        },
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "locationUuidUpdated": {
+          "type": "boolean",
+          "description": "Whether the location UUID has been updated",
+          "example": true,
+          "nullable": true
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Longitude coordinate of the door sensor",
+          "example": -122.4194,
+          "nullable": true
+        },
+        "longitudeUpdated": {
+          "type": "boolean",
+          "description": "Whether the longitude has been updated",
+          "example": false,
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the door sensor",
+          "example": "Main Entrance Door",
+          "nullable": true
+        },
+        "nameUpdated": {
+          "type": "boolean",
+          "description": "Whether the name has been updated",
+          "example": true,
+          "nullable": true
+        },
+        "policyUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "policyUuidUpdated": {
+          "type": "boolean",
+          "description": "Whether the policy UUID has been updated",
+          "example": false,
+          "nullable": true
+        },
+        "subLocationsHierarchyKey": {
+          "$ref": "#/components/schemas/SubLocationsHierarchyKey"
+        },
+        "subLocationsHierarchyKeyUpdated": {
+          "type": "boolean",
+          "description": "Whether the sub-locations hierarchy key has been updated",
+          "example": false,
+          "nullable": true
+        },
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Door_UpdateDoorSensorDetailsWSResponse": {
+      "type": "object",
+      "description": "Response object for updating details for a door sensor.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Sensor_GetSensorPresenceWindowsWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving stored video information for a sensor.",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "durationSec": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Duration in seconds for the presence window query",
+          "example": 3600,
+          "nullable": true
+        },
+        "startTimeSec": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Start time in seconds for the presence window query",
+          "example": 1640995200,
+          "nullable": true
+        }
+      }
+    },
+    "Sensor_GetSensorPresenceWindowsWSResponse": {
+      "type": "object",
+      "description": "Response object containing stored video information for a sensor.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "presenceWindows": {
+          "type": "array",
+          "description": "List of presence windows for the sensor",
+          "items": {
+            "$ref": "#/components/schemas/TimeWindowSeconds"
+          },
+          "nullable": true
+        }
+      }
+    }
+  },
+  "schemaCount": 8
+}

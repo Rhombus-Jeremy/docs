@@ -1,0 +1,101 @@
+{
+  "tag": "Event Search Webservice",
+  "description": "API endpoints for Event Search Webservice",
+  "paths": {
+    "/api/eventSearch/getCameraOrDoorbellCameraSeekpoints": {
+      "post": {
+        "deprecated": true,
+        "description": "Get camera or doorbell camera seekpoints",
+        "operationId": "getCameraOrDoorbellCameraSeekpoints",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Common_devices_GetCameraOrDoorbellCameraSeekpointsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Eventsearch_GetCameraOrDoorbellCameraSeekpointsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get camera or doorbell camera seekpoints",
+        "tags": [
+          "Event Search Webservice"
+        ]
+      }
+    },
+    "/api/eventSearch/getEventSeekpoints": {
+      "post": {
+        "deprecated": true,
+        "description": "Get normal seekpoint events and access control seekpoint events",
+        "operationId": "getDeprecatedEventSeekpoints",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Eventsearch_GetEventSeekpointsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Eventsearch_GetEventSeekpointsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get normal seekpoint events and access control seekpoint events",
+        "tags": [
+          "Event Search Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/eventSearch/getCameraOrDoorbellCameraSeekpoints",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/eventSearch/getEventSeekpoints",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 2,
+  "referencedSchemas": [
+    "Common_devices_GetCameraOrDoorbellCameraSeekpointsWSRequest",
+    "Eventsearch_GetCameraOrDoorbellCameraSeekpointsWSResponse",
+    "Eventsearch_GetEventSeekpointsWSRequest",
+    "Eventsearch_GetEventSeekpointsWSResponse"
+  ]
+}

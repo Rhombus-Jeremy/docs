@@ -1,0 +1,539 @@
+{
+  "tag": "License Webservice",
+  "description": "API endpoints for License Webservice",
+  "paths": {
+    "/api/license/assignACUDoorLicense": {
+      "post": {
+        "description": "Assign ACU door license",
+        "operationId": "assignACUDoorLicense",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/License_AssignACUDoorLicenseWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/License_AssignACUDoorLicenseWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Assign ACU door license",
+        "tags": [
+          "License Webservice"
+        ]
+      }
+    },
+    "/api/license/assignAlertMonitoringLicense": {
+      "post": {
+        "description": "Assign alert monitoring license",
+        "operationId": "assignAlertMonitoringLicense",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/License_AssignAlertMonitoringLicenseWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/License_AssignAlertMonitoringLicenseWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Assign alert monitoring license",
+        "tags": [
+          "License Webservice"
+        ]
+      }
+    },
+    "/api/license/assignDeviceLicense": {
+      "post": {
+        "description": "Assign or unassign a device license.",
+        "operationId": "assignDeviceLicense",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/License_AssignDeviceLicenseWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/License_AssignDeviceLicenseWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Assign device license",
+        "tags": [
+          "License Webservice"
+        ]
+      }
+    },
+    "/api/license/assignLicense": {
+      "post": {
+        "description": "Assign an add-on license to a device",
+        "operationId": "assignLicense",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/License_AssignLicenseWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/License_AssignLicenseWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Assign license",
+        "tags": [
+          "License Webservice"
+        ]
+      }
+    },
+    "/api/license/getACUDoorLicenses": {
+      "post": {
+        "description": "Get list of access controlled door licenses licenses available in organization",
+        "operationId": "getACUDoorLicenses",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/License_GetACUDoorLicensesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/License_GetACUDoorLicensesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get ACU door licenses",
+        "tags": [
+          "License Webservice"
+        ]
+      }
+    },
+    "/api/license/getACUDoorLicensesForClientOrg": {
+      "post": {
+        "description": "Get list of access controlled door licenses licenses available for a client organization",
+        "operationId": "getACUDoorLicensesForClientOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/License_GetACUDoorLicensesForClientOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/License_GetACUDoorLicensesForClientOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get ACU door licenses for client org",
+        "tags": [
+          "License Webservice"
+        ]
+      }
+    },
+    "/api/license/getAlertMonitoringLicenses": {
+      "post": {
+        "description": "Get list of alert monitoring licenses available in organization",
+        "operationId": "getAlertMonitoringLicenses",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/License_GetAlertMonitoringLicensesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/License_GetAlertMonitoringLicensesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get alert monitoring licenses",
+        "tags": [
+          "License Webservice"
+        ]
+      }
+    },
+    "/api/license/getAlertMonitoringLicensesForClientOrg": {
+      "post": {
+        "description": "Get list of alert monitoring licenses available for a client organization",
+        "operationId": "getAlertMonitoringLicensesForClientOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/License_GetAlertMonitoringLicensesForClientOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/License_GetAlertMonitoringLicensesForClientOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get alert monitoring licenses for client org",
+        "tags": [
+          "License Webservice"
+        ]
+      }
+    },
+    "/api/license/getDeviceLicenses": {
+      "post": {
+        "description": "Get list of device licenses available in organization",
+        "operationId": "getDeviceLicenses",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/License_GetDeviceLicensesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/License_GetDeviceLicensesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get device licenses",
+        "tags": [
+          "License Webservice"
+        ]
+      }
+    },
+    "/api/license/getDeviceLicensesForClientOrg": {
+      "post": {
+        "description": "Get list of device licenses available for a client organization",
+        "operationId": "getDeviceLicensesForClientOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/License_GetDeviceLicensesForClientOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/License_GetDeviceLicensesForClientOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get device licenses for client org",
+        "tags": [
+          "License Webservice"
+        ]
+      }
+    },
+    "/api/license/getLicenses": {
+      "post": {
+        "description": "Get list of add-on licenses available in organization",
+        "operationId": "getLicenses",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/License_GetLicensesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/License_GetLicensesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get licenses",
+        "tags": [
+          "License Webservice"
+        ]
+      }
+    },
+    "/api/license/getLicensesForClientOrg": {
+      "post": {
+        "description": "Get a list of licenses available for a client organization",
+        "operationId": "getLicensesForClientOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/License_GetLicensesForClientOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/License_GetLicensesForClientOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get licenses for client org",
+        "tags": [
+          "License Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/license/assignACUDoorLicense",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/license/assignAlertMonitoringLicense",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/license/assignDeviceLicense",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/license/assignLicense",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/license/getACUDoorLicenses",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/license/getACUDoorLicensesForClientOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/license/getAlertMonitoringLicenses",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/license/getAlertMonitoringLicensesForClientOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/license/getDeviceLicenses",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/license/getDeviceLicensesForClientOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/license/getLicenses",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/license/getLicensesForClientOrg",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 12,
+  "referencedSchemas": [
+    "License_AssignACUDoorLicenseWSRequest",
+    "License_AssignACUDoorLicenseWSResponse",
+    "License_AssignAlertMonitoringLicenseWSRequest",
+    "License_AssignAlertMonitoringLicenseWSResponse",
+    "License_AssignDeviceLicenseWSRequest",
+    "License_AssignDeviceLicenseWSResponse",
+    "License_AssignLicenseWSRequest",
+    "License_AssignLicenseWSResponse",
+    "License_GetACUDoorLicensesForClientOrgWSRequest",
+    "License_GetACUDoorLicensesForClientOrgWSResponse",
+    "License_GetACUDoorLicensesWSRequest",
+    "License_GetACUDoorLicensesWSResponse",
+    "License_GetAlertMonitoringLicensesForClientOrgWSRequest",
+    "License_GetAlertMonitoringLicensesForClientOrgWSResponse",
+    "License_GetAlertMonitoringLicensesWSRequest",
+    "License_GetAlertMonitoringLicensesWSResponse",
+    "License_GetDeviceLicensesForClientOrgWSRequest",
+    "License_GetDeviceLicensesForClientOrgWSResponse",
+    "License_GetDeviceLicensesWSRequest",
+    "License_GetDeviceLicensesWSResponse",
+    "License_GetLicensesForClientOrgWSRequest",
+    "License_GetLicensesForClientOrgWSResponse",
+    "License_GetLicensesWSRequest",
+    "License_GetLicensesWSResponse"
+  ]
+}

@@ -1,0 +1,2564 @@
+{
+  "tag": "Access Control Webservice",
+  "description": "API endpoints for Access Control Webservice",
+  "paths": {
+    "/api/accesscontrol/addUsersToAccessControlGroup": {
+      "post": {
+        "description": "Adds specified users to an access control group",
+        "operationId": "addUsersToAccessControlGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Group_AddUsersToOrgGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group_AddUsersToOrgGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Add users to access control group",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/assignAccessControlCredential": {
+      "post": {
+        "description": "Assign a currently unassigned credential to a user",
+        "operationId": "assignAccessControlCredential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_AssignAccessControlCredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_AssignAccessControlCredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Assign access control credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/createAccessControlCredentialByHexValueAndType": {
+      "post": {
+        "description": "Create a credential based on a hex value and credential type. Useful if you see an unauthorized badge event, know its type and want to import it",
+        "operationId": "createAccessControlCredentialByHexValueAndType",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_CreateAccessControlCredentialByHexValueAndTypeWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_CreateAccessControlCredentialByHexValueAndTypeWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create access control credential by hex value and type",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/createAccessControlGroup": {
+      "post": {
+        "description": "Creates an access control group",
+        "operationId": "createAccessControlGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Group_CreateOrgGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group_CreateOrgGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create access control group",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/createAccessGrant": {
+      "post": {
+        "description": "Create a location access grant",
+        "operationId": "createAccessGrant",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessgrant_CreateAccessGrantWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessgrant_CreateAccessGrantWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create access grant",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/createAccessRevocation": {
+      "post": {
+        "description": "Create a location access revocation",
+        "operationId": "createAccessRevocation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessrevocation_CreateAccessRevocationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessrevocation_CreateAccessRevocationWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create access revocation",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/createRhombusSecureCsnCredential": {
+      "post": {
+        "description": "Create a rhombus secure csn credential (Rhombus Badge)",
+        "operationId": "createRhombusSecureCsnCredential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_CreateRhombusSecureCsnCredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_CreateRhombusSecureCsnCredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create Rhombus Secure CSN credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/createStandardCsnCredential": {
+      "post": {
+        "description": "Create a standard csn credential (Third Party Badge)",
+        "operationId": "createStandardCsnCredential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_CreateStandardCsnCredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_CreateStandardCsnCredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create standard CSN credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/createWiegand64BitRawCredential": {
+      "post": {
+        "description": "Create a 64bit raw wiegand credential. Used when an explicit endpoint for the wiegand format is not otherwise defined.",
+        "operationId": "createWiegand64BitRawCredential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_CreateWiegand64BitRawCredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_CreateWiegand64BitRawCredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create 64-bit raw Wiegand credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/createWiegandCredential": {
+      "post": {
+        "deprecated": true,
+        "description": "Create a wiegand credential",
+        "operationId": "createWiegandCredential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_CreateWiegandCredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_CreateWiegandCredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create Wiegand credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/createWiegandD10202Credential": {
+      "post": {
+        "description": "Create a D10202 wiegand credential",
+        "operationId": "createWiegandD10202Credential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_CreateWiegandD10202CredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_CreateWiegandD10202CredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create D10202 Wiegand credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/createWiegandH10301Credential": {
+      "post": {
+        "description": "Create a H10301 wiegand credential",
+        "operationId": "createWiegandH10301Credential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_CreateWiegandH10301CredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_CreateWiegandH10301CredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create H10301 Wiegand credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/createWiegandH10304Credential": {
+      "post": {
+        "description": "Create a H10304 wiegand credential",
+        "operationId": "createWiegandH10304Credential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_CreateWiegandH10304CredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_CreateWiegandH10304CredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Create H10304 Wiegand credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/deleteAccessControlCredential": {
+      "post": {
+        "description": "Delete an access control credential. It is recommended to revoke a credential rather than delete it to preserve credential history",
+        "operationId": "deleteAccessControlCredential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_DeleteAccessControlCredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_DeleteAccessControlCredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete access control credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/deleteAccessControlGroup": {
+      "post": {
+        "description": "Delete an access control group",
+        "operationId": "deleteAccessControlGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Group_DeleteOrgGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group_DeleteOrgGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete access control group",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/deleteLocationAccessGrant": {
+      "post": {
+        "description": "Deletes a location access grant",
+        "operationId": "deleteLocationAccessGrant",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessgrant_DeleteLocationAccessGrantWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessgrant_DeleteLocationAccessGrantWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete location access grant",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/deleteLocationAccessRevocation": {
+      "post": {
+        "description": "Deletes a location access revocation",
+        "operationId": "deleteLocationAccessRevocation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessrevocation_DeleteLocationAccessRevocationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessrevocation_DeleteLocationAccessRevocationWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete location access revocation",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/deleteUnassignedAccessControlCredential": {
+      "post": {
+        "description": "Delete an unassigned access control credential. The credential must be unassigned (revoked) before this method can be called. History of the credential is maintained but it will no longer be returned as an unassigned credential.",
+        "operationId": "deleteUnassignedAccessControlCredential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_DeleteUnassignedAccessControlCredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_DeleteUnassignedAccessControlCredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete unassigned access control credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findAccessControlCredentialByOrg": {
+      "post": {
+        "description": "Find all access control credentials in the org",
+        "operationId": "findAccessControlCredentialByOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_FindAccessControlCredentialByOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_FindAccessControlCredentialByOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find access control credentials by org",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findAccessControlCredentialByUser": {
+      "post": {
+        "description": "Find all access control credentials for the specified user",
+        "operationId": "findAccessControlCredentialByUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_FindAccessControlCredentialByUserWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_FindAccessControlCredentialByUserWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find access control credentials by user",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findAccessControlCredentialByUsers": {
+      "post": {
+        "description": "Find all access control credentials for the specified users",
+        "operationId": "findAccessControlCredentialByUsers",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_FindAccessControlCredentialByUsersWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_FindAccessControlCredentialByUsersWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find access control credentials by users",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findAccessControlGroupByExactName": {
+      "post": {
+        "description": "Retrieve the access control group with the specified name",
+        "operationId": "findAccessControlGroupByExactName",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Group_FindOrgGroupsByExactNameWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group_FindOrgGroupsByExactNameWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find access control group by exact name",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findAccessControlGroupMembershipsByUser": {
+      "post": {
+        "description": "Find all access control group memberships by user",
+        "operationId": "findAccessControlGroupMembershipsByUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Group_FindOrgGroupMembershipsByUserWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group_FindOrgGroupMembershipsByUserWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find access control group memberships by user",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findAccessControlGroupsByNamePrefix": {
+      "post": {
+        "description": "Retrieve all access control groups with a name starting with the specified prefix",
+        "operationId": "findAccessControlGroupsByNamePrefix",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Group_FindOrgGroupsByNamePrefixWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group_FindOrgGroupsByNamePrefixWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find access control groups by name prefix",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findAccessControlGroupsByOrg": {
+      "post": {
+        "description": "Retrieve all access control groups defined in the org",
+        "operationId": "findAccessControlGroupsByOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Group_FindOrgGroupsByOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group_FindOrgGroupsByOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find access control groups by org",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findAccessControlGroupsByUserMembership": {
+      "post": {
+        "description": "Find all access control groups a user belongs to",
+        "operationId": "findAccessControlGroupsByUserMembership",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Group_FindOrgGroupsByUserMembershipWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group_FindOrgGroupsByUserMembershipWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find access control groups by user membership",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findAllUsersForAccessControlGroup": {
+      "post": {
+        "description": "Find all users belonging to an access control group",
+        "operationId": "findAllUsersForAccessControlGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Group_FindAllUsersForOrgGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group_FindAllUsersForOrgGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find all users for access control group",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findCredentialHistoryByCredentialHexValue": {
+      "post": {
+        "description": "Retrieves all credentials that have owned the credential hex value. Expect at most 1 valid/active credential and the rest are revoked",
+        "operationId": "findCredentialHistoryByCredentialHexValue",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_FindCredentialHistoryByCredentialHexValueWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_FindCredentialHistoryByCredentialHexValueWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find credential history by credential hex value",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findCredentialHistoryByCredentialValue": {
+      "post": {
+        "description": "Retrieves all credentials that have owned the credential value.",
+        "operationId": "findCredentialHistoryByCredentialValue",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_FindCredentialHistoryByCredentialValueWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_FindCredentialHistoryByCredentialValueWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find credential history by credential value",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findCredentialHistoryByUser": {
+      "post": {
+        "description": "Retrieves all credentials both current and revoked that were at some point assigned to the specified user",
+        "operationId": "findCredentialHistoryByUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_FindCredentialHistoryByUserWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_FindCredentialHistoryByUserWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find credential history by user",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findLocationAccessGrantsByAccessControlledDoor": {
+      "post": {
+        "description": "Finds location access grants by the specified access controlled door",
+        "operationId": "findLocationAccessGrantsByAccessControlledDoor",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessgrant_FindLocationAccessGrantsByAccessControlledDoorWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessgrant_FindLocationAccessGrantsByAccessControlledDoorWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find location access grants by access controlled door",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findLocationAccessGrantsByDoorLabel": {
+      "post": {
+        "description": "Finds location access grants by the specified door label",
+        "operationId": "findLocationAccessGrantsByDoorLabel",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessgrant_FindLocationAccessGrantsByDoorLabelWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessgrant_FindLocationAccessGrantsByDoorLabelWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find location access grants by door label",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findLocationAccessGrantsByGroup": {
+      "post": {
+        "description": "Finds location access grants by the specified group",
+        "operationId": "findLocationAccessGrantsByGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessgrant_FindLocationAccessGrantsByGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessgrant_FindLocationAccessGrantsByGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find location access grants by group",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findLocationAccessGrantsByLocation": {
+      "post": {
+        "description": "Finds location access grants by the specified location",
+        "operationId": "findLocationAccessGrantsByLocation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessgrant_FindLocationAccessGrantsByLocationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessgrant_FindLocationAccessGrantsByLocationWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find location access grants by location",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findLocationAccessGrantsByLocationAndUser": {
+      "post": {
+        "description": "Finds location access grants by the specified location and user",
+        "operationId": "findLocationAccessGrantsByLocationAndUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessgrant_FindLocationAccessGrantsByLocationAndUserWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessgrant_FindLocationAccessGrantsByLocationAndUserWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find location access grants by location and user",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findLocationAccessGrantsByOrg": {
+      "post": {
+        "description": "Finds all location access grants in the org",
+        "operationId": "findLocationAccessGrantsByOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessgrant_FindLocationAccessGrantsByOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessgrant_FindLocationAccessGrantsByOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find location access grants by org",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findLocationAccessGrantsByUser": {
+      "post": {
+        "description": "Finds location access grants by the specified user",
+        "operationId": "findLocationAccessGrantsByUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessgrant_FindLocationAccessGrantsByUserWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessgrant_FindLocationAccessGrantsByUserWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find location access grants by user",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findLocationAccessRevocationsByAccessControlledDoor": {
+      "post": {
+        "description": "Finds location access revocations by the specified access controlled door",
+        "operationId": "findLocationAccessRevocationsByAccessControlledDoor",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessrevocation_FindLocationAccessRevocationsByAccessControlledDoorWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessrevocation_FindLocationAccessRevocationsByAccessControlledDoorWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find location access revocations by access controlled door",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findLocationAccessRevocationsByDoorLabel": {
+      "post": {
+        "description": "Finds location access revocation by the specified door label",
+        "operationId": "findLocationAccessRevocationsByDoorLabel",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessrevocation_FindLocationAccessRevocationsByDoorLabelWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessrevocation_FindLocationAccessRevocationsByDoorLabelWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find location access revocations by door label",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findLocationAccessRevocationsByGroup": {
+      "post": {
+        "description": "Finds location access revocations by the specified group",
+        "operationId": "findLocationAccessRevocationsByGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessrevocation_FindLocationAccessRevocationsByGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessrevocation_FindLocationAccessRevocationsByGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find location access revocations by group",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findLocationAccessRevocationsByOrg": {
+      "post": {
+        "description": "Finds all location access revocations in the org",
+        "operationId": "findLocationAccessRevocationsByOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessrevocation_FindLocationAccessRevocationsByOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessrevocation_FindLocationAccessRevocationsByOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find location access revocations by org",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/findLocationAccessRevocationsByUser": {
+      "post": {
+        "description": "Finds location access revocations by the specified user",
+        "operationId": "findLocationAccessRevocationsByUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessrevocation_FindLocationAccessRevocationsByUserWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessrevocation_FindLocationAccessRevocationsByUserWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find location access revocations by user",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/getLocationAccessGrant": {
+      "post": {
+        "description": "Retrieve a location access grant by id",
+        "operationId": "getLocationAccessGrant",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessgrant_GetLocationAccessGrantWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessgrant_GetLocationAccessGrantWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get location access grant",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/getLocationAccessRevocation": {
+      "post": {
+        "description": "Retrieve a location access revocation by id",
+        "operationId": "getLocationAccessRevocation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessrevocation_GetLocationAccessRevocationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessrevocation_GetLocationAccessRevocationWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get location access revocation",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/getRhombusSecureCsnCredentialDetails": {
+      "post": {
+        "description": "Retrieves a rhombus secure csn credential including sensitive details",
+        "operationId": "getRhombusSecureCsnCredentialDetails",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_GetRhombusSecureCsnCredentialDetailsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_GetRhombusSecureCsnCredentialDetailsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get Rhombus Secure CSN credential details",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/getStandardCsnCredentialDetails": {
+      "post": {
+        "description": "Retrieves a standard csn credential including sensitive details",
+        "operationId": "getStandardCsnCredentialDetails",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_GetStandardCsnCredentialDetailsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_GetStandardCsnCredentialDetailsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get standard CSN credential details",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/removeUsersFromAccessControlGroup": {
+      "post": {
+        "description": "Removes specified users from an access control group",
+        "operationId": "removeUsersFromAccessControlGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Group_RemoveUsersFromOrgGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group_RemoveUsersFromOrgGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Remove users from access control group",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/revokeAccessControlCredential": {
+      "post": {
+        "description": "Revokes an access control credential. Unlike suspension this will give up its claim on the credential value allowing another cred to claim it as its identifier",
+        "operationId": "revokeAccessControlCredential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_RevokeAccessControlCredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_RevokeAccessControlCredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Revoke access control credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/suspendAccessControlCredential": {
+      "post": {
+        "description": "Mark an access control credential as suspended",
+        "operationId": "suspendAccessControlCredential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_SuspendAccessControlCredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_SuspendAccessControlCredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Suspend access control credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/unlockAccessControlledDoor": {
+      "post": {
+        "description": "Unlock an access controlled door",
+        "operationId": "unlockAccessControlledDoor",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_UnlockAccessControlledDoorWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_BaseUnlockAccessControlledDoorWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Unlock access controlled door",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/unsuspendAccessControlCredential": {
+      "post": {
+        "description": "Mark an access control credential as no longer suspended",
+        "operationId": "unsuspendAccessControlCredential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_UnsuspendAccessControlCredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_UnsuspendAccessControlCredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Unsuspend access control credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/updateAccessControlGroup": {
+      "post": {
+        "description": "Updates an access control group's meta information like name and description",
+        "operationId": "updateAccessControlGroup",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Group_UpdateOrgGroupWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Group_UpdateOrgGroupWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update access control group",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/updateAccessGrant": {
+      "post": {
+        "description": "Updates a location access grant",
+        "operationId": "updateAccessGrant",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessgrant_UpdateAccessGrantWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessgrant_UpdateAccessGrantWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update access grant",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/updateAccessRevocation": {
+      "post": {
+        "description": "Updates a location access revocation",
+        "operationId": "updateAccessRevocation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_accessrevocation_UpdateAccessRevocationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_accessrevocation_UpdateAccessRevocationWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update access revocation",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/updateRhombusSecureCsnCredential": {
+      "post": {
+        "description": "Update a rhombus secure csn credential (Rhombus Badge)",
+        "operationId": "updateRhombusSecureCsnCredential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_UpdateRhombusSecureCsnCredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_UpdateRhombusSecureCsnCredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Rhombus Secure CSN credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/updateRhombusSecureMobileCredential": {
+      "post": {
+        "description": "Update a rhombus secure mobile credential (RhombusKey App w/ BLE or NFC)",
+        "operationId": "updateRhombusSecureMobileCredential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_UpdateRhombusSecureMobileCredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_UpdateRhombusSecureMobileCredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Rhombus Secure mobile credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/updateStandardCsnCredential": {
+      "post": {
+        "description": "Update a standard csn credential (Third Party Badge)",
+        "operationId": "updateStandardCsnCredential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_UpdateStandardCsnCredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_UpdateStandardCsnCredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update standard CSN credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    },
+    "/api/accesscontrol/updateWiegandCredential": {
+      "post": {
+        "description": "Update a wiegand credential (Third Party Badge)",
+        "operationId": "updateWiegandCredential",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Accesscontrol_credentials_UpdateWiegandCredentialWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Accesscontrol_credentials_UpdateWiegandCredentialWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update Wiegand credential",
+        "tags": [
+          "Access Control Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/accesscontrol/addUsersToAccessControlGroup",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/assignAccessControlCredential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/createAccessControlCredentialByHexValueAndType",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/createAccessControlGroup",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/createAccessGrant",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/createAccessRevocation",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/createRhombusSecureCsnCredential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/createStandardCsnCredential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/createWiegand64BitRawCredential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/createWiegandCredential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/createWiegandD10202Credential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/createWiegandH10301Credential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/createWiegandH10304Credential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/deleteAccessControlCredential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/deleteAccessControlGroup",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/deleteLocationAccessGrant",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/deleteLocationAccessRevocation",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/deleteUnassignedAccessControlCredential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findAccessControlCredentialByOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findAccessControlCredentialByUser",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findAccessControlCredentialByUsers",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findAccessControlGroupByExactName",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findAccessControlGroupMembershipsByUser",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findAccessControlGroupsByNamePrefix",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findAccessControlGroupsByOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findAccessControlGroupsByUserMembership",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findAllUsersForAccessControlGroup",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findCredentialHistoryByCredentialHexValue",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findCredentialHistoryByCredentialValue",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findCredentialHistoryByUser",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findLocationAccessGrantsByAccessControlledDoor",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findLocationAccessGrantsByDoorLabel",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findLocationAccessGrantsByGroup",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findLocationAccessGrantsByLocation",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findLocationAccessGrantsByLocationAndUser",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findLocationAccessGrantsByOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findLocationAccessGrantsByUser",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findLocationAccessRevocationsByAccessControlledDoor",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findLocationAccessRevocationsByDoorLabel",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findLocationAccessRevocationsByGroup",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findLocationAccessRevocationsByOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/findLocationAccessRevocationsByUser",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/getLocationAccessGrant",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/getLocationAccessRevocation",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/getRhombusSecureCsnCredentialDetails",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/getStandardCsnCredentialDetails",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/removeUsersFromAccessControlGroup",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/revokeAccessControlCredential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/suspendAccessControlCredential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/unlockAccessControlledDoor",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/unsuspendAccessControlCredential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/updateAccessControlGroup",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/updateAccessGrant",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/updateAccessRevocation",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/updateRhombusSecureCsnCredential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/updateRhombusSecureMobileCredential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/updateStandardCsnCredential",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/accesscontrol/updateWiegandCredential",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 58,
+  "referencedSchemas": [
+    "Accesscontrol_UnlockAccessControlledDoorWSRequest",
+    "Accesscontrol_accessgrant_CreateAccessGrantWSRequest",
+    "Accesscontrol_accessgrant_CreateAccessGrantWSResponse",
+    "Accesscontrol_accessgrant_DeleteLocationAccessGrantWSRequest",
+    "Accesscontrol_accessgrant_DeleteLocationAccessGrantWSResponse",
+    "Accesscontrol_accessgrant_FindLocationAccessGrantsByAccessControlledDoorWSRequest",
+    "Accesscontrol_accessgrant_FindLocationAccessGrantsByAccessControlledDoorWSResponse",
+    "Accesscontrol_accessgrant_FindLocationAccessGrantsByDoorLabelWSRequest",
+    "Accesscontrol_accessgrant_FindLocationAccessGrantsByDoorLabelWSResponse",
+    "Accesscontrol_accessgrant_FindLocationAccessGrantsByGroupWSRequest",
+    "Accesscontrol_accessgrant_FindLocationAccessGrantsByGroupWSResponse",
+    "Accesscontrol_accessgrant_FindLocationAccessGrantsByLocationAndUserWSRequest",
+    "Accesscontrol_accessgrant_FindLocationAccessGrantsByLocationAndUserWSResponse",
+    "Accesscontrol_accessgrant_FindLocationAccessGrantsByLocationWSRequest",
+    "Accesscontrol_accessgrant_FindLocationAccessGrantsByLocationWSResponse",
+    "Accesscontrol_accessgrant_FindLocationAccessGrantsByOrgWSRequest",
+    "Accesscontrol_accessgrant_FindLocationAccessGrantsByOrgWSResponse",
+    "Accesscontrol_accessgrant_FindLocationAccessGrantsByUserWSRequest",
+    "Accesscontrol_accessgrant_FindLocationAccessGrantsByUserWSResponse",
+    "Accesscontrol_accessgrant_GetLocationAccessGrantWSRequest",
+    "Accesscontrol_accessgrant_GetLocationAccessGrantWSResponse",
+    "Accesscontrol_accessgrant_UpdateAccessGrantWSRequest",
+    "Accesscontrol_accessgrant_UpdateAccessGrantWSResponse",
+    "Accesscontrol_accessrevocation_CreateAccessRevocationWSRequest",
+    "Accesscontrol_accessrevocation_CreateAccessRevocationWSResponse",
+    "Accesscontrol_accessrevocation_DeleteLocationAccessRevocationWSRequest",
+    "Accesscontrol_accessrevocation_DeleteLocationAccessRevocationWSResponse",
+    "Accesscontrol_accessrevocation_FindLocationAccessRevocationsByAccessControlledDoorWSRequest",
+    "Accesscontrol_accessrevocation_FindLocationAccessRevocationsByAccessControlledDoorWSResponse",
+    "Accesscontrol_accessrevocation_FindLocationAccessRevocationsByDoorLabelWSRequest",
+    "Accesscontrol_accessrevocation_FindLocationAccessRevocationsByDoorLabelWSResponse",
+    "Accesscontrol_accessrevocation_FindLocationAccessRevocationsByGroupWSRequest",
+    "Accesscontrol_accessrevocation_FindLocationAccessRevocationsByGroupWSResponse",
+    "Accesscontrol_accessrevocation_FindLocationAccessRevocationsByOrgWSRequest",
+    "Accesscontrol_accessrevocation_FindLocationAccessRevocationsByOrgWSResponse",
+    "Accesscontrol_accessrevocation_FindLocationAccessRevocationsByUserWSRequest",
+    "Accesscontrol_accessrevocation_FindLocationAccessRevocationsByUserWSResponse",
+    "Accesscontrol_accessrevocation_GetLocationAccessRevocationWSRequest",
+    "Accesscontrol_accessrevocation_GetLocationAccessRevocationWSResponse",
+    "Accesscontrol_accessrevocation_UpdateAccessRevocationWSRequest",
+    "Accesscontrol_accessrevocation_UpdateAccessRevocationWSResponse",
+    "Accesscontrol_credentials_AssignAccessControlCredentialWSRequest",
+    "Accesscontrol_credentials_AssignAccessControlCredentialWSResponse",
+    "Accesscontrol_credentials_BaseUnlockAccessControlledDoorWSResponse",
+    "Accesscontrol_credentials_CreateAccessControlCredentialByHexValueAndTypeWSRequest",
+    "Accesscontrol_credentials_CreateAccessControlCredentialByHexValueAndTypeWSResponse",
+    "Accesscontrol_credentials_CreateRhombusSecureCsnCredentialWSRequest",
+    "Accesscontrol_credentials_CreateRhombusSecureCsnCredentialWSResponse",
+    "Accesscontrol_credentials_CreateStandardCsnCredentialWSRequest",
+    "Accesscontrol_credentials_CreateStandardCsnCredentialWSResponse",
+    "Accesscontrol_credentials_CreateWiegand64BitRawCredentialWSRequest",
+    "Accesscontrol_credentials_CreateWiegand64BitRawCredentialWSResponse",
+    "Accesscontrol_credentials_CreateWiegandCredentialWSRequest",
+    "Accesscontrol_credentials_CreateWiegandCredentialWSResponse",
+    "Accesscontrol_credentials_CreateWiegandD10202CredentialWSRequest",
+    "Accesscontrol_credentials_CreateWiegandD10202CredentialWSResponse",
+    "Accesscontrol_credentials_CreateWiegandH10301CredentialWSRequest",
+    "Accesscontrol_credentials_CreateWiegandH10301CredentialWSResponse",
+    "Accesscontrol_credentials_CreateWiegandH10304CredentialWSRequest",
+    "Accesscontrol_credentials_CreateWiegandH10304CredentialWSResponse",
+    "Accesscontrol_credentials_DeleteAccessControlCredentialWSRequest",
+    "Accesscontrol_credentials_DeleteAccessControlCredentialWSResponse",
+    "Accesscontrol_credentials_DeleteUnassignedAccessControlCredentialWSRequest",
+    "Accesscontrol_credentials_DeleteUnassignedAccessControlCredentialWSResponse",
+    "Accesscontrol_credentials_FindAccessControlCredentialByOrgWSRequest",
+    "Accesscontrol_credentials_FindAccessControlCredentialByOrgWSResponse",
+    "Accesscontrol_credentials_FindAccessControlCredentialByUserWSRequest",
+    "Accesscontrol_credentials_FindAccessControlCredentialByUserWSResponse",
+    "Accesscontrol_credentials_FindAccessControlCredentialByUsersWSRequest",
+    "Accesscontrol_credentials_FindAccessControlCredentialByUsersWSResponse",
+    "Accesscontrol_credentials_FindCredentialHistoryByCredentialHexValueWSRequest",
+    "Accesscontrol_credentials_FindCredentialHistoryByCredentialHexValueWSResponse",
+    "Accesscontrol_credentials_FindCredentialHistoryByCredentialValueWSRequest",
+    "Accesscontrol_credentials_FindCredentialHistoryByCredentialValueWSResponse",
+    "Accesscontrol_credentials_FindCredentialHistoryByUserWSRequest",
+    "Accesscontrol_credentials_FindCredentialHistoryByUserWSResponse",
+    "Accesscontrol_credentials_GetRhombusSecureCsnCredentialDetailsWSRequest",
+    "Accesscontrol_credentials_GetRhombusSecureCsnCredentialDetailsWSResponse",
+    "Accesscontrol_credentials_GetStandardCsnCredentialDetailsWSRequest",
+    "Accesscontrol_credentials_GetStandardCsnCredentialDetailsWSResponse",
+    "Accesscontrol_credentials_RevokeAccessControlCredentialWSRequest",
+    "Accesscontrol_credentials_RevokeAccessControlCredentialWSResponse",
+    "Accesscontrol_credentials_SuspendAccessControlCredentialWSRequest",
+    "Accesscontrol_credentials_SuspendAccessControlCredentialWSResponse",
+    "Accesscontrol_credentials_UnsuspendAccessControlCredentialWSRequest",
+    "Accesscontrol_credentials_UnsuspendAccessControlCredentialWSResponse",
+    "Accesscontrol_credentials_UpdateRhombusSecureCsnCredentialWSRequest",
+    "Accesscontrol_credentials_UpdateRhombusSecureCsnCredentialWSResponse",
+    "Accesscontrol_credentials_UpdateRhombusSecureMobileCredentialWSRequest",
+    "Accesscontrol_credentials_UpdateRhombusSecureMobileCredentialWSResponse",
+    "Accesscontrol_credentials_UpdateStandardCsnCredentialWSRequest",
+    "Accesscontrol_credentials_UpdateStandardCsnCredentialWSResponse",
+    "Accesscontrol_credentials_UpdateWiegandCredentialWSRequest",
+    "Accesscontrol_credentials_UpdateWiegandCredentialWSResponse",
+    "Group_AddUsersToOrgGroupWSRequest",
+    "Group_AddUsersToOrgGroupWSResponse",
+    "Group_CreateOrgGroupWSRequest",
+    "Group_CreateOrgGroupWSResponse",
+    "Group_DeleteOrgGroupWSRequest",
+    "Group_DeleteOrgGroupWSResponse",
+    "Group_FindAllUsersForOrgGroupWSRequest",
+    "Group_FindAllUsersForOrgGroupWSResponse",
+    "Group_FindOrgGroupMembershipsByUserWSRequest",
+    "Group_FindOrgGroupMembershipsByUserWSResponse",
+    "Group_FindOrgGroupsByExactNameWSRequest",
+    "Group_FindOrgGroupsByExactNameWSResponse",
+    "Group_FindOrgGroupsByNamePrefixWSRequest",
+    "Group_FindOrgGroupsByNamePrefixWSResponse",
+    "Group_FindOrgGroupsByOrgWSRequest",
+    "Group_FindOrgGroupsByOrgWSResponse",
+    "Group_FindOrgGroupsByUserMembershipWSRequest",
+    "Group_FindOrgGroupsByUserMembershipWSResponse",
+    "Group_RemoveUsersFromOrgGroupWSRequest",
+    "Group_RemoveUsersFromOrgGroupWSResponse",
+    "Group_UpdateOrgGroupWSRequest",
+    "Group_UpdateOrgGroupWSResponse"
+  ]
+}

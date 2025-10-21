@@ -1,0 +1,187 @@
+{
+  "tag": "Face Recognition Event Webservice",
+  "description": "API endpoints for Face Recognition Event Webservice",
+  "paths": {
+    "/api/faceRecognition/faceEvent/deleteFaceEvent": {
+      "post": {
+        "description": "Delete face event.",
+        "operationId": "deleteFaceEvent",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Facerecognition_faceevent_DeleteFaceEventWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facerecognition_faceevent_DeleteFaceEventWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete face event",
+        "tags": [
+          "Face Recognition Event Webservice"
+        ]
+      }
+    },
+    "/api/faceRecognition/faceEvent/findFaceEventsByOrg": {
+      "post": {
+        "description": "Find face events for an organization. The events are returned in reverse chronological order, with the latest events appearing first.",
+        "operationId": "findFaceEventsByOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Facerecognition_faceevent_FindFaceEventsByOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facerecognition_faceevent_FindFaceEventsByOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Find face events by organization",
+        "tags": [
+          "Face Recognition Event Webservice"
+        ]
+      }
+    },
+    "/api/faceRecognition/faceEvent/getFaceEvent": {
+      "post": {
+        "description": "Get face event.",
+        "operationId": "getFaceEvent",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Facerecognition_faceevent_GetFaceEventWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facerecognition_faceevent_GetFaceEventWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get face event",
+        "tags": [
+          "Face Recognition Event Webservice"
+        ]
+      }
+    },
+    "/api/faceRecognition/faceEvent/updateFaceEvent": {
+      "post": {
+        "description": "Update face event.",
+        "operationId": "updateFaceEvent",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Facerecognition_faceevent_UpdateFaceEventWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Facerecognition_faceevent_UpdateFaceEventWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update face event",
+        "tags": [
+          "Face Recognition Event Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/faceRecognition/faceEvent/deleteFaceEvent",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/faceRecognition/faceEvent/findFaceEventsByOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/faceRecognition/faceEvent/getFaceEvent",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/faceRecognition/faceEvent/updateFaceEvent",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 4,
+  "referencedSchemas": [
+    "Facerecognition_faceevent_DeleteFaceEventWSRequest",
+    "Facerecognition_faceevent_DeleteFaceEventWSResponse",
+    "Facerecognition_faceevent_FindFaceEventsByOrgWSRequest",
+    "Facerecognition_faceevent_FindFaceEventsByOrgWSResponse",
+    "Facerecognition_faceevent_GetFaceEventWSRequest",
+    "Facerecognition_faceevent_GetFaceEventWSResponse",
+    "Facerecognition_faceevent_UpdateFaceEventWSRequest",
+    "Facerecognition_faceevent_UpdateFaceEventWSResponse"
+  ]
+}

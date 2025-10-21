@@ -1,0 +1,187 @@
+{
+  "tag": "Occupancy Webservice",
+  "description": "API endpoints for Occupancy Webservice",
+  "paths": {
+    "/api/occupancy/getMinimalOccupancySensorStateList": {
+      "post": {
+        "description": "Get basic state information about all proximity tags in organization",
+        "operationId": "getMinimalOccupancySensorStateList",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Occupancysensor_GetMinimalOccupancySensorStatesWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Occupancysensor_GetMinimalOccupancySensorStatesWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get minimal occupancy sensor state list",
+        "tags": [
+          "Occupancy Webservice"
+        ]
+      }
+    },
+    "/api/occupancy/getOccupancyEventsForSensor": {
+      "post": {
+        "description": "Get recent events for specified proximity tag",
+        "operationId": "getOccupancyEventsForSensor",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Occupancysensor_GetOccupancyEventsForSensorWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Occupancysensor_GetOccupancyEventsForSensorWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get occupancy events for sensor",
+        "tags": [
+          "Occupancy Webservice"
+        ]
+      }
+    },
+    "/api/occupancy/getOccupancyPresenceWindows": {
+      "post": {
+        "description": "Get stored video information for sensor",
+        "operationId": "getOccupancyPresenceWindows",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Sensor_GetSensorPresenceWindowsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sensor_GetSensorPresenceWindowsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get occupancy presence windows",
+        "tags": [
+          "Occupancy Webservice"
+        ]
+      }
+    },
+    "/api/occupancy/updateDetails": {
+      "post": {
+        "description": "Update the details of an occupancy sensor",
+        "operationId": "updateOccupancySensorDetails",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Occupancysensor_UpdateOccupancySensorDetailsWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Occupancysensor_UpdateOccupancySensorDetailsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update occupancy sensor details",
+        "tags": [
+          "Occupancy Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/occupancy/getMinimalOccupancySensorStateList",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/occupancy/getOccupancyEventsForSensor",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/occupancy/getOccupancyPresenceWindows",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/occupancy/updateDetails",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 4,
+  "referencedSchemas": [
+    "Occupancysensor_GetMinimalOccupancySensorStatesWSRequest",
+    "Occupancysensor_GetMinimalOccupancySensorStatesWSResponse",
+    "Occupancysensor_GetOccupancyEventsForSensorWSRequest",
+    "Occupancysensor_GetOccupancyEventsForSensorWSResponse",
+    "Occupancysensor_UpdateOccupancySensorDetailsWSRequest",
+    "Occupancysensor_UpdateOccupancySensorDetailsWSResponse",
+    "Sensor_GetSensorPresenceWindowsWSRequest",
+    "Sensor_GetSensorPresenceWindowsWSResponse"
+  ]
+}

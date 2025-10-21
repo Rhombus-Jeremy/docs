@@ -1,0 +1,59 @@
+{
+  "tag": "Device Config Webservice",
+  "schemas": {
+    "Common_devices_UpdateConfigWSResponse": {
+      "type": "object",
+      "description": "Response indicating the result of updating device configuration.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Deviceconfig_GetConfigWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving a device's configuration.",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Deviceconfig_GetFacetedUserConfigWSResponse": {
+      "type": "object",
+      "description": "Response object containing a device's faceted user configuration.",
+      "properties": {
+        "config": {
+          "$ref": "#/components/schemas/Deviceconfig_userconfig_ExternalReadableFacetedUserConfig"
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Deviceconfig_UpdateFacetedUserConfigWSRequest": {
+      "type": "object",
+      "description": "Request object for updating a device's faceted user configuration.",
+      "properties": {
+        "configUpdate": {
+          "$ref": "#/components/schemas/Deviceconfig_userconfig_ExternalUpdateableFacetedUserConfig"
+        }
+      }
+    }
+  },
+  "schemaCount": 4
+}

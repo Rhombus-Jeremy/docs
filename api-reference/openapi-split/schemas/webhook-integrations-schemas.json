@@ -1,0 +1,240 @@
+{
+  "tag": "Webhook Integrations Webservice",
+  "schemas": {
+    "BaseApiResponse": {
+      "type": "object",
+      "description": "Base response object denoting success, or failure with a reason, for an endpoint.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_BaseIntegrationWSRequest": {
+      "type": "object",
+      "description": "Base request object for integration operations."
+    },
+    "Integration_GetOrgIntegrationsV2WSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "orgIntegrationV2": {
+          "$ref": "#/components/schemas/IBaseIntegrationType"
+        }
+      }
+    },
+    "Integration_SubscribeZapierWebhookWSRequest": {
+      "type": "object",
+      "description": "Request object for subscribing to Zapier webhook events.",
+      "properties": {
+        "backoffSec": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Backoff time in seconds",
+          "example": 30,
+          "nullable": true
+        },
+        "doorState": {
+          "type": "string",
+          "description": "Door state for door sensor webhooks",
+          "enum": [
+            "OPEN",
+            "CLOSED",
+            "AJAR"
+          ],
+          "nullable": true
+        },
+        "hookUrl": {
+          "type": "string",
+          "description": "Zapier webhook URL",
+          "example": "https://hooks.zapier.com/hooks/catch/123456/abc123/",
+          "nullable": true
+        },
+        "humidityLowerThreshold": {
+          "type": "number",
+          "format": "float",
+          "description": "Lower humidity threshold for environmental sensors",
+          "example": 30.0,
+          "nullable": true
+        },
+        "humidityUpperThreshold": {
+          "type": "number",
+          "format": "float",
+          "description": "Upper humidity threshold for environmental sensors",
+          "example": 80.0,
+          "nullable": true
+        },
+        "tempLowerThreshold": {
+          "type": "number",
+          "format": "float",
+          "description": "Lower temperature threshold for environmental sensors",
+          "example": 65.0,
+          "nullable": true
+        },
+        "tempUpperThreshold": {
+          "type": "number",
+          "format": "float",
+          "description": "Upper temperature threshold for environmental sensors",
+          "example": 85.5,
+          "nullable": true
+        },
+        "uuids": {
+          "type": "array",
+          "description": "Set of device UUIDs to monitor",
+          "items": {
+            "type": "string",
+            "format": "RUUID",
+            "description": "base 64 (url-safe) uuid string",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA",
+            "nullable": true
+          },
+          "nullable": true,
+          "uniqueItems": true
+        },
+        "zapEnum": {
+          "$ref": "#/components/schemas/ZapierEnum"
+        }
+      }
+    },
+    "Integration_SubscribeZapierWebhookWSResponse": {
+      "type": "object",
+      "description": "Response object for Zapier webhook subscription.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "webhookId": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_UnsubscribeZapierWebhookWSRequest": {
+      "type": "object",
+      "description": "Request object for unsubscribing from a Zapier webhook.",
+      "properties": {
+        "webhookId": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_UpdateOrgIntegrationsWSResponse": {
+      "type": "object",
+      "description": "Response object for updating organization integrations.",
+      "properties": {
+        "authError": {
+          "type": "boolean",
+          "description": "Whether an authentication error occurred during update",
+          "example": false,
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "failedGuids": {
+          "type": "array",
+          "description": "List of GUIDs that failed to update",
+          "items": {
+            "type": "string",
+            "description": "List of GUIDs that failed to update",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "misconfiguredDoors": {
+          "type": "array",
+          "description": "List of door names that are assigned to multiple Rhombus locations",
+          "items": {
+            "type": "string",
+            "description": "List of door names that are assigned to multiple Rhombus locations",
+            "nullable": true
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Integration_UpdateWebhookIntegrationV2WSRequest": {
+      "type": "object",
+      "description": "Request object for updating webhook V2 integration settings with enhanced configuration options.",
+      "properties": {
+        "disabled": {
+          "type": "boolean",
+          "description": "Whether the webhook is disabled",
+          "example": false,
+          "nullable": true
+        },
+        "isDiagnostic": {
+          "type": "boolean",
+          "description": "Whether this is a diagnostic webhook",
+          "example": false,
+          "nullable": true
+        },
+        "updatedWebhookSettings": {
+          "$ref": "#/components/schemas/IWebhooksType"
+        },
+        "webhookUrl": {
+          "type": "string",
+          "description": "Webhook URL for receiving notifications",
+          "example": "https://api.example.com/webhook/rhombus",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_UpdateWebhookIntegrationV2WSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "webhookSecret": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_UpdateWebhookIntegrationWSRequest": {
+      "type": "object",
+      "description": "Request object for updating webhook integration settings.",
+      "properties": {
+        "webhookSettings": {
+          "$ref": "#/components/schemas/WebhookSettings"
+        }
+      }
+    }
+  },
+  "schemaCount": 10
+}

@@ -1,0 +1,135 @@
+{
+  "tag": "IoT Integrations Webservice",
+  "schemas": {
+    "BaseApiResponse": {
+      "type": "object",
+      "description": "Base response object denoting success, or failure with a reason, for an endpoint.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_BaseIntegrationWSRequest": {
+      "type": "object",
+      "description": "Base request object for integration operations."
+    },
+    "Integration_GetOrgIntegrationsV2WSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "orgIntegrationV2": {
+          "$ref": "#/components/schemas/IBaseIntegrationType"
+        }
+      }
+    },
+    "Integration_UpdateHaloIntegrationWSRequest": {
+      "type": "object",
+      "description": "Request object for updating Halo access control integration settings.",
+      "properties": {
+        "haloSettings": {
+          "$ref": "#/components/schemas/HaloSettings"
+        }
+      }
+    },
+    "Integration_UpdateIntuifaceIntegrationWSRequest": {
+      "type": "object",
+      "properties": {
+        "settings": {
+          "$ref": "#/components/schemas/IntuifaceSettings"
+        }
+      }
+    },
+    "Integration_UpdateOmnialertIntegrationWSRequest": {
+      "type": "object",
+      "description": "Request object for updating Omnialert emergency notification integration settings.",
+      "properties": {
+        "omnialertSettings": {
+          "$ref": "#/components/schemas/IOmnialertType"
+        }
+      }
+    },
+    "Integration_UpdateOmnialertIntegrationWSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "webhookToken": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Integration_UpdateOrgIntegrationsWSResponse": {
+      "type": "object",
+      "description": "Response object for updating organization integrations.",
+      "properties": {
+        "authError": {
+          "type": "boolean",
+          "description": "Whether an authentication error occurred during update",
+          "example": false,
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "failedGuids": {
+          "type": "array",
+          "description": "List of GUIDs that failed to update",
+          "items": {
+            "type": "string",
+            "description": "List of GUIDs that failed to update",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "misconfiguredDoors": {
+          "type": "array",
+          "description": "List of door names that are assigned to multiple Rhombus locations",
+          "items": {
+            "type": "string",
+            "description": "List of door names that are assigned to multiple Rhombus locations",
+            "nullable": true
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Integration_UpdateShellyIntegrationWSRequest": {
+      "type": "object",
+      "description": "Request object for updating Shelly smart device integration settings.",
+      "properties": {
+        "shellySettings": {
+          "$ref": "#/components/schemas/IShellyType"
+        }
+      }
+    }
+  },
+  "schemaCount": 9
+}

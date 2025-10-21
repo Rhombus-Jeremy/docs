@@ -1,0 +1,315 @@
+{
+  "tag": "Webhook Integrations Webservice",
+  "description": "API endpoints for Webhook Integrations Webservice",
+  "paths": {
+    "/api/integrations/webhooks/deleteWebhookIntegration": {
+      "post": {
+        "description": "Delete outbound webhook alert integration",
+        "operationId": "deleteWebhookIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete webhook integration",
+        "tags": [
+          "Webhook Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/webhooks/deleteWebhookIntegrationV2": {
+      "post": {
+        "description": "Delete entire webhook integration",
+        "operationId": "deleteWebhookIntegrationV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Delete webhook integration V2",
+        "tags": [
+          "Webhook Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/webhooks/getWebhookIntegration": {
+      "post": {
+        "description": "Get webhook integration",
+        "operationId": "getWebhookIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_BaseIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_GetOrgIntegrationsV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get webhook integration",
+        "tags": [
+          "Webhook Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/webhooks/subscribeZapierWebhook": {
+      "post": {
+        "description": "Setup a Zapier webhook",
+        "operationId": "subscribeZapierWebhook",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_SubscribeZapierWebhookWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_SubscribeZapierWebhookWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Subscribe Zapier webhook",
+        "tags": [
+          "Webhook Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/webhooks/unsubscribeZapierWebhook": {
+      "post": {
+        "description": "Delete a Zapier webhook",
+        "operationId": "unsubscribeZapierWebhook",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UnsubscribeZapierWebhookWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseApiResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Unsubscribe Zapier webhook",
+        "tags": [
+          "Webhook Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/webhooks/updateWebhookIntegration": {
+      "post": {
+        "description": "Update outbound webhook alert integration",
+        "operationId": "updateWebhookIntegration",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateWebhookIntegrationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateOrgIntegrationsWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update webhook integration",
+        "tags": [
+          "Webhook Integrations Webservice"
+        ]
+      }
+    },
+    "/api/integrations/webhooks/updateWebhookIntegrationV2": {
+      "post": {
+        "description": "Update preexisting webhooks",
+        "operationId": "updateWebhookIntegrationV2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Integration_UpdateWebhookIntegrationV2WSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Integration_UpdateWebhookIntegrationV2WSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update webhook integration V2",
+        "tags": [
+          "Webhook Integrations Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/integrations/webhooks/deleteWebhookIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/webhooks/deleteWebhookIntegrationV2",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/webhooks/getWebhookIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/webhooks/subscribeZapierWebhook",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/webhooks/unsubscribeZapierWebhook",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/webhooks/updateWebhookIntegration",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/integrations/webhooks/updateWebhookIntegrationV2",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 7,
+  "referencedSchemas": [
+    "BaseApiResponse",
+    "Integration_BaseIntegrationWSRequest",
+    "Integration_GetOrgIntegrationsV2WSResponse",
+    "Integration_SubscribeZapierWebhookWSRequest",
+    "Integration_SubscribeZapierWebhookWSResponse",
+    "Integration_UnsubscribeZapierWebhookWSRequest",
+    "Integration_UpdateOrgIntegrationsWSResponse",
+    "Integration_UpdateWebhookIntegrationV2WSRequest",
+    "Integration_UpdateWebhookIntegrationV2WSResponse",
+    "Integration_UpdateWebhookIntegrationWSRequest"
+  ]
+}

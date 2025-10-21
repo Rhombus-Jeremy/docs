@@ -1,0 +1,57 @@
+{
+  "tag": "RapidSOS Webservice",
+  "schemas": {
+    "Rapidsos_GetNearbyFeedsRequest": {
+      "type": "object",
+      "description": "Request object for getting the closest 10 feeds by latitude and longitude.",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Latitude coordinate for finding nearby feeds",
+          "example": 40.7128,
+          "nullable": true
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double",
+          "description": "Longitude coordinate for finding nearby feeds",
+          "example": -74.006,
+          "nullable": true
+        },
+        "width": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Width parameter for the search area",
+          "example": 1000,
+          "nullable": true
+        }
+      }
+    },
+    "Rapidsos_GetNearbyFeedsResponse": {
+      "type": "object",
+      "description": "Response object containing the closest 10 feed stream URLs by latitude and longitude.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "streamUrls": {
+          "type": "array",
+          "description": "List of stream URLs for the closest 10 feeds",
+          "items": {
+            "type": "string",
+            "description": "List of stream URLs for the closest 10 feeds",
+            "nullable": true
+          },
+          "nullable": true
+        }
+      }
+    }
+  },
+  "schemaCount": 2
+}

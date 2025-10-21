@@ -1,0 +1,47 @@
+{
+  "tag": "Media Device Webservice",
+  "schemas": {
+    "Mediadevice_GetBulkMediaDeviceDetailsWSRequest": {
+      "type": "object",
+      "description": "Request object for getting media information of any video-supporting media device.",
+      "properties": {
+        "devices": {
+          "type": "array",
+          "description": "Set of device facet UUIDs to get media details for",
+          "items": {
+            "type": "string",
+            "format": "DeviceFacetUuid",
+            "description": "RUUID with optional appended facet information",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+            "nullable": true
+          },
+          "nullable": true,
+          "uniqueItems": true
+        }
+      }
+    },
+    "Mediadevice_GetBulkMediaDeviceDetailsWSResponse": {
+      "type": "object",
+      "description": "Response object containing media information for video-supporting media devices.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "mediaDeviceDetails": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/components/schemas/Mediadevice_MediaDeviceDetailsType"
+          },
+          "description": "Map of device facet UUIDs to their media device details",
+          "nullable": true
+        }
+      }
+    }
+  },
+  "schemaCount": 2
+}

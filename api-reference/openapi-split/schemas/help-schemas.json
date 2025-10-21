@@ -1,0 +1,463 @@
+{
+  "tag": "Help Webservice",
+  "schemas": {
+    "FormDataMultiPart": {
+      "type": "object",
+      "nullable": true,
+      "properties": {
+        "bodyParts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/BodyPart"
+          },
+          "nullable": true
+        },
+        "contentDisposition": {
+          "$ref": "#/components/schemas/ContentDisposition"
+        },
+        "entity": {
+          "type": "object",
+          "nullable": true
+        },
+        "fields": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FormDataBodyPart"
+            },
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "nullable": true
+            },
+            "nullable": true
+          },
+          "nullable": true,
+          "properties": {
+            "empty": {
+              "type": "boolean",
+              "nullable": true
+            }
+          }
+        },
+        "mediaType": {
+          "$ref": "#/components/schemas/MediaType"
+        },
+        "messageBodyWorkers": {
+          "$ref": "#/components/schemas/MessageBodyWorkers"
+        },
+        "parameterizedHeaders": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParameterizedHeader"
+            },
+            "nullable": true
+          },
+          "nullable": true,
+          "properties": {
+            "empty": {
+              "type": "boolean",
+              "nullable": true
+            }
+          }
+        },
+        "parent": {
+          "$ref": "#/components/schemas/MultiPart"
+        },
+        "providers": {
+          "$ref": "#/components/schemas/Providers"
+        }
+      }
+    },
+    "Help_CreateTicketWSRequest": {
+      "type": "object",
+      "description": "Request object for creating a support ticket.",
+      "properties": {
+        "body": {
+          "type": "string",
+          "description": "Body content of the support ticket",
+          "example": "My camera is not connecting to the network properly.",
+          "nullable": true
+        },
+        "collaborators": {
+          "type": "array",
+          "description": "List of collaborator email addresses",
+          "items": {
+            "type": "string",
+            "description": "List of collaborator email addresses",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "consoleAccessGranted": {
+          "type": "boolean",
+          "description": "Whether console access has been granted for troubleshooting",
+          "example": true,
+          "nullable": true
+        },
+        "productType": {
+          "type": "string",
+          "nullable": true
+        },
+        "serialNumbers": {
+          "type": "array",
+          "description": "List of device serial numbers related to the issue",
+          "items": {
+            "type": "string",
+            "description": "List of device serial numbers related to the issue",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "serviceType": {
+          "type": "string",
+          "nullable": true
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject of the support ticket",
+          "example": "Camera connectivity issue",
+          "nullable": true
+        }
+      }
+    },
+    "Help_CreateTicketWSResponse": {
+      "type": "object",
+      "description": "Response object for creating a support ticket.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "failureReason": {
+          "type": "string",
+          "description": "Reason for failure if ticket creation was unsuccessful",
+          "example": "Invalid email address",
+          "nullable": true
+        },
+        "success": {
+          "type": "boolean",
+          "description": "Whether the ticket creation was successful",
+          "example": true,
+          "nullable": true
+        },
+        "ticketId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "ID of the created support ticket",
+          "example": 12345,
+          "nullable": true
+        }
+      }
+    },
+    "Help_GetOpenTicketsV2WSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving open support tickets V2 with time range filtering.",
+      "properties": {
+        "endTimeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "End time in milliseconds for filtering tickets",
+          "example": 1642319999999,
+          "nullable": true
+        },
+        "startTimeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Start time in milliseconds for filtering tickets",
+          "example": 1642233600000,
+          "nullable": true
+        }
+      }
+    },
+    "Help_GetOpenTicketsV2WSResponse": {
+      "type": "object",
+      "description": "Response object containing open support tickets V2 with organization and user tickets.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "tickets": {
+          "type": "array",
+          "description": "List of organization support tickets",
+          "items": {
+            "$ref": "#/components/schemas/Help_TicketInformation"
+          },
+          "nullable": true
+        },
+        "userTickets": {
+          "type": "array",
+          "description": "List of user-specific support tickets",
+          "items": {
+            "$ref": "#/components/schemas/Help_TicketInformation"
+          },
+          "nullable": true
+        }
+      }
+    },
+    "Help_GetOpenTicketsWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving open support tickets with pagination.",
+      "properties": {
+        "pageNumber": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Page number used for paginated response. If empty, the search will return the first page.",
+          "nullable": true
+        }
+      }
+    },
+    "Help_GetOpenTicketsWSResponse": {
+      "type": "object",
+      "description": "Response object containing open support tickets with pagination information.",
+      "properties": {
+        "currentPage": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Current page number in the paginated response",
+          "example": 1,
+          "nullable": true
+        },
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "hasNexPage": {
+          "type": "boolean",
+          "description": "True if there is a next page, false otherwise",
+          "nullable": true
+        },
+        "tickets": {
+          "type": "array",
+          "description": "List of open support tickets",
+          "items": {
+            "$ref": "#/components/schemas/Help_TicketInformation"
+          },
+          "nullable": true
+        },
+        "totalTickets": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Total number of tickets, not limited to the current page",
+          "nullable": true
+        }
+      }
+    },
+    "Help_ProcessRMAWSRequest": {
+      "type": "object",
+      "description": "Request object for processing a Return Merchandise Authorization (RMA).",
+      "properties": {
+        "contactName": {
+          "type": "string",
+          "description": "Contact name for the RMA",
+          "example": "John Doe",
+          "nullable": true
+        },
+        "contactPhoneNumber": {
+          "type": "string",
+          "description": "Contact phone number for the RMA",
+          "example": "+1-555-123-4567",
+          "nullable": true
+        },
+        "deviceName": {
+          "type": "string",
+          "description": "Name of the device for RMA",
+          "example": "Rhombus Camera Pro",
+          "nullable": true
+        },
+        "problem": {
+          "type": "string",
+          "description": "Description of the problem with the device",
+          "example": "Camera not recording properly",
+          "nullable": true
+        },
+        "returnShippingAddress": {
+          "$ref": "#/components/schemas/Help_ShippingAddress"
+        },
+        "serialNumber": {
+          "type": "string",
+          "description": "Serial number of the device",
+          "example": "RHCAM123456789",
+          "nullable": true
+        }
+      }
+    },
+    "Help_ProcessRMAWSResponse": {
+      "type": "object",
+      "description": "Response object for processing a Return Merchandise Authorization (RMA).",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "failureReason": {
+          "type": "string",
+          "description": "Reason for failure if RMA processing was unsuccessful",
+          "example": "Invalid serial number",
+          "nullable": true
+        },
+        "success": {
+          "type": "boolean",
+          "description": "Whether the RMA processing was successful",
+          "example": true,
+          "nullable": true
+        },
+        "ticketId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "ID of the RMA ticket created",
+          "example": 12345,
+          "nullable": true
+        }
+      }
+    },
+    "Help_SendFeedbackWSRequest": {
+      "type": "object",
+      "description": "Request object for sending system feedback.",
+      "properties": {
+        "feedback": {
+          "type": "string",
+          "description": "Feedback message about the system",
+          "example": "The new interface is much more user-friendly!",
+          "nullable": true
+        }
+      }
+    },
+    "Help_SendFeedbackWSResponse": {
+      "type": "object",
+      "description": "Response object for sending system feedback.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "failureReason": {
+          "type": "string",
+          "description": "Reason for failure if feedback sending was unsuccessful",
+          "example": "Invalid feedback content",
+          "nullable": true
+        },
+        "success": {
+          "type": "boolean",
+          "description": "Whether the feedback was sent successfully",
+          "example": true,
+          "nullable": true
+        }
+      }
+    },
+    "Help_TriageDeviceWSRequest": {
+      "type": "object",
+      "description": "Request object for triaging device connection/recording issues.",
+      "properties": {
+        "deviceUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "startDateSec": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Start date in seconds for triage analysis",
+          "example": 1642233600,
+          "nullable": true
+        }
+      }
+    },
+    "Help_TriageDeviceWSResponse": {
+      "type": "object",
+      "description": "Response object containing device triage diagnostic information.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "firmwareUpdates": {
+          "type": "array",
+          "description": "List of firmware update diagnostic events",
+          "items": {
+            "$ref": "#/components/schemas/DiagnosticEventType"
+          },
+          "nullable": true
+        },
+        "hardwareFailureEvents": {
+          "type": "array",
+          "description": "List of hardware failure diagnostic events",
+          "items": {
+            "$ref": "#/components/schemas/DiagnosticEventType"
+          },
+          "nullable": true
+        },
+        "message": {
+          "type": "string",
+          "description": "Triage analysis message",
+          "example": "Device appears to be functioning normally",
+          "nullable": true
+        },
+        "presenceWindows": {
+          "type": "array",
+          "description": "List of device presence time windows",
+          "items": {
+            "$ref": "#/components/schemas/TimeWindowSeconds"
+          },
+          "nullable": true
+        },
+        "suggestedArticles": {
+          "type": "array",
+          "description": "List of suggested help articles for the device issue",
+          "items": {
+            "type": "string",
+            "description": "List of suggested help articles for the device issue",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "uptimeWindows": {
+          "type": "array",
+          "description": "List of device uptime time windows",
+          "items": {
+            "$ref": "#/components/schemas/TimeWindowSeconds"
+          },
+          "nullable": true
+        }
+      }
+    }
+  },
+  "schemaCount": 13
+}

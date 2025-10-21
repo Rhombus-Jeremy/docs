@@ -1,0 +1,231 @@
+{
+  "tag": "Alarm Monitoring Keypad Webservice",
+  "description": "API endpoints for Alarm Monitoring Keypad Webservice",
+  "paths": {
+    "/api/keypad/claimKeypadActivationToken": {
+      "post": {
+        "description": "Connects a keypad to Rhombus services",
+        "operationId": "claimKeypadActivationToken",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Keypad_ClaimKeypadActivationTokenRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Keypad_ClaimKeypadActivationTokenResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Claim keypad activation token",
+        "tags": [
+          "Alarm Monitoring Keypad Webservice"
+        ]
+      }
+    },
+    "/api/keypad/getKeypadsForLocation": {
+      "post": {
+        "description": "Get a list of all registered keypads for a location",
+        "operationId": "getKeypadsForLocation",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Keypad_GetKeypadsForLocationWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Keypad_GetKeypadsForLocationWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get keypads for location",
+        "tags": [
+          "Alarm Monitoring Keypad Webservice"
+        ]
+      }
+    },
+    "/api/keypad/getKeypadsForOrg": {
+      "post": {
+        "description": "Get a list of all registered keypads for an org",
+        "operationId": "getKeypadsForOrg",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Keypad_GetKeypadsForOrgWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Keypad_GetKeypadsForOrgWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get keypads for organization",
+        "tags": [
+          "Alarm Monitoring Keypad Webservice"
+        ]
+      }
+    },
+    "/api/keypad/unregisterKeypad": {
+      "post": {
+        "description": "Unregister a keypad",
+        "operationId": "unregisterKeypad",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Keypad_UnregisterKeypadRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Keypad_UnregisterKeypadResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Unregister keypad",
+        "tags": [
+          "Alarm Monitoring Keypad Webservice"
+        ]
+      }
+    },
+    "/api/keypad/updateKeypad": {
+      "post": {
+        "description": "Update keypad settings",
+        "operationId": "updateKeypad",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Keypad_UpdateKeypadRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Keypad_UpdateKeypadResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Update keypad",
+        "tags": [
+          "Alarm Monitoring Keypad Webservice"
+        ]
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "/api/keypad/claimKeypadActivationToken",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/keypad/getKeypadsForLocation",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/keypad/getKeypadsForOrg",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/keypad/unregisterKeypad",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/keypad/updateKeypad",
+      "methods": [
+        "post"
+      ]
+    }
+  ],
+  "endpointCount": 5,
+  "referencedSchemas": [
+    "Keypad_ClaimKeypadActivationTokenRequest",
+    "Keypad_ClaimKeypadActivationTokenResponse",
+    "Keypad_GetKeypadsForLocationWSRequest",
+    "Keypad_GetKeypadsForLocationWSResponse",
+    "Keypad_GetKeypadsForOrgWSRequest",
+    "Keypad_GetKeypadsForOrgWSResponse",
+    "Keypad_UnregisterKeypadRequest",
+    "Keypad_UnregisterKeypadResponse",
+    "Keypad_UpdateKeypadRequest",
+    "Keypad_UpdateKeypadResponse"
+  ]
+}

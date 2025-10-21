@@ -1,0 +1,157 @@
+{
+  "tag": "Customer Webservice",
+  "schemas": {
+    "Customer_DeleteNotificationSnoozeSettingWSRequest": {
+      "type": "object",
+      "description": "Request object for deleting notification snooze settings for a specific entity.",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "Customer_DeleteNotificationSnoozeSettingWSResponse": {
+      "type": "object",
+      "description": "Response object for deleting notification snooze settings.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "Customer_GetUserSnoozedNotificationSettingsWSRequest": {
+      "type": "object",
+      "description": "Request object for retrieving current and planned user notification snooze details."
+    },
+    "Customer_GetUserSnoozedNotificationSettingsWSResponse": {
+      "type": "object",
+      "description": "Response object containing current and planned user notification snooze details.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "snoozedForAllNotificationsIntervals": {
+          "type": "array",
+          "description": "List of intervals when all notifications are snoozed",
+          "items": {
+            "$ref": "#/components/schemas/ScheduledIntervalType"
+          },
+          "nullable": true
+        },
+        "snoozedForComponentCompositesMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "description": "Map of component composite UUIDs to their snooze notification intervals",
+            "items": {
+              "$ref": "#/components/schemas/ScheduledIntervalType"
+            },
+            "nullable": true
+          },
+          "description": "Map of component composite UUIDs to their snooze notification intervals",
+          "nullable": true
+        },
+        "snoozedForDevicesMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "description": "Map of device UUIDs to their snooze notification intervals",
+            "items": {
+              "$ref": "#/components/schemas/ScheduledIntervalType"
+            },
+            "nullable": true
+          },
+          "description": "Map of device UUIDs to their snooze notification intervals",
+          "nullable": true
+        },
+        "snoozedForLocationsMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "description": "Map of location UUIDs to their snooze notification intervals",
+            "items": {
+              "$ref": "#/components/schemas/ScheduledIntervalType"
+            },
+            "nullable": true
+          },
+          "description": "Map of location UUIDs to their snooze notification intervals",
+          "nullable": true
+        }
+      }
+    },
+    "User_UpdateUserNotificationSettingsWSRequest": {
+      "type": "object",
+      "properties": {
+        "orgUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "smsPhoneNumbers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "summaryEmailEnabled": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "timeFrames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/NotificationTimeFrame"
+          },
+          "nullable": true
+        },
+        "updatedSetMethodMap": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "nullable": true
+        },
+        "userUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        }
+      }
+    },
+    "User_UpdateUserNotificationSettingsWSResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    }
+  },
+  "schemaCount": 6
+}
