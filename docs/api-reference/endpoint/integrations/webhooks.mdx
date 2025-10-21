@@ -1,0 +1,109 @@
+---
+title: 'Create Webhook Integration'
+description: 'Set up webhook endpoints to receive real-time event notifications'
+openapi: 'POST /api/integrations/webhooks/createWebhook'
+---
+
+Create webhook integrations to receive real-time notifications about security events, access activities, and system status changes. Webhooks enable your applications to respond immediately to important events.
+
+## Webhook Event Types
+
+### Security Events
+- **Access Granted/Denied**: Door access attempts
+- **Motion Detection**: Camera motion alerts
+- **Policy Violations**: Security policy breaches
+- **Intrusion Detection**: Unauthorized access attempts
+
+### System Events
+- **Device Online/Offline**: Camera and controller status
+- **Health Alerts**: System health warnings
+- **Configuration Changes**: System setting modifications
+- **User Management**: User account changes
+
+## Webhook Configuration
+
+<Tabs>
+<Tab title="Basic Setup">
+```json
+{
+  "endpoint": "https://your-app.com/webhooks/rhombus",
+  "method": "POST",
+  "contentType": "application/json",
+  "authentication": {
+    "type": "bearer",
+    "token": "your-auth-token"
+  }
+}
+```
+</Tab>
+
+<Tab title="Event Filtering">
+```json
+{
+  "eventTypes": ["ACCESS_GRANTED", "MOTION_DETECTED"],
+  "locations": ["building-1", "floor-2"],
+  "severity": ["HIGH", "CRITICAL"],
+  "timeFilter": {
+    "businessHoursOnly": true,
+    "timezone": "America/New_York"
+  }
+}
+```
+</Tab>
+
+<Tab title="Advanced Options">
+```json
+{
+  "retryPolicy": {
+    "maxRetries": 3,
+    "backoffStrategy": "exponential",
+    "timeoutSeconds": 30
+  },
+  "batchConfig": {
+    "enabled": true,
+    "maxEvents": 100,
+    "flushIntervalSeconds": 60
+  }
+}
+```
+</Tab>
+</Tabs>
+
+## Webhook Payload Format
+
+```json
+{
+  "eventId": "evt_123456789",
+  "eventType": "ACCESS_GRANTED",
+  "timestamp": "2024-01-15T10:30:00Z",
+  "locationId": "door_main_entrance",
+  "userId": "user_john_doe",
+  "deviceId": "reader_001",
+  "metadata": {
+    "credentialType": "RFID_CARD",
+    "accessLevel": "EMPLOYEE",
+    "customFields": {}
+  },
+  "media": {
+    "videoClip": "https://api.rhombus.com/clips/abc123",
+    "snapshot": "https://api.rhombus.com/images/def456"
+  }
+}
+```
+
+## Security Considerations
+
+<Warning>
+Webhook endpoints should be secured with HTTPS and proper authentication. Validate webhook signatures to prevent spoofing attacks.
+</Warning>
+
+### Best Practices
+- Use HTTPS endpoints only
+- Implement webhook signature verification
+- Set up proper rate limiting on your endpoint
+- Log webhook deliveries for debugging
+- Implement idempotency to handle duplicate events
+
+<Note>
+Webhooks include retry logic with exponential backoff. If your endpoint is consistently unavailable, the webhook may be automatically disabled to prevent system impact.
+</Note>

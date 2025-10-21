@@ -1,0 +1,53 @@
+---
+title: 'Get Organization Details'
+description: 'Retrieve detailed information about your organization'
+openapi: 'POST /api/org/getOrgDetails'
+---
+
+Retrieve comprehensive details about your organization including settings, capabilities, license information, and system configuration.
+
+## Organization Information
+
+### Basic Details
+- **Organization Name**: Company or entity name
+- **Contact Information**: Primary contact details
+- **Address**: Physical location information
+- **Time Zone**: Default timezone for the organization
+- **Industry**: Business sector classification
+
+### System Configuration
+- **Feature Flags**: Enabled features and capabilities
+- **Integration Settings**: Connected third-party systems
+- **Security Policies**: Password and access policies
+- **Notification Preferences**: Alert and communication settings
+
+### License Information
+- **License Type**: Current subscription level
+- **Device Limits**: Maximum allowed devices
+- **User Limits**: Maximum allowed users
+- **Expiration Date**: License renewal information
+- **Add-on Modules**: Additional features enabled
+
+<Note>
+This endpoint provides essential information for system administration and is commonly used during application initialization.
+</Note>
+
+## Common Use Cases
+
+<AccordionGroup>
+<Accordion title="Application Initialization">
+Retrieve organization settings when users log in to configure the application interface and available features.
+</Accordion>
+
+<Accordion title="License Management">
+Check current license status, usage limits, and renewal dates for compliance and planning purposes.
+</Accordion>
+
+<Accordion title="System Administration">
+Access organization settings for administrative tasks such as user management and system configuration.
+</Accordion>
+
+<Accordion title="Integration Setup">
+Retrieve organization details needed for configuring third-party integrations and API connections.
+</Accordion>
+</AccordionGroup>

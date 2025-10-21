@@ -1,0 +1,53 @@
+name: Update OpenAPI Spec
+
+on:
+  schedule:
+    # Run nightly at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  update-openapi:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Fetch latest OpenAPI spec
+        run: |
+          echo "Fetching latest OpenAPI spec from Rhombus API..."
+          curl -s https://api2.rhombussystems.com/api/openapi/public.json > docs/api-reference/openapi.json
+          
+      - name: Check for changes
+        id: check-changes
+        run: |
+          if git diff --quiet docs/api-reference/openapi.json; then
+            echo "No changes detected in OpenAPI spec"
+            echo "changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changes detected in OpenAPI spec"
+            echo "changes=true" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Commit and push changes
+        if: steps.check-changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/api-reference/openapi.json
+          git commit -m "chore: update OpenAPI spec from Rhombus API ($(date -u +%Y-%m-%d))"
+          git push
+          
+      - name: Create summary
+        run: |
+          if [ "${{ steps.check-changes.outputs.changes }}" == "true" ]; then
+            echo "✅ OpenAPI spec updated successfully" >> $GITHUB_STEP_SUMMARY
+            echo "📅 Updated on: $(date -u)" >> $GITHUB_STEP_SUMMARY
+            echo "🔗 Source: https://api2.rhombussystems.com/api/openapi/public.json" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ No changes detected in OpenAPI spec" >> $GITHUB_STEP_SUMMARY
+            echo "📅 Checked on: $(date -u)" >> $GITHUB_STEP_SUMMARY
+          fi

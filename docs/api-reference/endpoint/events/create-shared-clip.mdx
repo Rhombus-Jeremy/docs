@@ -1,0 +1,46 @@
+---
+title: 'Create Shared Clip Group'
+description: 'Create a group of video clips that can be shared with external users'
+openapi: 'POST /api/event/createSharedClipGroupV3'
+---
+
+Create a shared clip group to securely share video evidence with external parties such as law enforcement, insurance companies, or other stakeholders. Shared clips maintain chain of custody for legal purposes.
+
+## Sharing Capabilities
+
+- **Secure Links**: Generate time-limited secure links for external access
+- **Password Protection**: Add password protection for sensitive content
+- **Download Controls**: Control whether recipients can download clips
+- **Watermarking**: Add watermarks to shared content for authenticity
+- **Access Logging**: Track who accessed shared content and when
+
+## Use Cases
+
+<Steps>
+<Step title="Incident Documentation">
+Create clips documenting security incidents for investigation purposes.
+</Step>
+
+<Step title="Evidence Sharing">
+Share relevant video evidence with law enforcement or legal teams.
+</Step>
+
+<Step title="Insurance Claims">
+Provide video documentation for insurance claim processing.
+</Step>
+
+<Step title="Training Materials">
+Create training clips from real incidents (with privacy considerations).
+</Step>
+</Steps>
+
+## Security Features
+
+<Warning>
+Shared clips can contain sensitive information. Always review content before sharing and use appropriate access controls.
+</Warning>
+
+- **Automatic Expiration**: Set expiration dates for shared links
+- **Access Restrictions**: Limit access to specific IP addresses or domains
+- **Audit Trail**: Complete logging of all access and sharing activities
+- **Revocation**: Immediately revoke access to shared content when needed

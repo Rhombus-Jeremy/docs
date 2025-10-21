@@ -1,0 +1,79 @@
+---
+title: 'Find Events by Location'
+description: 'Retrieve events filtered by location and time parameters'
+openapi: 'POST /api/event/findEventsByLocationAndTime'
+---
+
+Retrieve events from specific locations within a time range. This endpoint is essential for incident investigation, compliance reporting, and security analysis.
+
+## Event Types
+
+The system captures various types of security events:
+
+- **Access Events**: Door access, badge reads, access denials
+- **Motion Detection**: Camera-based motion alerts
+- **Policy Violations**: Rule-based security alerts
+- **System Events**: Device status changes, connectivity issues
+- **Manual Events**: User-created incident markers
+
+## Filtering Options
+
+<Tabs>
+<Tab title="Time-based Filtering">
+```json
+{
+  "startTime": "2024-01-01T00:00:00Z",
+  "endTime": "2024-01-02T00:00:00Z",
+  "timezone": "America/Los_Angeles"
+}
+```
+</Tab>
+
+<Tab title="Event Type Filtering">
+```json
+{
+  "eventTypes": ["ACCESS_GRANTED", "ACCESS_DENIED", "MOTION_DETECTED"],
+  "severity": ["HIGH", "CRITICAL"]
+}
+```
+</Tab>
+
+<Tab title="Location Filtering">
+```json
+{
+  "locationUuids": ["loc-123", "loc-456"],
+  "includeSubLocations": true
+}
+```
+</Tab>
+</Tabs>
+
+## Response Data
+
+<AccordionGroup>
+<Accordion title="Event Details">
+- Event timestamp and duration
+- Event type and severity level
+- Associated users and devices
+- Location and camera information
+- Metadata and custom fields
+</Accordion>
+
+<Accordion title="Media Attachments">
+- Video clips and snapshots
+- Audio recordings (if available)
+- Thumbnail images
+- File download links
+</Accordion>
+
+<Accordion title="Context Information">
+- Related events and patterns
+- User behavior analytics
+- Environmental conditions
+- System health data
+</Accordion>
+</AccordionGroup>
+
+<Note>
+Results are paginated for performance. Use the pagination parameters to retrieve large datasets efficiently.
+</Note>

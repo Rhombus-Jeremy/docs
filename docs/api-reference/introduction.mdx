@@ -1,0 +1,66 @@
+---
+title: 'Rhombus API Reference'
+description: 'Complete API documentation for Rhombus Systems platform'
+---
+
+## Welcome to the Rhombus API
+
+The Rhombus API provides programmatic access to your security cameras, access control systems, environmental sensors, and more. This documentation is automatically generated from our OpenAPI specification and updated nightly.
+
+<Card
+  title="Rhombus API Specification"
+  icon="shield"
+  href="https://api2.rhombussystems.com/api/openapi/public.json"
+>
+  View the live OpenAPI specification
+</Card>
+
+## Base URL
+
+All API requests should be made to:
+
+```
+https://api2.rhombussystems.com
+```
+
+## Authentication
+
+All API endpoints require authentication using an API key. Include your API key in the request header:
+
+```json
+{
+  "x-auth-apikey": "YOUR_API_KEY"
+}
+```
+
+<Warning>
+Keep your API key secure and never expose it in client-side code. API keys provide full access to your Rhombus organization.
+</Warning>
+
+## Getting Your API Key
+
+<Steps>
+<Step title="Access the Rhombus Console">
+  Log in to your [Rhombus Console](https://console.rhombussystems.com) with your organization credentials.
+</Step>
+
+<Step title="Navigate to API Settings">
+  Go to **Settings** → **API Keys** in the console navigation.
+</Step>
+
+<Step title="Generate New API Key">
+  Click **Generate New API Key** and copy the key immediately - it won't be shown again.
+</Step>
+</Steps>
+
+## Rate Limiting
+
+API requests are rate limited to ensure system stability. If you exceed the rate limit, you'll receive a `429 Too Many Requests` response.
+
+<Tip>
+Implement exponential backoff in your applications to handle rate limiting gracefully.
+</Tip>
+
+## Automatic Updates
+
+This API documentation is automatically updated nightly from the latest Rhombus API specification. The OpenAPI spec is fetched from our production API to ensure accuracy.

@@ -1,0 +1,86 @@
+---
+title: 'Find Users by Organization'
+description: 'Retrieve all users in your organization with their details and permissions'
+openapi: 'POST /api/user/findUsersByOrg'
+---
+
+Retrieve a comprehensive list of all users in your organization, including their personal information, access permissions, and current status.
+
+## User Information Included
+
+### Profile Data
+- **Personal Information**: Name, email, phone number
+- **Employee ID**: Internal identifier
+- **Department**: Organizational department
+- **Role**: Job title or position
+- **Start Date**: Employment start date
+
+### Access Control Data
+- **Group Memberships**: Access control groups
+- **Permissions**: Individual permissions granted
+- **Credentials**: Associated access cards/badges
+- **Location Access**: Doors and areas accessible
+- **Active Status**: Current account status
+
+### Activity Information
+- **Last Login**: Most recent system access
+- **Last Access Event**: Most recent physical access
+- **Failed Attempts**: Recent failed access attempts
+- **Account Locked**: Lock status and reason
+
+## User Status Types
+
+<Tabs>
+<Tab title="Active Users">
+Users with full system access and valid credentials.
+
+```json
+{
+  "status": "ACTIVE",
+  "canLogin": true,
+  "credentialsValid": true,
+  "lastActivity": "2024-01-15T10:30:00Z"
+}
+```
+</Tab>
+
+<Tab title="Inactive Users">
+Users temporarily disabled but not deleted.
+
+```json
+{
+  "status": "INACTIVE",
+  "canLogin": false,
+  "credentialsValid": false,
+  "disabledReason": "TEMPORARY_LEAVE"
+}
+```
+</Tab>
+
+<Tab title="Pending Users">
+Users created but not yet activated.
+
+```json
+{
+  "status": "PENDING",
+  "canLogin": false,
+  "invitationSent": true,
+  "invitationExpires": "2024-01-20T00:00:00Z"
+}
+```
+</Tab>
+</Tabs>
+
+<Tip>
+Use filtering parameters to retrieve specific user subsets, such as users in particular departments or with specific access levels.
+</Tip>
+
+## Pagination and Filtering
+
+Results are paginated for performance with large user bases. Use these parameters to manage result sets:
+
+- **Page Size**: Number of users per page (default: 100, max: 1000)
+- **Sort Order**: Sort by name, email, department, or last activity
+- **Status Filter**: Filter by user status (active, inactive, pending)
+- **Department Filter**: Filter by specific departments
+- **Role Filter**: Filter by job roles or access levels

@@ -1,0 +1,155 @@
+---
+title: 'Create Security Policy'
+description: 'Create automated security policies to monitor and respond to events'
+openapi: 'POST /api/policy/createPolicy'
+---
+
+Create automated security policies that monitor for specific conditions and trigger appropriate responses. Policies enable proactive security management and automated incident response.
+
+## Policy Types
+
+### Motion Detection Policies
+- **Area Monitoring**: Detect motion in restricted areas
+- **After Hours Detection**: Monitor for activity outside business hours
+- **Perimeter Security**: Detect intrusion attempts
+- **Crowd Detection**: Monitor for unusual gatherings
+
+### Access Control Policies
+- **Failed Access Attempts**: Monitor for repeated access failures
+- **Tailgating Detection**: Detect multiple people using single credential
+- **Unusual Access Patterns**: Identify suspicious access behavior
+- **Time-based Restrictions**: Enforce access hour limitations
+
+### System Health Policies
+- **Device Offline Monitoring**: Alert when cameras/controllers go offline
+- **Storage Monitoring**: Monitor storage capacity and health
+- **Network Issues**: Detect connectivity problems
+- **Performance Degradation**: Monitor system performance metrics
+
+## Policy Configuration
+
+<Tabs>
+<Tab title="Basic Policy">
+```json
+{
+  "name": "After Hours Motion Detection",
+  "type": "MOTION_DETECTION",
+  "enabled": true,
+  "schedule": {
+    "type": "TIME_RANGE",
+    "startTime": "18:00",
+    "endTime": "06:00",
+    "daysOfWeek": ["MON", "TUE", "WED", "THU", "FRI"]
+  }
+}
+```
+</Tab>
+
+<Tab title="Advanced Conditions">
+```json
+{
+  "conditions": {
+    "operator": "AND",
+    "rules": [
+      {
+        "type": "MOTION_DETECTED",
+        "cameras": ["cam-001", "cam-002"],
+        "sensitivity": "HIGH"
+      },
+      {
+        "type": "TIME_CONDITION",
+        "afterHours": true
+      },
+      {
+        "type": "LOCATION_CONDITION",
+        "areas": ["restricted-zone-1"]
+      }
+    ]
+  }
+}
+```
+</Tab>
+
+<Tab title="Response Actions">
+```json
+{
+  "actions": [
+    {
+      "type": "SEND_ALERT",
+      "recipients": ["security@company.com"],
+      "severity": "HIGH"
+    },
+    {
+      "type": "CREATE_CLIP",
+      "duration": 30,
+      "preBuffer": 5
+    },
+    {
+      "type": "WEBHOOK",
+      "url": "https://siem.company.com/alerts",
+      "payload": {
+        "source": "rhombus",
+        "type": "motion_alert"
+      }
+    }
+  ]
+}
+```
+</Tab>
+</Tabs>
+
+## Response Actions
+
+<CardGroup cols={2}>
+<Card title="Notifications" icon="bell">
+- Email alerts
+- SMS notifications
+- Mobile app push notifications
+- Dashboard alerts
+</Card>
+
+<Card title="Recording Actions" icon="video">
+- Create video clips
+- Take snapshots
+- Start live streams
+- Extend recording duration
+</Card>
+
+<Card title="Access Control" icon="lock">
+- Lock/unlock doors
+- Activate lockdown procedures
+- Disable access credentials
+- Sound alarms
+</Card>
+
+<Card title="Integrations" icon="plug">
+- Webhook notifications
+- SIEM integration
+- Incident management
+- Third-party systems
+</Card>
+</CardGroup>
+
+<Warning>
+Test policies thoroughly before enabling in production. Incorrectly configured policies can generate excessive alerts or miss important events.
+</Warning>
+
+## Policy Management Best Practices
+
+<Steps>
+<Step title="Define Clear Objectives">
+Clearly define what each policy should accomplish and what constitutes a valid alert.
+</Step>
+
+<Step title="Start with Conservative Settings">
+Begin with higher thresholds and adjust based on actual performance to minimize false positives.
+</Step>
+
+<Step title="Test Thoroughly">
+Test policies in a controlled environment before deploying to production systems.
+</Step>
+
+<Step title="Monitor and Adjust">
+Regularly review policy performance and adjust thresholds based on operational feedback.
+</Step>
+</Steps>

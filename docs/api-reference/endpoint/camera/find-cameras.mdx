@@ -1,0 +1,39 @@
+---
+title: 'Find Cameras by Organization'
+description: 'Retrieve all cameras in your organization'
+openapi: 'POST /api/camera/findCamerasByOrg'
+---
+
+Retrieve a comprehensive list of all cameras deployed in your organization. This endpoint provides details about camera status, configuration, and capabilities.
+
+## Camera Information Returned
+
+- **Device Details**: Model, serial number, firmware version
+- **Network Configuration**: IP address, connection status
+- **Capabilities**: Resolution, frame rate, night vision
+- **Location Data**: Physical location and mounting details
+- **Health Status**: Online/offline status, last communication
+
+## Use Cases
+
+<CardGroup cols={2}>
+<Card title="System Monitoring" icon="monitor">
+Monitor camera health and connectivity across your deployment
+</Card>
+
+<Card title="Maintenance Planning" icon="wrench">
+Identify cameras needing firmware updates or maintenance
+</Card>
+
+<Card title="Coverage Analysis" icon="map">
+Analyze camera placement and coverage areas
+</Card>
+
+<Card title="Integration Setup" icon="plug">
+Prepare camera lists for third-party integrations
+</Card>
+</CardGroup>
+
+<Note>
+This endpoint returns both active and inactive cameras. Use the status field to filter for currently operational devices.
+</Note>
