@@ -22,8 +22,15 @@
             ]
           },
           {
-            "group": "Customization",
+            "group": "Implementation Examples",
             "pages": [
+              {
+                "group": "Video Player",
+                "pages": [
+                  "implementations/video-player",
+                  "implementations/advanced-implementation"
+                ]
+              },
               "essentials/settings",
               "essentials/navigation"
             ]
