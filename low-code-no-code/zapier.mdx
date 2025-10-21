@@ -1,0 +1,374 @@
+---
+title: "Zapier Integration"
+description: "Connect Rhombus with 8,000+ apps using our native Zapier integration - no coding required"
+icon: "bolt"
+---
+
+# Rhombus Zapier Integration
+
+<Info>
+**No-Code Automation Platform**
+
+Zapier is the leader in workplace automation, empowering organizations to automate workflows. When integrated with Rhombus, it streamlines daily tasks by connecting the Rhombus Rules Engine to any app in minutes.
+</Info>
+
+Connect Rhombus with thousands of popular apps through our native Zapier integration. Automate your security workflows, notifications, and responses without writing a single line of code.
+
+## What is Zapier?
+
+Zapier lets you connect Rhombus with 8,000+ other apps to automate repetitive tasks. Create "Zaps" (automated workflows) that trigger actions in other apps when events occur in your Rhombus system.
+
+<CardGroup cols={2}>
+  <Card title="Triggers" icon="play">
+    Events in Rhombus that start automated workflows
+  </Card>
+  
+  <Card title="Actions" icon="gear">
+    Tasks performed in other apps when triggered by Rhombus events
+  </Card>
+</CardGroup>
+
+## Available Triggers
+
+Rhombus provides several triggers that can start your automated workflows:
+
+### New Audit Record
+Triggers when a new audit record for a specified event is created in your Rhombus system.
+
+**Use Cases:**
+- Log security events to spreadsheets
+- Send notifications for specific activities
+- Create tickets in project management tools
+
+### New Button Event
+Triggers when a Rhombus button device is pressed.
+
+**Use Cases:**
+- Send emergency SMS alerts
+- Notify security teams via Slack
+- Trigger automated responses
+
+### New Clip Created
+Triggers when a new video clip is saved in your Rhombus system.
+
+**Use Cases:**
+- Backup important clips to cloud storage
+- Send clip notifications to stakeholders
+- Analyze footage with AI services
+
+### New Door Event
+Triggers when door-related events occur (open, close, access attempts).
+
+**Use Cases:**
+- Track access patterns
+- Send unauthorized access alerts
+- Log entry/exit data
+
+## Available Actions
+
+Control your Rhombus system through these automated actions:
+
+### Unlock Access Controlled Door
+Remotely unlock doors in your Rhombus access control system.
+
+**Use Cases:**
+- Grant access when someone checks in via gym management software
+- Unlock doors based on calendar events
+- Provide temporary access through form submissions
+
+### Reboot Camera
+Restart Rhombus cameras remotely.
+
+**Use Cases:**
+- Schedule regular camera maintenance
+- Restart cameras after network issues
+- Perform bulk camera reboots
+
+### Play Audio
+Play audio messages through Rhombus audio gateways.
+
+**Use Cases:**
+- Broadcast announcements
+- Play alerts during emergencies
+- Provide audio feedback for events
+
+## Popular Integration Examples
+
+<CardGroup cols={2}>
+  <Card title="Emergency Notifications" icon="exclamation-triangle">
+    **Button Press → SMS Alert**
+    
+    When a panic button is pressed, automatically send SMS messages to security personnel via Twilio.
+  </Card>
+
+  <Card title="Access Management" icon="key">
+    **Gym Check-in → Door Unlock**
+    
+    Automatically unlock doors when members check in through Gymdesk or similar systems.
+  </Card>
+
+  <Card title="Incident Logging" icon="clipboard-list">
+    **Security Event → Spreadsheet**
+    
+    Log all security events to Google Sheets for analysis and reporting.
+  </Card>
+
+  <Card title="Team Notifications" icon="bell">
+    **New Clip → Slack Message**
+    
+    Send Slack notifications when important video clips are created.
+  </Card>
+</CardGroup>
+
+## Getting Started
+
+### Step 1: Set Up Your Zapier Account
+
+1. Visit [zapier.com](https://zapier.com) and create an account
+2. Search for "Rhombus" in the app directory
+3. Connect your Rhombus account using your API credentials
+
+### Step 2: Create Your First Zap
+
+<Steps>
+  <Step title="Choose a Trigger">
+    Select a Rhombus trigger that matches your use case (e.g., "New Button Event")
+  </Step>
+  
+  <Step title="Configure the Trigger">
+    Set up the specific conditions for when the trigger should fire
+  </Step>
+  
+  <Step title="Choose an Action">
+    Select what should happen in another app when the trigger fires
+  </Step>
+  
+  <Step title="Test and Activate">
+    Test your Zap to ensure it works correctly, then turn it on
+  </Step>
+</Steps>
+
+### Step 3: Authentication
+
+You'll need your Rhombus API credentials to connect:
+
+1. Log into the [Rhombus Console](https://console.rhombussystems.com/settings/api-management/)
+2. Generate an API key if you don't have one
+3. Use your API key to authenticate the Zapier connection
+
+<Warning>
+Keep your API credentials secure. They provide access to your Rhombus system and should be treated like passwords.
+</Warning>
+
+## Common Use Cases
+
+### Security & Monitoring
+
+<Tabs>
+  <Tab title="Emergency Response">
+    **Scenario:** Panic button pressed in facility
+    
+    **Automation:**
+    1. Rhombus button event triggers
+    2. Send SMS to security team via Twilio
+    3. Create incident ticket in ServiceNow
+    4. Post alert in Slack security channel
+  </Tab>
+  
+  <Tab title="Access Logging">
+    **Scenario:** Track all door access events
+    
+    **Automation:**
+    1. Door event occurs in Rhombus
+    2. Log details to Google Sheets
+    3. Send daily summary email
+    4. Update dashboard in real-time
+  </Tab>
+</Tabs>
+
+### Facility Management
+
+<Tabs>
+  <Tab title="Visitor Management">
+    **Scenario:** Visitor checks in via form
+    
+    **Automation:**
+    1. Google Form submission triggers
+    2. Unlock specific door in Rhombus
+    3. Send welcome message via audio gateway
+    4. Log visit in CRM system
+  </Tab>
+  
+  <Tab title="Maintenance Scheduling">
+    **Scenario:** Regular camera maintenance
+    
+    **Automation:**
+    1. Schedule by Zapier triggers weekly
+    2. Reboot all cameras in sequence
+    3. Log maintenance in tracking system
+    4. Send completion report
+  </Tab>
+</Tabs>
+
+## Popular App Integrations
+
+Rhombus integrates seamlessly with these popular applications:
+
+<CardGroup cols={3}>
+  <Card title="Communication" icon="comments">
+    - Slack
+    - Microsoft Teams
+    - Gmail
+    - Twilio (SMS)
+    - RingCentral
+  </Card>
+  
+  <Card title="Productivity" icon="briefcase">
+    - Google Sheets
+    - Microsoft Excel
+    - Airtable
+    - Salesforce
+    - ActiveCampaign
+  </Card>
+  
+  <Card title="Utilities" icon="tools">
+    - Webhooks
+    - Schedule by Zapier
+    - Filter by Zapier
+    - Formatter by Zapier
+    - Paths by Zapier
+  </Card>
+</CardGroup>
+
+## Advanced Features
+
+### Multi-Step Zaps
+
+Create complex workflows with multiple actions:
+
+```
+Trigger: New Audit Record (Unauthorized Access)
+├── Action 1: Send SMS alert to security
+├── Action 2: Create Slack channel for incident
+├── Action 3: Lock down additional doors
+└── Action 4: Save incident details to database
+```
+
+### Conditional Logic
+
+Use Zapier's Filter and Paths features to create smart workflows:
+
+- **Filters:** Only trigger actions when specific conditions are met
+- **Paths:** Route different events to different actions
+- **Delays:** Add time delays between actions
+
+### Webhooks Integration
+
+For advanced users, combine Zapier with Rhombus webhooks for real-time data processing and custom integrations.
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Security Considerations">
+    - Use dedicated API keys for Zapier integrations
+    - Regularly audit and rotate API credentials
+    - Test automations in a staging environment first
+    - Monitor Zap execution logs for errors
+  </Accordion>
+  
+  <Accordion title="Performance Optimization">
+    - Use filters to reduce unnecessary Zap executions
+    - Batch similar actions when possible
+    - Set appropriate delays for time-sensitive actions
+    - Monitor your Zapier task usage
+  </Accordion>
+  
+  <Accordion title="Error Handling">
+    - Set up error notifications for critical Zaps
+    - Use Zapier's retry functionality
+    - Create fallback actions for important workflows
+    - Test edge cases and error scenarios
+  </Accordion>
+</AccordionGroup>
+
+## Pricing & Limits
+
+Zapier offers various pricing tiers based on your automation needs:
+
+- **Free Plan:** 100 tasks/month, 5 Zaps
+- **Starter Plan:** 750 tasks/month, 20 Zaps
+- **Professional Plan:** 2,000+ tasks/month, unlimited Zaps
+- **Enterprise Plans:** Custom limits and features
+
+<Info>
+Tasks are counted each time a Zap runs. A single trigger can execute multiple actions, but each action counts as one task.
+</Info>
+
+## Troubleshooting
+
+### Common Issues
+
+<AccordionGroup>
+  <Accordion title="Authentication Errors">
+    **Problem:** Zapier can't connect to Rhombus
+    
+    **Solutions:**
+    - Verify API key is correct and active
+    - Check API key permissions in Rhombus Console
+    - Ensure API key hasn't expired
+    - Try reconnecting the Rhombus app in Zapier
+  </Accordion>
+  
+  <Accordion title="Trigger Not Firing">
+    **Problem:** Zap isn't triggering when expected
+    
+    **Solutions:**
+    - Check trigger configuration settings
+    - Verify the event is actually occurring in Rhombus
+    - Review Zap history for error messages
+    - Test the trigger manually in Zapier
+  </Accordion>
+  
+  <Accordion title="Action Failures">
+    **Problem:** Actions aren't executing properly
+    
+    **Solutions:**
+    - Check action app authentication
+    - Verify required fields are populated
+    - Review error messages in Zap history
+    - Test actions individually
+  </Accordion>
+</AccordionGroup>
+
+## Support & Resources
+
+<CardGroup cols={2}>
+  <Card title="Zapier Documentation" icon="book" href="https://zapier.com/apps/rhombus/integrations">
+    Complete Zapier integration documentation and examples
+  </Card>
+  
+  <Card title="Rhombus Community" icon="users" href="https://rhombus.community">
+    Connect with other developers and get help from the community
+  </Card>
+  
+  <Card title="API Reference" icon="code" href="/api-reference">
+    Detailed API documentation for advanced integrations
+  </Card>
+  
+  <Card title="Rhombus Console" icon="desktop" href="https://console.rhombussystems.com">
+    Manage your API keys and system settings
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+Ready to automate your Rhombus workflows? Here's what to do next:
+
+1. **[Sign up for Zapier](https://zapier.com)** and explore the Rhombus integration
+2. **Generate API credentials** in the Rhombus Console
+3. **Create your first Zap** using one of our example workflows
+4. **Join the community** to share your automations and get help
+
+<Note>
+The Rhombus Zapier integration is continuously updated with new triggers and actions. Check the Zapier app directory regularly for the latest features.
+</Note>

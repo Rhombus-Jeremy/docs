@@ -16,18 +16,16 @@ Welcome to the comprehensive developer documentation for Rhombus. Here you'll di
 
 ## Getting Started with Rhombus
 
-<Frame>
-  <div className="aspect-video">
-    <iframe
-      className="w-full h-full"
-      src="https://www.youtube.com/embed/7CbqXlYp3YU"
-      title="Rhombus API Introduction"
-      frameBorder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-    />
-  </div>
-</Frame>
+<iframe
+  width="100%"
+  height="400"
+  src="https://www.youtube.com/embed/7CbqXlYp3YU"
+  title="Rhombus API Introduction"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+  style={{ borderRadius: '8px' }}
+/>
 
 ## Why Choose Rhombus API?
 
@@ -235,46 +233,6 @@ Include your API key in every request header:
 Store your API key securely - it provides full access to your organization's data.
 </Warning>
 
-## Rate Limits & Best Practices
-
-<Tabs>
-  <Tab title="Rate Limits">
-    API requests are rate limited to ensure system stability:
-
-    - **Standard**: 1000 requests per hour
-    - **Burst**: 100 requests per minute
-
-    Rate limit headers are included in all responses:
-
-    ```
-    X-RateLimit-Limit: 1000
-    X-RateLimit-Remaining: 999
-    X-RateLimit-Reset: 1640995200
-    ```
-  </Tab>
-
-  <Tab title="Best Practices">
-    - **Implement exponential backoff** for 429 responses
-    - **Cache responses** when possible to reduce API calls
-    - **Use webhooks** for real-time events instead of polling
-    - **Batch requests** when the API supports it
-    - **Monitor your usage** through the console dashboard
-  </Tab>
-
-  <Tab title="Error Handling">
-    All errors return standard HTTP status codes with detailed JSON responses:
-
-    ```json
-    {
-      "error": {
-        "code": "INVALID_API_KEY",
-        "message": "The provided API key is invalid or expired",
-        "details": "Check your API key in the Rhombus Console"
-      }
-    }
-    ```
-  </Tab>
-</Tabs>
 
 ## Ready to Build?
 
