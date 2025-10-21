@@ -1,6 +1,6 @@
 # API Reference Documentation
 
-This directory contains the API reference documentation for Rhombus Systems, automatically generated from our OpenAPI specification.
+This directory contains the API reference documentation for Rhombus, automatically generated from our OpenAPI specification.
 
 ## OpenAPI Specification
 

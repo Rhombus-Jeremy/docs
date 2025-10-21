@@ -98,7 +98,7 @@ Reference the comprehensive Cursor rules in `docs/ai-tools/cursor.mdx` for detai
 ## API Integration
 
 ### OpenAPI Specification
-- **Source**: Rhombus Systems API (`api2.rhombussystems.com`)
+- **Source**: Rhombus API (`api2.rhombussystems.com`)
 - **File**: `docs/api-reference/openapi.json`
 - **Updates**: Automated nightly via GitHub Actions
 - **Manual update**: Use `scripts/update-openapi.sh`

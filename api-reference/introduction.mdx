@@ -1,31 +1,142 @@
 ---
 title: 'Rhombus API Reference'
-description: 'Complete API documentation for Rhombus Systems platform'
+description: 'Build powerful integrations with Rhombus security platform - access cameras, sensors, access control, and more through our comprehensive REST API'
 ---
 
-## Welcome to the Rhombus API
+# Rhombus API Reference
 
-The Rhombus API provides programmatic access to your security cameras, access control systems, environmental sensors, and more. This documentation is automatically generated from our OpenAPI specification and updated nightly.
+Build the next generation of security applications with Rhombus. Our REST API provides programmatic access to cameras, environmental sensors, access control systems, and analytics across your entire security infrastructure.
 
-<Card
-  title="Rhombus API Specification"
-  icon="shield"
-  href="https://api2.rhombussystems.com/api/openapi/public.json"
->
-  View the live OpenAPI specification
-</Card>
+<CardGroup cols={2}>
+  <Card
+    title="Quick Start Guide"
+    icon="rocket"
+    href="/quickstart"
+  >
+    Get up and running with your first API call in minutes
+  </Card>
+  <Card
+    title="Postman Collection"
+    icon="play"
+    href="https://docs.rhombus.com"
+  >
+    Import our complete API collection and start testing immediately
+  </Card>
+  <Card
+    title="Developer Community"
+    icon="users"
+    href="https://rhombus.community"
+  >
+    Join developers building with Rhombus - get help, share ideas, and showcase your work
+  </Card>
+  <Card
+    title="OpenAPI Specification"
+    icon="code"
+    href="https://api2.rhombussystems.com/api/openapi/public.json"
+  >
+    Download the complete OpenAPI spec for code generation and tooling
+  </Card>
+</CardGroup>
 
-## Base URL
+## What You Can Build
 
-All API requests should be made to:
+<CardGroup cols={3}>
+  <Card
+    title="Camera Management"
+    icon="video"
+  >
+    Stream live video, retrieve recordings, manage camera settings, and access metadata
+  </Card>
+  <Card
+    title="Access Control"
+    icon="key"
+  >
+    Manage doors, users, credentials, and access events across your facilities
+  </Card>
+  <Card
+    title="Environmental Monitoring"
+    icon="thermometer"
+  >
+    Monitor temperature, humidity, air quality, and other environmental conditions
+  </Card>
+  <Card
+    title="Analytics & Insights"
+    icon="chart-line"
+  >
+    Access AI-powered analytics, people counting, object detection, and custom alerts
+  </Card>
+  <Card
+    title="Event Management"
+    icon="bell"
+  >
+    Create custom workflows, manage notifications, and respond to security events
+  </Card>
+  <Card
+    title="Device Administration"
+    icon="server"
+  >
+    Configure devices, manage firmware updates, and monitor system health
+  </Card>
+</CardGroup>
+
+## Getting Started
+
+<Steps>
+<Step title="Get Your API Key">
+  Generate an API key from your [Rhombus Console](https://console.rhombussystems.com) under **Settings** → **API Keys**.
+  
+  <Warning>
+  Store your API key securely - it provides full access to your organization's data.
+  </Warning>
+</Step>
+
+<Step title="Make Your First Request">
+  Test your connection with a simple API call:
+
+  <CodeGroup>
+  ```bash cURL
+  curl -X GET "https://api2.rhombussystems.com/api/org" \
+    -H "x-auth-apikey: YOUR_API_KEY"
+  ```
+  
+  ```python Python
+  import requests
+  
+  headers = {"x-auth-apikey": "YOUR_API_KEY"}
+  response = requests.get("https://api2.rhombussystems.com/api/org", headers=headers)
+  print(response.json())
+  ```
+  
+  ```javascript JavaScript
+  const response = await fetch('https://api2.rhombussystems.com/api/org', {
+    headers: {
+      'x-auth-apikey': 'YOUR_API_KEY'
+    }
+  });
+  const data = await response.json();
+  console.log(data);
+  ```
+  </CodeGroup>
+</Step>
+
+<Step title="Explore with Postman">
+  Import our [Postman collection](https://docs.rhombus.com) to explore all available endpoints with pre-configured examples and documentation.
+</Step>
+
+<Step title="Join the Community">
+  Connect with other developers at [rhombus.community](https://rhombus.community) to share knowledge, get help, and showcase your integrations.
+</Step>
+</Steps>
+
+## Base URL & Authentication
+
+All API requests are made to our base URL:
 
 ```
 https://api2.rhombussystems.com
 ```
 
-## Authentication
-
-All API endpoints require authentication using an API key. Include your API key in the request header:
+Include your API key in every request header:
 
 ```json
 {
@@ -33,34 +144,73 @@ All API endpoints require authentication using an API key. Include your API key 
 }
 ```
 
-<Warning>
-Keep your API key secure and never expose it in client-side code. API keys provide full access to your Rhombus organization.
-</Warning>
+## Rate Limits & Best Practices
 
-## Getting Your API Key
+<Tabs>
+  <Tab title="Rate Limits">
+    API requests are rate limited to ensure system stability:
+    - **Standard**: 1000 requests per hour
+    - **Burst**: 100 requests per minute
+    
+    Rate limit headers are included in all responses:
+    ```
+    X-RateLimit-Limit: 1000
+    X-RateLimit-Remaining: 999
+    X-RateLimit-Reset: 1640995200
+    ```
+  </Tab>
+  
+  <Tab title="Best Practices">
+    - **Implement exponential backoff** for 429 responses
+    - **Cache responses** when possible to reduce API calls
+    - **Use webhooks** for real-time events instead of polling
+    - **Batch requests** when the API supports it
+    - **Monitor your usage** through the console dashboard
+  </Tab>
+  
+  <Tab title="Error Handling">
+    All errors return standard HTTP status codes with detailed JSON responses:
+    ```json
+    {
+      "error": {
+        "code": "INVALID_API_KEY",
+        "message": "The provided API key is invalid or expired",
+        "details": "Check your API key in the Rhombus Console"
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
 
-<Steps>
-<Step title="Access the Rhombus Console">
-  Log in to your [Rhombus Console](https://console.rhombussystems.com) with your organization credentials.
-</Step>
+## Developer Resources
 
-<Step title="Navigate to API Settings">
-  Go to **Settings** → **API Keys** in the console navigation.
-</Step>
+<CardGroup cols={2}>
+  <Card
+    title="SDKs & Libraries"
+    icon="code"
+  >
+    Official and community SDKs for Python, JavaScript, Go, and more
+  </Card>
+  <Card
+    title="Webhooks Guide"
+    icon="webhook"
+  >
+    Set up real-time notifications for events in your Rhombus system
+  </Card>
+  <Card
+    title="Integration Examples"
+    icon="puzzle-piece"
+  >
+    Sample applications and integration patterns for common use cases
+  </Card>
+  <Card
+    title="API Changelog"
+    icon="clock"
+  >
+    Stay updated with the latest API changes and new features
+  </Card>
+</CardGroup>
 
-<Step title="Generate New API Key">
-  Click **Generate New API Key** and copy the key immediately - it won't be shown again.
-</Step>
-</Steps>
-
-## Rate Limiting
-
-API requests are rate limited to ensure system stability. If you exceed the rate limit, you'll receive a `429 Too Many Requests` response.
-
-<Tip>
-Implement exponential backoff in your applications to handle rate limiting gracefully.
-</Tip>
-
-## Automatic Updates
-
-This API documentation is automatically updated nightly from the latest Rhombus API specification. The OpenAPI spec is fetched from our production API to ensure accuracy.
+<Note>
+This documentation is automatically updated nightly from our production API specification to ensure accuracy and completeness.
+</Note>
