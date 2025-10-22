@@ -75,6 +75,7 @@
                 "pages": [
                   {
                     "group": "Create & Add",
+                    "expanded": false,
                     "pages": [
                       "api-reference/openapi.json post /api/accesscontrol/addUsersToAccessControlGroup",
                       "api-reference/openapi.json post /api/accesscontrol/createAccessControlCredentialByHexValueAndType",
