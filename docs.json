@@ -68,15 +68,12 @@
         "groups": [
           {
             "group": "Core Services",
-            "expanded": false,
             "pages": [
               {
                 "group": "Access Control",
-                "expanded": false,
                 "pages": [
                   {
                     "group": "Create & Add",
-                    "expanded": false,
                     "pages": [
                       "api-reference/openapi.json post /api/accesscontrol/addUsersToAccessControlGroup",
                       "api-reference/openapi.json post /api/accesscontrol/createAccessControlCredentialByHexValueAndType",
@@ -1772,6 +1769,7 @@
     ],
     "primary": {
       "type": "button",
+      "icon": "user",
       "label": "Community",
       "href": "https://rhombus.community"
     }
