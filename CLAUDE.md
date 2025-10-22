@@ -33,8 +33,23 @@ mint broken-links
 # Update OpenAPI spec from Rhombus API
 ./scripts/update-openapi.sh
 
+# Split OpenAPI spec into category files for AI tools
+./scripts/split-openapi.sh
+
 # Update AI assistant context files (llms.txt and llms-full.txt)
 python3 scripts/update-llms-files.py
+
+# Generate individual endpoint MDX files (legacy, not actively used)
+python3 scripts/generate-endpoint-docs.py
+
+# Improve endpoint navigation structure (legacy)
+python3 scripts/improve-endpoint-navigation.py
+
+# Update docs.json navigation structure (legacy)
+python3 scripts/update-docs-navigation.py
+
+# Add service-level navigation (legacy)
+python3 scripts/add-service-level-navigation.py
 ```
 
 ## Project Structure
@@ -44,21 +59,31 @@ docs/
 ├── docs.json                     # Mintlify configuration (navigation, theme, colors)
 ├── index.mdx                     # Homepage with getting started content
 ├── quickstart.mdx               # Quick start guide for first API call
+├── changelog.mdx                # Update history with RSS feed support
 ├── documentation-mcp.mdx        # MCP server documentation
 ├── development.mdx              # Local development guide
 ├── implementations/             # Implementation examples
-│   ├── video-player.mdx        # Video streaming implementation
-│   ├── advanced-implementation.mdx
+│   ├── streaming-video.mdx     # Video streaming overview
+│   ├── video-player.mdx        # Video player implementation
+│   ├── advanced-implementation.mdx  # Advanced video features
 │   └── webhook-listener.mdx    # Webhook integration example
 ├── low-code-no-code/           # No-code integration guides
-│   └── zapier.mdx             # Zapier integration
+│   ├── zapier.mdx             # Zapier integration
+│   └── make.mdx               # Make.com integration
+├── snippets/                   # Reusable MDX components
+│   └── snippet-intro.mdx      # Common intro snippets
 ├── api-reference/              # API documentation
 │   ├── openapi.json            # Full OpenAPI spec (auto-updated nightly)
+│   ├── openapi-split/          # Split specs by category for AI tools
 │   └── endpoint/               # (Empty - kept for future custom docs)
 ├── scripts/                    # Automation scripts
-│   └── update-openapi.sh       # Fetch & update OpenAPI spec
+│   ├── update-openapi.sh       # Fetch & update OpenAPI spec
+│   ├── split-openapi.sh        # Split spec into category files
+│   ├── update-llms-files.py    # Update AI context files
+│   └── *.py                    # Legacy navigation/generation scripts
 ├── .github/workflows/          # GitHub Actions
-│   └── update-openapi.yml     # Nightly OpenAPI spec updates
+│   ├── update-openapi.yml      # Nightly OpenAPI spec updates (2 AM UTC)
+│   └── update-llms-files.yml   # Nightly AI context updates (3 AM UTC)
 └── .windsurf/                 # Windsurf IDE rules
     └── rules.md               # Writing standards & requirements
 ```
@@ -81,13 +106,15 @@ docs/
 
 ### Automated Workflows
 - **OpenAPI Updates**: GitHub Action runs nightly at 2 AM UTC (`.github/workflows/update-openapi.yml`)
-  - Workflow: Fetches spec → Validates JSON → Commits if changed
-  - Manual: Run `./scripts/update-openapi.sh`
+  - Workflow: Fetches spec → Validates JSON → Splits into categories → Commits if changed
+  - Manual: Run `./scripts/update-openapi.sh` (then optionally `./scripts/split-openapi.sh`)
+  - Output: Updates both `openapi.json` and split files in `openapi-split/` directory
   - Note: All 846+ endpoints are rendered directly from openapi.json via Mintlify
 - **LLMs Context Updates**: GitHub Action runs nightly at 3 AM UTC (`.github/workflows/update-llms-files.yml`)
   - Workflow: Analyzes structure → Generates llms.txt & llms-full.txt → Commits if changed
   - Manual: Run `python3 scripts/update-llms-files.py`
   - Purpose: Keeps AI assistant context files current with project structure
+  - Output: Two context files at different detail levels for AI tools
 
 ## Content Guidelines
 
@@ -109,6 +136,7 @@ The documentation uses extensive Mintlify-specific MDX components:
 **Code**: `<CodeGroup>`, `<RequestExample>`, `<ResponseExample>`
 **API**: `<ParamField>`, `<ResponseField>`, `<Expandable>`
 **Media**: `<Frame>` (for images), `<video>`, `<iframe>`
+**Reusable**: `<Snippet>` for including content from `snippets/` directory
 
 ### Writing Standards
 Reference the comprehensive rules in `docs/.windsurf/rules.md` for detailed writing guidelines, component usage, and content structure requirements. Key points:
@@ -132,6 +160,26 @@ Reference the comprehensive rules in `docs/.windsurf/rules.md` for detailed writ
 - No individual MDX files per endpoint - all generated from OpenAPI spec
 - Endpoint documentation updates automatically when openapi.json is updated
 
+## AI Integration Features
+
+### Context Files
+- **llms.txt**: Lightweight context file (~500 lines) with project overview and structure
+- **llms-full.txt**: Comprehensive context file with full documentation map
+- Both files auto-updated nightly to reflect current documentation state
+- Used by AI tools (Claude Code, Cursor, etc.) to understand project structure
+
+### Split OpenAPI Specifications
+- **Purpose**: Token-efficient API reference for AI tools
+- **Location**: `openapi-split/` directory
+- **Organization**: One file per API category (access-control.json, camera.json, etc.)
+- **Usage**: When AI tools need specific API endpoints without loading full 846+ endpoint spec
+- **Update**: Automatically regenerated when main `openapi.json` is updated
+
+### MCP Server
+- **Documentation**: See `documentation-mcp.mdx` for setup and usage
+- **Purpose**: Enables AI assistants to directly access Rhombus API documentation
+- **Integration**: Works with Claude Desktop and other MCP-compatible tools
+
 ## Deployment
 
 Mintlify sites deploy automatically when changes are pushed to the default branch. The GitHub app integration handles the deployment pipeline.
@@ -142,8 +190,11 @@ Mintlify sites deploy automatically when changes are pushed to the default branc
 - **No package.json**: This is a Mintlify project without npm dependencies - use global `mint` CLI
 - **Large config file**: `docs.json` is ~1800 lines - avoid reading entire file; use grep/offset for specific sections
 - **OpenAPI-driven endpoints**: All API endpoints rendered directly from `openapi.json` - no individual MDX files
+- **Split OpenAPI specs**: Category-specific specs in `openapi-split/` for AI tools with token limits
 - **Manual docs**: Edit files in root docs/ and subdirectories (implementations/, low-code-no-code/, etc.)
 - **Empty endpoint directory**: `api-reference/endpoint/` exists but is empty, kept for future custom endpoint docs
+- **Reusable snippets**: Common content in `snippets/` directory can be included via `<Snippet>` component
+- **Changelog**: `changelog.mdx` includes RSS feed support for update notifications
 
 ### Testing & Validation
 - Always test locally with `mint dev` before committing
