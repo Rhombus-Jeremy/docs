@@ -1,7 +1,7 @@
 ---
 title: "Advanced Implementation"
 description: "Leverage Rhombus' custom millisecond timestamps embedded in ISOBMFF containers for precise video synchronization"
-icon: "clock"
+icon: "file-video"
 ---
 
 When dealing with video segments—especially in systems that rely on distributed cameras, cloud storage, and multiple data streams—**time synchronization** becomes one of the most critical challenges. Without precise timing information, aligning events between multiple feeds (e.g., video, audio, and sensor data) becomes error-prone.
@@ -9,7 +9,7 @@ When dealing with video segments—especially in systems that rely on distribute
 Rhombus has implemented a **custom timestamp embedding** strategy that provides millisecond precision within `.mp4`/`.m4v` video segments, going beyond the coarse timing fields traditionally found in standard ISOBMFF (ISO Base Media File Format) containers.
 
 <Info>
-This guide explains what this approach means, why it's important, and how developers can retrieve and use this timestamp for building time-aligned applications.
+  This guide explains what this approach means, why it's important, and how developers can retrieve and use this timestamp for building time-aligned applications.
 </Info>
 
 ## Understanding ISOBMFF and the "free" Atom
@@ -17,7 +17,7 @@ This guide explains what this approach means, why it's important, and how develo
 The **ISOBMFF** standard (ISO/IEC 14496-12) is the container format underlying `.mp4`, `.m4v`, `.mov`, and many streaming segment formats like `.fMP4`. Its structure is based on **boxes (atoms)**—self-contained data units identified by a 4-character code (e.g., `moov`, `mdat`, `free`).
 
 <Warning>
-**Standard timestamps** in ISOBMFF (e.g., `creation_time` in the `mvhd` box) typically have **seconds-level resolution**. This is fine for some media workflows, but insufficient for **multi-camera synchronization** or **high-speed event correlation**.
+  **Standard timestamps** in ISOBMFF (e.g., `creation_time` in the `mvhd` box) typically have **seconds-level resolution**. This is fine for some media workflows, but insufficient for **multi-camera synchronization** or **high-speed event correlation**.
 </Warning>
 
 Rhombus solves this by **embedding a millisecond-precision timestamp** inside a `free` atom. This is a non-standard, yet fully ISOBMFF-compliant, method.
@@ -30,11 +30,9 @@ When Rhombus segments video (and if pulling actual segments, not a live transpor
   <Step title="Box Type: free">
     In ISOBMFF, `free` is normally a placeholder box containing unused space. Rhombus repurposes this to carry timestamp metadata.
   </Step>
-
   <Step title="Signature: rhom">
     The first 4 bytes are the ASCII string `rhom`—identifying it as **Rhombus-specific data**.
   </Step>
-
   <Step title="Millisecond Timestamp">
     The next **8 bytes** are a **64-bit integer** representing the start time of the video content, measured in **milliseconds since the Unix epoch** (UTC).
   </Step>
@@ -54,22 +52,19 @@ This design choice unlocks **precise synchronization** capabilities across multi
   <Card title="Multi-Camera Alignment" icon="video">
     Align video feeds from different cameras to within 1 ms for coordinated monitoring
   </Card>
-
   <Card title="Sensor Fusion" icon="microchip">
     Merge video with IoT sensor data (access control events, environmental readings)
   </Card>
-
   <Card title="Forensic Accuracy" icon="magnifying-glass">
     Reconstruct events down to sub-second intervals in investigations
   </Card>
-
   <Card title="Reduced Drift" icon="clock">
     Avoid errors that accumulate when relying solely on client system clocks or NTP sync
   </Card>
 </CardGroup>
 
 <Tip>
-For ecosystem and integration partners, this makes Rhombus video streams **highly interoperable** with third-party analytics, AI/ML pipelines, and real-time monitoring systems.
+  For ecosystem and integration partners, this makes Rhombus video streams **highly interoperable** with third-party analytics, AI/ML pipelines, and real-time monitoring systems.
 </Tip>
 
 ## Retrieving the Timestamp
@@ -79,19 +74,10 @@ For ecosystem and integration partners, this makes Rhombus video streams **highl
 You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` segment and check for the `rhom` signature.
 
 <CardGroup cols={2}>
-  <Card
-    title="ISOBMFF Parser (C++/Swift)"
-    icon="github"
-    href="https://github.com/DigiDNA/ISOBMFF"
-  >
+  <Card title="ISOBMFF Parser (C++/Swift)" icon="github" href="https://github.com/DigiDNA/ISOBMFF">
     Professional library for parsing ISO Base Media File Format
   </Card>
-
-  <Card
-    title="MP4Box.js Interactive Viewer"
-    icon="browser"
-    href="https://gpac.github.io/mp4box.js/test/filereader.html"
-  >
+  <Card title="MP4Box.js Interactive Viewer" icon="browser" href="https://gpac.github.io/mp4box.js/test/filereader.html">
     Online tool for visually inspecting MP4 box structures
   </Card>
 </CardGroup>
@@ -103,49 +89,49 @@ You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` s
     ```python Python Implementation
     import struct
     import datetime
-
+    
     def extract_rhombus_timestamp(file_path):
         """
         Extract millisecond-precision timestamp from Rhombus video segment.
-
+    
         Args:
             file_path: Path to the .mp4 or .m4v file
-
+    
         Returns:
             tuple: (timestamp_ms, datetime object) or (None, None) if not found
         """
         with open(file_path, "rb") as f:
             data = f.read()
-
+    
         # Find the 'free' box
         idx = data.find(b'free')
         if idx == -1:
             return None, None
-
+    
         # Search for 'rhom' signature after 'free'
         rhom_idx = data.find(b'rhom', idx)
         if rhom_idx == -1:
             return None, None
-
+    
         # Read the next 8 bytes after 'rhom' (big-endian 64-bit integer)
         timestamp_bytes = data[rhom_idx + 4 : rhom_idx + 12]
         timestamp_ms = int.from_bytes(timestamp_bytes, byteorder="big")
-
+    
         # Convert to human-readable UTC time
         timestamp_dt = datetime.datetime.utcfromtimestamp(timestamp_ms / 1000.0)
-
+    
         return timestamp_ms, timestamp_dt
-
+    
     # Example usage:
     timestamp_ms, timestamp_dt = extract_rhombus_timestamp("video_segment.mp4")
-
+    
     if timestamp_ms:
         print(f"Timestamp (ms since epoch): {timestamp_ms}")
         print(f"UTC Time: {timestamp_dt}")
         print(f"ISO Format: {timestamp_dt.isoformat()}")
     else:
         print("Rhombus timestamp not found in file")
-
+    
     # Sample output:
     # Timestamp (ms since epoch): 1722945678123
     # UTC Time: 2024-08-06 15:21:18.123000
@@ -158,54 +144,53 @@ You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` s
     import os
     import glob
     from datetime import datetime
-
+    
     class RhombusTimestampExtractor:
         """Extract and manage timestamps from multiple video segments."""
-
+    
         def __init__(self):
             self.timestamps = []
-
+    
         def process_directory(self, directory_path, pattern="*.mp4"):
             """Process all video files in a directory."""
             files = glob.glob(os.path.join(directory_path, pattern))
-
+    
             for file_path in sorted(files):
                 timestamp_ms, timestamp_dt = extract_rhombus_timestamp(file_path)
-
+    
                 if timestamp_ms:
                     self.timestamps.append({
                         'file': os.path.basename(file_path),
                         'timestamp_ms': timestamp_ms,
                         'datetime': timestamp_dt
                     })
-
+    
         def get_timeline(self):
             """Get chronologically sorted list of segments."""
             return sorted(self.timestamps, key=lambda x: x['timestamp_ms'])
-
+    
         def find_segment_at_time(self, target_datetime):
             """Find the video segment containing a specific time."""
             target_ms = int(target_datetime.timestamp() * 1000)
-
+    
             for segment in self.get_timeline():
                 if segment['timestamp_ms'] <= target_ms:
                     closest = segment
                 else:
                     break
-
+    
             return closest
-
+    
     # Usage example
     extractor = RhombusTimestampExtractor()
     extractor.process_directory("/path/to/video/segments")
-
+    
     # Find segment at specific time
     target = datetime(2024, 8, 6, 15, 21, 0)
     segment = extractor.find_segment_at_time(target)
     print(f"Segment at {target}: {segment['file']}")
     ```
   </Tab>
-
   <Tab title="JavaScript">
     ```javascript JavaScript Implementation
     /**
@@ -215,53 +200,53 @@ You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` s
      */
     function extractRhombusTimestamp(arrayBuffer) {
         const data = new Uint8Array(arrayBuffer);
-
+    
         // Find 'free' box
         const freePattern = new Uint8Array([0x66, 0x72, 0x65, 0x65]); // 'free'
         let freeIndex = -1;
-
+    
         for (let i = 0; i <= data.length - 4; i++) {
             if (data.subarray(i, i + 4).every((val, idx) => val === freePattern[idx])) {
                 freeIndex = i;
                 break;
             }
         }
-
+    
         if (freeIndex === -1) return null;
-
+    
         // Find 'rhom' signature
         const rhomPattern = new Uint8Array([0x72, 0x68, 0x6f, 0x6d]); // 'rhom'
         let rhomIndex = -1;
-
+    
         for (let i = freeIndex; i <= data.length - 4; i++) {
             if (data.subarray(i, i + 4).every((val, idx) => val === rhomPattern[idx])) {
                 rhomIndex = i;
                 break;
             }
         }
-
+    
         if (rhomIndex === -1) return null;
-
+    
         // Extract 8-byte timestamp (big-endian)
         const timestampBytes = data.subarray(rhomIndex + 4, rhomIndex + 12);
         let timestamp = 0;
-
+    
         for (let i = 0; i < 8; i++) {
             timestamp = timestamp * 256 + timestampBytes[i];
         }
-
+    
         return {
             timestampMs: timestamp,
             utcTime: new Date(timestamp),
             isoString: new Date(timestamp).toISOString()
         };
     }
-
+    
     // Example usage with File API
     async function processVideoFile(file) {
         const arrayBuffer = await file.arrayBuffer();
         const result = extractRhombusTimestamp(arrayBuffer);
-
+    
         if (result) {
             console.log('Timestamp (ms):', result.timestampMs);
             console.log('UTC Time:', result.utcTime);
@@ -270,7 +255,7 @@ You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` s
             console.log('Rhombus timestamp not found');
         }
     }
-
+    
     // Usage with input element
     document.querySelector('#fileInput').addEventListener('change', async (e) => {
         const file = e.target.files[0];
@@ -287,19 +272,19 @@ You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` s
         constructor() {
             this.cameras = new Map();
         }
-
+    
         /**
          * Add a camera's video segment with its timestamp
          */
         async addCameraSegment(cameraId, videoFile) {
             const arrayBuffer = await videoFile.arrayBuffer();
             const timestamp = extractRhombusTimestamp(arrayBuffer);
-
+    
             if (timestamp) {
                 if (!this.cameras.has(cameraId)) {
                     this.cameras.set(cameraId, []);
                 }
-
+    
                 this.cameras.get(cameraId).push({
                     timestamp: timestamp.timestampMs,
                     datetime: timestamp.utcTime,
@@ -307,19 +292,19 @@ You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` s
                 });
             }
         }
-
+    
         /**
          * Find segments from all cameras at a specific time
          */
         findSegmentsAtTime(targetTime) {
             const targetMs = targetTime.getTime();
             const results = {};
-
+    
             for (const [cameraId, segments] of this.cameras.entries()) {
                 // Find closest segment before or at target time
                 const sorted = segments.sort((a, b) => a.timestamp - b.timestamp);
                 const segment = sorted.find(s => s.timestamp <= targetMs);
-
+    
                 if (segment) {
                     results[cameraId] = {
                         timestamp: segment.timestamp,
@@ -328,27 +313,27 @@ You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` s
                     };
                 }
             }
-
+    
             return results;
         }
-
+    
         /**
          * Get time range covered by all cameras
          */
         getCommonTimeRange() {
             let earliestEnd = Infinity;
             let latestStart = 0;
-
+    
             for (const segments of this.cameras.values()) {
                 if (segments.length === 0) continue;
-
+    
                 const start = Math.min(...segments.map(s => s.timestamp));
                 const end = Math.max(...segments.map(s => s.timestamp));
-
+    
                 latestStart = Math.max(latestStart, start);
                 earliestEnd = Math.min(earliestEnd, end);
             }
-
+    
             return {
                 start: new Date(latestStart),
                 end: new Date(earliestEnd),
@@ -356,20 +341,19 @@ You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` s
             };
         }
     }
-
+    
     // Usage
     const sync = new RhombusVideoSync();
     await sync.addCameraSegment('camera1', file1);
     await sync.addCameraSegment('camera2', file2);
     await sync.addCameraSegment('camera3', file3);
-
+    
     // Find what was happening across all cameras at a specific time
     const target = new Date('2024-08-06T15:21:18.123Z');
     const segments = sync.findSegmentsAtTime(target);
     console.log('Synchronized segments:', segments);
     ```
   </Tab>
-
   <Tab title="C++">
     ```cpp C++ Implementation
     #include <fstream>
@@ -378,27 +362,27 @@ You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` s
     #include <chrono>
     #include <optional>
     #include <algorithm>
-
+    
     struct RhombusTimestamp {
         uint64_t timestampMs;
         std::chrono::system_clock::time_point utcTime;
-
+    
         // Convert to ISO 8601 string
         std::string toISO8601() const {
             auto timeT = std::chrono::system_clock::to_time_t(utcTime);
             auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(
                 utcTime.time_since_epoch()
             ).count() % 1000;
-
+    
             char buffer[32];
             std::strftime(buffer, sizeof(buffer), "%Y-%m-%dT%H:%M:%S",
                          std::gmtime(&timeT));
-
+    
             return std::string(buffer) + "." +
                    std::to_string(ms) + "Z";
         }
     };
-
+    
     /**
      * Extract Rhombus timestamp from video file
      */
@@ -409,61 +393,61 @@ You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` s
         if (!file) {
             return std::nullopt;
         }
-
+    
         // Read entire file into memory
         std::vector<uint8_t> data(
             (std::istreambuf_iterator<char>(file)),
             std::istreambuf_iterator<char>()
         );
-
+    
         // Find 'free' box
         const std::vector<uint8_t> freePattern = {0x66, 0x72, 0x65, 0x65};
         auto freeIt = std::search(
             data.begin(), data.end(),
             freePattern.begin(), freePattern.end()
         );
-
+    
         if (freeIt == data.end()) {
             return std::nullopt;
         }
-
+    
         // Find 'rhom' signature
         const std::vector<uint8_t> rhomPattern = {0x72, 0x68, 0x6f, 0x6d};
         auto rhomIt = std::search(
             freeIt, data.end(),
             rhomPattern.begin(), rhomPattern.end()
         );
-
+    
         if (rhomIt == data.end()) {
             return std::nullopt;
         }
-
+    
         // Extract 8-byte timestamp (big-endian)
         uint64_t timestamp = 0;
         for (int i = 0; i < 8; i++) {
             timestamp = (timestamp << 8) | *(rhomIt + 4 + i);
         }
-
+    
         // Convert to time_point
         auto utcTime = std::chrono::system_clock::from_time_t(
             timestamp / 1000
         );
         utcTime += std::chrono::milliseconds(timestamp % 1000);
-
+    
         return RhombusTimestamp{timestamp, utcTime};
     }
-
+    
     // Example usage
     int main() {
         auto result = extractRhombusTimestamp("video_segment.mp4");
-
+    
         if (result) {
             std::cout << "Timestamp (ms): " << result->timestampMs << std::endl;
             std::cout << "ISO 8601: " << result->toISO8601() << std::endl;
         } else {
             std::cout << "Rhombus timestamp not found" << std::endl;
         }
-
+    
         return 0;
     }
     ```
@@ -473,16 +457,16 @@ You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` s
     ```cpp Multi-Segment Timeline
     #include <filesystem>
     #include <map>
-
+    
     class RhombusTimeline {
     private:
         struct Segment {
             std::filesystem::path filePath;
             RhombusTimestamp timestamp;
         };
-
+    
         std::vector<Segment> segments;
-
+    
     public:
         /**
          * Load all video segments from a directory
@@ -490,20 +474,20 @@ You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` s
         void loadDirectory(const std::filesystem::path& directory) {
             for (const auto& entry :
                  std::filesystem::directory_iterator(directory)) {
-
+    
                 if (entry.path().extension() == ".mp4" ||
                     entry.path().extension() == ".m4v") {
-
+    
                     auto timestamp = extractRhombusTimestamp(
                         entry.path().string()
                     );
-
+    
                     if (timestamp) {
                         segments.push_back({entry.path(), *timestamp});
                     }
                 }
             }
-
+    
             // Sort by timestamp
             std::sort(segments.begin(), segments.end(),
                 [](const Segment& a, const Segment& b) {
@@ -511,7 +495,7 @@ You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` s
                 }
             );
         }
-
+    
         /**
          * Find segment containing a specific time
          */
@@ -521,9 +505,9 @@ You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` s
             auto targetMs = std::chrono::duration_cast<
                 std::chrono::milliseconds
             >(targetTime.time_since_epoch()).count();
-
+    
             Segment* closest = nullptr;
-
+    
             for (const auto& segment : segments) {
                 if (segment.timestamp.timestampMs <= targetMs) {
                     closest = const_cast<Segment*>(&segment);
@@ -531,10 +515,10 @@ You can use open-source libraries to read the `free` box from an `.mp4`/`.m4v` s
                     break;
                 }
             }
-
+    
             return closest ? std::optional<Segment>(*closest) : std::nullopt;
         }
-
+    
         /**
          * Get chronological list of all segments
          */
@@ -748,49 +732,47 @@ console.log(JSON.stringify(report, null, 2));
         # Verify 'rhom' signature
         if data[rhom_index:rhom_index + 4] != b'rhom':
             return False
-
+    
         # Verify sufficient data for timestamp
         if len(data) < rhom_index + 12:
             return False
-
+    
         # Extract and validate timestamp range
         timestamp_bytes = data[rhom_index + 4:rhom_index + 12]
         timestamp_ms = int.from_bytes(timestamp_bytes, byteorder="big")
-
+    
         # Sanity check: timestamp should be reasonable
         # (between 2015 and 2050)
         min_timestamp = 1420070400000  # Jan 1, 2015
         max_timestamp = 2524608000000  # Jan 1, 2050
-
+    
         return min_timestamp <= timestamp_ms <= max_timestamp
     ```
   </Accordion>
-
   <Accordion title="Handle Time Zones Correctly" icon="globe">
     The timestamp is UTC-based. Convert it appropriately if your application needs local time.
 
     ```python
     from datetime import datetime
     import pytz
-
+    
     def convert_to_local_time(timestamp_ms, timezone='America/New_York'):
         # Create UTC datetime
         utc_dt = datetime.utcfromtimestamp(timestamp_ms / 1000.0)
         utc_dt = pytz.utc.localize(utc_dt)
-
+    
         # Convert to local timezone
         local_tz = pytz.timezone(timezone)
         local_dt = utc_dt.astimezone(local_tz)
-
+    
         return local_dt
-
+    
     # Usage
     timestamp_ms = 1722945678123
     local_time = convert_to_local_time(timestamp_ms, 'America/Los_Angeles')
     print(f"Local time: {local_time}")
     ```
   </Accordion>
-
   <Accordion title="Use as Reference Clock" icon="clock">
     Combine the segment start timestamp with frame timestamps for frame-accurate alignment.
 
@@ -801,7 +783,7 @@ console.log(JSON.stringify(report, null, 2));
             this.frameRate = frameRate;
             this.frameDurationMs = 1000 / frameRate;
         }
-
+    
         /**
          * Calculate absolute timestamp for a specific frame
          */
@@ -809,7 +791,7 @@ console.log(JSON.stringify(report, null, 2));
             const offsetMs = frameNumber * this.frameDurationMs;
             return this.segmentStartMs + offsetMs;
         }
-
+    
         /**
          * Find frame number for a specific timestamp
          */
@@ -818,74 +800,73 @@ console.log(JSON.stringify(report, null, 2));
             return Math.floor(offsetMs / this.frameDurationMs);
         }
     }
-
+    
     // Usage
     const segmentTimestamp = 1722945678123;
     const calculator = new FrameTimestampCalculator(segmentTimestamp, 30);
-
+    
     // Get timestamp of frame 150
     const frameTime = calculator.getFrameTimestamp(150);
     console.log('Frame 150 timestamp:', new Date(frameTime));
-
+    
     // Find frame at specific time
     const targetTime = 1722945683123;
     const frameNum = calculator.getFrameAtTimestamp(targetTime);
     console.log('Frame at target time:', frameNum);
     ```
   </Accordion>
-
   <Accordion title="Version for Future-Proofing" icon="code-branch">
     Store your parsing logic in a modular way in case Rhombus adds new metadata formats.
 
     ```python
     class RhombusMetadataParser:
         """Extensible parser for Rhombus metadata formats."""
-
+    
         VERSION = "1.0"
-
+    
         def __init__(self):
             self.parsers = {
                 b'rhom': self._parse_v1_timestamp
             }
-
+    
         def parse(self, file_path):
             """Parse metadata from video file."""
             with open(file_path, "rb") as f:
                 data = f.read()
-
+    
             # Find 'free' box
             free_idx = data.find(b'free')
             if free_idx == -1:
                 return None
-
+    
             # Check all known signatures
             for signature, parser_func in self.parsers.items():
                 sig_idx = data.find(signature, free_idx)
                 if sig_idx != -1:
                     return parser_func(data, sig_idx)
-
+    
             return None
-
+    
         def _parse_v1_timestamp(self, data, rhom_idx):
             """Parse v1 timestamp format."""
             timestamp_bytes = data[rhom_idx + 4:rhom_idx + 12]
             timestamp_ms = int.from_bytes(timestamp_bytes, byteorder="big")
-
+    
             return {
                 'version': 1,
                 'type': 'timestamp',
                 'timestamp_ms': timestamp_ms,
                 'datetime': datetime.utcfromtimestamp(timestamp_ms / 1000.0)
             }
-
+    
         def add_parser(self, signature, parser_func):
             """Add custom parser for new metadata formats."""
             self.parsers[signature] = parser_func
-
+    
     # Usage
     parser = RhombusMetadataParser()
     metadata = parser.parse("video_segment.mp4")
-
+    
     if metadata:
         print(f"Version: {metadata['version']}")
         print(f"Type: {metadata['type']}")
@@ -900,15 +881,12 @@ console.log(JSON.stringify(report, null, 2));
   <Card title="Efficient File Reading" icon="gauge-high">
     For large files, read only the header portion instead of the entire file
   </Card>
-
   <Card title="Caching Strategy" icon="database">
     Cache extracted timestamps to avoid re-parsing the same files
   </Card>
-
   <Card title="Batch Processing" icon="layer-group">
     Process multiple files in parallel when building timelines
   </Card>
-
   <Card title="Memory Management" icon="memory">
     Use streaming parsers for very large video files
   </Card>
@@ -944,51 +922,32 @@ def extract_rhombus_timestamp_optimized(file_path, max_search_bytes=100_000):
 
 ## Conclusion
 
-Rhombus' method of embedding a **millisecond-precision UTC timestamp in the `free` atom** of ISOBMFF segments provides developers with a powerful tool for **precise event alignment** in multi-stream environments.
+Rhombus' method of embedding a **`millisecond-precision UTC timestamp in the free atom`** of ISOBMFF segments provides developers with a powerful tool for **precise event alignment** in multi-stream environments.
 
 This approach preserves compatibility with existing video tooling while unlocking **sub-second accuracy** for analytics, AI, and real-time monitoring—critical for advanced integrations in the Rhombus ecosystem.
 
 <Tip>
-**Next Steps for Developers:**
+  **Next Steps for Developers:**
 
-- Experiment with the [ISOBMFF GitHub library](https://github.com/DigiDNA/ISOBMFF) to parse Rhombus segments
-- Use the [MP4Box.js online viewer](https://gpac.github.io/mp4box.js/test/filereader.html) to visually inspect box structures
-- Incorporate timestamp extraction into your ingest pipeline for perfectly synchronized multi-source datasets
+  - Experiment with the [ISOBMFF GitHub library](https://github.com/DigiDNA/ISOBMFF) to parse Rhombus segments
+  - Use the [MP4Box.js online viewer](https://gpac.github.io/mp4box.js/test/filereader.html) to visually inspect box structures
+  - Incorporate timestamp extraction into your ingest pipeline for perfectly synchronized multi-source datasets
 </Tip>
 
 ## Additional Resources
 
 <CardGroup cols={2}>
-  <Card
-    title="Video Player Guide"
-    icon="circle-play"
-    href="/implementations/video-player"
-  >
+  <Card title="Video Player Guide" icon="circle-play" href="/implementations/video-player">
     Learn how to implement live video streaming with DashJS
   </Card>
-
-  <Card
-    title="API Reference"
-    icon="book"
-    href="/api-reference/endpoint/access-control/accesscontrol-adduserstoaccesscontrolgroup"
-  >
-    Explore camera and media API endpoints
+  <Card title="API Reference" icon="book" href="/api-reference/">
+    Explore camera and media API endpoints as well as other video options
   </Card>
-
-  <Card
-    title="ISOBMFF Specification"
-    icon="file-lines"
-    href="https://standards.iso.org/ittf/PubliclyAvailableStandards/"
-  >
+  <Card title="ISOBMFF Specification" icon="file-lines" href="https://standards.iso.org/ittf/PubliclyAvailableStandards/">
     Read the official ISO Base Media File Format spec
   </Card>
-
-  <Card
-    title="Developer Community"
-    icon="users"
-    href="https://rhombus.community"
-  >
-    Get help and share implementations
+  <Card title="Developer Community" icon="users" href="https://rhombus.community">
+    Get help and share implementations in the Developer Community
   </Card>
 </CardGroup>
 
@@ -996,10 +955,10 @@ This approach preserves compatibility with existing video tooling while unlockin
 
 Need assistance with timestamp extraction or video synchronization?
 
-- **Email**: [api@rhombus.com](mailto:api@rhombus.com)
+- **Email**: [support@rhombus.com](mailto:api@rhombus.com)
 - **Community**: [rhombus.community](https://rhombus.community)
 - **Documentation**: Browse our complete API reference
 
 <Note>
-This advanced implementation guide is regularly updated to reflect the latest best practices for working with Rhombus video segments.
+  This advanced implementation guide is regularly updated to reflect the latest best practices for working with Rhombus video segments.
 </Note>

@@ -1,13 +1,16 @@
 ---
 title: "Video Player Integration"
-description: "uild real-time video streaming experiences with Rhombus security cameras using our DashJS player implementation. This guide provides a complete reference implementation for embedding authenticated camera feeds in your web applications."
-icon: "circle-play"
+description: "Build real-time video streaming experiences with Rhombus security cameras using our DashJS player implementation. This guide provides a complete reference implementation for embedding authenticated camera feeds in your web applications."
+sidebarTitle: "Custom Video Player"
+icon: "camera-cctv"
+tag: "Advanced"
+keywords: ["video player","example"]
 ---
 
 <Info>
-**Full Example Available**
+  **Full Example Available**
 
-The complete working implementation is available on GitHub: [RhombusSystems/player-example](https://github.com/RhombusSystems/player-example)
+  The complete working implementation is available on GitHub: [RhombusSystems/player-example](https://github.com/RhombusSystems/player-example)
 </Info>
 
 ## Overview
@@ -18,15 +21,12 @@ The Rhombus video player integration enables you to:
   <Card title="Stream Live Video" icon="video">
     Display real-time camera feeds with adaptive bitrate streaming
   </Card>
-
   <Card title="Secure Authentication" icon="shield-check">
     Use federated session tokens for time-limited, secure access
   </Card>
-
   <Card title="Optimized Playback" icon="gauge-high">
     Pre-configured settings optimized for security camera footage
   </Card>
-
   <Card title="Easy Integration" icon="code">
     Drop-in solution with minimal configuration required
   </Card>
@@ -49,15 +49,12 @@ graph LR
   <Step title="Frontend Requests Token">
     Your web application requests authentication from your backend server
   </Step>
-
   <Step title="Backend Proxies to Rhombus">
     Your server authenticates with Rhombus API using your API key and returns a federated token
   </Step>
-
   <Step title="Frontend Gets Media URI">
     Using the token, your frontend requests the camera's streaming URI
   </Step>
-
   <Step title="Direct Stream Playback">
     DashJS player connects directly to Rhombus CDN using the authenticated URI
   </Step>
@@ -72,10 +69,9 @@ Before implementing the video player, ensure you have:
     Generate an API key from your [Rhombus Console](https://console.rhombussystems.com/settings/api-management/). This key will be used by your backend server to authenticate with the Rhombus API.
 
     <Warning>
-    Never expose your API key in frontend code. Always use a backend proxy server.
+      Never expose your API key in frontend code. Always use a backend proxy server.
     </Warning>
   </Accordion>
-
   <Accordion title="Camera UUID" icon="camera">
     Obtain your camera's UUID from the Rhombus Console or via the API:
 
@@ -85,9 +81,9 @@ Before implementing the video player, ensure you have:
       -H "x-auth-scheme: api-token"
     ```
   </Accordion>
-
   <Accordion title="Backend Server" icon="server">
     Set up a proxy server to handle API authentication. Your server must implement two endpoints:
+
     - Token generation endpoint (forwards to `/org/generateFederatedSessionToken`)
     - Media URI endpoint (forwards to `/camera/getMediaUris`)
   </Accordion>
@@ -163,7 +159,7 @@ Create your player configuration file:
 ```javascript player.js
 // Configuration - Replace with your values
 const CAMERA_UUID = "YOUR_CAMERA_UUID_HERE";
-const BASE_URL = "https://your-server.com/api";
+const BASE_URL = "https://api2.rhombussystems.com/api";
 const GET_FEDERATED_TOKEN_PATH = "/getFederatedToken";
 const GET_MEDIA_URIS_PATH = "/getMediaUris";
 
@@ -359,12 +355,12 @@ Your backend server must proxy requests to the Rhombus API. Here's an example us
     const express = require('express');
     const axios = require('axios');
     const app = express();
-
+    
     app.use(express.json());
-
+    
     const RHOMBUS_API_KEY = process.env.RHOMBUS_API_KEY;
     const RHOMBUS_BASE_URL = 'https://api2.rhombussystems.com/api';
-
+    
     // Federated token endpoint
     app.post('/api/getFederatedToken', async (req, res) => {
         try {
@@ -385,7 +381,7 @@ Your backend server must proxy requests to the Rhombus API. Here's an example us
             res.status(500).json({ error: 'Failed to generate token' });
         }
     });
-
+    
     // Media URI endpoint
     app.post('/api/getMediaUris', async (req, res) => {
         try {
@@ -406,30 +402,29 @@ Your backend server must proxy requests to the Rhombus API. Here's an example us
             res.status(500).json({ error: 'Failed to get media URIs' });
         }
     });
-
+    
     app.listen(3000, () => {
         console.log('Server running on port 3000');
     });
     ```
   </Tab>
-
   <Tab title="Python/Flask">
     ```python app.py
     from flask import Flask, request, jsonify
     import requests
     import os
-
+    
     app = Flask(__name__)
-
+    
     RHOMBUS_API_KEY = os.environ.get('RHOMBUS_API_KEY')
     RHOMBUS_BASE_URL = 'https://api2.rhombussystems.com/api'
-
+    
     @app.route('/api/getFederatedToken', methods=['POST'])
     def get_federated_token():
         try:
             data = request.get_json()
             duration = data.get('durationSec', 86400)
-
+    
             response = requests.post(
                 f'{RHOMBUS_BASE_URL}/org/generateFederatedSessionToken',
                 json={'durationSec': duration},
@@ -443,13 +438,13 @@ Your backend server must proxy requests to the Rhombus API. Here's an example us
             return jsonify(response.json())
         except Exception as e:
             return jsonify({'error': str(e)}), 500
-
+    
     @app.route('/api/getMediaUris', methods=['POST'])
     def get_media_uris():
         try:
             data = request.get_json()
             camera_uuid = data.get('cameraUuid')
-
+    
             response = requests.post(
                 f'{RHOMBUS_BASE_URL}/camera/getMediaUris',
                 json={'cameraUuid': camera_uuid},
@@ -463,7 +458,7 @@ Your backend server must proxy requests to the Rhombus API. Here's an example us
             return jsonify(response.json())
         except Exception as e:
             return jsonify({'error': str(e)}), 500
-
+    
     if __name__ == '__main__':
         app.run(port=3000)
     ```
@@ -474,36 +469,36 @@ Your backend server must proxy requests to the Rhombus API. Here's an example us
 
 The DashJS player can be customized with various settings optimized for different use cases:
 
-<ParamField path="liveCatchup.enabled" type="boolean" default="true">
+<ParamField path="liveCatchup.enabled" default="true" type="boolean">
   Enable automatic catch-up to live edge when playback falls behind
 </ParamField>
 
-<ParamField path="liveCatchup.maxDrift" type="number" default="10">
+<ParamField path="liveCatchup.maxDrift" default="10" type="number">
   Maximum allowed drift from live edge in seconds before catch-up kicks in
 </ParamField>
 
-<ParamField path="buffer.stableBufferTime" type="number" default="12">
+<ParamField path="buffer.stableBufferTime" default="12" type="number">
   Target buffer size for stable playback in seconds
 </ParamField>
 
-<ParamField path="buffer.fastSwitchEnabled" type="boolean" default="false">
+<ParamField path="buffer.fastSwitchEnabled" default="false" type="boolean">
   Disable fast quality switching to maintain consistent video quality
 </ParamField>
 
-<ParamField path="gaps.jumpGaps" type="boolean" default="true">
+<ParamField path="gaps.jumpGaps" default="true" type="boolean">
   Automatically skip small gaps in the stream
 </ParamField>
 
-<ParamField path="stallThreshold" type="number" default="0.5">
+<ParamField path="stallThreshold" default="0.5" type="number">
   Time in seconds before considering playback stalled
 </ParamField>
 
 ## Security Best Practices
 
 <Warning>
-**Critical Security Requirements**
+  **Critical Security Requirements**
 
-Follow these security practices to protect your API credentials and ensure secure streaming:
+  Follow these security practices to protect your API credentials and ensure secure streaming:
 </Warning>
 
 <AccordionGroup>
@@ -513,21 +508,18 @@ Follow these security practices to protect your API credentials and ensure secur
     - Never commit API keys to version control
     - Rotate keys regularly
   </Accordion>
-
   <Accordion title="Implement Access Controls" icon="lock">
     - Authenticate users before granting stream access
     - Implement rate limiting on your proxy endpoints
     - Log all access requests for audit trails
     - Use short-lived federated tokens (24 hours or less)
   </Accordion>
-
   <Accordion title="Validate All Requests" icon="shield">
     - Sanitize camera UUID inputs
     - Validate token expiration
     - Check user permissions before proxying requests
     - Implement CSRF protection
   </Accordion>
-
   <Accordion title="Use HTTPS Everywhere" icon="globe">
     - Enforce HTTPS for all communications
     - Implement proper SSL/TLS certificates
@@ -549,19 +541,19 @@ Follow these security practices to protect your API credentials and ensure secur
     5. Ensure CORS is properly configured on your server
 
     **Test your endpoints:**
+
     ```bash
     # Test token generation
-    curl -X POST "https://your-server.com/api/getFederatedToken" \
+    curl -X POST "https://api2.rhombussystems.com/api/getFederatedToken" \
       -H "Content-Type: application/json" \
       -d '{"durationSec": 86400}'
-
+    
     # Test media URI retrieval
-    curl -X POST "https://your-server.com/api/getMediaUris" \
+    curl -X POST "https://api2.rhombussystems.com/api/getMediaUris" \
       -H "Content-Type: application/json" \
       -d '{"cameraUuid": "YOUR_CAMERA_UUID"}'
     ```
   </Accordion>
-
   <Accordion title="Playback Issues" icon="circle-pause">
     **Buffering or stuttering:**
 
@@ -577,7 +569,6 @@ Follow these security practices to protect your API credentials and ensure secur
     - Review firewall rules for CDN access
     - Check browser console for errors
   </Accordion>
-
   <Accordion title="Authentication Errors" icon="key">
     **Token generation fails:**
 
@@ -691,35 +682,16 @@ class VideoControls {
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card
-    title="API Reference"
-    icon="book"
-    href="/api-reference/endpoint/access-control/accesscontrol-adduserstoaccesscontrolgroup"
-  >
+  <Card title="API Reference" icon="book" href="/api-reference/endpoint/access-control/accesscontrol-adduserstoaccesscontrolgroup">
     Explore all camera and streaming endpoints
   </Card>
-
-  <Card
-    title="GitHub Example"
-    icon="github"
-    href="https://github.com/RhombusSystems/player-example"
-  >
+  <Card title="GitHub Example" icon="github" href="https://github.com/RhombusSystems/player-example">
     Clone the complete working example
   </Card>
-
-  <Card
-    title="DashJS Documentation"
-    icon="file-code"
-    href="https://github.com/Dash-Industry-Forum/dash.js/wiki"
-  >
+  <Card title="DashJS Documentation" icon="file-code" href="https://github.com/Dash-Industry-Forum/dash.js/wiki">
     Learn more about DashJS configuration
   </Card>
-
-  <Card
-    title="Get Support"
-    icon="life-ring"
-    href="https://rhombus.community"
-  >
+  <Card title="Get Support" icon="life-ring" href="https://rhombus.community">
     Join the developer community for help
   </Card>
 </CardGroup>
@@ -728,10 +700,9 @@ class VideoControls {
 
 Need help with your implementation?
 
-- Email: [api@rhombus.com](mailto:api@rhombus.com)
+- Email: [support@rhombus.com](mailto:api@rhombus.com)
 - Community: [rhombus.community](https://rhombus.community)
-- GitHub: [Report an issue](https://github.com/RhombusSystems/player-example/issues)
 
 <Note>
-This implementation guide is based on the official [Rhombus player example](https://github.com/RhombusSystems/player-example) and is regularly updated to reflect best practices.
+  This implementation guide is based on the official [Rhombus player example](https://github.com/RhombusSystems/player-example) and is regularly updated to reflect best practices.
 </Note>

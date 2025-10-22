@@ -5,9 +5,9 @@ icon: "bolt"
 ---
 
 <Info>
-**No-Code Automation Platform**
+  **No-Code Automation Platform**
 
-Zapier is the leader in workplace automation, empowering organizations to automate workflows. When integrated with Rhombus, it streamlines daily tasks by connecting the Rhombus Rules Engine to any app in minutes.
+  Zapier is the leader in workplace automation, empowering organizations to automate workflows. When integrated with Rhombus, it streamlines daily tasks by connecting the Rhombus Rules Engine to any app in minutes.
 </Info>
 
 Connect Rhombus with thousands of popular apps through our native Zapier integration. Automate your security workflows, notifications, and responses without writing a single line of code.
@@ -20,7 +20,6 @@ Zapier lets you connect Rhombus with 8,000+ other apps to automate repetitive ta
   <Card title="Triggers" icon="play">
     Events in Rhombus that start automated workflows
   </Card>
-  
   <Card title="Actions" icon="gear">
     Tasks performed in other apps when triggered by Rhombus events
   </Card>
@@ -31,33 +30,41 @@ Zapier lets you connect Rhombus with 8,000+ other apps to automate repetitive ta
 Rhombus provides several triggers that can start your automated workflows:
 
 ### New Audit Record
+
 Triggers when a new audit record for a specified event is created in your Rhombus system.
 
 **Use Cases:**
+
 - Log security events to spreadsheets
 - Send notifications for specific activities
 - Create tickets in project management tools
 
 ### New Button Event
+
 Triggers when a Rhombus button device is pressed.
 
 **Use Cases:**
+
 - Send emergency SMS alerts
 - Notify security teams via Slack
 - Trigger automated responses
 
 ### New Clip Created
+
 Triggers when a new video clip is saved in your Rhombus system.
 
 **Use Cases:**
+
 - Backup important clips to cloud storage
 - Send clip notifications to stakeholders
 - Analyze footage with AI services
 
 ### New Door Event
+
 Triggers when door-related events occur (open, close, access attempts).
 
 **Use Cases:**
+
 - Track access patterns
 - Send unauthorized access alerts
 - Log entry/exit data
@@ -67,25 +74,31 @@ Triggers when door-related events occur (open, close, access attempts).
 Control your Rhombus system through these automated actions:
 
 ### Unlock Access Controlled Door
+
 Remotely unlock doors in your Rhombus access control system.
 
 **Use Cases:**
+
 - Grant access when someone checks in via gym management software
 - Unlock doors based on calendar events
 - Provide temporary access through form submissions
 
 ### Reboot Camera
+
 Restart Rhombus cameras remotely.
 
 **Use Cases:**
+
 - Schedule regular camera maintenance
 - Restart cameras after network issues
 - Perform bulk camera reboots
 
 ### Play Audio
+
 Play audio messages through Rhombus audio gateways.
 
 **Use Cases:**
+
 - Broadcast announcements
 - Play alerts during emergencies
 - Provide audio feedback for events
@@ -95,25 +108,22 @@ Play audio messages through Rhombus audio gateways.
 <CardGroup cols={2}>
   <Card title="Emergency Notifications" icon="exclamation-triangle">
     **Button Press → SMS Alert**
-    
+
     When a panic button is pressed, automatically send SMS messages to security personnel via Twilio.
   </Card>
-
   <Card title="Access Management" icon="key">
     **Gym Check-in → Door Unlock**
-    
+
     Automatically unlock doors when members check in through Gymdesk or similar systems.
   </Card>
-
   <Card title="Incident Logging" icon="clipboard-list">
     **Security Event → Spreadsheet**
-    
+
     Log all security events to Google Sheets for analysis and reporting.
   </Card>
-
   <Card title="Team Notifications" icon="bell">
     **New Clip → Slack Message**
-    
+
     Send Slack notifications when important video clips are created.
   </Card>
 </CardGroup>
@@ -132,15 +142,12 @@ Play audio messages through Rhombus audio gateways.
   <Step title="Choose a Trigger">
     Select a Rhombus trigger that matches your use case (e.g., "New Button Event")
   </Step>
-  
   <Step title="Configure the Trigger">
     Set up the specific conditions for when the trigger should fire
   </Step>
-  
   <Step title="Choose an Action">
     Select what should happen in another app when the trigger fires
   </Step>
-  
   <Step title="Test and Activate">
     Test your Zap to ensure it works correctly, then turn it on
   </Step>
@@ -155,7 +162,7 @@ You'll need your Rhombus API credentials to connect:
 3. Use your API key to authenticate the Zapier connection
 
 <Warning>
-Keep your API credentials secure. They provide access to your Rhombus system and should be treated like passwords.
+  Keep your API credentials secure. They provide access to your Rhombus system and should be treated like passwords.
 </Warning>
 
 ## Common Use Cases
@@ -165,18 +172,19 @@ Keep your API credentials secure. They provide access to your Rhombus system and
 <Tabs>
   <Tab title="Emergency Response">
     **Scenario:** Panic button pressed in facility
-    
+
     **Automation:**
+
     1. Rhombus button event triggers
     2. Send SMS to security team via Twilio
     3. Create incident ticket in ServiceNow
     4. Post alert in Slack security channel
   </Tab>
-  
   <Tab title="Access Logging">
     **Scenario:** Track all door access events
-    
+
     **Automation:**
+
     1. Door event occurs in Rhombus
     2. Log details to Google Sheets
     3. Send daily summary email
@@ -189,18 +197,19 @@ Keep your API credentials secure. They provide access to your Rhombus system and
 <Tabs>
   <Tab title="Visitor Management">
     **Scenario:** Visitor checks in via form
-    
+
     **Automation:**
+
     1. Google Form submission triggers
     2. Unlock specific door in Rhombus
     3. Send welcome message via audio gateway
     4. Log visit in CRM system
   </Tab>
-  
   <Tab title="Maintenance Scheduling">
     **Scenario:** Regular camera maintenance
-    
+
     **Automation:**
+
     1. Schedule by Zapier triggers weekly
     2. Reboot all cameras in sequence
     3. Log maintenance in tracking system
@@ -220,7 +229,6 @@ Rhombus integrates seamlessly with these popular applications:
     - Twilio (SMS)
     - RingCentral
   </Card>
-  
   <Card title="Productivity" icon="briefcase">
     - Google Sheets
     - Microsoft Excel
@@ -228,7 +236,6 @@ Rhombus integrates seamlessly with these popular applications:
     - Salesforce
     - ActiveCampaign
   </Card>
-  
   <Card title="Utilities" icon="tools">
     - Webhooks
     - Schedule by Zapier
@@ -273,14 +280,12 @@ For advanced users, combine Zapier with Rhombus webhooks for real-time data proc
     - Test automations in a staging environment first
     - Monitor Zap execution logs for errors
   </Accordion>
-  
   <Accordion title="Performance Optimization">
     - Use filters to reduce unnecessary Zap executions
     - Batch similar actions when possible
     - Set appropriate delays for time-sensitive actions
     - Monitor your Zapier task usage
   </Accordion>
-  
   <Accordion title="Error Handling">
     - Set up error notifications for critical Zaps
     - Use Zapier's retry functionality
@@ -299,7 +304,7 @@ Zapier offers various pricing tiers based on your automation needs:
 - **Enterprise Plans:** Custom limits and features
 
 <Info>
-Tasks are counted each time a Zap runs. A single trigger can execute multiple actions, but each action counts as one task.
+  Tasks are counted each time a Zap runs. A single trigger can execute multiple actions, but each action counts as one task.
 </Info>
 
 ## Troubleshooting
@@ -309,28 +314,29 @@ Tasks are counted each time a Zap runs. A single trigger can execute multiple ac
 <AccordionGroup>
   <Accordion title="Authentication Errors">
     **Problem:** Zapier can't connect to Rhombus
-    
+
     **Solutions:**
+
     - Verify API key is correct and active
     - Check API key permissions in Rhombus Console
     - Ensure API key hasn't expired
     - Try reconnecting the Rhombus app in Zapier
   </Accordion>
-  
   <Accordion title="Trigger Not Firing">
     **Problem:** Zap isn't triggering when expected
-    
+
     **Solutions:**
+
     - Check trigger configuration settings
     - Verify the event is actually occurring in Rhombus
     - Review Zap history for error messages
     - Test the trigger manually in Zapier
   </Accordion>
-  
   <Accordion title="Action Failures">
     **Problem:** Actions aren't executing properly
-    
+
     **Solutions:**
+
     - Check action app authentication
     - Verify required fields are populated
     - Review error messages in Zap history
@@ -344,15 +350,12 @@ Tasks are counted each time a Zap runs. A single trigger can execute multiple ac
   <Card title="Zapier Documentation" icon="book" href="https://zapier.com/apps/rhombus/integrations">
     Complete Zapier integration documentation and examples
   </Card>
-  
   <Card title="Rhombus Community" icon="users" href="https://rhombus.community">
     Connect with other developers and get help from the community
   </Card>
-  
   <Card title="API Reference" icon="code" href="/api-reference">
     Detailed API documentation for advanced integrations
   </Card>
-  
   <Card title="Rhombus Console" icon="desktop" href="https://console.rhombussystems.com">
     Manage your API keys and system settings
   </Card>
@@ -362,11 +365,11 @@ Tasks are counted each time a Zap runs. A single trigger can execute multiple ac
 
 Ready to automate your Rhombus workflows? Here's what to do next:
 
-1. **[Sign up for Zapier](https://zapier.com)** and explore the Rhombus integration
+1. [**Sign up for Zapier**](https://zapier.com) and explore the Rhombus integration
 2. **Generate API credentials** in the Rhombus Console
 3. **Create your first Zap** using one of our example workflows
 4. **Join the community** to share your automations and get help
 
 <Note>
-The Rhombus Zapier integration is continuously updated with new triggers and actions. Check the Zapier app directory regularly for the latest features.
+  The Rhombus Zapier integration is continuously updated with new triggers and actions. Check the Zapier app directory regularly for the latest features.
 </Note>
