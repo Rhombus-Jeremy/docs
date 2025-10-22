@@ -1,12 +1,25 @@
 #!/bin/bash
 
 # Script to manually update the OpenAPI specification from Rhombus API
-# Usage: ./scripts/update-openapi.sh
+# Usage: ./scripts/update-openapi.sh (run from docs/ directory)
+#    or: ./docs/scripts/update-openapi.sh (run from project root)
 
 set -e
 
+# Determine if we're in docs/ or project root
+if [ -f "docs.json" ]; then
+    # We're in docs/ directory
+    BASE_DIR="."
+elif [ -f "docs/docs.json" ]; then
+    # We're in project root
+    BASE_DIR="docs"
+else
+    echo "❌ Error: Could not find docs.json. Please run from docs/ directory or project root."
+    exit 1
+fi
+
 API_URL="https://api2.rhombussystems.com/api/openapi/public.json"
-OUTPUT_FILE="docs/api-reference/openapi.json"
+OUTPUT_FILE="$BASE_DIR/api-reference/openapi.json"
 
 echo "🔄 Fetching latest OpenAPI spec from Rhombus API..."
 echo "📡 Source: $API_URL"
@@ -41,8 +54,8 @@ if curl -s "$API_URL" > "$OUTPUT_FILE"; then
         # Split the OpenAPI spec into smaller files
         echo ""
         echo "🔪 Splitting OpenAPI spec into smaller files..."
-        if [ -f "scripts/split-openapi.sh" ]; then
-            bash scripts/split-openapi.sh
+        if [ -f "$BASE_DIR/scripts/split-openapi.sh" ]; then
+            bash "$BASE_DIR/scripts/split-openapi.sh"
         else
             echo "⚠️  Warning: split-openapi.sh not found, skipping split"
         fi

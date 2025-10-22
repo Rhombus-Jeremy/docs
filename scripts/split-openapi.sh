@@ -2,12 +2,25 @@
 
 # Script to split large OpenAPI spec into smaller, AI-digestible files
 # Organizes endpoints by tag/category and extracts relevant schemas
-# Usage: ./scripts/split-openapi.sh
+# Usage: ./scripts/split-openapi.sh (run from docs/ directory)
+#    or: ./docs/scripts/split-openapi.sh (run from project root)
 
 set -e
 
-INPUT_FILE="docs/api-reference/openapi.json"
-OUTPUT_DIR="docs/api-reference/openapi-split"
+# Determine if we're in docs/ or project root
+if [ -f "docs.json" ]; then
+    # We're in docs/ directory
+    BASE_DIR="."
+elif [ -f "docs/docs.json" ]; then
+    # We're in project root
+    BASE_DIR="docs"
+else
+    echo "❌ Error: Could not find docs.json. Please run from docs/ directory or project root."
+    exit 1
+fi
+
+INPUT_FILE="$BASE_DIR/api-reference/openapi.json"
+OUTPUT_DIR="$BASE_DIR/api-reference/openapi-split"
 SCHEMAS_DIR="$OUTPUT_DIR/schemas"
 
 echo "🔪 Splitting OpenAPI spec into smaller files..."

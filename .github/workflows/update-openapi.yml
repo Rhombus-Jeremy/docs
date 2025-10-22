@@ -9,45 +9,150 @@ on:
 jobs:
   update-openapi:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Fetch latest OpenAPI spec
+
+      - name: Install dependencies
         run: |
-          echo "Fetching latest OpenAPI spec from Rhombus API..."
-          curl -s https://api2.rhombussystems.com/api/openapi/public.json > docs/api-reference/openapi.json
-          
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      - name: Fetch and validate OpenAPI spec
+        id: fetch
+        run: |
+          cd docs
+          echo "🔄 Fetching latest OpenAPI spec from Rhombus API..."
+          echo "📡 Source: https://api2.rhombussystems.com/api/openapi/public.json"
+
+          # Create backup of current spec
+          if [ -f "api-reference/openapi.json" ]; then
+            cp api-reference/openapi.json api-reference/openapi.json.backup
+            echo "📋 Created backup"
+          fi
+
+          # Download the latest spec
+          HTTP_CODE=$(curl -s -w "%{http_code}" -o api-reference/openapi.json https://api2.rhombussystems.com/api/openapi/public.json)
+
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "❌ Failed to download OpenAPI spec (HTTP $HTTP_CODE)"
+            if [ -f "api-reference/openapi.json.backup" ]; then
+              mv api-reference/openapi.json.backup api-reference/openapi.json
+            fi
+            exit 1
+          fi
+
+          echo "✅ Successfully downloaded OpenAPI spec"
+
+          # Validate it's valid JSON
+          if ! jq empty api-reference/openapi.json 2>/dev/null; then
+            echo "❌ Downloaded spec is not valid JSON, restoring backup"
+            if [ -f "api-reference/openapi.json.backup" ]; then
+              mv api-reference/openapi.json.backup api-reference/openapi.json
+            fi
+            exit 1
+          fi
+
+          echo "✅ OpenAPI spec is valid JSON"
+
+          # Extract and display spec info
+          TITLE=$(jq -r '.info.title // "Unknown"' api-reference/openapi.json)
+          VERSION=$(jq -r '.info.version // "Unknown"' api-reference/openapi.json)
+          PATHS_COUNT=$(jq '.paths | length' api-reference/openapi.json)
+
+          echo "📊 API Info:"
+          echo "   Title: $TITLE"
+          echo "   Version: $VERSION"
+          echo "   Endpoints: $PATHS_COUNT"
+
+          # Save stats for summary
+          echo "title=$TITLE" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "endpoints=$PATHS_COUNT" >> $GITHUB_OUTPUT
+
+          # Remove backup if successful
+          rm -f api-reference/openapi.json.backup
+
+      - name: Split OpenAPI spec
+        run: |
+          cd docs
+          echo "🔪 Splitting OpenAPI spec into smaller files..."
+          if [ -f "scripts/split-openapi.sh" ]; then
+            bash scripts/split-openapi.sh
+            echo "✅ OpenAPI spec split complete"
+          else
+            echo "⚠️  Warning: split-openapi.sh not found, skipping split"
+          fi
+
       - name: Check for changes
         id: check-changes
         run: |
-          if git diff --quiet docs/api-reference/openapi.json; then
-            echo "No changes detected in OpenAPI spec"
+          cd docs
+          # Check if any files in api-reference changed
+          if git diff --quiet api-reference/; then
+            echo "No changes detected in OpenAPI spec or split files"
             echo "changes=false" >> $GITHUB_OUTPUT
           else
-            echo "Changes detected in OpenAPI spec"
+            echo "Changes detected in OpenAPI spec and/or split files"
             echo "changes=true" >> $GITHUB_OUTPUT
+
+            # Show what changed
+            echo "📝 Changed files:"
+            git diff --name-only api-reference/ | head -20
           fi
-          
+
       - name: Commit and push changes
         if: steps.check-changes.outputs.changes == 'true'
         run: |
+          cd docs
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add docs/api-reference/openapi.json
-          git commit -m "chore: update OpenAPI spec from Rhombus API ($(date -u +%Y-%m-%d))"
+
+          # Add all changed files in api-reference
+          git add api-reference/
+
+          # Create commit with details
+          git commit -m "chore: update OpenAPI spec from Rhombus API ($(date -u +%Y-%m-%d))" \
+                     -m "API Title: ${{ steps.fetch.outputs.title }}" \
+                     -m "API Version: ${{ steps.fetch.outputs.version }}" \
+                     -m "Total Endpoints: ${{ steps.fetch.outputs.endpoints }}" \
+                     -m "Updated: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+
           git push
-          
+
       - name: Create summary
         run: |
+          cd docs
+          echo "# OpenAPI Spec Update" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
           if [ "${{ steps.check-changes.outputs.changes }}" == "true" ]; then
-            echo "✅ OpenAPI spec updated successfully" >> $GITHUB_STEP_SUMMARY
-            echo "📅 Updated on: $(date -u)" >> $GITHUB_STEP_SUMMARY
-            echo "🔗 Source: https://api2.rhombussystems.com/api/openapi/public.json" >> $GITHUB_STEP_SUMMARY
+            echo "✅ **Status**: OpenAPI spec updated successfully" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "## Specification Details" >> $GITHUB_STEP_SUMMARY
+            echo "- **Title**: ${{ steps.fetch.outputs.title }}" >> $GITHUB_STEP_SUMMARY
+            echo "- **Version**: ${{ steps.fetch.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+            echo "- **Total Endpoints**: ${{ steps.fetch.outputs.endpoints }}" >> $GITHUB_STEP_SUMMARY
+            echo "- **Updated on**: $(date -u)" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "## Changes" >> $GITHUB_STEP_SUMMARY
+            echo "The following files were updated:" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            git diff --name-only HEAD~1 api-reference/ | head -30 >> $GITHUB_STEP_SUMMARY || echo "api-reference/openapi.json (new)" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
           else
-            echo "ℹ️ No changes detected in OpenAPI spec" >> $GITHUB_STEP_SUMMARY
-            echo "📅 Checked on: $(date -u)" >> $GITHUB_STEP_SUMMARY
+            echo "ℹ️ **Status**: No changes detected" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "## Current Specification" >> $GITHUB_STEP_SUMMARY
+            echo "- **Title**: ${{ steps.fetch.outputs.title }}" >> $GITHUB_STEP_SUMMARY
+            echo "- **Version**: ${{ steps.fetch.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+            echo "- **Total Endpoints**: ${{ steps.fetch.outputs.endpoints }}" >> $GITHUB_STEP_SUMMARY
+            echo "- **Checked on**: $(date -u)" >> $GITHUB_STEP_SUMMARY
           fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Source" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 https://api2.rhombussystems.com/api/openapi/public.json" >> $GITHUB_STEP_SUMMARY
