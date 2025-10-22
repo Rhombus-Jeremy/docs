@@ -4,8 +4,6 @@ description: "Leverage Rhombus' custom millisecond timestamps embedded in ISOBMF
 icon: "clock"
 ---
 
-# Advanced Video Implementation: ISOBMFF Millisecond Timestamps
-
 When dealing with video segments—especially in systems that rely on distributed cameras, cloud storage, and multiple data streams—**time synchronization** becomes one of the most critical challenges. Without precise timing information, aligning events between multiple feeds (e.g., video, audio, and sensor data) becomes error-prone.
 
 Rhombus has implemented a **custom timestamp embedding** strategy that provides millisecond precision within `.mp4`/`.m4v` video segments, going beyond the coarse timing fields traditionally found in standard ISOBMFF (ISO Base Media File Format) containers.
