@@ -65,11 +65,287 @@
         ]
       },
       {
+  "tab": "API reference",
+  "products": [
+    {
+      "product": "Alarm Monitoring",
+      "description": "Professional monitoring services and emergency response systems",
+      "icon": "shield-exclamation",
+      "groups": [
+        {
+          "group": "Alert Monitoring",
+          "pages": [
+            "api-reference/openapi.json post /api/alertmonitoring/cancelThreatCase",
+            "api-reference/openapi.json post /api/alertmonitoring/createCustomPinForLocation",
+            "api-reference/openapi.json post /api/alertmonitoring/createPinForLocation",
+            "api-reference/openapi.json post /api/alertmonitoring/deletePinForLocation",
+            "api-reference/openapi.json post /api/alertmonitoring/dismissThreatCase",
+            "api-reference/openapi.json post /api/alertmonitoring/escalateThreatCaseToAlarm",
+            "api-reference/openapi.json post /api/alertmonitoring/getAlertMonitoringSettingsForLocation",
+            "api-reference/openapi.json post /api/alertmonitoring/locationStatus",
+            "api-reference/openapi.json post /api/alertmonitoring/orgStatus"
+          ]
+        },
+        {
+          "group": "Keypad",
+          "pages": [
+            "api-reference/openapi.json post /api/keypad/claimKeypadActivationToken",
+            "api-reference/openapi.json post /api/keypad/getKeypadsForLocation",
+            "api-reference/openapi.json post /api/keypad/getKeypadsForOrg",
+            "api-reference/openapi.json post /api/keypad/unregisterKeypad",
+            "api-reference/openapi.json post /api/keypad/updateKeypad"
+          ]
+        },
+        {
+          "group": "RapidSOS",
+          "pages": [
+            "api-reference/openapi.json post /api/rapidsos/getNearbyFeeds"
+          ]
+        }
+      ]
+    },
+    {
+      "product": "Access Control",
+      "description": "Door access management, credentials, and physical security systems",
+      "icon": "key",
+      "groups": [
+        {
+          "group": "Access Control",
+          "pages": [
+            "api-reference/openapi.json post /api/accesscontrol/addUsersToAccessControlGroup",
+            "api-reference/openapi.json post /api/accesscontrol/createAccessControlCredentialByHexValueAndType",
+            "api-reference/openapi.json post /api/accesscontrol/createAccessControlGroup",
+            "api-reference/openapi.json post /api/accesscontrol/unlockAccessControlledDoor"
+          ]
+        },
+        {
+          "group": "Badge Reader",
+          "pages": [
+            "api-reference/openapi.json post /api/badgereader/delete",
+            "api-reference/openapi.json post /api/badgereader/reboot"
+          ]
+        },
+        {
+          "group": "Door",
+          "pages": [
+            "api-reference/openapi.json post /api/door/getDoorEventsForSensor",
+            "api-reference/openapi.json post /api/door/updateDetails"
+          ]
+        }
+      ]
+    },
+    {
+      "product": "Cameras",
+      "description": "Video surveillance, streaming, and camera management systems",
+      "icon": "video",
+      "groups": [
+        {
+          "group": "Camera",
+          "pages": [
+            "api-reference/openapi.json post /api/camera/getConfig",
+            "api-reference/openapi.json post /api/camera/updateConfig",
+            "api-reference/openapi.json post /api/camera/reboot"
+          ]
+        },
+        {
+          "group": "Doorbell Camera",
+          "pages": [
+            "api-reference/openapi.json post /api/doorbellcamera/createRuleForDoorbellCamera",
+            "api-reference/openapi.json post /api/doorbellcamera/delete"
+          ]
+        }
+      ]
+    },
+    {
+      "product": "Sensors",
+      "description": "Environmental and IoT sensor monitoring systems",
+      "icon": "sensor",
+      "groups": [
+        {
+          "group": "Button",
+          "pages": [
+            "api-reference/openapi.json post /api/button/createRuleForButton",
+            "api-reference/openapi.json post /api/button/updateConfig"
+          ]
+        },
+        {
+          "group": "Climate",
+          "pages": [
+            "api-reference/openapi.json post /api/climate/getConfig",
+            "api-reference/openapi.json post /api/climate/updateDetails"
+          ]
+        },
+        {
+          "group": "Occupancy",
+          "pages": [
+            "api-reference/openapi.json post /api/occupancy/getOccupancyEventsForSensor",
+            "api-reference/openapi.json post /api/occupancy/updateDetails"
+          ]
+        }
+      ]
+    },
+    {
+      "product": "Guest Management",
+      "description": "Visitor management and face recognition systems",
+      "icon": "users",
+      "groups": [
+        {
+          "group": "Kiosk",
+          "pages": [
+            "api-reference/openapi.json post /api/kiosk/updateKiosk"
+          ]
+        },
+        {
+          "group": "Face Recognition",
+          "pages": [
+            "api-reference/openapi.json post /api/faceRecognition/person/createPerson",
+            "api-reference/openapi.json post /api/faceRecognition/person/updatePerson"
+          ]
+        }
+      ]
+    },
+    {
+      "product": "Integrations",
+      "description": "Third-party integrations and webhook management",
+      "icon": "plug",
+      "groups": [
+        {
+          "group": "OAuth",
+          "pages": [
+            "api-reference/openapi.json get /api/oauth/authorize",
+            "api-reference/openapi.json post /api/oauth/submitApplication"
+          ]
+        },
+        {
+          "group": "Webhooks",
+          "pages": [
+            "api-reference/openapi.json post /api/integrations/webhooks/updateWebhookIntegration",
+            "api-reference/openapi.json post /api/integrations/webhooks/deleteWebhookIntegration"
+          ]
+        }
+      ]
+    },
+    {
+      "product": "Developers",
+      "description": "Developer tools, system management, and utilities",
+      "icon": "code",
+      "groups": [
+        {
+          "group": "Developer",
+          "pages": [
+            "api-reference/openapi.json post /api/developer/createEventListener",
+            "api-reference/openapi.json post /api/developer/deleteEventListener"
+          ]
+        },
+        {
+          "group": "Export",
+          "pages": [
+            "api-reference/openapi.json post /api/export/audit",
+            "api-reference/openapi.json post /api/export/users"
+          ]
+        },
+        {
+          "group": "Search",
+          "pages": [
+            "api-reference/openapi.json post /api/search/searchLicensePlates",
+            "api-reference/openapi.json post /api/search/searchObjectsByColor"
+          ]
+        }
+      ]
+    }
+  ]
+}
         "tab": "API reference",
-        "groups": [
+        "products": [
           {
-            "group": "Core Services",
-            "pages": [
+            "product": "Alarm Monitoring",
+            "description": "Professional monitoring services and emergency response systems",
+            "icon": "shield-exclamation",
+            "groups": [
+              {
+                "group": "Alert Monitoring",
+                "pages": [
+                  "api-reference/openapi.json post /api/alertmonitoring/cancelThreatCase",
+                  "api-reference/openapi.json post /api/alertmonitoring/createCustomPinForLocation",
+                  "api-reference/openapi.json post /api/alertmonitoring/createPinForLocation",
+                  "api-reference/openapi.json post /api/alertmonitoring/deletePinForLocation",
+                  "api-reference/openapi.json post /api/alertmonitoring/dismissThreatCase",
+                  "api-reference/openapi.json post /api/alertmonitoring/escalateThreatCaseToAlarm",
+                  "api-reference/openapi.json post /api/alertmonitoring/getAlertMonitoringSettingsForLocation",
+                  "api-reference/openapi.json post /api/alertmonitoring/locationStatus",
+                  "api-reference/openapi.json post /api/alertmonitoring/orgStatus"
+                ]
+              },
+              {
+                "group": "Alarm Monitoring Keypad",
+                "pages": [
+                  "api-reference/openapi.json post /api/keypad/claimKeypadActivationToken",
+                  "api-reference/openapi.json post /api/keypad/getKeypadsForLocation",
+                  "api-reference/openapi.json post /api/keypad/getKeypadsForOrg",
+                  "api-reference/openapi.json post /api/keypad/unregisterKeypad",
+                  "api-reference/openapi.json post /api/keypad/updateKeypad"
+                ]
+              },
+              {
+                "group": "Lockdown Plan",
+                "pages": [
+                  {
+                    "group": "Create & Add",
+                    "pages": [
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/createLocationLockdownPlan",
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/createLockdownRuleForLocation",
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/getOrCreateLocationLockdownState"
+                    ]
+                  },
+                  {
+                    "group": "Get & Find",
+                    "pages": [
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/findLocationLockdownEvents",
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/findLocationLockdownStates",
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/findLockdownPlans",
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/findLockdownPlansByLocation",
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/getLockdownPlan",
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/getLockdownRulesForLocation"
+                    ]
+                  },
+                  {
+                    "group": "Update & Modify",
+                    "pages": [
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/updateLocationLockdownPlan"
+                    ]
+                  },
+                  {
+                    "group": "Delete & Remove",
+                    "pages": [
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/deleteLocationLockdownState",
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/deleteLockdownPlan",
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/deleteLockdownRuleForLocation"
+                    ]
+                  },
+                  {
+                    "group": "Other Operations",
+                    "pages": [
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/activateLockdownForLocation",
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/deactivateLockdownForLocation",
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/disableLockdownTestModeForLocation",
+                      "api-reference/openapi.json post /api/accesscontrol/lockdownPlan/enableLockdownTestModeForLocation"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "RapidSOS",
+                "pages": [
+                  "api-reference/openapi.json post /api/rapidsos/getNearbyFeeds"
+                ]
+              }
+            ]
+          },
+          {
+            "product": "Access Control",
+            "description": "Door access management, credentials, and physical security systems",
+            "icon": "key",
+            "groups": [
               {
                 "group": "Access Control",
                 "pages": [
@@ -166,18 +442,111 @@
                 ]
               },
               {
-                "group": "Button",
+                "group": "Door",
                 "pages": [
-                  "api-reference/openapi.json post /api/button/createRuleForButton",
-                  "api-reference/openapi.json post /api/button/deleteRuleForButton",
-                  "api-reference/openapi.json post /api/button/getButtonPressEventsForSensor",
-                  "api-reference/openapi.json post /api/button/getButtonRulesForOrg",
-                  "api-reference/openapi.json post /api/button/getMinimalButtonStateList",
-                  "api-reference/openapi.json post /api/button/getRulesForButton",
-                  "api-reference/openapi.json post /api/button/updateConfig",
-                  "api-reference/openapi.json post /api/button/updateDetails"
+                  "api-reference/openapi.json post /api/door/getDoorEventsForSensor",
+                  "api-reference/openapi.json post /api/door/getDoorPresenceWindows",
+                  "api-reference/openapi.json post /api/door/getMinimalDoorStateList",
+                  "api-reference/openapi.json post /api/door/updateDetails"
                 ]
               },
+              {
+                "group": "Door Controller",
+                "pages": [
+                  "api-reference/openapi.json post /api/doorcontroller/registerDiscoveredRhombusReader",
+                  "api-reference/openapi.json post /api/doorcontroller/updateDetails"
+                ]
+              },
+              {
+                "group": "Component",
+                "pages": [
+                  {
+                    "group": "Create & Add",
+                    "pages": [
+                      "api-reference/openapi.json post /api/component/addAccessControlledDoorLabel",
+                      "api-reference/openapi.json post /api/component/createAccessControlledDoor",
+                      "api-reference/openapi.json post /api/component/createAccessControlledDoorSeekpoints",
+                      "api-reference/openapi.json post /api/component/createIntegratedDoorPositionIndicator",
+                      "api-reference/openapi.json post /api/component/createIntegratedDoorRelay",
+                      "api-reference/openapi.json post /api/component/createIntegratedGenericButton",
+                      "api-reference/openapi.json post /api/component/createIntegratedGenericInput",
+                      "api-reference/openapi.json post /api/component/createIntegratedGenericRelay",
+                      "api-reference/openapi.json post /api/component/createIntegratedRequestToExit",
+                      "api-reference/openapi.json post /api/component/createOsdpDoorReader",
+                      "api-reference/openapi.json post /api/component/createRhombusOsdpDoorReader",
+                      "api-reference/openapi.json post /api/component/createWiegandReader",
+                      "api-reference/openapi.json post /api/component/getOrCreateDevicePhysicalPortConfig"
+                    ]
+                  },
+                  {
+                    "group": "Get & Find",
+                    "pages": [
+                      "api-reference/openapi.json post /api/component/findAccessControlledDoors",
+                      "api-reference/openapi.json post /api/component/findAccessControlledDoorsByLocation",
+                      "api-reference/openapi.json post /api/component/findAccessControlledDoorsByOwnerDevice",
+                      "api-reference/openapi.json post /api/component/findAccessControlledDoorShadows",
+                      "api-reference/openapi.json post /api/component/findAccessControlledDoorShadowsByLocation",
+                      "api-reference/openapi.json post /api/component/findAllComponentShadows",
+                      "api-reference/openapi.json post /api/component/findComponentEventsByAccessControlledDoor",
+                      "api-reference/openapi.json post /api/component/findComponentEventsByApiToken",
+                      "api-reference/openapi.json post /api/component/findComponentEventsByComponent",
+                      "api-reference/openapi.json post /api/component/findComponentEventsByCorrelation",
+                      "api-reference/openapi.json post /api/component/findComponentEventsByCredentialHexValue",
+                      "api-reference/openapi.json post /api/component/findComponentEventsByCredentialUuid",
+                      "api-reference/openapi.json post /api/component/findComponentEventsByCredentialValue",
+                      "api-reference/openapi.json post /api/component/findComponentEventsByLocation",
+                      "api-reference/openapi.json post /api/component/findComponentEventsByOwnerDevice",
+                      "api-reference/openapi.json post /api/component/findComponentEventsBySupportAuthority",
+                      "api-reference/openapi.json post /api/component/findComponentEventsByUser",
+                      "api-reference/openapi.json post /api/component/findComponentEventsForVideoIntercom",
+                      "api-reference/openapi.json post /api/component/findComponentsByOwnerDevice",
+                      "api-reference/openapi.json post /api/component/findComponentSeekPointsByAccessControlledDoor",
+                      "api-reference/openapi.json post /api/component/findComponentSeekPointsByAccessControlledDoors",
+                      "api-reference/openapi.json post /api/component/findComponentSeekPointsByComponent",
+                      "api-reference/openapi.json post /api/component/findComponentSeekPointsByLocation",
+                      "api-reference/openapi.json post /api/component/findComponentSeekPointsByOwnerDevice",
+                      "api-reference/openapi.json post /api/component/findComponentSeekPointsByUser",
+                      "api-reference/openapi.json post /api/component/findComponentShadowsByOwnerDevice",
+                      "api-reference/openapi.json post /api/component/findMinimalStateAccessControlledDoors",
+                      "api-reference/openapi.json post /api/component/findMinimalStateAccessControlledDoorsByLocation",
+                      "api-reference/openapi.json post /api/component/getAccessControlledDoorLabelsForOrg"
+                    ]
+                  },
+                  {
+                    "group": "Update & Modify",
+                    "pages": [
+                      "api-reference/openapi.json post /api/component/removeAccessControlledDoorLabel",
+                      "api-reference/openapi.json post /api/component/updateAccessControlledDoor",
+                      "api-reference/openapi.json post /api/component/updateIntegratedDoorPositionIndicator",
+                      "api-reference/openapi.json post /api/component/updateIntegratedDoorRelay",
+                      "api-reference/openapi.json post /api/component/updateIntegratedGenericButton",
+                      "api-reference/openapi.json post /api/component/updateIntegratedGenericInput",
+                      "api-reference/openapi.json post /api/component/updateIntegratedGenericRelay",
+                      "api-reference/openapi.json post /api/component/updateIntegratedGenericRelaySteadyState",
+                      "api-reference/openapi.json post /api/component/updateIntegratedGenericRelayTransientState",
+                      "api-reference/openapi.json post /api/component/updateIntegratedRequestToExit",
+                      "api-reference/openapi.json post /api/component/updateOsdpDoorReader",
+                      "api-reference/openapi.json post /api/component/updateRhombusOsdpDoorReader",
+                      "api-reference/openapi.json post /api/component/updateWiegandDoorReader"
+                    ]
+                  },
+                  {
+                    "group": "Delete & Remove",
+                    "pages": [
+                      "api-reference/openapi.json post /api/component/deleteAccessControlledDoor",
+                      "api-reference/openapi.json post /api/component/deleteComponent",
+                      "api-reference/openapi.json post /api/component/deleteComponentsByOwnerDevice"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "product": "Cameras",
+            "description": "Video surveillance, streaming, and camera management systems",
+            "icon": "video",
+            "groups": [
               {
                 "group": "Camera",
                 "pages": [
@@ -195,6 +564,383 @@
                       "api-reference/openapi.json post /api/camera/createVideoWall",
                       "api-reference/openapi.json post /api/camera/generateBatchRegistrationInfo",
                       "api-reference/openapi.json post /api/camera/generateWifiChangeAuthorizationToken"
+                    ]
+                  },
+                  {
+                    "group": "Get & Find",
+                    "pages": [
+                      "api-reference/openapi.json post /api/camera/findAllRawHttpStreams",
+                      "api-reference/openapi.json post /api/camera/findAllSharedLiveVideoStreams",
+                      "api-reference/openapi.json post /api/camera/findSharedLiveVideoStreams",
+                      "api-reference/openapi.json post /api/camera/findSharedVideoWalls",
+                      "api-reference/openapi.json post /api/camera/getBatchRegistrationUsage",
+                      "api-reference/openapi.json post /api/camera/getCameraAIThresholds",
+                      "api-reference/openapi.json post /api/camera/getCloudArchivedMediaInfo",
+                      "api-reference/openapi.json post /api/camera/getCloudArchivingConfig",
+                      "api-reference/openapi.json post /api/camera/getConfig",
+                      "api-reference/openapi.json post /api/camera/getCurrentState",
+                      "api-reference/openapi.json post /api/camera/getCustomFootageSeekpointsV2",
+                      "api-reference/openapi.json post /api/camera/getDetails",
+                      "api-reference/openapi.json post /api/camera/getFootageBoundingBoxes",
+                      "api-reference/openapi.json post /api/camera/getFootageBoundingBoxesForMultiple",
+                      "api-reference/openapi.json post /api/camera/getFootageSeekpointsForMultiple",
+                      "api-reference/openapi.json post /api/camera/getFootageSeekpointsV2",
+                      "api-reference/openapi.json post /api/camera/getFullCameraState",
+                      "api-reference/openapi.json post /api/camera/getMediaUris",
+                      "api-reference/openapi.json post /api/camera/getMinimalCameraLocationMap",
+                      "api-reference/openapi.json post /api/camera/getMinimalCameraStateList",
+                      "api-reference/openapi.json post /api/camera/getMinimalList",
+                      "api-reference/openapi.json post /api/camera/getOfflineLanStreamingInfo",
+                      "api-reference/openapi.json post /api/camera/getPresenceWindows",
+                      "api-reference/openapi.json post /api/camera/getRawHttpStreams",
+                      "api-reference/openapi.json post /api/camera/getStorageRecoveryFile",
+                      "api-reference/openapi.json post /api/camera/getUptimeWindows",
+                      "api-reference/openapi.json post /api/camera/getVideoWalls"
+                    ]
+                  },
+                  {
+                    "group": "Update & Modify",
+                    "pages": [
+                      "api-reference/openapi.json post /api/camera/updateCameraAIThresholds",
+                      "api-reference/openapi.json post /api/camera/updateCameraLineCrossingThresholds",
+                      "api-reference/openapi.json post /api/camera/updateConfig",
+                      "api-reference/openapi.json post /api/camera/updateDetails",
+                      "api-reference/openapi.json post /api/camera/updateDetailsBulkV2",
+                      "api-reference/openapi.json post /api/camera/updateDetailsV2",
+                      "api-reference/openapi.json post /api/camera/updateFirmware",
+                      "api-reference/openapi.json post /api/camera/updateVideoWalls",
+                      "api-reference/openapi.json post /api/camera/updateWifi"
+                    ]
+                  },
+                  {
+                    "group": "Delete & Remove",
+                    "pages": [
+                      "api-reference/openapi.json post /api/camera/delete",
+                      "api-reference/openapi.json post /api/camera/deleteCustomFootageSeekpoints",
+                      "api-reference/openapi.json post /api/camera/deleteRawHttpStream",
+                      "api-reference/openapi.json post /api/camera/deleteSharedLiveVideoStream",
+                      "api-reference/openapi.json post /api/camera/deleteSharedVideoWall",
+                      "api-reference/openapi.json post /api/camera/deleteVideoWall",
+                      "api-reference/openapi.json post /api/camera/erase",
+                      "api-reference/openapi.json post /api/camera/revertCameraSettingsToDefaults"
+                    ]
+                  },
+                  {
+                    "group": "Other Operations",
+                    "pages": [
+                      "api-reference/openapi.json post /api/camera/reboot",
+                      "api-reference/openapi.json post /api/camera/revertDayImageSettingsToDefaults",
+                      "api-reference/openapi.json post /api/camera/revertNightImageSettingsToDefaults",
+                      "api-reference/openapi.json post /api/camera/revertToDefaults"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Doorbell Camera",
+                "pages": [
+                  "api-reference/openapi.json post /api/doorbellcamera/calibrateFloorplanProjection",
+                  "api-reference/openapi.json post /api/doorbellcamera/createRuleForDoorbellCamera",
+                  "api-reference/openapi.json post /api/doorbellcamera/createSharedLiveVideoStream",
+                  "api-reference/openapi.json post /api/doorbellcamera/delete",
+                  "api-reference/openapi.json post /api/doorbellcamera/deleteRuleForDoorbellCamera",
+                  "api-reference/openapi.json post /api/doorbellcamera/findComponentEventsForDoorbellCamera",
+                  "api-reference/openapi.json post /api/doorbellcamera/findComponentSeekPointsForDoorbellCamera",
+                  "api-reference/openapi.json post /api/doorbellcamera/findSharedLiveVideoStreams",
+                  "api-reference/openapi.json post /api/doorbellcamera/getDoorbellCameraRulesForOrg",
+                  "api-reference/openapi.json post /api/doorbellcamera/getRulesForDoorbellCamera"
+                ]
+              },
+              {
+                "group": "Relay",
+                "pages": [
+                  {
+                    "group": "Create & Add",
+                    "pages": [
+                      "api-reference/openapi.json post /api/relay/createThirdPartyCameraPassword"
+                    ]
+                  },
+                  {
+                    "group": "Get & Find",
+                    "pages": [
+                      "api-reference/openapi.json post /api/relay/getAssignedThirdPartyCameras",
+                      "api-reference/openapi.json post /api/relay/getThirdPartyCameraPasswords"
+                    ]
+                  },
+                  {
+                    "group": "Update & Modify",
+                    "pages": [
+                      "api-reference/openapi.json post /api/relay/assignThirdPartyCameraToNVR",
+                      "api-reference/openapi.json post /api/relay/assignThirdPartyCameraToRelayCamera",
+                      "api-reference/openapi.json post /api/relay/unassignThirdPartyCamera"
+                    ]
+                  },
+                  {
+                    "group": "Delete & Remove",
+                    "pages": [
+                      "api-reference/openapi.json post /api/relay/deleteThirdPartyCameraPassword"
+                    ]
+                  },
+                  {
+                    "group": "Other Operations",
+                    "pages": [
+                      "api-reference/openapi.json post /api/relay/authenticateThirdPartyCamera",
+                      "api-reference/openapi.json post /api/relay/ptzMove",
+                      "api-reference/openapi.json post /api/relay/ptzStatus",
+                      "api-reference/openapi.json post /api/relay/reboot"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Media Device",
+                "pages": [
+                  "api-reference/openapi.json post /api/mediadevice/getBulkMediaDeviceDetails"
+                ]
+              },
+              {
+                "group": "AudioGateway",
+                "pages": [
+                  "api-reference/openapi.json post /api/audiogateway/delete",
+                  "api-reference/openapi.json post /api/audiogateway/getAudioSeekpoints",
+                  "api-reference/openapi.json post /api/audiogateway/getConfig",
+                  "api-reference/openapi.json post /api/audiogateway/getFullAudioGatewayState",
+                  "api-reference/openapi.json post /api/audiogateway/getMediaUris",
+                  "api-reference/openapi.json post /api/audiogateway/getMinimalAudioGatewayStateList",
+                  "api-reference/openapi.json post /api/audiogateway/getPresenceWindows",
+                  "api-reference/openapi.json post /api/audiogateway/getUptimeWindows",
+                  "api-reference/openapi.json post /api/audiogateway/updateConfig",
+                  "api-reference/openapi.json post /api/audiogateway/updateDetails"
+                ]
+              },
+              {
+                "group": "AudioPlayback",
+                "pages": [
+                  "api-reference/openapi.json post /api/audioplayback/cancelLoopingAudioPlayback",
+                  "api-reference/openapi.json post /api/audioplayback/deleteAudioUploadMetadata",
+                  "api-reference/openapi.json post /api/audioplayback/getAudioUploadMetadataForOrg",
+                  "api-reference/openapi.json post /api/audioplayback/playAudioUpload",
+                  "api-reference/openapi.json post /api/audioplayback/updateAudioUploadMetadata",
+                  "api-reference/openapi.json post /api/audioplayback/uploadAudioText"
+                ]
+              },
+              {
+                "group": "Video",
+                "pages": [
+                  {
+                    "group": "Create & Add",
+                    "pages": [
+                      "api-reference/openapi.json post /api/video/createSharedTimelapseGroup",
+                      "api-reference/openapi.json post /api/video/generateTimelapseClip"
+                    ]
+                  },
+                  {
+                    "group": "Get & Find",
+                    "pages": [
+                      "api-reference/openapi.json post /api/video/getExactFrameUri",
+                      "api-reference/openapi.json post /api/video/getMaxSpliceDuration",
+                      "api-reference/openapi.json post /api/video/getSharedTimelapseGroups",
+                      "api-reference/openapi.json post /api/video/getSplicedClipsInProgress",
+                      "api-reference/openapi.json post /api/video/getTimelapseClips",
+                      "api-reference/openapi.json post /api/video/getTimelapseMetadata"
+                    ]
+                  },
+                  {
+                    "group": "Update & Modify",
+                    "pages": [
+                      "api-reference/openapi.json post /api/video/updateSharedTimelapseGroup"
+                    ]
+                  },
+                  {
+                    "group": "Delete & Remove",
+                    "pages": [
+                      "api-reference/openapi.json post /api/video/deleteSharedTimelapseGroup",
+                      "api-reference/openapi.json post /api/video/deleteTimelapseClips"
+                    ]
+                  },
+                  {
+                    "group": "Other Operations",
+                    "pages": [
+                      "api-reference/openapi.json post /api/video/cancelSplice",
+                      "api-reference/openapi.json post /api/video/cancelSpliceV2",
+                      "api-reference/openapi.json post /api/video/retrySplice",
+                      "api-reference/openapi.json post /api/video/shareTimelapseClips",
+                      "api-reference/openapi.json post /api/video/splice",
+                      "api-reference/openapi.json post /api/video/spliceFrame",
+                      "api-reference/openapi.json post /api/video/spliceV2",
+                      "api-reference/openapi.json post /api/video/spliceV3"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "product": "Sensors",
+            "description": "Environmental and IoT sensor monitoring systems",
+            "icon": "sensor",
+            "groups": [
+              {
+                "group": "Button",
+                "pages": [
+                  "api-reference/openapi.json post /api/button/createRuleForButton",
+                  "api-reference/openapi.json post /api/button/deleteRuleForButton",
+                  "api-reference/openapi.json post /api/button/getButtonPressEventsForSensor",
+                  "api-reference/openapi.json post /api/button/getButtonRulesForOrg",
+                  "api-reference/openapi.json post /api/button/getMinimalButtonStateList",
+                  "api-reference/openapi.json post /api/button/getRulesForButton",
+                  "api-reference/openapi.json post /api/button/updateConfig",
+                  "api-reference/openapi.json post /api/button/updateDetails"
+                ]
+              },
+              {
+                "group": "Climate",
+                "pages": [
+                  {
+                    "group": "Get & Find",
+                    "pages": [
+                      "api-reference/openapi.json post /api/climate/getClimateEventsForSensor",
+                      "api-reference/openapi.json post /api/climate/getClimatePresenceWindows",
+                      "api-reference/openapi.json post /api/climate/getConfig",
+                      "api-reference/openapi.json post /api/climate/getEnvironmentalGatewayShadows",
+                      "api-reference/openapi.json post /api/climate/getEventsForEnvironmentalGateway",
+                      "api-reference/openapi.json post /api/climate/getMinimalClimateStateList",
+                      "api-reference/openapi.json post /api/climate/getMinimalEnvironmentalGatewayStates",
+                      "api-reference/openapi.json post /api/climate/getMinimalStateEventsForEnvironmentalGateway"
+                    ]
+                  },
+                  {
+                    "group": "Update & Modify",
+                    "pages": [
+                      "api-reference/openapi.json post /api/climate/updateDetails",
+                      "api-reference/openapi.json post /api/climate/updateEnvironmentalGatewayDetails"
+                    ]
+                  },
+                  {
+                    "group": "Delete & Remove",
+                    "pages": [
+                      "api-reference/openapi.json post /api/climate/deleteEnvironmentalGateway"
+                    ]
+                  },
+                  {
+                    "group": "Other Operations",
+                    "pages": [
+                      "api-reference/openapi.json post /api/climate/reboot"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Occupancy",
+                "pages": [
+                  "api-reference/openapi.json post /api/occupancy/getMinimalOccupancySensorStateList",
+                  "api-reference/openapi.json post /api/occupancy/getOccupancyEventsForSensor",
+                  "api-reference/openapi.json post /api/occupancy/getOccupancyPresenceWindows",
+                  "api-reference/openapi.json post /api/occupancy/updateDetails"
+                ]
+              },
+              {
+                "group": "Proximity",
+                "pages": [
+                  "api-reference/openapi.json post /api/proximity/getLocomotionEventsForTag",
+                  "api-reference/openapi.json post /api/proximity/getMinimalProximityStateList",
+                  "api-reference/openapi.json post /api/proximity/getProximityEventsForTag",
+                  "api-reference/openapi.json post /api/proximity/updateDetails"
+                ]
+              },
+              {
+                "group": "Sensor",
+                "pages": [
+                  "api-reference/openapi.json post /api/sensors/getFootageSensorSeekpointsForCamera",
+                  "api-reference/openapi.json post /api/sensors/getFootageSensorSeekpointsForLocation",
+                  "api-reference/openapi.json post /api/sensors/getFootageSensorSeekpointsForSensor"
+                ]
+              },
+              {
+                "group": "BLE",
+                "pages": [
+                  "api-reference/openapi.json post /api/ble/getBaseStations"
+                ]
+              }
+            ]
+          },
+          {
+            "product": "Guest Management",
+            "description": "Visitor management and face recognition systems",
+            "icon": "users",
+            "groups": [
+              {
+                "group": "Guest Management Kiosk",
+                "pages": [
+                  "api-reference/openapi.json post /api/kiosk/updateKiosk"
+                ]
+              },
+              {
+                "group": "Face Recognition Event",
+                "pages": [
+                  "api-reference/openapi.json post /api/faceRecognition/faceEvent/deleteFaceEvent",
+                  "api-reference/openapi.json post /api/faceRecognition/faceEvent/findFaceEventsByOrg",
+                  "api-reference/openapi.json post /api/faceRecognition/faceEvent/getFaceEvent",
+                  "api-reference/openapi.json post /api/faceRecognition/faceEvent/updateFaceEvent"
+                ]
+              },
+              {
+                "group": "Face Recognition Matchmaker",
+                "pages": [
+                  "api-reference/openapi.json post /api/faceRecognition/matchmaker/createFaceMatchmakerFromSighting",
+                  "api-reference/openapi.json post /api/faceRecognition/matchmaker/deleteFaceMatchmaker",
+                  "api-reference/openapi.json post /api/faceRecognition/matchmaker/findFaceMatchmakersByOrg",
+                  "api-reference/openapi.json post /api/faceRecognition/matchmaker/findFaceMatchmakersByPerson",
+                  "api-reference/openapi.json post /api/faceRecognition/matchmaker/findFaceUploadMetadataByTransaction",
+                  "api-reference/openapi.json post /api/faceRecognition/matchmaker/getFaceMatchingConfig",
+                  "api-reference/openapi.json post /api/faceRecognition/matchmaker/getFaceMatchmaker",
+                  "api-reference/openapi.json post /api/faceRecognition/matchmaker/updateFaceMatchingConfig",
+                  "api-reference/openapi.json post /api/faceRecognition/matchmaker/uploadFaceMatchmakers"
+                ]
+              },
+              {
+                "group": "Face Recognition Person",
+                "pages": [
+                  "api-reference/openapi.json post /api/faceRecognition/person/addPersonLabel",
+                  "api-reference/openapi.json post /api/faceRecognition/person/createPerson",
+                  "api-reference/openapi.json post /api/faceRecognition/person/deletePerson",
+                  "api-reference/openapi.json post /api/faceRecognition/person/findPeopleByOrg",
+                  "api-reference/openapi.json post /api/faceRecognition/person/findPersonLabelsByOrg",
+                  "api-reference/openapi.json post /api/faceRecognition/person/getPerson",
+                  "api-reference/openapi.json post /api/faceRecognition/person/removePersonLabel",
+                  "api-reference/openapi.json post /api/faceRecognition/person/updatePerson"
+                ]
+              }
+            ]
+          },
+          {
+            "product": "Integrations",
+            "description": "Third-party integrations and webhook management",
+            "icon": "plug",
+            "groups": [
+              {
+                "group": "OAuth",
+                "pages": [
+                  "api-reference/openapi.json get /api/oauth/authorize",
+                  "api-reference/openapi.json post /api/oauth/deleteApplication",
+                  "api-reference/openapi.json post /api/oauth/getAllApplicationsForOrg",
+                  "api-reference/openapi.json post /api/oauth/getApplicationByClientId",
+                  "api-reference/openapi.json post /api/oauth/submitApplication",
+                  "api-reference/openapi.json post /api/oauth/updateApplication"
+                ]
+              },
+              {
+                "group": "Access Control Integrations",
+                "pages": [
+                  {
+                    "group": "Get & Find",
+                    "pages": [
+                      "api-reference/openapi.json post /api/integrations/accessControl/getAmtReaders",
+                      "api-reference/openapi.json post /api/integrations/accessControl/getAvigilonAltaIntegration",
+                      "api-reference/openapi.json post /api/integrations/accessControl/getBrivoDoors",
+                      "api-reference/openapi.json post /api/integrations/accessControl/getBrivoDoorsV2",
+                      "api-reference/openapi.json post /api/integrations/accessControl/getBrivoDoorsV3",
+                      "api-reference/openapi.json post /api/integrations/accessControl/getBrivoIntegrationV2"
                     ]
                   },
                   {
@@ -1754,7 +2500,7 @@
             ]
           }
         ]
-      }
+      
     ]
   },
   "logo": {
