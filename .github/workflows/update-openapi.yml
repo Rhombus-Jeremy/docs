@@ -80,35 +80,17 @@ jobs:
           # Remove backup if successful
           rm -f api-reference/openapi.json.backup
 
-      - name: Split OpenAPI spec
-        continue-on-error: true
-        run: |
-          echo "🔪 Splitting OpenAPI spec into smaller files..."
-          if [ -f "scripts/split-openapi.sh" ]; then
-            bash scripts/split-openapi.sh
-            echo "✅ OpenAPI spec split complete"
-          else
-            echo "⚠️  Warning: split-openapi.sh not found, skipping split"
-          fi
-
       - name: Check for changes
         id: check-changes
         run: |
-          # Check if any files in api-reference changed
-          if git diff --quiet api-reference/; then
-            echo "No changes detected in OpenAPI spec or split files"
+          # Check if OpenAPI spec changed
+          if git diff --quiet api-reference/openapi.json; then
+            echo "No changes detected in OpenAPI spec"
             echo "changes=false" >> $GITHUB_OUTPUT
           else
-            echo "Changes detected in OpenAPI spec and/or split files"
+            echo "Changes detected in OpenAPI spec"
             echo "changes=true" >> $GITHUB_OUTPUT
-
-            # Show what changed
-            echo "📝 Changed files:"
-            git diff --name-only api-reference/ | head -20
-
-            # Count changed files
-            CHANGED_COUNT=$(git diff --name-only api-reference/ | wc -l)
-            echo "changed_count=$CHANGED_COUNT" >> $GITHUB_OUTPUT
+            echo "changed_count=1" >> $GITHUB_OUTPUT
           fi
 
       - name: Commit and push changes
@@ -166,8 +148,7 @@ jobs:
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "## Sample of Changed Files" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
-            # Show files from this run (not comparing to HEAD~1)
-            git diff --name-only HEAD api-reference/ 2>/dev/null | head -30 >> $GITHUB_STEP_SUMMARY || echo "Multiple files updated in api-reference/" >> $GITHUB_STEP_SUMMARY
+            echo "api-reference/openapi.json" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
           else
             echo "ℹ️ **Status**: No changes detected" >> $GITHUB_STEP_SUMMARY

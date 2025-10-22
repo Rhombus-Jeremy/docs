@@ -30,11 +30,8 @@ mint broken-links
 
 ### Scripts
 ```bash
-# Update OpenAPI spec from Rhombus API (includes automatic split)
+# Update OpenAPI spec from Rhombus API
 ./scripts/update-openapi.sh
-
-# Split OpenAPI spec into smaller category files
-./scripts/split-openapi.sh
 
 # Update AI assistant context files (llms.txt and llms-full.txt)
 python3 scripts/update-llms-files.py
@@ -57,19 +54,9 @@ docs/
 │   └── zapier.mdx             # Zapier integration
 ├── api-reference/              # API documentation
 │   ├── openapi.json            # Full OpenAPI spec (auto-updated nightly)
-│   ├── openapi-split/          # Split specs by category for AI processing
-│   │   ├── _base.json         # Base OpenAPI config
-│   │   ├── _index.json        # Category index
-│   │   ├── *.json             # Category-specific endpoint files
-│   │   └── schemas/           # Schema definitions per category
-│   └── endpoint/               # Auto-generated MDX endpoint docs
-│       ├── access-control/
-│       ├── camera/
-│       ├── climate/
-│       └── [other categories]/
+│   └── endpoint/               # (Empty - kept for future custom docs)
 ├── scripts/                    # Automation scripts
-│   ├── update-openapi.sh      # Fetch & update OpenAPI spec
-│   └── split-openapi.sh       # Split spec into category files
+│   └── update-openapi.sh       # Fetch & update OpenAPI spec
 ├── .github/workflows/          # GitHub Actions
 │   └── update-openapi.yml     # Nightly OpenAPI spec updates
 └── .windsurf/                 # Windsurf IDE rules
@@ -94,8 +81,9 @@ docs/
 
 ### Automated Workflows
 - **OpenAPI Updates**: GitHub Action runs nightly at 2 AM UTC (`.github/workflows/update-openapi.yml`)
-  - Workflow: Fetches spec → Validates JSON → Commits if changed → Splits into category files
-  - Manual: Run `./scripts/update-openapi.sh` (includes validation and splitting)
+  - Workflow: Fetches spec → Validates JSON → Commits if changed
+  - Manual: Run `./scripts/update-openapi.sh`
+  - Note: All 846+ endpoints are rendered directly from openapi.json via Mintlify
 - **LLMs Context Updates**: GitHub Action runs nightly at 3 AM UTC (`.github/workflows/update-llms-files.yml`)
   - Workflow: Analyzes structure → Generates llms.txt & llms-full.txt → Commits if changed
   - Manual: Run `python3 scripts/update-llms-files.py`
@@ -135,18 +123,14 @@ Reference the comprehensive rules in `docs/.windsurf/rules.md` for detailed writ
 ### OpenAPI Specification
 - **Source**: `https://api2.rhombussystems.com/api/openapi/public.json`
 - **Full spec**: `docs/api-reference/openapi.json` (updated nightly)
-- **Split specs**: `docs/api-reference/openapi-split/` (for AI/human review)
 - **Base URL**: `https://api2.rhombussystems.com`
 - **Authentication**: All endpoints require `x-auth-apikey` header
+- **Rendering**: All 846+ endpoints are rendered directly from openapi.json via Mintlify's native OpenAPI support
 
-### Split OpenAPI Architecture
-The large OpenAPI spec is split into smaller files for easier AI processing:
-- `_base.json`: Core OpenAPI configuration (info, servers, security)
-- `_index.json`: Summary of categories and endpoint counts
-- Category files (e.g., `camera.json`, `access-control.json`): Endpoints grouped by service
-- `schemas/`: Directory with schema definitions per category
-
-**When analyzing API functionality**: Check `_index.json` to find the category, then reference the specific category file and its schema file.
+### Navigation Structure
+- Navigation in `docs.json` uses direct OpenAPI references: `"api-reference/openapi.json post /api/endpoint/path"`
+- No individual MDX files per endpoint - all generated from OpenAPI spec
+- Endpoint documentation updates automatically when openapi.json is updated
 
 ## Deployment
 
@@ -156,9 +140,10 @@ Mintlify sites deploy automatically when changes are pushed to the default branc
 
 ### Working with the Codebase
 - **No package.json**: This is a Mintlify project without npm dependencies - use global `mint` CLI
-- **Large config file**: `docs.json` is 26,633 tokens - avoid reading entire file; use grep/offset for specific sections
-- **Auto-generated endpoints**: Files in `api-reference/endpoint/` are generated - don't edit directly
+- **Large config file**: `docs.json` is ~1800 lines - avoid reading entire file; use grep/offset for specific sections
+- **OpenAPI-driven endpoints**: All API endpoints rendered directly from `openapi.json` - no individual MDX files
 - **Manual docs**: Edit files in root docs/ and subdirectories (implementations/, low-code-no-code/, etc.)
+- **Empty endpoint directory**: `api-reference/endpoint/` exists but is empty, kept for future custom endpoint docs
 
 ### Testing & Validation
 - Always test locally with `mint dev` before committing
