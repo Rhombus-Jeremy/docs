@@ -68,6 +68,7 @@
         "groups": [
           {
             "group": "Core Services",
+            "expanded": false,
             "pages": [
               {
                 "group": "Access Control",
