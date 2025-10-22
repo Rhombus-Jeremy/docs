@@ -38,6 +38,12 @@
             "pages": [
               "low-code-no-code/zapier"
             ]
+          },
+          {
+            "group": "Updates",
+            "pages": [
+              "changelog"
+            ]
           }
         ]
       },
