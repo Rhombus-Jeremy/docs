@@ -1,0 +1,96 @@
+name: Update LLMs Context Files
+
+on:
+  schedule:
+    # Run daily at 3 AM UTC (after OpenAPI updates at 2 AM)
+    - cron: '0 3 * * *'
+  workflow_dispatch: # Allow manual triggering
+  push:
+    paths:
+      - 'docs/docs.json'
+      - 'docs/api-reference/**'
+      - 'docs/implementations/**'
+      - 'docs/.github/workflows/update-llms-files.yml'
+      - 'docs/scripts/update-llms-files.py'
+
+jobs:
+  update-llms-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0  # Fetch full history for better context
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate LLMs context files
+        run: |
+          cd docs
+          echo "📊 Analyzing project structure..."
+          python3 scripts/update-llms-files.py
+
+      - name: Check for changes
+        id: check-changes
+        run: |
+          cd docs
+          if git diff --quiet llms.txt llms-full.txt; then
+            echo "No changes detected in LLMs context files"
+            echo "changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changes detected in LLMs context files"
+            echo "changes=true" >> $GITHUB_OUTPUT
+
+            # Show what changed
+            echo "📝 Changes in llms.txt:"
+            git diff --stat llms.txt || echo "  (new file)"
+            echo ""
+            echo "📝 Changes in llms-full.txt:"
+            git diff --stat llms-full.txt || echo "  (new file)"
+          fi
+
+      - name: Commit and push changes
+        if: steps.check-changes.outputs.changes == 'true'
+        run: |
+          cd docs
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add llms.txt llms-full.txt
+          git commit -m "chore: update LLMs context files ($(date -u +%Y-%m-%d))" -m "Automated update of AI assistant context files based on current project structure and configuration."
+          git push
+
+      - name: Create summary
+        run: |
+          cd docs
+          echo "# LLMs Context Files Update" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ steps.check-changes.outputs.changes }}" == "true" ]; then
+            echo "✅ **Status**: Files updated successfully" >> $GITHUB_STEP_SUMMARY
+            echo "📅 **Updated on**: $(date -u)" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "## Files Updated" >> $GITHUB_STEP_SUMMARY
+            echo "- \`llms.txt\` - Concise project context" >> $GITHUB_STEP_SUMMARY
+            echo "- \`llms-full.txt\` - Comprehensive project reference" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "## Changes" >> $GITHUB_STEP_SUMMARY
+            echo '```diff' >> $GITHUB_STEP_SUMMARY
+            git diff HEAD~1 llms.txt | head -50 >> $GITHUB_STEP_SUMMARY || echo "New file created" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ **Status**: No changes needed" >> $GITHUB_STEP_SUMMARY
+            echo "📅 **Checked on**: $(date -u)" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Files are already up to date with current project structure." >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Context Files Purpose" >> $GITHUB_STEP_SUMMARY
+          echo "These files provide structured context about the project for AI assistants:" >> $GITHUB_STEP_SUMMARY
+          echo "- **llms.txt**: Quick overview for fast context loading" >> $GITHUB_STEP_SUMMARY
+          echo "- **llms-full.txt**: Detailed reference with examples and best practices" >> $GITHUB_STEP_SUMMARY

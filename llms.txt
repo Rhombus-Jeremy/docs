@@ -7,7 +7,7 @@ This is a Mintlify documentation site for Rhombus security platform API document
 **Platform**: Mintlify documentation framework
 **Purpose**: Developer documentation for Rhombus REST API
 **Target Audience**: Developers building integrations with Rhombus security platform
-**API Coverage**: 846+ endpoints across cameras, access control, environmental monitoring, events, and integrations
+**API Coverage**: 207+ endpoints across cameras, access control, environmental monitoring, events, and integrations
 
 ## Key Features
 
@@ -27,16 +27,16 @@ This is a Mintlify documentation site for Rhombus security platform API document
 ├── development.mdx          # Local development setup
 ├── api-reference/           # API documentation
 │   ├── README.md           # API reference overview
-│   ├── openapi.json        # Rhombus OpenAPI spec (846 endpoints)
+│   ├── openapi.json        # Rhombus OpenAPI spec (207 endpoints)
 │   └── endpoint/           # Generated endpoint documentation
-├── essentials/             # Mintlify usage guides
+├── implementations/         # Implementation examples
 ├── scripts/                # Automation scripts
 └── .github/workflows/      # CI/CD automation
 ```
 
 ### Navigation Structure
-- **Guides Tab**: Getting started, customization, writing content
-- **API Reference Tab**: Core services, events & monitoring, integrations
+- **Guides Tab**: Getting started, Implementation Examples, Low Code / No Code
+- **API reference Tab**: Core Services, Events & Monitoring, Integrations, Organization & Management, Security & Access, Media & Video, Automation & Rules, Device Management, Data & Reporting, Developer & System, Other Services
 
 ## Technical Implementation
 
@@ -88,21 +88,21 @@ icon: "icon-name"          # Optional
 ## API Categories
 
 ### Core Services
-- **Access Control**: User management, credentials, door control (66 endpoints)
-- **Camera**: Video streaming, recordings, configuration (67 endpoints)
-- **Climate**: Environmental monitoring, sensor data (12 endpoints)
-- **Door**: Door sensors and events (4 endpoints)
-- **User**: User management and notifications (11 endpoints)
+- **Access Control**: 62 endpoints
+- **Access Control Integrations**: 75 endpoints
+- **Camera**: 61 endpoints
+- **Climate**: 12 endpoints
+- **Component**: 58 endpoints
 
 ### Events & Monitoring
-- **Alert Monitoring**: Threat detection and response (9 endpoints)
-- **Event**: Security events, clips, policy alerts (31 endpoints)
-- **Face Recognition**: Person identification and matching (20 endpoints)
-- **Occupancy**: Space utilization monitoring (4 endpoints)
+- **Alert Monitoring**: 9 endpoints
+- **Event**: 42 endpoints
+- **Event Search**: 2 endpoints
+- **Events**: 2 endpoints
 
 ### Integrations
-- **Access Control Integrations**: Third-party system integration (50+ endpoints)
-- **Alarm Monitoring**: Security system integration (10 endpoints)
+- **Access Control Integrations**: 75 endpoints
+- **Incident Management Integrations**: 34 endpoints
 
 ## Branding & Theme
 
