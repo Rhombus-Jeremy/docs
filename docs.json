@@ -15,7 +15,12 @@
           "anchor": "Postman Collection",
           "icon": "book-open-cover",
           "href": "https://docs.rhombus.com"
-        }
+        },
+        {
+          "anchor": "Status Page",
+          "icon": "Server",
+          "href": "https://status.rhombus.com"
+        } 
       ]
     },
     "tabs": [
