@@ -1463,6 +1463,148 @@
         }
       }
     },
+    "Report_GetCustomLLMNumericWSResponse": {
+      "type": "object",
+      "description": "Response object for custom LLM numeric reports.",
+      "nullable": true,
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "reports": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "description": "Map of numeric count reports",
+            "items": {
+              "$ref": "#/components/schemas/NumericAggregationValue"
+            },
+            "nullable": true
+          },
+          "description": "Map of numeric count reports",
+          "nullable": true
+        }
+      }
+    },
+    "Report_GetCustomLLMReportWSRequest": {
+      "type": "object",
+      "description": "Request object for custom LLM reports.",
+      "properties": {
+        "deviceFacetUuids": {
+          "type": "array",
+          "description": "Uuids of the selected devices",
+          "items": {
+            "type": "string",
+            "format": "DeviceFacetUuid",
+            "description": "RUUID with optional appended facet information",
+            "example": "AAAAAAAAAAAAAAAAAAAAAA.v0",
+            "nullable": true
+          },
+          "nullable": true,
+          "uniqueItems": true
+        },
+        "endTimeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The end timestamp (in Unix epoch milliseconds) of the selected interval",
+          "example": 1640998800000,
+          "nullable": true
+        },
+        "locationUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "promptUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "startTimeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The start timestamp (in Unix epoch milliseconds) of the selected interval",
+          "example": 1640995200000,
+          "nullable": true
+        }
+      }
+    },
+    "Report_GetCustomLLMWBinaryWSResponse": {
+      "type": "object",
+      "description": "Response object for custom LLM binary reports.",
+      "properties": {
+        "error": {
+          "type": "boolean",
+          "nullable": true
+        },
+        "errorMsg": {
+          "type": "string",
+          "nullable": true
+        },
+        "reports": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "description": "Map of binary count reports",
+            "items": {
+              "$ref": "#/components/schemas/BinaryAggregationValue"
+            },
+            "nullable": true
+          },
+          "description": "Map of binary count reports",
+          "nullable": true
+        }
+      }
+    },
+    "Report_GetCustomLLMWSRequest": {
+      "type": "object",
+      "description": "Request object for custom LLM reports.",
+      "properties": {
+        "endTimeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The end timestamp (in Unix epoch milliseconds) of the selected interval",
+          "example": 1640998800000,
+          "nullable": true
+        },
+        "interval": {
+          "type": "string",
+          "description": "The interval defines the granularity at which the results will be reported",
+          "enum": [
+            "MINUTELY",
+            "QUARTERHOURLY",
+            "HOURLY",
+            "DAILY",
+            "WEEKLY",
+            "MONTHLY"
+          ],
+          "nullable": true
+        },
+        "promptUuid": {
+          "type": "string",
+          "format": "RUUID",
+          "description": "base 64 (url-safe) uuid string",
+          "example": "AAAAAAAAAAAAAAAAAAAAAA",
+          "nullable": true
+        },
+        "startTimeMs": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The start timestamp (in Unix epoch milliseconds) of the selected interval",
+          "example": 1640995200000,
+          "nullable": true
+        }
+      }
+    },
     "Report_GetDiagnosticFeedWSRequest": {
       "type": "object",
       "description": "Request object for getting diagnostic feed.",
@@ -2275,5 +2417,5 @@
       }
     }
   },
-  "schemaCount": 46
+  "schemaCount": 50
 }

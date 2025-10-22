@@ -183,6 +183,114 @@
         ]
       }
     },
+    "/api/report/getCustomEventsBinaryCounts": {
+      "post": {
+        "description": "Retrieves aggregated counts of boolean event values (true/false) produced by a selected prompt over a specified time window.\n\nScope & filters:\n\t•\tpromptUuid – The prompt to aggregate (required).\n\nTime window & interval:\n\t•\tA time range (startTimeMs → endTimeMs, epoch ms) is required and is used exactly as provided.\n\t•\tIf an interval is supplied (e.g., MINUTELY, QUARTERHOURLY, HOURLY), events are bucketed at that granularity.\n\t•\tAggregation is always performed in the device’s local timezone. Buckets are computed relative to each device’s timezone, then evaluated within the exact provided window.\n\nResponse:\n\t•\tPer interval bucket, returns a BinaryAggregationValue with counts for true and false.\n\t•\tIncludes minValueTimestampMs and maxValueTimestampMs (if available) and the bucket timestamp from BaseReportValue.\n\nNotes:\n\t•\tOnly binary/boolean prompt types are valid for this endpoint.\n",
+        "operationId": "getCustomEventsBinaryCounts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Report_GetCustomLLMWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Report_GetCustomLLMWBinaryWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get custom events aggregation binary counts",
+        "tags": [
+          "Report Webservice"
+        ]
+      }
+    },
+    "/api/report/getCustomEventsNumericCounts": {
+      "post": {
+        "description": "Retrieves aggregated statistics for numeric events event values produced by a selected prompt over a specified time window.\nScope & filters:\n\t•\tpromptUuid – The prompt to aggregate (required).\n\nTime window & interval:\n\t•\tA time range (startTimeMs → endTimeMs, epoch ms) is required and is used exactly as provided.\n\t•\tIf an interval is supplied (e.g., MINUTELY, QUARTERHOURLY, HOURLY), events are bucketed at that granularity.\n\t•\tAggregation is always performed in the device’s local timezone. Buckets are computed relative to each device’s timezone, then evaluated within the exact provided window.\n\nResponse:\n\t•\tPer interval bucket, returns numeric aggregates derived from raw values: count, sum, min, max, average.\n\t•\tIncludes minValueTimestampMs and maxValueTimestampMs indicating when min/max occurred within the bucket (if available).\n\t•\tBucket timestamps are returned as epoch ms.\n\nNotes:\n\t•\tOnly numeric prompt types are valid for this endpoint.\n",
+        "operationId": "getCustomEventsNumericCounts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Report_GetCustomLLMWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Report_GetCustomLLMNumericWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get custom events aggregation numeric counts",
+        "tags": [
+          "Report Webservice"
+        ]
+      }
+    },
+    "/api/report/getCustomEventsReport": {
+      "post": {
+        "description": "Retrieves a custom events report containing raw time-series event values recorded by selected prompts and devices within the specified time window.\nThe report can be filtered by:\n\t•\tpromptUuid – The specific prompt to query.\n\t•\tdeviceFacetUuids – A set of devices to include.\n\t•\tlocationUuid – The location context for the query.\nFor example, a request may specify a promptUuid to fetch results from a certain LLM prompt, and additionally restrict results to only devices in a given locationUuid.\nThe time range (startTimeMs → endTimeMs) is required and determines the interval of events returned.\nThe response includes, per device and prompt, the raw event values (numeric or boolean as string) along with timestamps, check-condition results (if selected), and prompt type.",
+        "operationId": "getCustomEventsReport",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XAuthSchemeParam"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Report_GetCustomLLMReportWSRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Report_GetCustomLLMNumericWSResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "summary": "Get custom events report",
+        "tags": [
+          "Report Webservice"
+        ]
+      }
+    },
     "/api/report/getDiagnosticFeed": {
       "post": {
         "description": "Get the latest diagnostic logs for organization",
@@ -905,6 +1013,24 @@
       ]
     },
     {
+      "path": "/api/report/getCustomEventsBinaryCounts",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/report/getCustomEventsNumericCounts",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "path": "/api/report/getCustomEventsReport",
+      "methods": [
+        "post"
+      ]
+    },
+    {
       "path": "/api/report/getDiagnosticFeed",
       "methods": [
         "post"
@@ -1019,7 +1145,7 @@
       ]
     }
   ],
-  "endpointCount": 24,
+  "endpointCount": 27,
   "referencedSchemas": [
     "Integration_GetEnvoyDeliveriesWSRequest",
     "Integration_GetEnvoyDeliveriesWSResponse",
@@ -1043,6 +1169,10 @@
     "Report_GetCountReportsForDevicesAtLocationWSRequest",
     "Report_GetCountReportsWSRequest",
     "Report_GetCountReportsWSResponse",
+    "Report_GetCustomLLMNumericWSResponse",
+    "Report_GetCustomLLMReportWSRequest",
+    "Report_GetCustomLLMWBinaryWSResponse",
+    "Report_GetCustomLLMWSRequest",
     "Report_GetDiagnosticFeedWSRequest",
     "Report_GetDiagnosticFeedWSResponse",
     "Report_GetLicensePlatesByDeviceWSRequest",

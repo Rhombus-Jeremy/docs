@@ -23759,6 +23759,102 @@
         "tags" : [ "Report Webservice" ]
       }
     },
+    "/api/report/getCustomEventsBinaryCounts" : {
+      "post" : {
+        "description" : "Retrieves aggregated counts of boolean event values (true/false) produced by a selected prompt over a specified time window.\n\nScope & filters:\n\t•\tpromptUuid – The prompt to aggregate (required).\n\nTime window & interval:\n\t•\tA time range (startTimeMs → endTimeMs, epoch ms) is required and is used exactly as provided.\n\t•\tIf an interval is supplied (e.g., MINUTELY, QUARTERHOURLY, HOURLY), events are bucketed at that granularity.\n\t•\tAggregation is always performed in the device’s local timezone. Buckets are computed relative to each device’s timezone, then evaluated within the exact provided window.\n\nResponse:\n\t•\tPer interval bucket, returns a BinaryAggregationValue with counts for true and false.\n\t•\tIncludes minValueTimestampMs and maxValueTimestampMs (if available) and the bucket timestamp from BaseReportValue.\n\nNotes:\n\t•\tOnly binary/boolean prompt types are valid for this endpoint.\n",
+        "operationId" : "getCustomEventsBinaryCounts",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/XAuthSchemeParam"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Report_GetCustomLLMWSRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Report_GetCustomLLMWBinaryWSResponse"
+                }
+              }
+            },
+            "description" : "OK"
+          }
+        },
+        "summary" : "Get custom events aggregation binary counts",
+        "tags" : [ "Report Webservice" ]
+      }
+    },
+    "/api/report/getCustomEventsNumericCounts" : {
+      "post" : {
+        "description" : "Retrieves aggregated statistics for numeric events event values produced by a selected prompt over a specified time window.\nScope & filters:\n\t•\tpromptUuid – The prompt to aggregate (required).\n\nTime window & interval:\n\t•\tA time range (startTimeMs → endTimeMs, epoch ms) is required and is used exactly as provided.\n\t•\tIf an interval is supplied (e.g., MINUTELY, QUARTERHOURLY, HOURLY), events are bucketed at that granularity.\n\t•\tAggregation is always performed in the device’s local timezone. Buckets are computed relative to each device’s timezone, then evaluated within the exact provided window.\n\nResponse:\n\t•\tPer interval bucket, returns numeric aggregates derived from raw values: count, sum, min, max, average.\n\t•\tIncludes minValueTimestampMs and maxValueTimestampMs indicating when min/max occurred within the bucket (if available).\n\t•\tBucket timestamps are returned as epoch ms.\n\nNotes:\n\t•\tOnly numeric prompt types are valid for this endpoint.\n",
+        "operationId" : "getCustomEventsNumericCounts",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/XAuthSchemeParam"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Report_GetCustomLLMWSRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Report_GetCustomLLMNumericWSResponse"
+                }
+              }
+            },
+            "description" : "OK"
+          }
+        },
+        "summary" : "Get custom events aggregation numeric counts",
+        "tags" : [ "Report Webservice" ]
+      }
+    },
+    "/api/report/getCustomEventsReport" : {
+      "post" : {
+        "description" : "Retrieves a custom events report containing raw time-series event values recorded by selected prompts and devices within the specified time window.\nThe report can be filtered by:\n\t•\tpromptUuid – The specific prompt to query.\n\t•\tdeviceFacetUuids – A set of devices to include.\n\t•\tlocationUuid – The location context for the query.\nFor example, a request may specify a promptUuid to fetch results from a certain LLM prompt, and additionally restrict results to only devices in a given locationUuid.\nThe time range (startTimeMs → endTimeMs) is required and determines the interval of events returned.\nThe response includes, per device and prompt, the raw event values (numeric or boolean as string) along with timestamps, check-condition results (if selected), and prompt type.",
+        "operationId" : "getCustomEventsReport",
+        "parameters" : [ {
+          "$ref" : "#/components/parameters/XAuthSchemeParam"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Report_GetCustomLLMReportWSRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Report_GetCustomLLMNumericWSResponse"
+                }
+              }
+            },
+            "description" : "OK"
+          }
+        },
+        "summary" : "Get custom events report",
+        "tags" : [ "Report Webservice" ]
+      }
+    },
     "/api/report/getDiagnosticFeed" : {
       "post" : {
         "description" : "Get the latest diagnostic logs for organization",
@@ -39977,6 +40073,36 @@
           }
         }
       },
+      "Billing_CreateCheckoutSessionWSRequest" : {
+        "type" : "object",
+        "properties" : {
+          "invoiceId" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        }
+      },
+      "Billing_CreateCheckoutSessionWSResponse" : {
+        "type" : "object",
+        "properties" : {
+          "error" : {
+            "type" : "boolean",
+            "nullable" : true
+          },
+          "errorMsg" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "sessionId" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "sessionUrl" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        }
+      },
       "Billing_CreateSubscriptionWSRequest" : {
         "type" : "object",
         "properties" : {
@@ -40042,6 +40168,131 @@
           },
           "removed" : {
             "type" : "boolean",
+            "nullable" : true
+          }
+        }
+      },
+      "Billing_GetInvoicesWSRequest" : {
+        "type" : "object",
+        "properties" : {
+          "limit" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "startingAfter" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "status" : {
+            "type" : "string",
+            "enum" : [ "DRAFT", "OPEN", "PAID", "UNCOLLECTIBLE", "VOID", "ALL" ],
+            "nullable" : true
+          },
+          "subscriptionId" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        }
+      },
+      "Billing_GetInvoicesWSResponse" : {
+        "type" : "object",
+        "properties" : {
+          "error" : {
+            "type" : "boolean",
+            "nullable" : true
+          },
+          "errorMsg" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "hasMore" : {
+            "type" : "boolean",
+            "nullable" : true
+          },
+          "invoices" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Billing_GetInvoicesWSResponse_Invoice"
+            },
+            "nullable" : true
+          }
+        }
+      },
+      "Billing_GetInvoicesWSResponse_Invoice" : {
+        "type" : "object",
+        "properties" : {
+          "amountDue" : {
+            "type" : "integer",
+            "format" : "int64",
+            "nullable" : true
+          },
+          "amountPaid" : {
+            "type" : "integer",
+            "format" : "int64",
+            "nullable" : true
+          },
+          "created" : {
+            "type" : "integer",
+            "format" : "int64",
+            "nullable" : true
+          },
+          "currency" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "description" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "dueDate" : {
+            "type" : "integer",
+            "format" : "int64",
+            "nullable" : true
+          },
+          "hostedInvoiceUrl" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "id" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "invoicePdf" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "number" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "periodEnd" : {
+            "type" : "integer",
+            "format" : "int64",
+            "nullable" : true
+          },
+          "periodStart" : {
+            "type" : "integer",
+            "format" : "int64",
+            "nullable" : true
+          },
+          "status" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "subtotal" : {
+            "type" : "integer",
+            "format" : "int64",
+            "nullable" : true
+          },
+          "tax" : {
+            "type" : "integer",
+            "format" : "int64",
+            "nullable" : true
+          },
+          "total" : {
+            "type" : "integer",
+            "format" : "int64",
             "nullable" : true
           }
         }
