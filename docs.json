@@ -931,7 +931,7 @@
                   "api-reference/openapi.json post /api/customer/deleteNotificationSnoozeSettingForDevice",
                   "api-reference/openapi.json post /api/customer/deleteNotificationSnoozeSettingForLocation",
                   "api-reference/openapi.json post /api/customer/getUserSnoozedNotificationSettings",
-                  "api-reference/endpoint/customer/customer-updatecurrentusernotificationsettings"
+                  "api-reference/openapi.json post /api/customer/updateCurrentUserNotificationSettings"
                 ]
               },
               {
@@ -1608,10 +1608,10 @@
                       "api-reference/openapi.json post /api/report/getCountReportsForDevicesAtLocation",
                       "api-reference/openapi.json post /api/report/getCountReportV2",
                       "api-reference/openapi.json post /api/report/getDiagnosticFeed",
-                      "api-reference/endpoint/report/report-getenvoydeliveries",
-                      "api-reference/endpoint/report/report-getenvoyemployees",
-                      "api-reference/endpoint/report/report-getenvoylocations",
-                      "api-reference/endpoint/report/report-getenvoyvisitors",
+                      "api-reference/openapi.json post /api/report/getEnvoyDeliveries",
+                      "api-reference/openapi.json post /api/report/getEnvoyEmployees",
+                      "api-reference/openapi.json post /api/report/getEnvoyLocations",
+                      "api-reference/openapi.json post /api/report/getEnvoyVisitors",
                       "api-reference/openapi.json post /api/report/getIntegrationDiagnosticEvents",
                       "api-reference/openapi.json post /api/report/getLicensePlatesByDevice",
                       "api-reference/openapi.json post /api/report/getMostRecentPeopleCountEvents",

@@ -50,15 +50,6 @@ if curl -s "$API_URL" > "$OUTPUT_FILE"; then
         
         # Remove backup if successful
         rm -f "$OUTPUT_FILE.backup"
-
-        # Split the OpenAPI spec into smaller files
-        echo ""
-        echo "🔪 Splitting OpenAPI spec into smaller files..."
-        if [ -f "$BASE_DIR/scripts/split-openapi.sh" ]; then
-            bash "$BASE_DIR/scripts/split-openapi.sh"
-        else
-            echo "⚠️  Warning: split-openapi.sh not found, skipping split"
-        fi
     else
         echo "❌ Downloaded spec is not valid JSON, restoring backup"
         if [ -f "$OUTPUT_FILE.backup" ]; then
