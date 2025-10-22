@@ -42,6 +42,7 @@
                 "icon": "video",
                 "expanded": true,
                 "pages": [
+                  "implementations/streaming-video",
                   "implementations/video-player",
                   "implementations/advanced-implementation"
                 ]
