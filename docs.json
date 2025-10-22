@@ -25,6 +25,8 @@
             "pages": [
               {
                 "group": "Video Player",
+                "icon": "video",
+                "expanded": true,
                 "pages": [
                   "implementations/video-player",
                   "implementations/advanced-implementation"
@@ -55,6 +57,7 @@
             "pages": [
               {
                 "group": "Access Control",
+                "expanded": false,
                 "pages": [
                   {
                     "group": "Create & Add",
@@ -1745,11 +1748,6 @@
           "anchor": "Postman Collection",
           "href": "https://docs.rhombus.com",
           "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Website",
-          "href": "https://rhombus.com",
-          "icon": "newspaper"
         }
       ]
     }
@@ -1785,9 +1783,11 @@
   },
   "footer": {
     "socials": {
+      "website": "https://rhmbs.link/dev_utm",
       "x": "https://x.com/RhombusDEV",
       "github": "https://github.com/RhombusSystems",
-      "linkedin": "https://www.linkedin.com/showcase/rhombus-developers/"
+      "linkedin": "https://www.linkedin.com/showcase/rhombus-developers/",
+      "youtube": "https://www.youtube.com/@RhombusDEV"
     }
   }
 }
