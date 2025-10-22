@@ -2,31 +2,21 @@
 title: "Start Here"
 description: "Welcome to the Rhombus developer documentation - Build with our API-first security platform"
 icon: "rocket"
-keywords: ["api", "developer", "documentation", "rhombus", "security", "platform"]
+keywords: ["api","developer","documentation","rhombus","security","platform"]
 ---
 
-# Welcome to Rhombus
 
 <Info>
-**API-First Architecture**
+  **API-First Architecture**
 
-Founded in 2016, Rhombus was built on a foundation of **API-driven micro-services**. Everything our system can do can also be done via the Rhombus API - the same endpoints power our mobile apps, web console, and even firmware.
+  Founded in 2016, Rhombus was built on a foundation of **API-driven micro-services**. Everything our system can do can also be done via the Rhombus API - the same endpoints power our mobile apps, web console, and even firmware.
 </Info>
 
 Welcome to the comprehensive developer documentation for Rhombus. Here you'll discover how to integrate with our security platform and build powerful applications using our robust API ecosystem.
 
 ## Getting Started with Rhombus
 
-<iframe
-  width="100%"
-  height="400"
-  src="https://www.youtube.com/embed/7CbqXlYp3YU"
-  title="Rhombus API Introduction"
-  frameBorder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowFullScreen
-  style={{ borderRadius: '8px' }}
-/>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/7CbqXlYp3YU" title="Rhombus API Introduction" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ borderRadius:"8px" }} />
 
 ## Why Choose Rhombus API?
 
@@ -34,15 +24,12 @@ Welcome to the comprehensive developer documentation for Rhombus. Here you'll di
   <Card title="API-First Design" icon="building">
     Every feature is API-accessible from day one. Our internal tools use the same APIs you'll integrate with.
   </Card>
-
   <Card title="OpenAPI 3.0 Specification" icon="file-code">
     Human and machine-readable specifications with client library support for most programming languages.
   </Card>
-
   <Card title="Enterprise Security" icon="shield-check">
     Certificate-based and token-based authentication options with comprehensive security features.
   </Card>
-
   <Card title="JSON over HTTPS" icon="bolt">
     Simple, standardized communication using JSON payloads over secure HTTPS POST requests.
   </Card>
@@ -51,19 +38,10 @@ Welcome to the comprehensive developer documentation for Rhombus. Here you'll di
 ## What's Available
 
 <CardGroup cols={2}>
-  <Card
-    title="API Reference"
-    icon="book"
-    href="/api-reference/endpoint/access-control/accesscontrol-adduserstoaccesscontrolgroup"
-  >
+  <Card title="API Reference" icon="book" href="/api-reference/endpoint/access-control/accesscontrol-adduserstoaccesscontrolgroup">
     Complete API documentation with endpoints, parameters, and examples
   </Card>
-
-  <Card
-    title="OpenAPI Specification"
-    icon="code"
-    href="https://api2.rhombussystems.com/api/openapi/public.json"
-  >
+  <Card title="OpenAPI Specification" icon="code" href="https://api2.rhombussystems.com/api/openapi/public.json">
     Download our machine-readable API specification for code generation
   </Card>
 </CardGroup>
@@ -85,11 +63,10 @@ Welcome to the comprehensive developer documentation for Rhombus. Here you'll di
         // Your request data
       })
     });
-
+    
     const data = await response.json();
     ```
   </Tab>
-
   <Tab title="Generated SDKs">
     ```bash Generate Client Libraries
     # Generate client libraries using OpenAPI Generator
@@ -97,11 +74,10 @@ Welcome to the comprehensive developer documentation for Rhombus. Here you'll di
       -i https://api2.rhombussystems.com/api/openapi/public.json \
       -g python \
       -o ./rhombus-python-client
-
+    
     # Or use other generators: java, csharp, go, php, etc.
     ```
   </Tab>
-
   <Tab title="cURL Examples">
     ```bash cURL
     # Basic API request with token authentication
@@ -121,15 +97,12 @@ Welcome to the comprehensive developer documentation for Rhombus. Here you'll di
   <Step title="Get Your API Credentials">
     Navigate to the [Rhombus Console](https://console.rhombussystems.com/settings/api-management/) and generate your first API key. Choose between token-based (easier) or certificate-based (more secure) authentication.
   </Step>
-
   <Step title="Make Your First Request">
     Test your connection with a simple API call to verify your authentication setup is working correctly.
   </Step>
-
   <Step title="Explore the Documentation">
     Browse our comprehensive API reference to discover all available endpoints and capabilities for your integration.
   </Step>
-
   <Step title="Join the Community">
     Connect with other developers, ask questions, and share your experiences in our developer community.
   </Step>
@@ -141,23 +114,18 @@ Welcome to the comprehensive developer documentation for Rhombus. Here you'll di
   <Card title="Camera Management" icon="video">
     Stream live video, retrieve recordings, manage camera settings, and access metadata
   </Card>
-
   <Card title="Access Control" icon="key">
     Manage doors, users, credentials, and access events across your facilities
   </Card>
-
   <Card title="Environmental Monitoring" icon="temperature-half">
     Monitor temperature, humidity, air quality, and other environmental conditions
   </Card>
-
   <Card title="Analytics & Insights" icon="chart-line">
     Access AI-powered analytics, people counting and object detection
   </Card>
-
   <Card title="Event Management" icon="bell">
     Create custom workflows, manage notifications, and respond to security events
   </Card>
-
   <Card title="Device Administration" icon="server">
     Configure devices, manage firmware updates, and monitor system health
   </Card>
@@ -166,9 +134,9 @@ Welcome to the comprehensive developer documentation for Rhombus. Here you'll di
 ## Developer Community
 
 <Info>
-**Connect with Fellow Developers**
+  **Connect with Fellow Developers**
 
-Join our vibrant developer community at **[rhombus.community](https://rhombus.community)** to get help, share experiences, and stay updated with the latest developments.
+  Join our vibrant developer community at [**rhombus.community**](https://rhombus.community) to get help, share experiences, and stay updated with the latest developments.
 </Info>
 
 ### What You'll Find in Our Community:
@@ -180,19 +148,10 @@ Join our vibrant developer community at **[rhombus.community](https://rhombus.co
 - **Best Practices** - Learn from successful deployments and optimization techniques
 
 <CardGroup cols={2}>
-  <Card
-    title="Visit Developer Community"
-    icon="users"
-    href="https://rhombus.community"
-  >
+  <Card title="Visit Developer Community" icon="users" href="https://rhombus.community">
     Our community is the fastest way to get answers from both Rhombus engineers and fellow developers who have solved similar challenges.
   </Card>
-
-  <Card
-    title="Rhombus Console"
-    icon="desktop"
-    href="https://console.rhombussystems.com"
-  >
+  <Card title="Rhombus Console" icon="desktop" href="https://console.rhombussystems.com">
     Manage API keys, configure settings, and access your Rhombus system
   </Card>
 </CardGroup>
@@ -215,32 +174,22 @@ Include your API key in every request header:
 ```
 
 <Warning>
-Store your API key securely - it provides full access to your organization's data.
+  Store your API key securely - it provides full access to your organization's data.
 </Warning>
-
 
 ## Ready to Build?
 
 Whether you're building a simple integration or a complex security platform, Rhombus provides the tools and community support you need to succeed. Start with our Quick Start Guide and join thousands of developers already building with Rhombus.
 
 <CardGroup cols={2}>
-  <Card
-    title="Explore the API"
-    icon="rocket"
-    href="/api-reference/endpoint/access-control/accesscontrol-adduserstoaccesscontrolgroup"
-  >
+  <Card title="Explore the API" icon="rocket" href="/api-reference/endpoint/access-control/accesscontrol-adduserstoaccesscontrolgroup">
     Browse our comprehensive API documentation to start building
   </Card>
-
-  <Card
-    title="Ask Questions"
-    icon="comments"
-    href="https://rhombus.community"
-  >
+  <Card title="Ask Questions" icon="comments" href="https://rhombus.community">
     Join our community and get help from experts
   </Card>
 </CardGroup>
 
 <Note>
-This documentation is automatically updated nightly from our production API specification to ensure accuracy and completeness.
+  This documentation is automatically updated nightly from our production API specification to ensure accuracy and completeness.
 </Note>

@@ -73,6 +73,7 @@
             "pages": [
               {
                 "group": "Access Control",
+                "expanded": false,
                 "pages": [
                   {
                     "group": "Create & Add",

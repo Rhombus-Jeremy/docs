@@ -3,15 +3,15 @@ title: "Documentation MCP"
 description: "Connect AI tools directly to Rhombus documentation using Model Context Protocol"
 icon: "plug"
 tag: "New"
-keywords: ["documentation", "ai", "mcp", "model context protocol"]
+keywords: ["documentation","ai","mcp","model context protocol"]
 ---
 
 The **Model Context Protocol (MCP)** is an open standard that creates standardized connections between AI applications and external services. Rhombus provides an MCP server that gives AI tools like Claude Code, Cursor, and Claude Desktop instant access to our complete API documentation.
 
 <Info>
-**Quick Access**
+  **Quick Access**
 
-Rhombus MCP Server: `https://api-docs.rhombus.community/mcp`
+  Rhombus Developer Documentation MCP Server: `https://api-docs.rhombus.community/mcp`
 </Info>
 
 ## Why Use the Documentation MCP?
@@ -20,15 +20,12 @@ Rhombus MCP Server: `https://api-docs.rhombus.community/mcp`
   <Card title="Instant Documentation Access" icon="book-open">
     AI assistants can search and retrieve relevant documentation without leaving your workflow
   </Card>
-
   <Card title="Always Up-to-Date" icon="arrows-rotate">
     Automatically synced with the latest Rhombus API documentation
   </Card>
-
   <Card title="Context-Aware Assistance" icon="brain">
     AI tools understand your API and provide accurate, documentation-backed responses
   </Card>
-
   <Card title="Faster Development" icon="rocket">
     Get answers about endpoints, parameters, and examples instantly while coding
   </Card>
@@ -58,7 +55,6 @@ Choose your AI tool below for setup instructions:
       <Step title="Open Terminal">
         Open your terminal or command prompt
       </Step>
-
       <Step title="Run MCP Add Command">
         Execute the following command:
 
@@ -68,7 +64,6 @@ Choose your AI tool below for setup instructions:
 
         This adds the Rhombus documentation MCP with the name `rhombus-docs`.
       </Step>
-
       <Step title="Verify Installation">
         The MCP will be immediately available in Claude Code. You can verify by asking:
 
@@ -79,22 +74,22 @@ Choose your AI tool below for setup instructions:
         Claude Code will now use the MCP to retrieve accurate documentation.
       </Step>
     </Steps>
-
     ### Using the MCP in Claude Code
 
     Once configured, Claude Code will automatically:
+
     - Search documentation when you ask API-related questions
     - Reference specific endpoints when building integrations
     - Provide code examples from the documentation
     - Suggest best practices based on official guides
 
     **Example queries:**
+
     - "How do I authenticate with the Rhombus API?"
     - "Show me camera endpoints for retrieving video"
     - "What parameters does the access control API accept?"
     - "How do I implement the video player?"
   </Tab>
-
   <Tab title="Claude Desktop">
     ### Add MCP to Claude Desktop
 
@@ -104,11 +99,9 @@ Choose your AI tool below for setup instructions:
       <Step title="Open Claude Settings">
         Click on your profile icon in Claude Desktop and select **Settings**
       </Step>
-
       <Step title="Navigate to Connectors">
         Go to the **Connectors** section in settings
       </Step>
-
       <Step title="Add Custom Connector">
         Click **Add custom connector** and fill in:
 
@@ -116,7 +109,6 @@ Choose your AI tool below for setup instructions:
         - **URL**: `https://api-docs.rhombus.community/mcp`
         - **Type**: Model Context Protocol (MCP)
       </Step>
-
       <Step title="Save and Test">
         Save the connector and test it by asking:
 
@@ -127,12 +119,10 @@ Choose your AI tool below for setup instructions:
         Claude will now access the documentation to answer your questions.
       </Step>
     </Steps>
-
     <Tip>
-    The connector will appear with a small icon next to responses that used the documentation MCP.
+      The connector will appear with a small icon next to responses that used the documentation MCP.
     </Tip>
   </Tab>
-
   <Tab title="Cursor">
     ### Add MCP to Cursor
 
@@ -142,11 +132,9 @@ Choose your AI tool below for setup instructions:
       <Step title="Open Command Palette">
         Press `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux)
       </Step>
-
       <Step title="Search for MCP Settings">
         Type "Open MCP settings" and select it from the list
       </Step>
-
       <Step title="Add Custom MCP Server">
         In the MCP settings file, add the Rhombus documentation server:
 
@@ -161,11 +149,9 @@ Choose your AI tool below for setup instructions:
         }
         ```
       </Step>
-
       <Step title="Restart Cursor">
         Restart Cursor to load the new MCP configuration
       </Step>
-
       <Step title="Verify Integration">
         Use Cursor's AI features and ask:
 
@@ -174,16 +160,15 @@ Choose your AI tool below for setup instructions:
         ```
       </Step>
     </Steps>
-
     ### Using in Cursor Composer
 
     When using Cursor Composer or Chat, the MCP enables:
+
     - Automatic documentation lookup during coding
     - Inline suggestions based on API documentation
     - Code generation using official examples
     - Real-time validation against API specifications
   </Tab>
-
   <Tab title="VS Code">
     ### Add MCP to VS Code
 
@@ -198,7 +183,6 @@ Choose your AI tool below for setup instructions:
         touch .vscode/mcp.json
         ```
       </Step>
-
       <Step title="Add Server Configuration">
         Add the following to `.vscode/mcp.json`:
 
@@ -214,14 +198,13 @@ Choose your AI tool below for setup instructions:
         }
         ```
       </Step>
-
       <Step title="Install MCP-Compatible Extension">
         Install an AI extension that supports MCP, such as:
+
         - Continue
         - Cody
         - Other MCP-compatible VS Code extensions
       </Step>
-
       <Step title="Use in Your Workflow">
         The MCP will be available to your AI assistant. Ask questions like:
 
@@ -231,18 +214,19 @@ Choose your AI tool below for setup instructions:
       </Step>
     </Steps>
   </Tab>
-
   <Tab title="Other Tools">
     ### Generic MCP Configuration
 
     Most MCP-compatible tools follow a similar pattern:
 
     **Connection Details:**
+
     - **Server URL**: `https://api-docs.rhombus.community/mcp`
     - **Transport**: HTTP
     - **Name**: rhombus-docs (or your preference)
 
     **Configuration Example (JSON):**
+
     ```json
     {
       "name": "rhombus-docs",
@@ -252,6 +236,7 @@ Choose your AI tool below for setup instructions:
     ```
 
     **Supported Tools:**
+
     - Goose AI
     - Any MCP-compatible AI assistant
     - Custom integrations using MCP SDK
@@ -269,6 +254,7 @@ The Rhombus Documentation MCP provides the following tools to AI assistants:
     **Search the complete Rhombus documentation**
 
     This tool allows AI assistants to search through all documentation pages, including:
+
     - API endpoint references
     - Authentication guides
     - Implementation examples
@@ -276,6 +262,7 @@ The Rhombus Documentation MCP provides the following tools to AI assistants:
     - Best practices and tutorials
 
     **Example Usage:**
+
     ```
     Tool: search-documentation
     Query: "camera video streaming endpoints"
@@ -283,11 +270,11 @@ The Rhombus Documentation MCP provides the following tools to AI assistants:
 
     **Results:** Returns relevant documentation snippets with links to full pages.
   </Accordion>
-
   <Accordion title="get-endpoint-details" icon="route">
     **Retrieve detailed information about specific API endpoints**
 
     Get comprehensive details about Rhombus API endpoints including:
+
     - Request parameters
     - Response schemas
     - Authentication requirements
@@ -295,6 +282,7 @@ The Rhombus Documentation MCP provides the following tools to AI assistants:
     - Error codes
 
     **Example Usage:**
+
     ```
     Tool: get-endpoint-details
     Endpoint: "/api/camera/getMediaUris"
@@ -302,11 +290,11 @@ The Rhombus Documentation MCP provides the following tools to AI assistants:
 
     **Results:** Complete endpoint documentation with examples and parameters.
   </Accordion>
-
   <Accordion title="search-code-examples" icon="code">
     **Find implementation examples and code snippets**
 
     Search through code examples for:
+
     - Video player implementations
     - Authentication flows
     - API integration patterns
@@ -314,6 +302,7 @@ The Rhombus Documentation MCP provides the following tools to AI assistants:
     - Timestamp extraction
 
     **Example Usage:**
+
     ```
     Tool: search-code-examples
     Topic: "DashJS player setup"
@@ -335,7 +324,6 @@ The Rhombus Documentation MCP provides the following tools to AI assistants:
 
     The MCP will search documentation and provide relevant endpoints with descriptions.
   </Step>
-
   <Step title="Get Implementation Details">
     ```
     "Show me how to implement the DashJS video player"
@@ -343,7 +331,6 @@ The Rhombus Documentation MCP provides the following tools to AI assistants:
 
     Retrieves the complete video player implementation guide with code examples.
   </Step>
-
   <Step title="Ask About Authentication">
     ```
     "How do I authenticate for video streaming?"
@@ -351,7 +338,6 @@ The Rhombus Documentation MCP provides the following tools to AI assistants:
 
     Provides federated token authentication details and code samples.
   </Step>
-
   <Step title="Request Specific Examples">
     ```
     "Give me a complete JavaScript example for streaming video"
@@ -371,7 +357,6 @@ The Rhombus Documentation MCP provides the following tools to AI assistants:
 
     MCP searches and returns comprehensive list of access control endpoints.
   </Step>
-
   <Step title="Understand Parameters">
     ```
     "What parameters does createAccessGrant accept?"
@@ -379,7 +364,6 @@ The Rhombus Documentation MCP provides the following tools to AI assistants:
 
     Retrieves detailed parameter documentation for the specific endpoint.
   </Step>
-
   <Step title="See Examples">
     ```
     "Show me an example of creating an access grant"
@@ -395,15 +379,12 @@ The Rhombus Documentation MCP provides the following tools to AI assistants:
   <Card title="Be Specific in Queries" icon="bullseye">
     Ask targeted questions about specific endpoints or features for better results
   </Card>
-
   <Card title="Reference by Name" icon="tag">
     Mention "Rhombus API" or specific endpoint names to get focused documentation
   </Card>
-
   <Card title="Request Code Examples" icon="code">
     Explicitly ask for code examples when you need implementation help
   </Card>
-
   <Card title="Follow Up Questions" icon="comments">
     Ask follow-up questions to drill deeper into specific topics
   </Card>
@@ -414,34 +395,36 @@ The Rhombus Documentation MCP provides the following tools to AI assistants:
 <AccordionGroup>
   <Accordion title="MCP Not Responding" icon="triangle-exclamation">
     **Possible causes:**
+
     - MCP server URL is incorrect
     - Network connectivity issues
     - Tool needs to be restarted
 
     **Solutions:**
+
     1. Verify the URL: `https://api-docs.rhombus.community/mcp`
     2. Check your internet connection
     3. Restart your AI tool
     4. Re-add the MCP configuration
   </Accordion>
-
   <Accordion title="No Results Found" icon="circle-xmark">
     **Try these approaches:**
+
     - Rephrase your question more specifically
     - Use exact endpoint names or feature names
     - Break complex questions into simpler queries
     - Check if you're asking about a feature that exists in Rhombus API
   </Accordion>
-
   <Accordion title="Outdated Information" icon="clock-rotate-left">
     The MCP server automatically syncs with the latest documentation. If you suspect outdated information:
+
     - The documentation may have been recently updated
     - Try rephrasing to get different results
     - Verify against the online documentation
   </Accordion>
-
   <Accordion title="Configuration Not Loading" icon="gear">
     **For command-line tools:**
+
     ```bash
     # Remove and re-add the MCP
     claude mcp remove rhombus-docs
@@ -449,6 +432,7 @@ The Rhombus Documentation MCP provides the following tools to AI assistants:
     ```
 
     **For GUI tools:**
+
     - Remove the MCP configuration
     - Restart the application
     - Re-add the configuration
@@ -459,18 +443,20 @@ The Rhombus Documentation MCP provides the following tools to AI assistants:
 ## Privacy & Security
 
 <Info>
-**Data Privacy**
+  **Data Privacy**
 
-The MCP server only provides access to public Rhombus API documentation. No private data, API keys, or user information is transmitted through the MCP.
+  The MCP server only provides access to public Rhombus API documentation. No private data, API keys, or user information is transmitted through the MCP.
 </Info>
 
 **What the MCP provides:**
+
 - Public API documentation
 - Code examples
 - Integration guides
 - Best practices
 
 **What the MCP does NOT provide:**
+
 - Your API keys or credentials
 - Customer-specific data
 - Private account information
@@ -479,35 +465,16 @@ The MCP server only provides access to public Rhombus API documentation. No priv
 ## Additional Resources
 
 <CardGroup cols={2}>
-  <Card
-    title="Model Context Protocol Spec"
-    icon="file-lines"
-    href="https://modelcontextprotocol.io"
-  >
+  <Card title="Model Context Protocol Spec" icon="file-lines" href="https://modelcontextprotocol.io">
     Learn more about the MCP standard
   </Card>
-
-  <Card
-    title="API Reference"
-    icon="book"
-    href="/api-reference/endpoint/access-control/accesscontrol-adduserstoaccesscontrolgroup"
-  >
+  <Card title="API Reference" icon="book" href="/api-reference/endpoint/access-control/accesscontrol-adduserstoaccesscontrolgroup">
     Browse the complete API documentation
   </Card>
-
-  <Card
-    title="Video Player Guide"
-    icon="circle-play"
-    href="/implementations/video-player"
-  >
+  <Card title="Video Player Guide" icon="circle-play" href="/implementations/video-player">
     Implementation examples and tutorials
   </Card>
-
-  <Card
-    title="Developer Community"
-    icon="users"
-    href="https://rhombus.community"
-  >
+  <Card title="Developer Community" icon="users" href="https://rhombus.community">
     Get help and share experiences
   </Card>
 </CardGroup>
@@ -520,5 +487,5 @@ Have suggestions for improving the Documentation MCP?
 - **Email**: Reach out to [api@rhombus.com](mailto:api@rhombus.com)
 
 <Note>
-The Documentation MCP is continuously improved based on developer feedback and usage patterns. Check back for new features and capabilities.
+  The Documentation MCP is continuously improved based on developer feedback and usage patterns. Check back for new features and capabilities.
 </Note>
