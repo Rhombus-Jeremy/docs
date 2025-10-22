@@ -1,0 +1,413 @@
+---
+title: "Make.com Integration"
+description: "Automate Rhombus workflows with Make.com's visual platform - connect with thousands of apps without coding"
+icon: "diagram-project"
+---
+
+<Info>
+  **Visual Automation Platform**
+
+  Make.com (formerly Integromat) is a powerful visual automation platform that lets you design complex workflows. Connect Rhombus with thousands of apps using an intuitive drag-and-drop interface.
+</Info>
+
+Automate your security operations by connecting Rhombus with thousands of apps through Make.com. Build sophisticated workflows visually with triggers, actions, and conditional logic.
+
+## What is Make.com?
+
+Make.com is an advanced automation platform that lets you create "scenarios" - visual workflows that connect apps and automate processes. With Make.com, you can design complex multi-step automations with conditional logic, data transformations, and error handling.
+
+<CardGroup cols={2}>
+  <Card title="Triggers" icon="bolt">
+    Events in Rhombus that start automated scenarios
+  </Card>
+  <Card title="Actions" icon="gear">
+    Operations performed in Rhombus or other apps
+  </Card>
+  <Card title="Searches" icon="magnifying-glass">
+    Find and retrieve specific data from Rhombus
+  </Card>
+  <Card title="Universal Module" icon="code">
+    Make custom API calls to any Rhombus endpoint
+  </Card>
+</CardGroup>
+
+## Available Modules
+
+### Access Control Actions
+
+Manage users and access permissions through automated workflows:
+
+**Add Users to Access Control Group**
+Add users to specific access control groups automatically.
+
+**Use Cases:**
+- Grant access when employees are onboarded
+- Add visitors to temporary access groups
+- Manage group memberships based on schedules
+
+**Create Access Control Group**
+Create new access control groups dynamically.
+
+**Use Cases:**
+- Set up temporary event access groups
+- Create project-specific access groups
+- Automate access group provisioning
+
+**Assign Unassigned Credential**
+Assign credentials to users automatically.
+
+**Use Cases:**
+- Provision access cards for new employees
+- Reassign credentials when staff changes
+- Automate credential management workflows
+
+**Delete User from Organization**
+Remove users from your Rhombus organization.
+
+**Use Cases:**
+- Offboard employees automatically
+- Clean up inactive user accounts
+- Sync with HR systems
+
+### Camera & Video Actions
+
+Control and manage cameras through automation:
+
+**Create Raw HTTP Stream**
+Generate HTTP video streams for cameras.
+
+**Use Cases:**
+- Stream video to external monitoring systems
+- Integrate camera feeds with custom dashboards
+- Enable third-party video analytics
+
+**Create Custom Seekpoint**
+Add custom markers to video timelines.
+
+**Use Cases:**
+- Mark important events automatically
+- Tag footage based on external triggers
+- Create searchable video annotations
+
+**Get AI Normalized Confidence Thresholds**
+Retrieve AI detection confidence levels for cameras.
+
+**Use Cases:**
+- Adjust detection sensitivity dynamically
+- Monitor AI performance metrics
+- Optimize detection accuracy
+
+**Retrieve Hardware Details**
+Get technical specifications for multiple cameras.
+
+**Use Cases:**
+- Generate camera inventory reports
+- Monitor camera health and status
+- Track hardware configurations
+
+### Sensor Actions
+
+Manage Rhombus environmental sensors:
+
+**Retrieve Base Stations for BLE Sensors**
+Get available base stations for Bluetooth sensors.
+
+**Use Cases:**
+- Monitor sensor network coverage
+- Optimize sensor placement
+- Track base station availability
+
+### Universal Module
+
+**Make an API Call**
+Execute arbitrary API calls to any Rhombus endpoint.
+
+**Use Cases:**
+- Access endpoints not yet available as modules
+- Build custom integrations
+- Implement advanced workflows
+
+## Popular Integration Examples
+
+<CardGroup cols={2}>
+  <Card title="Employee Onboarding" icon="user-plus">
+    **HR System → Access Control**
+
+    Automatically add new employees to access groups and assign credentials when they're added to your HRIS.
+  </Card>
+  <Card title="Security Monitoring" icon="shield-halved">
+    **Camera Event → Notification**
+
+    Stream camera feeds to monitoring systems and send alerts based on AI detections.
+  </Card>
+  <Card title="Facility Analytics" icon="chart-line">
+    **Camera Data → Database**
+
+    Collect camera metrics and AI insights into data warehouses for analysis.
+  </Card>
+  <Card title="Visitor Management" icon="id-card">
+    **Check-in System → Access Grant**
+
+    Grant temporary access when visitors check in through reception systems.
+  </Card>
+</CardGroup>
+
+## Getting Started
+
+### Step 1: Create a Make.com Account
+
+1. Visit [make.com](https://www.make.com) and sign up for an account
+2. Choose a plan that fits your automation needs
+3. Explore the Make.com platform interface
+
+### Step 2: Build Your First Scenario
+
+<Steps>
+  <Step title="Add Rhombus Module">
+    Search for "Rhombus" in the Make.com module library and add it to your scenario
+  </Step>
+  <Step title="Authenticate">
+    Connect your Rhombus account using your API credentials from the Rhombus Console
+  </Step>
+  <Step title="Configure Module">
+    Select the action you want to perform and configure the required parameters
+  </Step>
+  <Step title="Add More Modules">
+    Connect additional apps and create your workflow logic
+  </Step>
+  <Step title="Test and Activate">
+    Run your scenario to test it, then activate it to run automatically
+  </Step>
+</Steps>
+
+### Step 3: Authentication
+
+Generate your Rhombus API credentials:
+
+1. Log into the [Rhombus Console](https://console.rhombussystems.com/settings/api-management/)
+2. Navigate to Settings → API Management
+3. Generate a new API key with appropriate permissions
+4. Use the API key to authenticate Make.com connection
+
+<Warning>
+  Store API keys securely. They provide full access to your Rhombus system and should never be shared or committed to version control.
+</Warning>
+
+## Make.com Features
+
+### Visual Workflow Builder
+
+Create complex automations using Make.com's intuitive visual interface:
+
+- **Drag-and-drop modules** to design workflows
+- **Visual data mapping** between modules
+- **Real-time execution visualization**
+- **Built-in error handling**
+
+### Advanced Logic
+
+Build sophisticated scenarios with:
+
+**Routers**
+Branch your workflow based on conditions and route data to different paths.
+
+**Filters**
+Only execute modules when specific conditions are met.
+
+**Iterators**
+Process arrays and collections item by item.
+
+**Aggregators**
+Combine multiple operations into single outputs.
+
+### Data Transformation
+
+Transform and manipulate data between modules:
+
+- Format dates and times
+- Parse and manipulate text
+- Perform mathematical operations
+- Convert between data formats
+
+## Common Use Cases
+
+### Access Control Automation
+
+<Tabs>
+  <Tab title="Employee Lifecycle">
+    **Scenario:** Automate access from hire to departure
+
+    **Workflow:**
+    1. HR system triggers on new hire
+    2. Create access control group (if needed)
+    3. Add user to appropriate groups
+    4. Assign credential automatically
+    5. Send welcome notification
+  </Tab>
+  <Tab title="Time-Based Access">
+    **Scenario:** Grant temporary access for contractors
+
+    **Workflow:**
+    1. Schedule trigger activates
+    2. Add contractors to access group
+    3. Set reminder for access expiration
+    4. Remove access when period ends
+    5. Log access period for audit
+  </Tab>
+</Tabs>
+
+### Camera Management
+
+<Tabs>
+  <Tab title="Video Analytics Integration">
+    **Scenario:** Feed camera streams to analytics platform
+
+    **Workflow:**
+    1. Retrieve camera list and details
+    2. Create HTTP streams for selected cameras
+    3. Send stream URLs to analytics platform
+    4. Store stream metadata in database
+    5. Monitor stream health
+  </Tab>
+  <Tab title="Event Timeline Markers">
+    **Scenario:** Mark important events on video timeline
+
+    **Workflow:**
+    1. External system triggers event
+    2. Create custom seekpoint in Rhombus
+    3. Add event metadata and tags
+    4. Send notification to security team
+    5. Log event in incident management system
+  </Tab>
+</Tabs>
+
+## Popular App Connections
+
+<CardGroup cols={3}>
+  <Card title="HR Systems" icon="users">
+    - BambooHR
+    - Workday
+    - ADP
+    - Gusto
+  </Card>
+  <Card title="Communication" icon="comments">
+    - Slack
+    - Microsoft Teams
+    - Gmail
+    - Twilio
+  </Card>
+  <Card title="Data & Analytics" icon="database">
+    - Google Sheets
+    - Airtable
+    - PostgreSQL
+    - MongoDB
+  </Card>
+</CardGroup>
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Scenario Design">
+    - Start simple and add complexity gradually
+    - Use routers to handle different conditions
+    - Add filters to prevent unnecessary executions
+    - Name modules clearly for easy maintenance
+    - Document complex workflows with notes
+  </Accordion>
+  <Accordion title="Error Handling">
+    - Add error handlers to critical modules
+    - Set up notifications for scenario failures
+    - Use Make.com's retry functionality
+    - Test error scenarios before going live
+    - Monitor scenario execution history
+  </Accordion>
+  <Accordion title="Performance Optimization">
+    - Use filters early to reduce operations
+    - Aggregate data when possible
+    - Schedule heavy workflows during off-peak hours
+    - Monitor operation consumption
+    - Use webhooks for real-time triggers
+  </Accordion>
+  <Accordion title="Security">
+    - Use dedicated API keys for Make.com
+    - Regularly rotate API credentials
+    - Limit API key permissions to minimum required
+    - Audit scenario access logs
+    - Never hardcode sensitive data in scenarios
+  </Accordion>
+</AccordionGroup>
+
+## Pricing & Operations
+
+Make.com pricing is based on operations (tasks performed by modules):
+
+- **Free Plan:** 1,000 operations/month
+- **Core Plan:** 10,000 operations/month
+- **Pro Plan:** 10,000+ operations/month with advanced features
+- **Enterprise Plans:** Custom limits and dedicated support
+
+<Info>
+  Each module execution counts as one operation. A scenario with 5 modules running 10 times uses 50 operations. Plan accordingly based on your automation frequency.
+</Info>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Connection Issues">
+    **Problem:** Cannot connect Rhombus to Make.com
+
+    **Solutions:**
+    - Verify API key is active in Rhombus Console
+    - Check API key has required permissions
+    - Ensure API key hasn't expired
+    - Test API key with a simple API call first
+  </Accordion>
+  <Accordion title="Module Execution Failures">
+    **Problem:** Modules fail during scenario execution
+
+    **Solutions:**
+    - Review error messages in execution history
+    - Verify all required fields are populated
+    - Check data format matches expected input
+    - Test with sample data using "Run this module only"
+  </Accordion>
+  <Accordion title="Data Mapping Errors">
+    **Problem:** Data not passing correctly between modules
+
+    **Solutions:**
+    - Use Make.com's data structure viewer
+    - Verify field names and paths are correct
+    - Check for null or empty values
+    - Use text parser or transformers as needed
+  </Accordion>
+</AccordionGroup>
+
+## Support & Resources
+
+<CardGroup cols={2}>
+  <Card title="Make.com Documentation" icon="book" href="https://www.make.com/en/help">
+    Complete Make.com platform documentation and tutorials
+  </Card>
+  <Card title="Rhombus API Reference" icon="code" href="/api-reference">
+    Full API documentation for custom integrations
+  </Card>
+  <Card title="Rhombus Console" icon="desktop" href="https://console.rhombussystems.com">
+    Manage API keys and system settings
+  </Card>
+  <Card title="Make.com Community" icon="users" href="https://community.make.com">
+    Connect with other Make.com users and get help
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+Ready to automate with Make.com? Here's what to do next:
+
+1. [**Sign up for Make.com**](https://www.make.com) and explore the platform
+2. **Generate API credentials** in the Rhombus Console
+3. **Create your first scenario** using a simple use case
+4. **Explore advanced features** like routers, filters, and aggregators
+
+<Note>
+  The Rhombus Make.com integration is continuously being enhanced. Check the Make.com app directory regularly for new modules and capabilities.
+</Note>
