@@ -1,0 +1,882 @@
+---
+title: "Backup Footage to Local Storage"
+description: "Learn how to backup Rhombus camera footage to local storage devices like NAS using the Rhombus API"
+icon: "hard-drive"
+---
+
+<Warning>
+**Community Example - Not Officially Supported**
+
+This guide is provided as a community example and is **not officially supported** by Rhombus Systems. While Rhombus does not officially support on-premise backup, this guide demonstrates how to implement a local backup solution using the Rhombus API.
+
+Use this implementation at your own discretion and ensure it meets your organization's backup and compliance requirements.
+</Warning>
+
+## Overview
+
+This guide demonstrates how to backup video and audio footage from Rhombus cameras to local storage devices such as Network Attached Storage (NAS), external hard drives, or local servers. The solution uses a Python script that leverages the Rhombus API to download footage in parallel across multiple cameras.
+
+The implementation supports:
+- **Multi-camera downloads** with threading for improved performance
+- **Video and audio synchronization** with automatic merging
+- **Flexible scheduling** using cron jobs or task schedulers
+- **Customizable time ranges** for historical footage backup
+- **Location-based filtering** to backup specific sites
+
+## How It Works
+
+<Steps>
+
+### Camera Discovery
+
+The script queries the Rhombus API to enumerate all cameras in your organization, filtering by connection status, location, or specific camera UUIDs.
+
+### Session Authentication
+
+A federated session token is generated for each camera, providing temporary (1-hour) credentials for media access without exposing your API key in download URLs.
+
+### Media Download
+
+For each camera, the script:
+1. Requests MPD (MPEG-DASH) playlist URIs for video and audio streams
+2. Downloads the initialization segment (`seg_init.mp4`)
+3. Downloads sequential 2-second media segments
+4. Writes segments to local storage
+
+### Audio-Video Merging
+
+If audio is available, the script uses FFmpeg to merge video and audio streams into a single file, then cleans up temporary files.
+
+</Steps>
+
+## Prerequisites
+
+Before implementing local backup, ensure you have:
+
+- **Python 3.7 or higher** installed on your backup system
+- **Rhombus API key** from the [Rhombus Console](https://console.rhombussystems.com)
+- **Network connectivity** to Rhombus cameras (LAN or WAN)
+- **Sufficient storage space** on your backup device (estimate 1-2 GB per camera per day)
+- **FFmpeg** installed for audio-video merging
+
+<Tip>
+Calculate your storage requirements based on camera count, retention period, and recording quality. A typical Rhombus camera generates approximately 40-60 GB per month of footage.
+</Tip>
+
+## Installation
+
+### Install Required Software
+
+<Tabs>
+
+<Tab title="Ubuntu/Debian">
+```bash
+# Update package list
+sudo apt update
+
+# Install Python 3 and pip
+sudo apt install python3 python3-pip
+
+# Install FFmpeg
+sudo apt install ffmpeg
+
+# Install Git (to clone the repository)
+sudo apt install git
+```
+</Tab>
+
+<Tab title="macOS">
+```bash
+# Install Homebrew if not already installed
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install Python 3
+brew install python
+
+# Install FFmpeg
+brew install ffmpeg
+
+# Install Git
+brew install git
+```
+</Tab>
+
+<Tab title="Windows">
+```powershell
+# Install Python from python.org
+# Download from: https://www.python.org/downloads/
+
+# Install FFmpeg
+# Download from: https://ffmpeg.org/download.html#build-windows
+# Add FFmpeg to your PATH environment variable
+
+# Install Git
+# Download from: https://git-scm.com/download/win
+```
+</Tab>
+
+<Tab title="Synology NAS">
+```bash
+# Enable SSH in Control Panel > Terminal & SNMP
+
+# Install Python via Package Center
+# Search for and install "Python 3"
+
+# Install ffmpeg via SynoCommunity
+# Add SynoCommunity package source: https://synocommunity.com/
+# Install ffmpeg from Community packages
+
+# Install Git via Package Center
+```
+</Tab>
+
+</Tabs>
+
+### Download the Backup Script
+
+Clone the Rhombus API examples repository:
+
+```bash
+# Clone the repository
+git clone https://github.com/RhombusSystems/api-examples-python.git
+
+# Navigate to the NAS backup directory
+cd api-examples-python/NAS-Backup-v2
+
+# Install Python dependencies
+pip3 install -r requirements.txt
+```
+
+### Verify Installation
+
+Test that all components are installed correctly:
+
+```bash
+# Check Python version
+python3 --version
+
+# Check FFmpeg installation
+ffmpeg -version
+
+# Check pip packages
+pip3 list | grep -E "(requests|ffmpeg|urllib3|xmltodict)"
+```
+
+## Configuration
+
+### Command-Line Parameters
+
+The backup script supports the following parameters:
+
+<ParamField path="--api_key" type="string" required>
+Your Rhombus API key for authentication. Required unless using certificate-based authentication.
+
+**Example**: `--api_key YOUR_API_KEY_HERE`
+</ParamField>
+
+<ParamField path="--start_time" type="integer">
+Unix epoch timestamp for backup start time. Defaults to 1 hour ago if not specified.
+
+**Example**: `--start_time 1693526400` (August 31, 2023 at 16:00:00 UTC)
+</ParamField>
+
+<ParamField path="--duration" type="integer">
+Duration in seconds to backup from start time. Defaults to 3600 seconds (1 hour).
+
+**Example**: `--duration 7200` (2 hours)
+</ParamField>
+
+<ParamField path="--location_uuid" type="string">
+Filter backup to cameras at a specific location. Useful for multi-site deployments.
+
+**Example**: `--location_uuid location-uuid-here`
+</ParamField>
+
+<ParamField path="--camera_uuid" type="string">
+Backup footage from a specific camera only.
+
+**Example**: `--camera_uuid camera-uuid-here`
+</ParamField>
+
+<ParamField path="--usewan" type="boolean">
+Use WAN addresses instead of LAN. Enable when backup system is outside your local network.
+
+**Example**: `--usewan`
+</ParamField>
+
+<ParamField path="--debug" type="boolean">
+Enable debug logging for troubleshooting.
+
+**Example**: `--debug`
+</ParamField>
+
+<ParamField path="--cert" type="string">
+Path to client certificate for mTLS authentication (advanced use case).
+
+**Example**: `--cert /path/to/cert.pem`
+</ParamField>
+
+<ParamField path="--private_key" type="string">
+Path to private key for mTLS authentication (advanced use case).
+
+**Example**: `--private_key /path/to/key.pem`
+</ParamField>
+
+## Usage Examples
+
+### Basic Backup (Last Hour)
+
+Backup the last hour of footage from all cameras:
+
+```bash
+python3 copy_footage_script_threading.py \
+  --api_key YOUR_API_KEY
+```
+
+### Specific Time Range
+
+Backup footage from a specific 2-hour window:
+
+```bash
+python3 copy_footage_script_threading.py \
+  --api_key YOUR_API_KEY \
+  --start_time 1693526400 \
+  --duration 7200
+```
+
+### Single Camera Backup
+
+Backup footage from one specific camera:
+
+```bash
+python3 copy_footage_script_threading.py \
+  --api_key YOUR_API_KEY \
+  --camera_uuid camera-uuid-here \
+  --duration 3600
+```
+
+### Location-Based Backup
+
+Backup all cameras at a specific location:
+
+```bash
+python3 copy_footage_script_threading.py \
+  --api_key YOUR_API_KEY \
+  --location_uuid location-uuid-here \
+  --duration 3600
+```
+
+### WAN Access (Remote Backup)
+
+Backup from outside your local network:
+
+```bash
+python3 copy_footage_script_threading.py \
+  --api_key YOUR_API_KEY \
+  --usewan \
+  --duration 3600
+```
+
+### Debug Mode
+
+Enable detailed logging for troubleshooting:
+
+```bash
+python3 copy_footage_script_threading.py \
+  --api_key YOUR_API_KEY \
+  --debug \
+  --duration 3600
+```
+
+## Output Files
+
+Downloaded footage files follow this naming convention:
+
+```
+{CameraName}_{CameraUUID}_{Timestamp}_{Type}.{Extension}
+```
+
+**Examples:**
+
+```
+FrontDoor_abc123def456_1693526400_video.mp4
+Lobby_def789ghi012_1693526400_merged.mp4
+Warehouse_ghi345jkl678_1693526400_video.mp4
+```
+
+**File Types:**
+
+- **Video-only files**: `.mp4` format (when no audio is available)
+- **Merged files**: `.mp4` format (video + audio combined via FFmpeg)
+- **Temporary files**: `.webm` format (automatically deleted after merging)
+
+<Note>
+The script automatically cleans up temporary files after successful merging. Only final `.mp4` files remain in your backup directory.
+</Note>
+
+## Scheduling Automated Backups
+
+### Using Cron (Linux/macOS/NAS)
+
+Create automated backups using cron jobs:
+
+<Steps>
+
+### Edit Crontab
+
+Open your crontab configuration:
+
+```bash
+crontab -e
+```
+
+### Add Backup Schedule
+
+Add one of the following examples based on your needs:
+
+<CodeGroup>
+
+```bash Hourly Backup
+# Backup every hour at minute 0
+0 * * * * cd /path/to/api-examples-python/NAS-Backup-v2 && /usr/bin/python3 copy_footage_script_threading.py --api_key YOUR_API_KEY --duration 3600 >> /var/log/rhombus_backup.log 2>&1
+```
+
+```bash Daily Backup (Midnight)
+# Backup last 24 hours at midnight
+0 0 * * * cd /path/to/api-examples-python/NAS-Backup-v2 && /usr/bin/python3 copy_footage_script_threading.py --api_key YOUR_API_KEY --duration 86400 >> /var/log/rhombus_backup.log 2>&1
+```
+
+```bash Every 4 Hours
+# Backup every 4 hours
+0 */4 * * * cd /path/to/api-examples-python/NAS-Backup-v2 && /usr/bin/python3 copy_footage_script_threading.py --api_key YOUR_API_KEY --duration 14400 >> /var/log/rhombus_backup.log 2>&1
+```
+
+```bash Business Hours Only
+# Backup every 2 hours during business hours (8 AM - 6 PM, Mon-Fri)
+0 8-18/2 * * 1-5 cd /path/to/api-examples-python/NAS-Backup-v2 && /usr/bin/python3 copy_footage_script_threading.py --api_key YOUR_API_KEY --duration 7200 >> /var/log/rhombus_backup.log 2>&1
+```
+
+</CodeGroup>
+
+### Save and Verify
+
+Save the crontab and verify it's scheduled:
+
+```bash
+# List current cron jobs
+crontab -l
+
+# Check cron service status
+sudo systemctl status cron
+```
+
+</Steps>
+
+<Tip>
+**Cron Schedule Reference:**
+- `0 * * * *` - Every hour at minute 0
+- `*/30 * * * *` - Every 30 minutes
+- `0 */4 * * *` - Every 4 hours
+- `0 0 * * *` - Daily at midnight
+- `0 2 * * 0` - Weekly on Sunday at 2 AM
+</Tip>
+
+### Using Task Scheduler (Windows)
+
+<Steps>
+
+### Open Task Scheduler
+
+Press `Win + R`, type `taskschd.msc`, and press Enter.
+
+### Create New Task
+
+1. Click **"Create Task"** in the right panel
+2. Name it **"Rhombus Footage Backup"**
+3. Select **"Run whether user is logged on or not"**
+
+### Set Trigger
+
+1. Go to the **Triggers** tab
+2. Click **New**
+3. Choose frequency (Daily, Weekly, etc.)
+4. Set start time and recurrence
+
+### Configure Action
+
+1. Go to the **Actions** tab
+2. Click **New**
+3. **Action**: Start a program
+4. **Program**: `C:\Python39\python.exe` (adjust path)
+5. **Arguments**: `copy_footage_script_threading.py --api_key YOUR_API_KEY --duration 3600`
+6. **Start in**: `C:\path\to\NAS-Backup-v2`
+
+### Save and Test
+
+1. Click **OK** to save
+2. Right-click the task and select **"Run"** to test
+
+</Steps>
+
+## API Endpoints Used
+
+The backup script interacts with the following Rhombus API endpoints:
+
+### Camera Enumeration
+
+```
+POST https://api2.rhombussystems.com/api/camera/getMinimalCameraStateList
+```
+
+Retrieves list of cameras with connection status and location information.
+
+### Audio Gateway List
+
+```
+POST https://api2.rhombussystems.com/api/audiogateway/getMinimalAudioGatewayStateList
+```
+
+Fetches audio devices associated with cameras.
+
+### Session Token Generation
+
+```
+POST https://api2.rhombussystems.com/api/org/generateFederatedSessionToken
+```
+
+Creates temporary session credentials (1-hour validity) for secure media access.
+
+### Video Media URIs
+
+```
+POST https://api2.rhombussystems.com/api/camera/getMediaUris
+```
+
+Obtains MPD (MPEG-DASH) playlist templates for video streams.
+
+### Audio Media URIs
+
+```
+POST https://api2.rhombussystems.com/api/audiogateway/getMediaUris
+```
+
+Obtains MPD templates for audio streams.
+
+<Note>
+All API calls require authentication using the `x-auth-scheme: api-token` header with your API key, or certificate-based mTLS authentication.
+</Note>
+
+## Performance Optimization
+
+### Threading Configuration
+
+The script uses Python's `ThreadPoolExecutor` with a maximum of 4 concurrent workers. This balances download speed with API rate limits and system resources.
+
+To adjust thread count, modify the script:
+
+```python
+# In copy_footage_script_threading.py
+with ThreadPoolExecutor(max_workers=4) as executor:  # Change 4 to desired value
+```
+
+**Recommendations:**
+- **2-4 workers**: Standard NAS or low-end systems
+- **4-8 workers**: High-performance NAS or servers
+- **8-16 workers**: Enterprise servers with high bandwidth
+
+<Warning>
+Increasing thread count beyond recommended values may trigger rate limiting or overload your network/storage.
+</Warning>
+
+### Storage Considerations
+
+**Calculate Required Space:**
+
+```
+Storage (GB) = Cameras × Days × 1.5 GB/day
+```
+
+**Example:**
+- 10 cameras × 30 days × 1.5 GB = 450 GB required
+
+**Best Practices:**
+- Maintain at least 20% free space on backup device
+- Implement retention policies to delete old footage
+- Monitor disk usage regularly
+- Use compression if long-term archival is needed
+
+### Network Optimization
+
+**LAN vs WAN:**
+- **LAN Mode** (default): Faster downloads, uses local network addresses
+- **WAN Mode** (`--usewan`): Required for remote backup, slower but accessible from anywhere
+
+**Bandwidth Requirements:**
+- Approximately 2-4 Mbps per concurrent camera download
+- 4 workers = 8-16 Mbps recommended bandwidth
+
+## Retention and Cleanup
+
+Implement a retention policy to manage storage usage:
+
+<CodeGroup>
+
+```bash Delete Files Older Than 30 Days
+# Create cleanup script
+cat > cleanup_old_footage.sh << 'EOF'
+#!/bin/bash
+BACKUP_DIR="/path/to/backup/directory"
+RETENTION_DAYS=30
+
+find "$BACKUP_DIR" -name "*.mp4" -type f -mtime +$RETENTION_DAYS -delete
+find "$BACKUP_DIR" -name "*.webm" -type f -mtime +$RETENTION_DAYS -delete
+
+echo "Deleted footage older than $RETENTION_DAYS days"
+EOF
+
+chmod +x cleanup_old_footage.sh
+```
+
+```bash Automated Weekly Cleanup (Cron)
+# Add to crontab (runs every Sunday at 3 AM)
+0 3 * * 0 /path/to/cleanup_old_footage.sh >> /var/log/rhombus_cleanup.log 2>&1
+```
+
+```python Python Cleanup Script
+import os
+import time
+from pathlib import Path
+
+def cleanup_old_files(backup_dir, retention_days):
+    """Remove footage files older than retention period"""
+    cutoff_time = time.time() - (retention_days * 86400)
+    removed_count = 0
+    freed_space = 0
+
+    for file in Path(backup_dir).glob("**/*.mp4"):
+        if file.stat().st_mtime < cutoff_time:
+            size = file.stat().st_size
+            file.unlink()
+            removed_count += 1
+            freed_space += size
+
+    print(f"Removed {removed_count} files")
+    print(f"Freed {freed_space / (1024**3):.2f} GB")
+
+# Usage
+cleanup_old_files("/path/to/backup", retention_days=30)
+```
+
+</CodeGroup>
+
+## Troubleshooting
+
+<AccordionGroup>
+
+<Accordion title="Script Fails with Authentication Error">
+**Symptoms:**
+- `401 Unauthorized` errors
+- `Invalid API key` messages
+
+**Solutions:**
+1. Verify API key is correct in Rhombus Console
+2. Ensure API key has camera access permissions
+3. Check that `x-auth-scheme` header is set correctly
+4. Regenerate API key if compromised
+
+```bash
+# Test API authentication
+curl -X POST https://api2.rhombussystems.com/api/camera/getMinimalCameraStateList \
+  -H "x-auth-scheme: api-token" \
+  -H "x-auth-apikey: YOUR_API_KEY"
+```
+</Accordion>
+
+<Accordion title="Downloads Are Very Slow">
+**Symptoms:**
+- Downloads take longer than expected
+- Network timeout errors
+
+**Solutions:**
+1. Use LAN mode instead of WAN if backing up locally
+2. Reduce thread count in `ThreadPoolExecutor`
+3. Check network bandwidth and camera connectivity
+4. Verify storage device write speed
+5. Consider scheduling backups during off-peak hours
+
+```bash
+# Test with fewer threads and debug mode
+python3 copy_footage_script_threading.py \
+  --api_key YOUR_API_KEY \
+  --debug \
+  --duration 600  # Start with 10 minutes
+```
+</Accordion>
+
+<Accordion title="FFmpeg Merge Fails">
+**Symptoms:**
+- Temporary `.webm` files remain
+- No merged `.mp4` output
+- FFmpeg error messages
+
+**Solutions:**
+1. Verify FFmpeg is installed and in PATH
+2. Check that both video and audio files were downloaded
+3. Ensure sufficient disk space for temporary files
+4. Update FFmpeg to latest version
+
+```bash
+# Check FFmpeg installation
+which ffmpeg
+ffmpeg -version
+
+# Manual merge test
+ffmpeg -i video.webm -i audio.webm -c copy output.mp4
+```
+</Accordion>
+
+<Accordion title="No Cameras Found">
+**Symptoms:**
+- Script reports 0 cameras to backup
+- Empty camera list
+
+**Solutions:**
+1. Verify cameras are online in Rhombus Console
+2. Check location UUID filter if specified
+3. Ensure API key has access to cameras
+4. Review camera connection status filters in script
+
+```bash
+# List all cameras via API
+curl -X POST https://api2.rhombussystems.com/api/camera/getMinimalCameraStateList \
+  -H "x-auth-scheme: api-token" \
+  -H "x-auth-apikey: YOUR_API_KEY" \
+  | python3 -m json.tool
+```
+</Accordion>
+
+<Accordion title="Disk Space Issues">
+**Symptoms:**
+- Script fails with write errors
+- `No space left on device` messages
+
+**Solutions:**
+1. Check available disk space: `df -h`
+2. Implement retention policy to delete old footage
+3. Reduce backup duration or frequency
+4. Add additional storage capacity
+5. Use compression for archived footage
+
+```bash
+# Check disk usage
+df -h /path/to/backup
+
+# Find largest files
+du -sh /path/to/backup/* | sort -hr | head -10
+```
+</Accordion>
+
+<Accordion title="Cron Job Not Running">
+**Symptoms:**
+- Scheduled backups don't execute
+- No new footage files created
+
+**Solutions:**
+1. Check cron service status: `systemctl status cron`
+2. Verify crontab syntax: `crontab -l`
+3. Check cron logs: `grep CRON /var/log/syslog`
+4. Ensure script paths are absolute
+5. Verify user permissions
+
+```bash
+# Test cron job manually
+cd /path/to/NAS-Backup-v2
+/usr/bin/python3 copy_footage_script_threading.py --api_key YOUR_API_KEY
+
+# Check cron logs
+tail -f /var/log/syslog | grep CRON
+```
+</Accordion>
+
+</AccordionGroup>
+
+## Best Practices
+
+<CardGroup cols={2}>
+
+<Card title="Secure API Keys" icon="key">
+Never hardcode API keys in scripts. Use environment variables or secure key management systems. Rotate API keys regularly.
+</Card>
+
+<Card title="Monitor Backups" icon="chart-line">
+Set up monitoring and alerting for backup failures. Review logs regularly to ensure backups complete successfully.
+</Card>
+
+<Card title="Test Restores" icon="rotate-right">
+Regularly test restoring footage from backups to verify integrity and confirm your recovery process works.
+</Card>
+
+<Card title="Implement Retention" icon="calendar">
+Define and enforce retention policies to manage storage costs and comply with data protection regulations.
+</Card>
+
+<Card title="Use Redundancy" icon="copy">
+Consider multiple backup locations (onsite + offsite) for critical footage. Implement the 3-2-1 backup rule.
+</Card>
+
+<Card title="Document Procedures" icon="book">
+Maintain documentation of your backup configuration, schedules, and recovery procedures for your team.
+</Card>
+
+</CardGroup>
+
+## Security Considerations
+
+<Warning>
+Follow these security best practices when implementing local backup:
+</Warning>
+
+### API Key Protection
+
+1. **Store securely**: Use environment variables or credential managers
+2. **Restrict access**: Limit file permissions on scripts containing keys
+3. **Rotate regularly**: Change API keys periodically
+4. **Audit usage**: Monitor API key activity in Rhombus Console
+
+```bash
+# Store API key in environment variable
+export RHOMBUS_API_KEY="your-api-key-here"
+
+# Use in script
+python3 copy_footage_script_threading.py --api_key "$RHOMBUS_API_KEY"
+
+# Restrict script permissions
+chmod 600 backup_script.sh
+```
+
+### Network Security
+
+- Use LAN mode when possible to avoid WAN exposure
+- Implement firewall rules to restrict access
+- Consider VPN for remote backup scenarios
+- Enable mTLS authentication for enhanced security
+
+### Storage Security
+
+- Encrypt backup storage devices
+- Restrict file system permissions
+- Implement access controls on NAS/server
+- Regularly audit who has access to backup files
+
+## Compliance Considerations
+
+When implementing local backup, consider:
+
+**Data Retention:**
+- Follow your organization's data retention policies
+- Comply with industry regulations (HIPAA, GDPR, etc.)
+- Document retention periods and deletion procedures
+
+**Access Control:**
+- Maintain audit logs of who accesses backup footage
+- Implement role-based access controls
+- Document authorized personnel
+
+**Data Protection:**
+- Encrypt data at rest and in transit
+- Implement secure deletion procedures
+- Regular security assessments
+
+## Advanced Configuration
+
+### Custom Output Directory
+
+Modify the script to save files to a specific directory:
+
+```python
+# In copy_footage_script_threading.py
+OUTPUT_DIR = "/mnt/nas/rhombus_backups"
+
+# Create directory structure by date
+import datetime
+date_dir = datetime.datetime.now().strftime("%Y-%m-%d")
+output_path = os.path.join(OUTPUT_DIR, date_dir)
+os.makedirs(output_path, exist_ok=True)
+```
+
+### Email Notifications
+
+Add email alerts for backup completion or failures:
+
+```python
+import smtplib
+from email.mime.text import MIMEText
+
+def send_notification(status, message):
+    msg = MIMEText(message)
+    msg['Subject'] = f'Rhombus Backup {status}'
+    msg['From'] = 'backup@yourcompany.com'
+    msg['To'] = 'admin@yourcompany.com'
+
+    with smtplib.SMTP('smtp.gmail.com', 587) as server:
+        server.starttls()
+        server.login('your-email', 'your-password')
+        server.send_message(msg)
+
+# Use after backup completes
+try:
+    # ... backup code ...
+    send_notification("Success", "All cameras backed up successfully")
+except Exception as e:
+    send_notification("Failed", f"Backup failed: {str(e)}")
+```
+
+### Webhook Integration
+
+Trigger webhooks after backup completion:
+
+```python
+import requests
+
+def trigger_webhook(status, cameras_backed_up):
+    webhook_url = "https://your-webhook-endpoint.com/backup"
+    payload = {
+        "status": status,
+        "timestamp": datetime.datetime.now().isoformat(),
+        "cameras": cameras_backed_up
+    }
+    requests.post(webhook_url, json=payload)
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
+
+<Card title="Video Streaming Implementation" icon="video" href="/implementations/streaming-video">
+Learn how to stream live footage from Rhombus cameras
+</Card>
+
+<Card title="Webhook Integration" icon="webhook" href="/implementations/webhook-listener">
+Set up webhooks to receive real-time events
+</Card>
+
+<Card title="GitHub Repository" icon="github" href="https://github.com/RhombusSystems/api-examples-python/tree/master/NAS-Backup-v2">
+Access the complete backup script source code
+</Card>
+
+<Card title="Developer Community" icon="comments" href="https://rhombus.community">
+Ask questions and share your implementation
+</Card>
+
+</CardGroup>
+
+## Additional Resources
+
+- **Rhombus API Documentation**: Complete API reference for all endpoints
+- **Python Requests Documentation**: [docs.python-requests.org](https://docs.python-requests.org/)
+- **FFmpeg Documentation**: [ffmpeg.org/documentation](https://ffmpeg.org/documentation.html)
+- **Cron Documentation**: [man7.org/linux/man-pages/man5/crontab.5.html](https://man7.org/linux/man-pages/man5/crontab.5.html)
+
+<Note>
+For questions, issues, or to share your backup implementation, visit the [Rhombus Developer Community](https://rhombus.community) and post in the Guides & Resources section.
+</Note>

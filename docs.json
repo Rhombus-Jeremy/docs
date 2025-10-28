@@ -47,6 +47,15 @@
                   "implementations/advanced-implementation"
                 ]
               },
+              {
+                "group": "Access Control",
+                "icon": "door-open",
+                "expanded": false,
+                "pages": [
+                  "implementations/qr-code-access-control"
+                ]
+              },
+              "implementations/backup-footage-local-storage",
               "implementations/webhook-listener"
             ]
           },

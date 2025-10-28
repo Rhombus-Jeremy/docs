@@ -1,0 +1,521 @@
+---
+title: "QR Code Access Control"
+description: "Learn how to use QR codes to unlock doors with Rhombus access control for secure, touchless entry"
+icon: "qrcode"
+---
+
+<Warning>
+This feature is currently in **beta** and is not fully rolled out to all customers. Features and functionality are subject to change. To request access to this feature, contact your Rhombus representative or post in the [Rhombus Developer Community](https://rhombus.community).
+</Warning>
+
+## Overview
+
+QR Code Unlock allows authorized users to gain entry by presenting a QR code to a Rhombus security camera or DR40 door controller. The camera recognizes the code, validates it against the Rhombus backend, and unlocks the door instantly when authorized.
+
+This implementation provides a fast, secure, and camera-authenticated method for controlled entry without requiring physical keycards, badges, or mobile apps.
+
+## How It Works
+
+<Steps>
+
+### Generate QR Code via API
+
+An admin or integrated system generates a secure, time-bound QR code using the Rhombus API. The code is returned as a base64 string that can be converted to an image.
+
+### User Presents QR Code
+
+The user displays the QR code on their mobile device or printed material and holds it up to a Rhombus camera assigned to the door.
+
+### Camera Authenticates & Unlocks
+
+The camera reads and validates the QR code against the Rhombus backend. If authorized and within the valid time window, the door unlocks automatically.
+
+### Event Logging
+
+Every unlock event is logged with visual evidence from the camera, providing a complete audit trail of access attempts.
+
+</Steps>
+
+## Use Cases
+
+QR Code Unlock is ideal for various access control scenarios:
+
+<CardGroup cols={2}>
+
+<Card title="Office Visitors" icon="building">
+Grant one-day or time-limited access to visitors without needing to issue physical badges.
+</Card>
+
+<Card title="Field Operations" icon="wrench">
+Dispatch QR codes to technicians or contractors for temporary access to specific areas.
+</Card>
+
+<Card title="Multi-Tenant Buildings" icon="users">
+Issue tenant-specific codes with customized durations for different access levels.
+</Card>
+
+<Card title="Deliveries & Access Windows" icon="truck">
+Schedule access during specific delivery hours with time-limited QR codes.
+</Card>
+
+</CardGroup>
+
+## Prerequisites
+
+Before implementing QR Code access control, ensure you have:
+
+- An active Rhombus account with API access
+- A valid API key from the [Rhombus Console](https://console.rhombussystems.com)
+- At least one Rhombus camera or DR40 door controller configured for access control
+- The UUID of the access-controlled door you want to manage
+
+<Tip>
+You can find door UUIDs by listing all doors in your organization using the [`GET /api/accesscontrol/door/getDoorsForOrg`](https://api2.rhombussystems.com/api/accesscontrol/door/getDoorsForOrg) endpoint.
+</Tip>
+
+## Generate a QR Access Code
+
+Use the `generateQRAccessCode` endpoint to create a time-bound QR code for door access.
+
+### API Request
+
+<CodeGroup>
+
+```bash cURL
+curl --location 'https://api2.rhombussystems.com/api/accesscontrol/qr/generateQRAccessCode' \
+--header 'Accept: application/json' \
+--header 'x-auth-scheme: api-token' \
+--header 'x-auth-apikey: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+  "accessControlledDoorUuid": "door-uuid-here",
+  "validDurationSec": 86400
+}'
+```
+
+```python Python
+import requests
+import json
+
+url = "https://api2.rhombussystems.com/api/accesscontrol/qr/generateQRAccessCode"
+
+headers = {
+    "Accept": "application/json",
+    "x-auth-scheme": "api-token",
+    "x-auth-apikey": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+payload = {
+    "accessControlledDoorUuid": "door-uuid-here",
+    "validDurationSec": 86400  # 24 hours
+}
+
+response = requests.post(url, headers=headers, json=payload)
+qr_code_data = response.json()
+print(qr_code_data)
+```
+
+```javascript JavaScript
+const axios = require('axios');
+
+const url = 'https://api2.rhombussystems.com/api/accesscontrol/qr/generateQRAccessCode';
+
+const headers = {
+  'Accept': 'application/json',
+  'x-auth-scheme': 'api-token',
+  'x-auth-apikey': 'YOUR_API_KEY',
+  'Content-Type': 'application/json'
+};
+
+const payload = {
+  accessControlledDoorUuid: 'door-uuid-here',
+  validDurationSec: 86400  // 24 hours
+};
+
+axios.post(url, payload, { headers })
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+```
+
+</CodeGroup>
+
+### Request Parameters
+
+<ParamField path="accessControlledDoorUuid" type="string" required>
+The unique identifier of the door you want to authorize access to. This UUID can be obtained from the `getDoorsForOrg` endpoint.
+</ParamField>
+
+<ParamField path="validDurationSec" type="integer" required>
+Time in seconds the QR code will remain valid. Common values:
+- `3600` - 1 hour
+- `28800` - 8 hours (work day)
+- `86400` - 24 hours
+- `604800` - 7 days
+</ParamField>
+
+### Response
+
+The API returns a JSON payload containing the QR code data as a base64-encoded string:
+
+```json
+{
+  "qrCode": "iVBORw0KGgoAAAANSUhEUgAAAQAAAAEA...",
+  "expiresAt": "2024-08-01T12:00:00Z",
+  "doorUuid": "door-uuid-here"
+}
+```
+
+<ResponseField name="qrCode" type="string">
+Base64-encoded image string of the QR code. Decode this to display or distribute the QR code.
+</ResponseField>
+
+<ResponseField name="expiresAt" type="string">
+ISO 8601 timestamp indicating when the QR code will expire and no longer grant access.
+</ResponseField>
+
+<ResponseField name="doorUuid" type="string">
+The door UUID this QR code is authorized to unlock.
+</ResponseField>
+
+## Implementation Examples
+
+### Convert QR Code to Image
+
+After receiving the base64 QR code from the API, you'll need to convert it to a displayable image format.
+
+<CodeGroup>
+
+```python Python
+import base64
+from PIL import Image
+from io import BytesIO
+
+# Assuming you have the qr_code_data from the API response
+qr_code_base64 = qr_code_data['qrCode']
+
+# Decode base64 to image
+image_data = base64.b64decode(qr_code_base64)
+image = Image.open(BytesIO(image_data))
+
+# Save to file
+image.save('access_qr_code.png')
+
+# Or display directly
+image.show()
+```
+
+```javascript Node.js
+const fs = require('fs');
+
+// Assuming you have the response from the API
+const qrCodeBase64 = response.data.qrCode;
+
+// Convert base64 to buffer and save
+const imageBuffer = Buffer.from(qrCodeBase64, 'base64');
+fs.writeFileSync('access_qr_code.png', imageBuffer);
+
+console.log('QR code saved to access_qr_code.png');
+```
+
+</CodeGroup>
+
+### Email QR Code to Visitor
+
+Here's a complete example of generating a QR code and emailing it to a visitor:
+
+```python Python
+import requests
+import base64
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+import smtplib
+
+# Generate QR code
+url = "https://api2.rhombussystems.com/api/accesscontrol/qr/generateQRAccessCode"
+headers = {
+    "x-auth-scheme": "api-token",
+    "x-auth-apikey": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+payload = {
+    "accessControlledDoorUuid": "door-uuid-here",
+    "validDurationSec": 28800  # 8 hours
+}
+
+response = requests.post(url, headers=headers, json=payload)
+qr_data = response.json()
+
+# Decode QR code image
+qr_image = base64.b64decode(qr_data['qrCode'])
+
+# Create email
+msg = MIMEMultipart('related')
+msg['Subject'] = 'Your Temporary Access QR Code'
+msg['From'] = 'access@yourcompany.com'
+msg['To'] = 'visitor@example.com'
+
+# Email body
+html = f"""
+<html>
+  <body>
+    <h2>Welcome to Our Office</h2>
+    <p>Please use the QR code below to access the building.</p>
+    <p>This code is valid until {qr_data['expiresAt']}</p>
+    <p>Simply hold your phone up to the camera at the entrance.</p>
+    <img src="cid:qrcode">
+  </body>
+</html>
+"""
+
+msg_html = MIMEText(html, 'html')
+msg.attach(msg_html)
+
+# Attach QR code image
+img = MIMEImage(qr_image)
+img.add_header('Content-ID', '<qrcode>')
+msg.attach(img)
+
+# Send email
+smtp = smtplib.SMTP('smtp.gmail.com', 587)
+smtp.starttls()
+smtp.login('your-email@gmail.com', 'your-password')
+smtp.send_message(msg)
+smtp.quit()
+
+print("QR code email sent successfully")
+```
+
+### Integration with Event Management System
+
+Generate QR codes for event attendees:
+
+```python Python
+import requests
+import pandas as pd
+
+def generate_event_access_codes(attendees_csv, door_uuid, event_duration_hours):
+    """
+    Generate QR codes for all event attendees
+
+    Args:
+        attendees_csv: Path to CSV with attendee information
+        door_uuid: UUID of the door for event access
+        event_duration_hours: How long access should be valid
+    """
+    # Read attendee list
+    attendees = pd.read_csv(attendees_csv)
+
+    # API configuration
+    url = "https://api2.rhombussystems.com/api/accesscontrol/qr/generateQRAccessCode"
+    headers = {
+        "x-auth-scheme": "api-token",
+        "x-auth-apikey": "YOUR_API_KEY",
+        "Content-Type": "application/json"
+    }
+
+    results = []
+
+    for _, attendee in attendees.iterrows():
+        # Generate QR code for each attendee
+        payload = {
+            "accessControlledDoorUuid": door_uuid,
+            "validDurationSec": event_duration_hours * 3600
+        }
+
+        response = requests.post(url, headers=headers, json=payload)
+        qr_data = response.json()
+
+        results.append({
+            "name": attendee['name'],
+            "email": attendee['email'],
+            "qr_code": qr_data['qrCode'],
+            "expires_at": qr_data['expiresAt']
+        })
+
+        print(f"Generated QR code for {attendee['name']}")
+
+    # Save results
+    results_df = pd.DataFrame(results)
+    results_df.to_csv('event_qr_codes.csv', index=False)
+
+    return results_df
+
+# Usage
+attendees = generate_event_access_codes(
+    'attendees.csv',
+    'door-uuid-here',
+    event_duration_hours=12
+)
+```
+
+## Security Considerations
+
+<Warning>
+Always protect your QR codes and implement appropriate security measures:
+</Warning>
+
+### Time-Limited Access
+
+- Set appropriate `validDurationSec` values based on your use case
+- Shorter durations (1-8 hours) for visitor access
+- Longer durations (1-7 days) for contractor or temporary employee access
+- Never set unlimited duration codes
+
+### QR Code Distribution
+
+<AccordionGroup>
+
+<Accordion title="Email Distribution">
+Use secure email systems and verify recipient addresses before sending QR codes. Consider using encrypted email for sensitive access.
+</Accordion>
+
+<Accordion title="SMS Distribution">
+Verify phone numbers and use secure SMS services. Be aware that SMS may not be encrypted end-to-end.
+</Accordion>
+
+<Accordion title="Mobile Apps">
+Integrate QR code generation into your mobile app with proper authentication and user verification.
+</Accordion>
+
+<Accordion title="Printed QR Codes">
+For printed codes, ensure physical security and proper disposal after expiration. Consider adding watermarks or other anti-copying measures.
+</Accordion>
+
+</AccordionGroup>
+
+### Access Monitoring
+
+- Review access logs regularly using the Rhombus Console
+- Set up alerts for unusual access patterns
+- Monitor failed access attempts
+- Maintain audit trails of QR code generation and usage
+
+## Best Practices
+
+<Tip>
+Follow these best practices for a secure and efficient QR code access system:
+</Tip>
+
+1. **Validate Door UUIDs**: Always verify door UUIDs before generating QR codes to ensure codes grant access to the correct doors.
+
+2. **Implement Rate Limiting**: If exposing QR code generation through your own application, implement rate limiting to prevent abuse.
+
+3. **Log Generation Events**: Keep records of who generated QR codes, for which doors, and with what validity periods.
+
+4. **User-Friendly Expiration Times**: When displaying QR codes, show the expiration time in the user's local timezone.
+
+5. **Test Before Distribution**: Generate and test QR codes before sending to users to ensure they work correctly.
+
+6. **Provide Instructions**: Include clear instructions with QR codes on where to present them and what to expect.
+
+7. **Error Handling**: Implement proper error handling for API failures and invalid responses.
+
+## Benefits
+
+<CardGroup cols={2}>
+
+<Card title="No Physical Credentials" icon="id-card-clip">
+Eliminate the need for physical keycards, badges, or mobile apps. Users only need to display a QR code.
+</Card>
+
+<Card title="Touchless Entry" icon="hand">
+Completely contactless access—users simply show the code without touching any surfaces.
+</Card>
+
+<Card title="Visual Audit Trail" icon="video">
+Every unlock event is logged with camera footage, providing visual evidence of who accessed the door.
+</Card>
+
+<Card title="Easy Revocation" icon="ban">
+Codes automatically expire based on the configured duration and can't be used after expiration.
+</Card>
+
+<Card title="Flexible Integration" icon="puzzle-piece">
+Integrate with existing systems like visitor management, event registration, or HR platforms.
+</Card>
+
+<Card title="Cost Effective" icon="dollar-sign">
+Reduce costs associated with physical credentials, card readers, and credential management.
+</Card>
+
+</CardGroup>
+
+## Troubleshooting
+
+<AccordionGroup>
+
+<Accordion title="QR Code Not Working">
+**Common causes:**
+- QR code has expired (check `expiresAt` timestamp)
+- Incorrect door UUID was used when generating the code
+- Camera is not properly configured for access control
+- QR code image is damaged or unclear
+
+**Solutions:**
+- Generate a new QR code with a valid duration
+- Verify the door UUID using the `getDoorsForOrg` endpoint
+- Check camera configuration in Rhombus Console
+- Ensure QR code is displayed clearly and at appropriate size
+</Accordion>
+
+<Accordion title="API Returns Error">
+**Common causes:**
+- Invalid API key or authentication headers
+- Incorrect door UUID
+- Door not configured for QR code access
+- Insufficient permissions
+
+**Solutions:**
+- Verify your API key in the Rhombus Console
+- Check that `x-auth-scheme` header is set to `api-token`
+- Confirm the door UUID exists and is configured for access control
+- Contact Rhombus support if the feature is not enabled for your account
+</Accordion>
+
+<Accordion title="Camera Not Reading QR Code">
+**Common causes:**
+- Poor lighting conditions
+- QR code too small or too large
+- Camera angle is incorrect
+- QR code displayed on a reflective surface
+
+**Solutions:**
+- Ensure adequate lighting at the entry point
+- Display QR code at 3-5 inches across
+- Position the QR code perpendicular to the camera
+- Avoid displaying on glossy screens—use matte screen protectors or print on paper
+</Accordion>
+
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+
+<Card title="Access Control API" icon="door-open" href="/api-reference/openapi.json/post/api/accesscontrol/qr/generateQRAccessCode">
+View the complete API reference for QR code generation
+</Card>
+
+<Card title="Webhook Integration" icon="webhook" href="/implementations/webhook-listener">
+Set up webhooks to receive real-time access control events
+</Card>
+
+<Card title="Developer Community" icon="comments" href="https://rhombus.community">
+Join the Rhombus Developer Community for support and updates
+</Card>
+
+<Card title="Rhombus Console" icon="gear" href="https://console.rhombussystems.com">
+Manage your access control devices and settings
+</Card>
+
+</CardGroup>
+
+<Note>
+This feature is actively being developed. Stay tuned to the [Rhombus Developer Community](https://rhombus.community) for updates on new functionality and improvements.
+</Note>
