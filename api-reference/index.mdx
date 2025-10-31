@@ -1,0 +1,108 @@
+---
+title: "API Overview"
+description: "Understand how the Rhombus API reference is generated, how to explore endpoints efficiently, and which resources help you integrate faster."
+icon: "book"
+---
+
+Rhombus exposes every platform capability through a single OpenAPI-driven surface area. This guide helps you understand how the Mintlify-powered reference is organized and how to get the most out of it.
+
+<Tip>
+  Looking for a specific endpoint? Use the lefthand navigation search or jump directly with <kbd>Ctrl</kbd> + <kbd>K</kbd> / <kbd>Cmd</kbd> + <kbd>K</kbd>.
+</Tip>
+
+## How the reference is built
+
+- **Single source of truth** - The `api-reference/openapi.json` file is synced every night from production, so you always browse the latest contract.
+- **Automatic navigation** - Each navigation entry points straight to the OpenAPI operation (`method + path`), ensuring you never land on stale handcrafted docs.
+- **Split specs for tooling** - Category-specific specs live in `api-reference/openapi-split/`. Load only what you need when working with large language models or generators.
+
+<Note>
+  If you update the platform, run `./scripts/update-openapi.sh` followed by `./scripts/split-openapi.sh` to refresh both the main spec and category slices.
+</Note>
+
+## Explore the API efficiently
+
+<Steps>
+  <Step title="Start with API Essentials">
+    Review the **Authentication** and **Errors & Rate Limits** pages in this section so you know how to authorize requests and interpret common responses.
+  </Step>
+  <Step title="Locate the right service">
+    Services are grouped under areas like Core Services, Devices, Analytics, and more. Open a group to reveal CRUD-style subgroups (Create, Get, Update, Delete, Other).
+  </Step>
+  <Step title="Inspect schemas and examples">
+    Each OpenAPI entry includes request bodies, parameters, and schema references. Expand individual schema nodes to view property descriptions without leaving the page.
+  </Step>
+  <Step title="Prototype quickly">
+    Copy the `Try it` snippet or download the OpenAPI spec to generate a typed client with your preferred language.
+  </Step>
+</Steps>
+
+## Request workflow example
+
+<RequestExample
+  method="POST"
+  url="https://api2.rhombussystems.com/api/camera/getDetails"
+  label="Fetch camera details"
+  auth="API Key"
+  :headers="[
+    { key: 'Content-Type', value: 'application/json' },
+    { key: 'x-auth-scheme', value: 'api-token' },
+    { key: 'x-auth-apikey', value: 'rhombus_demo_4c1f2f1f8a274a32' }
+  ]"
+  :body="{
+    cameraUuid: 'c9b31b8e-56bd-42f2-9eb2-8a12cc4c6d15'
+  }"
+/>
+
+<ResponseExample
+  :response="{
+    camera: {
+      uuid: 'c9b31b8e-56bd-42f2-9eb2-8a12cc4c6d15',
+      name: 'Warehouse Loading Dock',
+      status: 'ONLINE',
+      timezone: 'America/Los_Angeles'
+    }
+  }"
+  status="200"
+  label="Successful response"
+/>
+
+## Tools that speed up integration
+
+<Tabs>
+  <Tab title="Mintlify UI">
+    Browse endpoints, read schema descriptions, and try requests without leaving the documentation site.
+  </Tab>
+  <Tab title="OpenAPI Generator">
+    ```bash
+    openapi-generator-cli generate \
+      -i https://api2.rhombussystems.com/api/openapi/public.json \
+      -g typescript-axios \
+      -o ./clients/typescript
+    ```
+  </Tab>
+  <Tab title="LLM Context">
+    Use the split specifications in `api-reference/openapi-split/` when you need a smaller context window for AI tooling.
+  </Tab>
+</Tabs>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Authenticate requests" icon="key" href="/api-reference/authentication">
+    Learn how to manage API keys, rotate credentials, and secure integrations.
+  </Card>
+  <Card title="Handle errors" icon="triangle-exclamation" href="/api-reference/errors-and-rate-limits">
+    Understand common error payloads, retry strategies, and rate limiting responses.
+  </Card>
+  <Card title="Explore endpoints" icon="book" href="/api-reference">
+    Open the API reference tab and drill into the service group that matches your integration.
+  </Card>
+  <Card title="Sync the spec" icon="server" href="/documentation-mcp">
+    Automate documentation updates with our MCP integration guidance.
+  </Card>
+</CardGroup>
+
+<Check>
+  Bookmark this overview if you maintain the spec. It captures the workflow for keeping the API reference aligned with production.
+</Check>

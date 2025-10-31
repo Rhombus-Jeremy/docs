@@ -1,0 +1,118 @@
+---
+title: "Authentication"
+description: "Authenticate every request to the Rhombus API with organization-level API keys and consistent header formats."
+icon: "key"
+---
+
+All Rhombus API calls require an authenticated user or integration key. The platform currently supports API key authentication by passing two headers on every request.
+
+<Warning>
+  Treat API keys like admin passwords. Store them in a secure secrets manager and rotate them on a schedule.
+</Warning>
+
+## Required headers
+
+Include both headers with every request, even when the body is empty:
+
+```http
+x-auth-scheme: api-token
+x-auth-apikey: rhombus_demo_4c1f2f1f8a274a32
+```
+
+- `x-auth-scheme` identifies the authentication strategy. `api-token` covers the standard API key workflow used by most integrations.
+- `x-auth-apikey` carries your organization-specific key generated in the Rhombus Console.
+
+<Note>
+  Certificate-backed authentication is available for advanced customers. Contact Rhombus Support to enable and receive signing instructions.
+</Note>
+
+## Generate and rotate keys
+
+<Steps>
+  <Step title="Generate a key">
+    Visit **Console > Settings > API Management** and create a new token. Give it a descriptive name that maps to your integration or environment.
+  </Step>
+  <Step title="Scope access">
+    Choose the minimal permission set required. Restricting scope limits the impact of accidental leakage.
+  </Step>
+  <Step title="Distribute securely">
+    Store keys in a vault (AWS Secrets Manager, HashiCorp Vault, etc.). Inject them at runtime through environment variables.
+  </Step>
+  <Step title="Rotate regularly">
+    Schedule rotations, update your deployments, and revoke old keys to maintain trust.
+  </Step>
+</Steps>
+
+## Sample requests
+
+<Tabs>
+  <Tab title="cURL">
+    ```bash
+    curl -X POST \
+      https://api2.rhombussystems.com/api/camera/getDetails \
+      -H "Content-Type: application/json" \
+      -H "x-auth-scheme: api-token" \
+      -H "x-auth-apikey: ${RHOMBUS_API_KEY}" \
+      -d '{
+        "cameraUuid": "c9b31b8e-56bd-42f2-9eb2-8a12cc4c6d15"
+      }'
+    ```
+  </Tab>
+  <Tab title="JavaScript (fetch)">
+    ```javascript
+    const response = await fetch('https://api2.rhombussystems.com/api/camera/getDetails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-auth-scheme': 'api-token',
+        'x-auth-apikey': process.env.RHOMBUS_API_KEY ?? ''
+      },
+      body: JSON.stringify({
+        cameraUuid: 'c9b31b8e-56bd-42f2-9eb2-8a12cc4c6d15'
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Authentication failed');
+    }
+
+    const data = await response.json();
+    ```
+  </Tab>
+  <Tab title="Python (requests)">
+    ```python
+    import os
+    import requests
+
+    url = "https://api2.rhombussystems.com/api/camera/getDetails"
+    headers = {
+        "Content-Type": "application/json",
+        "x-auth-scheme": "api-token",
+        "x-auth-apikey": os.environ["RHOMBUS_API_KEY"],
+    }
+    payload = {"cameraUuid": "c9b31b8e-56bd-42f2-9eb2-8a12cc4c6d15"}
+
+    response = requests.post(url, json=payload, headers=headers, timeout=10)
+    response.raise_for_status()
+    camera = response.json()["camera"]
+    ```
+  </Tab>
+</Tabs>
+
+## Common authentication errors
+
+<AccordionGroup>
+  <Accordion title="401 Unauthorized">
+    Returned when headers are missing or incorrect. Verify both `x-auth-scheme` and `x-auth-apikey` are present and valid.
+  </Accordion>
+  <Accordion title="403 Forbidden">
+    The key is valid but lacks required permissions. Create a new key with the appropriate scope or request elevated access.
+  </Accordion>
+  <Accordion title="429 Too Many Requests">
+    You hit a rate limit. See **Errors & Rate Limits** for retry guidance.
+  </Accordion>
+</AccordionGroup>
+
+<Check>
+  Always audit key usage. Delete credentials that have not been used recently to shrink your attack surface.
+</Check>

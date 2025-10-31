@@ -78,6 +78,16 @@
         "tab": "API reference",
         "groups": [
           {
+            "group": "API Essentials",
+            "icon": "circle-info",
+            "expanded": true,
+            "pages": [
+              "api-reference/index",
+              "api-reference/authentication",
+              "api-reference/errors-and-rate-limits"
+            ]
+          },
+          {
             "group": "Core Services",
             "pages": [
               {

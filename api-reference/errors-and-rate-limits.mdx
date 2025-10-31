@@ -1,0 +1,77 @@
+---
+title: "Errors & Rate Limits"
+description: "Interpret Rhombus API error responses, build resilient retry logic, and monitor rate limiting."
+icon: "triangle-exclamation"
+---
+
+Rhombus responses follow standard HTTP semantics: a `2xx` status means success, while `4xx` and `5xx` codes indicate client or server issues. Error bodies are structured JSON objects that help you diagnose what went wrong.
+
+## Error payload shape
+
+<ResponseExample
+  status="400"
+  label="Validation error"
+  :response="{
+    errorCode: 'INVALID_ARGUMENT',
+    message: 'cameraUuid must be a valid UUID',
+    details: [
+      { field: 'cameraUuid', description: 'Expected UUID v4' }
+    ]
+  }"
+/>
+
+- `errorCode` - Machine-readable identifier that stays consistent across releases.
+- `message` - Human-friendly context you can log or surface to support teams.
+- `details` - Optional array that pinpoints invalid fields or missing parameters.
+
+## Common status codes
+
+- **400 Bad Request** - Input failed validation or required fields are missing.
+- **401 Unauthorized** - Authentication headers are absent or invalid.
+- **403 Forbidden** - The key lacks permission for the requested resource.
+- **404 Not Found** - The resource does not exist or you provided an unknown identifier.
+- **409 Conflict** - The operation conflicts with current state (for example, duplicate creation).
+- **429 Too Many Requests** - You exceeded the allowed request rate.
+- **5xx Server Errors** - Temporary issues on the Rhombus platform. Retries are usually successful.
+
+## Rate limiting
+
+Rhombus applies per-organization and per-endpoint rate limits. When you exceed the threshold, the API returns `429` along with retry guidance.
+
+<ResponseExample
+  status="429"
+  label="Rate limited"
+  :response="{
+    errorCode: 'RATE_LIMIT_EXCEEDED',
+    message: 'Too many requests. Please retry after the interval in Retry-After header.'
+  }"
+/>
+
+<Tip>
+  Inspect the `Retry-After` header to determine when you can safely retry. The value is expressed in seconds.
+</Tip>
+
+## Build resilient clients
+
+- Log both the HTTP status code and `errorCode` so you can diagnose issues quickly.
+- Implement exponential backoff (for example, 1s, 2s, 4s) for `429` and `5xx` responses.
+- Short-circuit retries for `4xx` errors that indicate permanent failures.
+- Alert your team when error rates spike to catch credential or configuration regressions.
+
+## Testing failure scenarios
+
+<Tabs>
+  <Tab title="Simulate 401">
+    Remove the `x-auth-apikey` header or provide an intentionally revoked key to confirm your error handling path.
+  </Tab>
+  <Tab title="Simulate 400">
+    Send malformed bodies (for example, omit required fields) and assert that your validation catches the error before reaching production.
+  </Tab>
+  <Tab title="Simulate 429">
+    Use a load-testing tool to trigger the rate limiter in a sandbox environment. Verify your backoff logic and monitoring alerts fire correctly.
+  </Tab>
+</Tabs>
+
+<Note>
+  Need higher throughput? Contact Rhombus Support with your use case and observed load so we can review rate limit adjustments.
+</Note>
